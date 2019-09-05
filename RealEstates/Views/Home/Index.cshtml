@@ -1,31 +1,117 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Trang chủ";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="row">
+
+    <div class="col-sm-12 col-md-3 frm-search">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+        {
+            @*<select name="PhanLoai" class="form-control select2">
+                    <option value="">Loại</option>
+                    <option value="1" @if (ViewBag.PhanLoai == 1) { @("selected") }>Cho thuê</option>
+                    <option value="2" @if (ViewBag.PhanLoai == 2) { @("selected") }>Cần bán</option>
+                </select>*@
+            @*<select name="LoaiBDS" class="form-control select2">
+                    <option value="">Loại Dự án</option>
+                    @foreach (var item in ViewBag.IdLoaiDuAns as SelectList)
+                    {
+                        <option value="@item.Value" @if (ViewBag.LoaiDuAn == item.Value) { @("selected") }>@item.Text</option>
+                    }
+                </select>
+                <select name="Tinh" class="form-control select2">
+                    <option value="">Địa phương</option>
+                    @foreach (var item in ViewBag.IdTinh as SelectList)
+                    {
+                        <option value="@item.Value" @if (ViewBag.Tinh == item.Value) { @("selected") }>@item.Text</option>
+                    }
+                </select>
+                <select name="DienTich1" class="form-control select2">
+                    <option value="">Diện tích</option>
+                    @foreach (var item in ViewBag.DienTich as SelectList)
+                    {
+                        <option value="@item.Value" @if (ViewBag.DienTich1 == item.Value) { @("selected") }>@item.Text</option>
+                    }
+                </select>
+                <select name="KhoangGia1" class="form-control select2">
+                    <option value="">Khoảng giá</option>
+                    @foreach (var item in ViewBag.KhoangGia as SelectList)
+                    {
+                        <option value="@item.Value" @if (ViewBag.KhoangGia1 == item.Value) { @("selected") }>@item.Text</option>
+                    }
+                </select>*@
+            <button type="submit" class="btn btn-primary btn-raised btn-block"><i class="fa fa-search" aria-hidden="true"></i></button>
+        }
+    </div>
+
+    <div class="col-sm-12 col-md-9">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/Content/Images/google-earth-view-1133.jpg" alt="First slide">
+                </div>
+                <div class="item">
+                    <img src="~/Content/Images/google-earth-view-1209.jpg" alt="Second slide">
+                </div>
+                <div class="item">
+                    <img src="~/Content/Images/google-earth-view-1212.jpg" alt="Third slide">
+                </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="fa fa-angle-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="fa fa-angle-right"></span>
+            </a>
+        </div>
+    </div>
+
+    @*@if (ViewBag.listDuAn != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="box-title">Dự án mới</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="owl-carousel">
+                    @foreach (var item in ViewBag.listDuAn as IEnumerable<RealEstates.Models.DuAn>)
+                    {
+                        Html.RenderPartial("~/Views/Shared/_SingleDuAnCarousel.cshtml", item);
+
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <h5>
+                        @Html.ActionLink("Xem thêm Dự án >>", "Index", "DuAn")
+                    </h5>
+                </div>
+            </div>
+        }*@
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+@*@section script {
+        <script>
+            $(document).ready(function () {
+                $(".owl-carousel").owlCarousel({
+                    items: 4,
+                    pagination: false,
+                    autoHeight: false,
+                    autoWidth: false,
+                    nav: true,
+                    loop: true,
+                    responsive: { 0: { items: 1 }, 500: { items: 2 }, 768: { item: 4 } },
+                    margin: 10,
+                    navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+                    dots: false
+                });
+            });
+        </script>
+}*@

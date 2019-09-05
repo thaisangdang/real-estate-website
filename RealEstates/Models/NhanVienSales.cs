@@ -28,7 +28,7 @@ namespace RealEstates.Models
 
         public string AccountId { get; set; }
 
-        public virtual ICollection<DonViSanPham> DonViSanPhams { get; set; }
+        public virtual ICollection<DonViDuAn> DonViDuAns { get; set; }
 
         public virtual ICollection<PhiHoaHong> PhiHoaHongs { get; set; }
 

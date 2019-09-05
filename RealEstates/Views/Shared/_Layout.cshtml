@@ -3,26 +3,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="icon" href="~/Content/Images/favicon.ico" type="image/x-icon">
+    <title>@ViewBag.Title - RealEstates</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-md">
+    <div class="navbar navbar-dark bg-primary fixed-top navbar-expand-md">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-target=".navbar-collapse"
-                    data-toggle="collapse">
-                &#x2630;
-            </button>
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-target=".navbar-collapse" data-toggle="collapse">&#x2630;</button>
+            @Html.ActionLink("Trang chủ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Dự án", "Index", "DuAn", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Nhà đất bán", "NhaDatBan", "TinRaoBDS", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Nhà đất cho thuê", "NhaDatChoThue", "TinRaoBDS", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Giới thiệu", "About", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Liên hệ", "Contact", "Home", null, new { @class = "nav-link" })</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
@@ -30,7 +30,74 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="footer-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 ">
+                            <h4 class="font-bold text-uppercase mt-2 mb-3">Liên hệ</h4>
+                            <p>
+                                Website: realestates.com.vn<br />
+                                Địa chỉ: 22 Nguyễn Văn Bảo ,P4, Gò Vấp <br />
+                                Hotline: 0926-653-099<br />
+                                Email: realestates@gmail.com<br />
+                            </p>
+                        </div>
+                        <div class="col-md-3 mx-auto">
+                            <h4 class="font-bold text-uppercase mt-2 mb-3">Công ty</h4>
+                            <ul class="list-unstyled">
+                                <li>@Html.ActionLink("Giới thiệu", "About", "Home")</li>
+                                <li>
+                                    <a href="#">Liên hệ</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tuyển dụng</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 mx-auto">
+                            <h4 class="font-bold text-uppercase mt-2 mb-3">Chính sách</h4>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#">Câu hỏi thường gặp</a>
+                                </li>
+                                <li>
+                                    <a href="#">Chính sách bảo mật</a>
+                                </li>
+                                <li>
+                                    <a href="#">Điều khoản và dịch vụ</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col-md-3 mx-auto">
+                            <h4 class="font-bold text-uppercase mt-2 mb-3">Đăng ký nhận thông tin</h4>
+                            <form action="#" class="form-sub">
+                                <input type="text" placeholder="Email" class="form-control" />
+                                <button type="submit" class="btn btn-primary btn-raised">Xác nhận</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4527.633250107297!2d106.68771414473125!3d10.824152707191798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528f00abc2c2d%3A0x5ac94085175a082b!2zODQsIDIwIEh14buzbmggS2jGsMahbmcgQW4sIHBoxrDhu51uZyA1LCBHw7IgVuG6pXAsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1557388487557!5m2!1svi!2s" width="1050" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </p>
+                            <p>
+                                Bản quyền &copy; Real Estates 2019. Đã đăng ký Bộ Công Thương.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 

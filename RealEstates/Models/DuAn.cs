@@ -90,6 +90,10 @@ namespace RealEstates.Models
         [Display(Name = "Loại dự án")]
         public virtual LoaiDuAn LoaiDuAn { get; set; }
 
+        [Display(Name = "Số đơn vị dự án")]
+        [Range(0, int.MaxValue)]
+        public int SoDonViDuAn { get; set; }
+
         [Display(Name = "Ngày đăng")]
         public DateTime? NgayDang { get; set; }
 

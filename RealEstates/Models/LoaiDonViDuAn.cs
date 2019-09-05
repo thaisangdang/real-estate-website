@@ -8,8 +8,8 @@ using System.Web.Mvc;
 
 namespace RealEstates.Models
 {
-    [Table("LoaiDonViSanPham")]
-    public class LoaiDonViSanPham
+    [Table("LoaiDonViDuAn")]
+    public class LoaiDonViDuAn
     {
         [Key]
         public int Id { get; set; }
@@ -22,6 +22,6 @@ namespace RealEstates.Models
         [Display(Name = "Mô tả")]
         public string MoTa { get; set; }
 
-        public virtual ICollection<DonViSanPham> DonViSanPhams { get; set; }
+        public virtual ICollection<DonViDuAn> DonViDuAns { get; set; }
     }
 }

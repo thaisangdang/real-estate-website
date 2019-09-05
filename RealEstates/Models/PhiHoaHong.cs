@@ -14,8 +14,7 @@ namespace RealEstates.Models
         [Key]
         public int Id { get; set; }
 
-        //[Index(IsUnique = true)]
-        public virtual DonViSanPham DonViSanPham { get; set; }
+        public virtual DonViDuAn DonViDuAn { get; set; }
 
         public virtual NhanVienSales NhanVienSales { get; set; }
 

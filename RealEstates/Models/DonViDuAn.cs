@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace RealEstates.Models
 {
-    [Table("DonViSanPham")]
-    public class DonViSanPham
+    [Table("DonViDuAn")]
+    public class DonViDuAn
     {
         [Key]
         public int Id { get; set; }
@@ -32,8 +32,8 @@ namespace RealEstates.Models
         [Display(Name = "Dự án")]
         public virtual DuAn DuAn { get; set; }
 
-        [Display(Name = "Loại đơn vị sản phẩm")]
-        public virtual LoaiDonViSanPham LoaiDonVi { get; set; }
+        [Display(Name = "Loại đơn vị dự án")]
+        public virtual LoaiDonViDuAn LoaiDonVi { get; set; }
 
         [Display(Name = "Nhân viên Sales")]
         public virtual NhanVienSales NhanVienSales { get; set; }
