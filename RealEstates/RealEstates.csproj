@@ -190,10 +190,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,15 +219,15 @@
       <DependentUpon>201909051131546_AddSoDonViDuAn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Areas\Admin\Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\PhiHoaHong.cs" />
     <Compile Include="Models\DonViDuAn.cs" />
     <Compile Include="Models\DuAn.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Areas\Admin\Models\IdentityModels.cs" />
     <Compile Include="Models\LoaiDonViDuAn.cs" />
     <Compile Include="Models\LoaiDuAn.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Areas\Admin\Models\ManageViewModels.cs" />
     <Compile Include="Models\NhanVienSales.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\TinhThanhPho.cs" />
@@ -401,10 +401,9 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\Images\google-earth-view-1133.jpg" />
-    <Content Include="Content\Images\google-earth-view-1209.jpg" />
-    <Content Include="Content\Images\google-earth-view-1212.jpg" />
-    <Content Include="Content\Images\google-earth-view-1221.jpg" />
+    <Content Include="Content\Images\google-earth-view-1302.jpg" />
+    <Content Include="Content\Images\google-earth-view-1371.jpg" />
+    <Content Include="Content\Images\google-earth-view-5674.jpg" />
     <Content Include="Content\sb-admin.css" />
     <Content Include="Content\sb-admin.min.css" />
     <Content Include="Content\tether\tether-theme-arrows-dark.css" />
@@ -534,6 +533,8 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\View.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -595,24 +596,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\ResetPassword.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\SendCode.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\VerifyCode.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\ChangePassword.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\ManageLogins.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\SetPassword.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Lockout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -631,7 +618,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>

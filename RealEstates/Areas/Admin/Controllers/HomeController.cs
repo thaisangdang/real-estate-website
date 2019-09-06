@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
-    public class AdminHomeController : Controller
+    public class HomeController : Controller
     {
         // GET: Admin/Home
+        [Authorize]
         public ActionResult Index()
         {
             return View();

@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RealEstates.Models;
 
-namespace RealEstates.Controllers
+namespace RealEstates.Areas.Admin.Controllers
 {
     [Authorize]
     public class ManageController : Controller

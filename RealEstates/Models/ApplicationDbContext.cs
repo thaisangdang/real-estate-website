@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using RealEstates.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,7 +17,6 @@ namespace RealEstates.Models
         public DbSet<DonViDuAn> DonViDuAns { get; set; }
         public DbSet<NhanVienSales> NhanVienSales { get; set; }
         public DbSet<PhiHoaHong> PhiHoaHongs { get; set; }
-
 
         public ApplicationDbContext()
             : base("name=RealEstates", throwIfV1Schema: false)
