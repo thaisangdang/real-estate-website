@@ -190,8 +190,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyBaoCaoCongViecController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyBaoCaoThongKeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyChatController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyDonViDuAnController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyDuAnController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyLoaiDuAnController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyPhiHoaHongController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanController.cs" />
+    <Compile Include="Areas\Admin\Models\UserProfileViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -532,9 +541,16 @@
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LoginLayout.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\View.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiKhoan\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDuAn\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyLoaiDuAn\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDonViDuAn\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyBaoCaoThongKe\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhiHoaHong\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyChat\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyBaoCaoCongViec\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -596,12 +612,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\ManageLogins.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\SetPassword.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\Lockout.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -611,10 +624,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_AlertPartial.cshtml" />
     <Content Include="Views\Shared\_SingleDuAnCarousel.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_StaffMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SalesManMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

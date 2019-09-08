@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RealEstates.Areas.Admin.Models;
+using RealEstates.Models;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
@@ -80,7 +81,17 @@ namespace RealEstates.Areas.Admin.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    var user = await UserManager.FindAsync(model.Email, model.Password);
+                    var roles = await UserManager.GetRolesAsync(user.Id);
+
+                    if (roles.Contains(RoleName.Administrator) || roles.Contains(RoleName.SalesMan) || roles.Contains(RoleName.Staff))
+                    {
+                        return RedirectToAction("Index", "DashBoard", new { area = "Admin" });
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -398,7 +409,7 @@ namespace RealEstates.Areas.Admin.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Dashboard");
         }
 
         //
