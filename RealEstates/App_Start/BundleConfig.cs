@@ -12,11 +12,16 @@ namespace RealEstates
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/respond.js",
-                        "~/scripts/bootbox.js",
-                        "~/scripts/datatables/jquery.datatables.js",
-                        "~/scripts/datatables/datatables.bootstrap.js",
-                        "~/scripts/typeahead.bundle.js",
-                        "~/scripts/toastr.js"));
+                        "~/Scripts/bootbox.js",
+                        "~/Scripts/typeahead.bundle.js",
+                        "~/Scripts/umd/popper.min.js",
+                        "~/Scripts/bootstrap.bundle.min.js",
+                        "~/Scripts/jquery.easing.min.js",
+                        "~/Scripts/sb-admin.min.js",
+                        "~/Scripts/vendor/chart.js/Chart.min.js",
+                        "~/Scripts/DataTables/jquery.dataTables.min.js",
+                        "~/Scripts/DataTables/dataTables.bootstrap4.min.js",
+                        "~/Scripts/toastr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

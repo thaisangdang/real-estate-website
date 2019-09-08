@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = RoleName.Administrator)]
     public class DashboardController : Controller
     {
         private ApplicationDbContext _context;
