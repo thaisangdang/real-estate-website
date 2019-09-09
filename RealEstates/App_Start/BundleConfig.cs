@@ -33,9 +33,9 @@ namespace RealEstates
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.min.css",
-                      "~/content/datatables/css/datatables.bootstrap.css",
-                      "~/content/typeahead.css",
-                      "~/content/toastr.css",
+                      "~/Content/datatables/css/datatables.bootstrap.css",
+                      "~/Content/typeahead.css",
+                      "~/Content/toastr.css",
                       "~/Content/site.css"));
         }
     }
