@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
-    [Authorize(Roles = RoleName.Administrator)]
+    [Authorize(Roles = "Administrator, SalesMan, Staff")]
     public class DashboardController : Controller
     {
         private ApplicationDbContext _context;
@@ -27,11 +27,7 @@ namespace RealEstates.Areas.Admin.Controllers
         // GET: Admin/Dashboard
         public ActionResult Index()
         {
-            var viewModel = new UserProfileViewModel
-            {
-                Email = User.Identity.Name
-            };
-            return View(viewModel);
+            return View();
         }
     }
 }

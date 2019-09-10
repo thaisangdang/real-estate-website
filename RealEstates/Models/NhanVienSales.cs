@@ -18,7 +18,7 @@ namespace RealEstates.Models
         [Display(Name = "Họ tên")]
         public string HoTen { get; set; }
 
-        [StringLength(200)]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

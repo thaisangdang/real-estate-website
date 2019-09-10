@@ -1,8 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using RealEstates.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RealEstates.Areas.Admin.Models
 {
+    public class UserProfileViewModel
+    {
+        public string Id { get; set; }
+
+        [EmailAddress]
+        [Display(Name = "Tài khoản")]
+        public string Email { get; set; }
+
+        [StringLength(100, ErrorMessage = "Mật khẩu ít nhất 6 ký tự.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Nhập lại password")]
+        [Compare("Password", ErrorMessage = "Password không trùng khớp.")]
+        public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Phân quyền")]
+        public string RoleId { get; set; }
+
+        [Display(Name = "Phân quyền")]
+        public string RoleName { get; set; }
+
+        public IEnumerable<IdentityRole> Roles { get; set; }
+
+        public string Title
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(Id) ? "Cập nhật thông tin tài khoản" : "Thêm mới tài khoản";
+            }
+        }
+    }
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

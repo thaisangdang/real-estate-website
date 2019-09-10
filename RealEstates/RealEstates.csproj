@@ -190,19 +190,19 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\Api\QuanLyTaiKhoanApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyBaoCaoCongViecController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyBaoCaoThongKeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyChatController.cs" />
-    <Compile Include="Areas\Admin\Controllers\QuanLyDonViDuAnController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyDuAnController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiDuAnController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyPhiHoaHongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanController.cs" />
-    <Compile Include="Areas\Admin\Models\UserProfileViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
+    <Compile Include="Dtos\TaiKhoanDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,6 +226,18 @@
     <Compile Include="Migrations\201909051131546_AddSoDonViDuAn.cs" />
     <Compile Include="Migrations\201909051131546_AddSoDonViDuAn.Designer.cs">
       <DependentUpon>201909051131546_AddSoDonViDuAn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909090812105_whatChanges.cs" />
+    <Compile Include="Migrations\201909090812105_whatChanges.Designer.cs">
+      <DependentUpon>201909090812105_whatChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909091446341_focusToPhiHoaHong.cs" />
+    <Compile Include="Migrations\201909091446341_focusToPhiHoaHong.Designer.cs">
+      <DependentUpon>201909091446341_focusToPhiHoaHong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909091457384_addGhiChu.cs" />
+    <Compile Include="Migrations\201909091457384_addGhiChu.Designer.cs">
+      <DependentUpon>201909091457384_addGhiChu.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Areas\Admin\Models\AccountViewModels.cs" />
@@ -551,6 +563,7 @@
     <Content Include="Areas\Admin\Views\QuanLyPhiHoaHong\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyChat\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyBaoCaoCongViec\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiKhoan\TaiKhoanForm.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -661,6 +674,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909051131546_AddSoDonViDuAn.resx">
       <DependentUpon>201909051131546_AddSoDonViDuAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909090812105_whatChanges.resx">
+      <DependentUpon>201909090812105_whatChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909091446341_focusToPhiHoaHong.resx">
+      <DependentUpon>201909091446341_focusToPhiHoaHong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909091457384_addGhiChu.resx">
+      <DependentUpon>201909091457384_addGhiChu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

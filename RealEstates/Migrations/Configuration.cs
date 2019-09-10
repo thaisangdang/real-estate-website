@@ -1,5 +1,7 @@
 namespace RealEstates.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -18,6 +20,11 @@ namespace RealEstates.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
+            //var store = new RoleStore<IdentityRole>(context);
+            //var manager = new RoleManager<IdentityRole>(store);
+            //var role1 = new IdentityRole { Name = "Staff" };
+            //manager.Create(role1);
         }
     }
 }
