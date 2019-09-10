@@ -14,7 +14,6 @@ namespace RealEstates.Areas.Admin.Controllers
     [Authorize(Roles = RoleName.Administrator)]
     public class QuanLyTaiKhoanController : Controller
     {
-
         private ApplicationDbContext _context;
         private ApplicationUserManager _userManager;
 
@@ -82,6 +81,7 @@ namespace RealEstates.Areas.Admin.Controllers
             var roles = _context.Roles.ToList();
             var viewModel = new UserProfileViewModel
             {
+                Id = user.Id,
                 Email = user.Email,
                 RoleName = userRole,
                 RoleId = user.Roles.First().RoleId,
@@ -89,6 +89,24 @@ namespace RealEstates.Areas.Admin.Controllers
             };
 
             return View("TaiKhoanForm", viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string id)
+        {
+            var user = _context.Users.SingleOrDefault(p => p.Id == id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+
+            ViewBag.AlertSuccess = "Xóa thành công";
+
+            return RedirectToAction("Index", "QuanLyTaiKhoan");
         }
 
         [HttpPost]
@@ -114,14 +132,17 @@ namespace RealEstates.Areas.Admin.Controllers
                 if (result.Succeeded)
                 {
                     await UserManager.AddToRoleAsync(user.Id, role.Name);
+
+                    ViewBag.AlertSuccess = "Tạo tài khoản thành công";
+
                     return RedirectToAction("Index", "QuanLyTaiKhoan");
                 }
             }
-            else
-            {
-                var userInDb = _context.Users.SingleOrDefault(u => u.Id == profile.Id);
-                userInDb.Roles.First().RoleId = profile.RoleId;
-            }
+            //else
+            //{
+            //    var userInDb = _context.Users.SingleOrDefault(u => u.Id == profile.Id);
+            //    userInDb.Roles.First().RoleId = profile.RoleId;
+            //}
 
             _context.SaveChanges();
 

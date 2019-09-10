@@ -13,7 +13,7 @@ namespace RealEstates.Areas.Admin.Models
         [Display(Name = "Tài khoản")]
         public string Email { get; set; }
 
-        [StringLength(100, ErrorMessage = "Mật khẩu ít nhất 6 ký tự.", MinimumLength = 6)]
+        [StringLength(100)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -35,7 +35,7 @@ namespace RealEstates.Areas.Admin.Models
         {
             get
             {
-                return !string.IsNullOrEmpty(Id) ? "Cập nhật thông tin tài khoản" : "Thêm mới tài khoản";
+                return !string.IsNullOrEmpty(Id) ? "Thông tin tài khoản" : "Thêm mới tài khoản";
             }
         }
     }

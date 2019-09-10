@@ -11,13 +11,15 @@ namespace RealEstates.Models
     public class LoaiDuAn
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
         [StringLength(50)]
-        [Display(Name = "Loại Dự Án")]
+        [Display(Name = "Tên")]
         public string TenLoai { get; set; }
 
-        [Display(Name = "Bán hoặc cho thuê")]
+        [Display(Name = "Loại")]
         public bool ChoThue { get; set; }
 
         [StringLength(200)]

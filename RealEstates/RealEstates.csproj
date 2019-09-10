@@ -200,6 +200,23 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiDuAnController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyPhiHoaHongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanController.cs" />
+    <Compile Include="Migrations\201909101550476_whatChanges1.cs" />
+    <Compile Include="Migrations\201909101550476_whatChanges1.Designer.cs">
+      <DependentUpon>201909101550476_whatChanges1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101631420_seedTinhThanhPho.cs" />
+    <Compile Include="Migrations\201909101631420_seedTinhThanhPho.Designer.cs">
+      <DependentUpon>201909101631420_seedTinhThanhPho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101635220_seedTinhThanhPho1.cs" />
+    <Compile Include="Migrations\201909101635220_seedTinhThanhPho1.Designer.cs">
+      <DependentUpon>201909101635220_seedTinhThanhPho1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101640494_addIdentity.cs" />
+    <Compile Include="Migrations\201909101640494_addIdentity.Designer.cs">
+      <DependentUpon>201909101640494_addIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\DuAnViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
     <Compile Include="Dtos\TaiKhoanDto.cs" />
@@ -240,15 +257,14 @@
       <DependentUpon>201909091457384_addGhiChu.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Areas\Admin\Models\AccountViewModels.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\PhiHoaHong.cs" />
-    <Compile Include="Models\DonViDuAn.cs" />
     <Compile Include="Models\DuAn.cs" />
     <Compile Include="Areas\Admin\Models\IdentityModels.cs" />
-    <Compile Include="Models\LoaiDonViDuAn.cs" />
     <Compile Include="Models\LoaiDuAn.cs" />
-    <Compile Include="Areas\Admin\Models\ManageViewModels.cs" />
+    <Compile Include="ViewModels\LoaiDuAnViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\NhanVienSales.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\TinhThanhPho.cs" />
@@ -558,12 +574,13 @@
     <Content Include="Areas\Admin\Views\QuanLyTaiKhoan\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyLoaiDuAn\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyDonViDuAn\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyBaoCaoThongKe\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhiHoaHong\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyChat\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyBaoCaoCongViec\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTaiKhoan\TaiKhoanForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyLoaiDuAn\LoaiDuAnForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyLoaiDuAn\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -648,7 +665,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -683,6 +699,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909091457384_addGhiChu.resx">
       <DependentUpon>201909091457384_addGhiChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101550476_whatChanges1.resx">
+      <DependentUpon>201909101550476_whatChanges1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101631420_seedTinhThanhPho.resx">
+      <DependentUpon>201909101631420_seedTinhThanhPho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101635220_seedTinhThanhPho1.resx">
+      <DependentUpon>201909101635220_seedTinhThanhPho1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101640494_addIdentity.resx">
+      <DependentUpon>201909101640494_addIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

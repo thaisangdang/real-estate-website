@@ -24,6 +24,8 @@
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal user", role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
+                                @*@Html.Partial("~/Views/Shared/_AlertPartial.cshtml")*@
+
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group col-md-12">
                                     @Html.LabelFor(m => m.Email, new { @class = "col-md-6 control-label" })
@@ -40,13 +42,13 @@
                                     </div>
                                 </div>
                                 @*<div class="form-group col-md-12">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <div class="checkbox">
-                                            @Html.CheckBoxFor(m => m.RememberMe)
-                                            @Html.LabelFor(m => m.RememberMe)
-                                        </div>
-                                    </div>
-                                </div>*@
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </div>
+                </div>
+            </div>*@
                                 <div class="form-group col-md-12">
                                     <div class="col-md-12">
                                         <input class="btn btn-primary btn-user btn-block" type="submit" value="Login" />

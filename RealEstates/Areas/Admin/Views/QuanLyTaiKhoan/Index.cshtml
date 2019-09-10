@@ -12,9 +12,6 @@
     }
 </style>
 
-@*<h2>Tài khoản người dùng trong hệ thống</h2>*@
-
-<!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary d-inline-block">Tài khoản người dùng trong hệ thống</h6>
@@ -45,7 +42,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="#modalDelete" class="btn btn-danger" id="btndelete" data-id="@item.Id" data-toggle="modal" title="Xóa">
+                                <a href="#modalConfirm" data-id="@item.Id" data-toggle="modal" data-target="#modalConfirm" class="btn btn-danger modalLink" title="Xóa">
                                     <span class="text-white"><i class="fas fa-trash fa-fw"></i></span>
                                 </a>
                             </td>
@@ -53,21 +50,21 @@
                     }
                 </tbody>
                 @*<tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </tfoot>*@
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                    </tfoot>*@
             </table>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -83,7 +80,8 @@
                 @using (Html.BeginForm("Delete", "QuanLyTaiKhoan"))
                 {
                     @Html.AntiForgeryToken()
-                    <input type="hidden" name="id" id="id-delete" />
+                    @Html.Hidden("id", "", new { @class = "hiddenid" })
+                    <input type="hidden" name="id" id="btndelete" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                     <button type="submit" class="btn btn-danger">Xóa</button>
                 }
@@ -95,7 +93,7 @@
 @section scripts
 {
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var table = $('#dataTable').DataTable({
                 "columns": [
                     null,
@@ -104,6 +102,11 @@
                     { "width": "5%" }
                 ]
             });
-        });  
-    </script> 
+        });
+
+        $(document).on("click", ".modalLink", function () {
+            var passedID = $(this).data('id');
+            $(".hiddenid").val(passedID);
+        });
+    </script>
 }
