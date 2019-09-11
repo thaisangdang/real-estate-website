@@ -21,7 +21,9 @@ namespace RealEstates
                         "~/Scripts/vendor/chart.js/Chart.min.js",
                         "~/Scripts/DataTables/jquery.dataTables.min.js",
                         "~/Scripts/DataTables/dataTables.bootstrap4.min.js",
-                        "~/Scripts/toastr.js"));
+                        "~/Scripts/toastr.js",
+                        "~/Scripts/ckeditor/ckeditor.js",
+                        "~/Scripts/select2.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -36,7 +38,8 @@ namespace RealEstates
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/Content/typeahead.css",
                       "~/Content/toastr.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css",
+                      "~/Content/css/select2.css"));
         }
     }
 }

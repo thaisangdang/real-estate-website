@@ -4,7 +4,12 @@
     ViewBag.Title = Model.Title;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary d-inline-block">@Model.Title</h6>
@@ -67,10 +72,6 @@
         }
     </div>
 </div>
-
-<p>
-    @Html.ActionLink("Trở về danh sách", "Index")
-</p>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

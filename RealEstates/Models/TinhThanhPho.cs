@@ -12,6 +12,7 @@ namespace RealEstates.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Tỉnh/TP")]
         public int Id { get; set; }
 
         [StringLength(200)]

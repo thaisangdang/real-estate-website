@@ -1,0 +1,207 @@
+﻿@model RealEstates.ViewModels.DuAnViewModel
+
+@{
+    ViewBag.Title = "DuAnForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">@Model.Title</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Save", "QuanLyDuAn", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.TenDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.TenDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DuAn.LoaiDuAn.Id, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.DuAn.LoaiDuAn.Id, new SelectList(Model.LoaiDuAns, "Id", "TenLoai", Model.DuAn.LoaiDuAn.Id), "", new { @class = "form-control col-md-12 select2" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.ChuDauTu, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.ChuDauTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.DonViThietKe, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.DonViThietKe, new { htmlAttributes = new { @class = "form-control col-md-12" }})
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.DonViThiCong, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.DonViThiCong, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.DienTich, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.DienTich, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.GiaTu, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.GiaTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.HienTrang, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.HienTrang, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.KhoiCong, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.KhoiCong, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.HoanThanh, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.HoanThanh, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.DienTichDat, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.DienTichDat, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.DienTichSan, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.DienTichSan, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.SoTang, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.SoTang, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.TongVonDauTu, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DuAn.TongVonDauTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DuAn.ThongTinDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.DuAn.ThongTinDuAn, new { @class = "form-control col-md-12", @id = "ThongTinDuAn" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DuAn.Media, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.DuAn.Media, new { @class = "form-control col-md-12", @id = "Media" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DuAn.ViTri, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.DuAn.ViTri, new { @class = "form-control col-md-12", @id = "ViTri" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DuAn.TinhThanhPho.Id, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.DuAn.TinhThanhPho.Id, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.DuAn.TinhThanhPho.Id), "", new { @class = "form-control col-md-12 select2" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DuAn.SoDonViDuAn, new { @class = "control-label col-md-12" })
+                        @Html.TextBoxFor(model => model.DuAn.SoDonViDuAn, new { @class = "form-control col-md-12" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DuAn.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div class="col-md-12">
+                    <input type="file" name="ImageFile" accept="image/*" required />
+                </div>
+            </div>
+
+            @if (Model.DuAn.Id != 0)
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DuAn.NgayDang, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.DisplayFor(model => model.DuAn.NgayDang, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    @Html.HiddenFor(m => m.DuAn.Id)
+                    <input type="submit" class="btn btn-success" value="Lưu" />
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function () {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('ThongTinDuAn');
+            CKEDITOR.replace('Media');
+            CKEDITOR.replace('ViTri');
+        });
+        $(document).ready(function () {$(".select2").select2(); });
+    </script>
+}

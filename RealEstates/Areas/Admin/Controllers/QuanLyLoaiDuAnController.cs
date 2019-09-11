@@ -96,11 +96,9 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            else
-            {
-                var loaiDuAn = _context.LoaiDuAns.Single(x => x.Id == id);
-                _context.LoaiDuAns.Remove(loaiDuAn);
-            }
+
+            var loaiDuAn = _context.LoaiDuAns.Single(x => x.Id == id);
+            _context.LoaiDuAns.Remove(loaiDuAn);
 
             _context.SaveChanges();
 
