@@ -1,15 +1,66 @@
 ﻿@model RealEstates.Models.DuAn
 
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyDuAn {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
 <div>
     <h4>DuAn</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiDuAn.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiDuAn.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhThanhPho.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhThanhPho.Ten)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.TenDuAn)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TenDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaTu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaTu)
         </dd>
 
         <dt>
@@ -29,19 +80,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GiaTu)
+            @Html.DisplayNameFor(model => model.TienDoDuAn)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GiaTu)
+            @Html.DisplayFor(model => model.TienDoDuAn)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Media)
+            @Html.DisplayNameFor(model => model.QuyMoDuAn)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Media)
+            @Html.DisplayFor(model => model.QuyMoDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiThieuDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiThieuDuAn)
         </dd>
 
         <dt>
@@ -53,11 +112,43 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AnhDaiDien)
+            @Html.DisplayNameFor(model => model.HaTang)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AnhDaiDien)
+            @Html.DisplayFor(model => model.HaTang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThietKe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThietKe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatBang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatBang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Media)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Media)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTroTaiChinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTroTaiChinh)
         </dd>
 
         <dt>
@@ -66,6 +157,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.SoDonViDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhDaiDien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhDaiDien)
         </dd>
 
         <dt>
@@ -78,7 +177,3 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

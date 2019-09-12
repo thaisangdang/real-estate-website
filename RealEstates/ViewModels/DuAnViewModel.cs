@@ -138,6 +138,8 @@ namespace RealEstates.ViewModels
             SoDonViDuAn = duAn.SoDonViDuAn;
             AnhDaiDien = duAn.AnhDaiDien;
             NgayDang = duAn.NgayDang;
+            TinhThanhPhoId = duAn.TinhThanhPhoId;
+            LoaiDuAnId = duAn.LoaiDuAnId;
         }
 
     }

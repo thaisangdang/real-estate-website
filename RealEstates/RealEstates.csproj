@@ -891,8 +891,8 @@
     <Content Include="Areas\Admin\Views\QuanLyLoaiDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\DuAnForm.cshtml" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
-    <Content Include="Areas\Admin\Views\QuanLyDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\UploadFile\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDuAn\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />

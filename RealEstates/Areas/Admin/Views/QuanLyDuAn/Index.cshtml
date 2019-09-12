@@ -26,8 +26,8 @@
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.TenDuAn)</th>
                         <th>@Html.DisplayNameFor(model => model.LoaiDuAn.TenLoai)</th>
-                        <th>@Html.DisplayNameFor(model => model.ViTri)</th>
-                        <th>@Html.DisplayNameFor(model => model.TinhThanhPho)</th>
+                        <th>@Html.DisplayNameFor(model => model.TinhThanhPho.Ten)</th>
+                        <th>@Html.DisplayNameFor(model => model.DiaChi)</th>
                         <th>@Html.DisplayNameFor(model => model.NgayDang)</th>
                         <th></th>
                         <th></th>
@@ -43,8 +43,8 @@
                                 </a>
                             </td>
                             <td>@Html.DisplayFor(modelItem => item.LoaiDuAn.TenLoai)</td>
-                            <td>@Html.DisplayFor(modelItem => item.ViTri)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TinhThanhPho)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TinhThanhPho.Ten)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
                             <td>@Html.DisplayFor(modelItem => item.NgayDang)</td>
                             <td>
                                 <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Sửa">
@@ -96,6 +96,9 @@
         $(document).ready(function() {
             var table = $('#dataTable').DataTable({
                 "columns": [
+                    null,
+                    null,
+                    null,
                     null,
                     null,
                     { "width": "5%" },

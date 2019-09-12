@@ -44,7 +44,7 @@ namespace RealEstates.Models
         [Display(Name = "Loại hình phát triển")]
         public int LoaiDuAnId { get; set; }
 
-        public LoaiDuAn LoaiDuAn { get; set; }
+        public virtual LoaiDuAn LoaiDuAn { get; set; }
 
         [Required]
         [Display(Name = "Quy mô dự án")]

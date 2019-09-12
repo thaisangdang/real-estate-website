@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity; // xài eagerloading phải thêm namespace này
 
 namespace RealEstates.Areas.Admin.Controllers
 {
@@ -31,7 +32,7 @@ namespace RealEstates.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var duAns = new List<DuAn>();
-            duAns = _context.DuAns.ToList();
+            duAns = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho).ToList();
 
             return View(duAns);
         }
@@ -70,7 +71,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            var duAn = _context.DuAns.SingleOrDefault(x => x.Id == id);
+            var duAn = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho).SingleOrDefault(x => x.Id == id);
             if (duAn == null)
             {
                 return HttpNotFound();
@@ -94,21 +95,24 @@ namespace RealEstates.Areas.Admin.Controllers
                 return View("DuAnForm", viewModel);
             }
 
-            try
+            if (duAn.ImageFile != null)
             {
-                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(duAn.ImageFile.FileName);
-                string fileExtension = Path.GetExtension(duAn.ImageFile.FileName);
-                string fileName = DateTime.Now.ToString("ddMMyyy") + "-" + fileNameWithoutExtension.Trim() + fileExtension;
-                //Get Upload path from Web.Config file AppSettings.  
-                string UploadPath = ConfigurationManager.AppSettings["AnhDaiDienDuAn"].ToString();
-                //Its Create complete path to store in server.  
-                duAn.AnhDaiDien = UploadPath + fileName;
-                //To copy and save file into server.  
-                duAn.ImageFile.SaveAs(Server.MapPath(duAn.AnhDaiDien));
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogger.SendErrorToText(ex);
+                try
+                {
+                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(duAn.ImageFile.FileName);
+                    string fileExtension = Path.GetExtension(duAn.ImageFile.FileName);
+                    string fileName = duAn.TenDuAn + DateTime.Now.ToString("ddMMyyy") + "-" + fileNameWithoutExtension.Trim() + fileExtension;
+                    //Get Upload path from Web.Config file AppSettings.  
+                    string UploadPath = ConfigurationManager.AppSettings["AnhDaiDienDuAn"].ToString();
+                    //Its Create complete path to store in server.  
+                    duAn.AnhDaiDien = UploadPath + fileName;
+                    //To copy and save file into server.  
+                    duAn.ImageFile.SaveAs(Server.MapPath(duAn.AnhDaiDien));
+                }
+                catch (Exception ex)
+                {
+                    ExceptionLogger.SendErrorToText(ex);
+                }
             }
 
             duAn.GioiThieuDuAn = HttpUtility.HtmlDecode(duAn.GioiThieuDuAn);
@@ -127,7 +131,28 @@ namespace RealEstates.Areas.Admin.Controllers
             else
             {
                 var duAnInDb = _context.DuAns.Single(x => x.Id == duAn.Id);
-                duAnInDb = duAn;
+                duAnInDb.TenDuAn = duAn.TenDuAn;
+                duAnInDb.DiaChi = duAn.DiaChi;
+                duAnInDb.GiaTu = duAn.GiaTu;
+                duAnInDb.ChuDauTu = duAn.ChuDauTu;
+                duAnInDb.TongDienTich = duAn.TongDienTich;
+                duAnInDb.TienDoDuAn = duAn.TienDoDuAn;
+                duAnInDb.QuyMoDuAn = duAn.QuyMoDuAn;
+                duAnInDb.GioiThieuDuAn = duAn.GioiThieuDuAn;
+                duAnInDb.ViTri = duAn.ViTri;
+                duAnInDb.HaTang = duAn.HaTang;
+                duAnInDb.ThietKe = duAn.ThietKe;
+                duAnInDb.MatBang = duAn.MatBang;
+                duAnInDb.Media = duAn.Media;
+                duAnInDb.HoTroTaiChinh = duAn.HoTroTaiChinh;
+                duAnInDb.SoDonViDuAn = duAn.SoDonViDuAn;
+                duAnInDb.LoaiDuAnId = duAn.LoaiDuAnId;
+                duAnInDb.TinhThanhPhoId = duAn.TinhThanhPhoId;
+                // chưa xóa ảnh cũ
+                if (!string.IsNullOrEmpty(duAn.AnhDaiDien))
+                {
+                    duAnInDb.AnhDaiDien = duAn.AnhDaiDien;
+                }
             }
 
             _context.SaveChanges();
