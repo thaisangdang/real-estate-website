@@ -1,0 +1,48 @@
+-----------Exception Details on  9/12/2019 12:49:06 PM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 9/12/2019 12:49:06 PM
+
+Error Line No : ine 100
+
+Error Message: NullReferenceException
+
+Exception Type: System.NullReferenceException
+
+Error Location : Object reference not set to an instance of an object.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyDuAn/Save
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  9/12/2019 1:08:00 PM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 9/12/2019 1:08:00 PM
+
+Error Line No : ine 100
+
+Error Message: NullReferenceException
+
+Exception Type: System.NullReferenceException
+
+Error Location : Object reference not set to an instance of an object.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyDuAn/Save
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+

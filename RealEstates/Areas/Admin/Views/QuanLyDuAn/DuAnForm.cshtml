@@ -22,167 +22,127 @@
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-horizontal">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.TenDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.TenDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.DuAn.LoaiDuAn.Id, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.DuAn.LoaiDuAn.Id, new SelectList(Model.LoaiDuAns, "Id", "TenLoai", Model.DuAn.LoaiDuAn.Id), "", new { @class = "form-control col-md-12 select2" })
-                    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TenDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.EditorFor(model => model.TenDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.ChuDauTu, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.ChuDauTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.DonViThietKe, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.DonViThietKe, new { htmlAttributes = new { @class = "form-control col-md-12" }})
-                    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.DonViThiCong, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.DonViThiCong, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.DienTich, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.DienTich, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GiaTu, htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.EditorFor(model => model.GiaTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.GiaTu, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.GiaTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.HienTrang, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.HienTrang, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChuDauTu, htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.EditorFor(model => model.ChuDauTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.KhoiCong, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.KhoiCong, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.HoanThanh, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.HoanThanh, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TongDienTich, htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.EditorFor(model => model.TongDienTich, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.DienTichDat, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.DienTichDat, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.DienTichSan, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.DienTichSan, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TienDoDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.EditorFor(model => model.TienDoDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.SoTang, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.SoTang, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.TongVonDauTu, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DuAn.TongVonDauTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LoaiDuAnId, new { @class = "control-label col-md-12" })
+                    @Html.DropDownListFor(m => m.LoaiDuAnId, new SelectList(Model.LoaiDuAns, "Id", "TenLoai", Model.LoaiDuAnId), "", new { @class = "form-control col-md-12 select2" })
                 </div>
             </div>
-
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.QuyMoDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.EditorFor(model => model.QuyMoDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                </div>
+            </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.DuAn.ThongTinDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.LabelFor(model => model.GioiThieuDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
                 <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.DuAn.ThongTinDuAn, new { @class = "form-control col-md-12", @id = "ThongTinDuAn" })
+                    @Html.TextAreaFor(model => model.GioiThieuDuAn, new { @class = "form-control col-md-12", @id = "GioiThieuDuAn" })
                 </div>
             </div>
-
             <div class="form-group">
-                @Html.LabelFor(model => model.DuAn.Media, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.LabelFor(model => model.ViTri, htmlAttributes: new { @class = "control-label col-md-12" })
                 <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.DuAn.Media, new { @class = "form-control col-md-12", @id = "Media" })
+                    @Html.TextAreaFor(model => model.ViTri, new { @class = "form-control col-md-12", @id = "ViTri" })
                 </div>
             </div>
-
             <div class="form-group">
-                @Html.LabelFor(model => model.DuAn.ViTri, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.LabelFor(model => model.HaTang, htmlAttributes: new { @class = "control-label col-md-12" })
                 <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.DuAn.ViTri, new { @class = "form-control col-md-12", @id = "ViTri" })
+                    @Html.TextAreaFor(model => model.HaTang, new { @class = "form-control col-md-12", @id = "HaTang" })
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.DuAn.TinhThanhPho.Id, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.DuAn.TinhThanhPho.Id, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.DuAn.TinhThanhPho.Id), "", new { @class = "form-control col-md-12 select2" })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DuAn.SoDonViDuAn, new { @class = "control-label col-md-12" })
-                        @Html.TextBoxFor(model => model.DuAn.SoDonViDuAn, new { @class = "form-control col-md-12" })
-                    </div>
-                </div>
-            </div>
-
             <div class="form-group">
-                @Html.LabelFor(model => model.DuAn.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.LabelFor(model => model.ThietKe, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.ThietKe, new { @class = "form-control col-md-12", @id = "ThietKe" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MatBang, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.MatBang, new { @class = "form-control col-md-12", @id = "MatBang" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Media, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.Media, new { @class = "form-control col-md-12", @id = "Media" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.HoTroTaiChinh, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.HoTroTaiChinh, new { @class = "form-control col-md-12", @id = "HoTroTaiChinh" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.TinhThanhPhoId, new { @class = "control-label col-md-12" })
+                    @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "", new { @class = "form-control col-md-12 select2" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SoDonViDuAn, new { @class = "control-label col-md-12" })
+                    @Html.TextBoxFor(model => model.SoDonViDuAn, new { @class = "form-control col-md-12" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-12" })
+                @*@Html.TextAreaFor(model => model.AnhDaiDien, new { @class = "form-control col-md-12", @id = "AnhDaiDien" })*@
                 <div class="col-md-12">
                     <input type="file" name="ImageFile" accept="image/*" required />
                 </div>
             </div>
-
-            @if (Model.DuAn.Id != 0)
+            @if (Model.Id != 0)
             {
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DuAn.NgayDang, htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.LabelFor(model => model.NgayDang, htmlAttributes: new { @class = "control-label col-md-12" })
                     <div class="col-md-12">
-                        @Html.DisplayFor(model => model.DuAn.NgayDang, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.DisplayFor(model => model.NgayDang, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                     </div>
                 </div>
             }
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-12">
-                    @Html.HiddenFor(m => m.DuAn.Id)
+                    @Html.HiddenFor(m => m.Id)
                     <input type="submit" class="btn btn-success" value="Lưu" />
                 </div>
             </div>
@@ -198,9 +158,13 @@
         $(function () {
             // Replace the <textarea id="editor1"> with a CKEditor
             // instance, using default configuration.
-            CKEDITOR.replace('ThongTinDuAn');
-            CKEDITOR.replace('Media');
+            CKEDITOR.replace('GioiThieuDuAn');
             CKEDITOR.replace('ViTri');
+            CKEDITOR.replace('HaTang');
+            CKEDITOR.replace('ThietKe');
+            CKEDITOR.replace('MatBang');
+            CKEDITOR.replace('Media');
+            CKEDITOR.replace('HoTroTaiChinh');
         });
         $(document).ready(function () {$(".select2").select2(); });
     </script>

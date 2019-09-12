@@ -202,31 +202,12 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadFileController.cs" />
     <Compile Include="Helper\ExceptionLogger.cs" />
-    <Compile Include="Migrations\201909101550476_whatChanges1.cs" />
-    <Compile Include="Migrations\201909101550476_whatChanges1.Designer.cs">
-      <DependentUpon>201909101550476_whatChanges1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909101631420_seedTinhThanhPho.cs" />
-    <Compile Include="Migrations\201909101631420_seedTinhThanhPho.Designer.cs">
-      <DependentUpon>201909101631420_seedTinhThanhPho.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909101635220_seedTinhThanhPho1.cs" />
-    <Compile Include="Migrations\201909101635220_seedTinhThanhPho1.Designer.cs">
-      <DependentUpon>201909101635220_seedTinhThanhPho1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909101640494_addIdentity.cs" />
-    <Compile Include="Migrations\201909101640494_addIdentity.Designer.cs">
-      <DependentUpon>201909101640494_addIdentity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909110153110_whatChanges2.cs" />
-    <Compile Include="Migrations\201909110153110_whatChanges2.Designer.cs">
-      <DependentUpon>201909110153110_whatChanges2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Areas\Admin\Models\DemoUploadFie.cs" />
-    <Compile Include="Migrations\201909110413221_whatChanges3.cs" />
-    <Compile Include="Migrations\201909110413221_whatChanges3.Designer.cs">
-      <DependentUpon>201909110413221_whatChanges3.cs</DependentUpon>
+    <Compile Include="Migrations\201909120901286_Initial.cs" />
+    <Compile Include="Migrations\201909120901286_Initial.Designer.cs">
+      <DependentUpon>201909120901286_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\DuAnViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
@@ -235,39 +216,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Manage.cs" />
-    <Compile Include="Migrations\201909031712274_InitialDB.cs" />
-    <Compile Include="Migrations\201909031712274_InitialDB.Designer.cs">
-      <DependentUpon>201909031712274_InitialDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909031749575_UpdateTenLoaiDuAn.cs" />
-    <Compile Include="Migrations\201909031749575_UpdateTenLoaiDuAn.Designer.cs">
-      <DependentUpon>201909031749575_UpdateTenLoaiDuAn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909031750236_SeedUsers.cs" />
-    <Compile Include="Migrations\201909031750236_SeedUsers.Designer.cs">
-      <DependentUpon>201909031750236_SeedUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909050547183_AddTables.cs" />
-    <Compile Include="Migrations\201909050547183_AddTables.Designer.cs">
-      <DependentUpon>201909050547183_AddTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051131546_AddSoDonViDuAn.cs" />
-    <Compile Include="Migrations\201909051131546_AddSoDonViDuAn.Designer.cs">
-      <DependentUpon>201909051131546_AddSoDonViDuAn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909090812105_whatChanges.cs" />
-    <Compile Include="Migrations\201909090812105_whatChanges.Designer.cs">
-      <DependentUpon>201909090812105_whatChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909091446341_focusToPhiHoaHong.cs" />
-    <Compile Include="Migrations\201909091446341_focusToPhiHoaHong.Designer.cs">
-      <DependentUpon>201909091446341_focusToPhiHoaHong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909091457384_addGhiChu.cs" />
-    <Compile Include="Migrations\201909091457384_addGhiChu.Designer.cs">
-      <DependentUpon>201909091457384_addGhiChu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\PhiHoaHong.cs" />
@@ -276,7 +224,7 @@
     <Compile Include="Models\LoaiDuAn.cs" />
     <Compile Include="ViewModels\LoaiDuAnViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
-    <Compile Include="Models\NhanVienSales.cs" />
+    <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\TinhThanhPho.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1090,7 +1038,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\DuAnImages\" />
+    <Folder Include="Content\Images\AnhDaiDienDuAn\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1102,47 +1050,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909031712274_InitialDB.resx">
-      <DependentUpon>201909031712274_InitialDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909031749575_UpdateTenLoaiDuAn.resx">
-      <DependentUpon>201909031749575_UpdateTenLoaiDuAn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909031750236_SeedUsers.resx">
-      <DependentUpon>201909031750236_SeedUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909050547183_AddTables.resx">
-      <DependentUpon>201909050547183_AddTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051131546_AddSoDonViDuAn.resx">
-      <DependentUpon>201909051131546_AddSoDonViDuAn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909090812105_whatChanges.resx">
-      <DependentUpon>201909090812105_whatChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909091446341_focusToPhiHoaHong.resx">
-      <DependentUpon>201909091446341_focusToPhiHoaHong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909091457384_addGhiChu.resx">
-      <DependentUpon>201909091457384_addGhiChu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909101550476_whatChanges1.resx">
-      <DependentUpon>201909101550476_whatChanges1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909101631420_seedTinhThanhPho.resx">
-      <DependentUpon>201909101631420_seedTinhThanhPho.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909101635220_seedTinhThanhPho1.resx">
-      <DependentUpon>201909101635220_seedTinhThanhPho1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909101640494_addIdentity.resx">
-      <DependentUpon>201909101640494_addIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909110153110_whatChanges2.resx">
-      <DependentUpon>201909110153110_whatChanges2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909110413221_whatChanges3.resx">
-      <DependentUpon>201909110413221_whatChanges3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909120901286_Initial.resx">
+      <DependentUpon>201909120901286_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

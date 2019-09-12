@@ -3,7 +3,7 @@ namespace RealEstates.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDB : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -12,39 +12,82 @@ namespace RealEstates.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        TenDuAn = c.String(nullable: false, maxLength: 500),
-                        ChuDauTu = c.String(maxLength: 500),
-                        DonViThietKe = c.String(maxLength: 500),
-                        DonViThiCong = c.String(maxLength: 500),
-                        DienTich = c.String(maxLength: 500),
-                        Gia = c.Decimal(nullable: false, storeType: "money"),
-                        HienTrang = c.String(maxLength: 50),
-                        KhoiCong = c.String(maxLength: 50),
-                        HoanThanh = c.String(maxLength: 50),
-                        DienTichDat = c.Double(nullable: false),
-                        DienTichSan = c.Double(nullable: false),
-                        SoTang = c.Int(nullable: false),
-                        TongVonDauTu = c.Decimal(nullable: false, storeType: "money"),
-                        ThongTinDuAn = c.String(),
-                        Media = c.String(),
-                        ViTri = c.String(),
-                        IdTinh = c.Int(nullable: false),
-                        AnhDaiDien = c.String(maxLength: 500),
-                        LoaiDuAn_Id = c.Int(),
+                        TenDuAn = c.String(nullable: false),
+                        DiaChi = c.String(nullable: false),
+                        GiaTu = c.Decimal(nullable: false, storeType: "money"),
+                        ChuDauTu = c.String(nullable: false),
+                        TongDienTich = c.String(nullable: false),
+                        TienDoDuAn = c.String(nullable: false),
+                        LoaiDuAnId = c.Int(nullable: false),
+                        QuyMoDuAn = c.String(nullable: false),
+                        GioiThieuDuAn = c.String(nullable: false),
+                        ViTri = c.String(nullable: false),
+                        HaTang = c.String(nullable: false),
+                        ThietKe = c.String(nullable: false),
+                        MatBang = c.String(nullable: false),
+                        Media = c.String(nullable: false),
+                        HoTroTaiChinh = c.String(nullable: false),
+                        TinhThanhPhoId = c.Int(nullable: false),
+                        SoDonViDuAn = c.Int(nullable: false),
+                        AnhDaiDien = c.String(),
+                        NgayDang = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.LoaiDuAn", t => t.LoaiDuAn_Id)
-                .Index(t => t.LoaiDuAn_Id);
+                .ForeignKey("dbo.LoaiDuAn", t => t.LoaiDuAnId, cascadeDelete: true)
+                .ForeignKey("dbo.TinhThanhPho", t => t.TinhThanhPhoId, cascadeDelete: true)
+                .Index(t => t.LoaiDuAnId)
+                .Index(t => t.TinhThanhPhoId);
             
             CreateTable(
                 "dbo.LoaiDuAn",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        TenLoai = c.String(maxLength: 50),
-                        MoTa = c.String(maxLength: 200),
+                        TenLoai = c.String(),
+                        MoTa = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.TinhThanhPho",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Ten = c.String(maxLength: 200),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.NhanVien",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        HoTen = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        SoDienThoai = c.String(nullable: false),
+                        PhanQuyen = c.String(nullable: false),
+                        Account = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.PhiHoaHong",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DonViDuAn = c.String(),
+                        GiaDonViDuAn = c.Decimal(nullable: false, storeType: "money"),
+                        PhanTramHoaHong = c.Double(nullable: false),
+                        PhiKhac = c.Decimal(nullable: false, storeType: "money"),
+                        TongChi = c.Decimal(nullable: false, storeType: "money"),
+                        NhanVienId = c.Int(nullable: false),
+                        NguoiChi = c.String(),
+                        NgayChi = c.DateTime(nullable: false),
+                        GhiChu = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.NhanVien", t => t.NhanVienId, cascadeDelete: true)
+                .Index(t => t.NhanVienId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -68,15 +111,6 @@ namespace RealEstates.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.TinhThanhPho",
-                c => new
-                    {
-                        Id = c.Int(nullable: false),
-                        Ten = c.String(maxLength: 50),
-                    })
-                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -131,20 +165,26 @@ namespace RealEstates.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.DuAn", "LoaiDuAn_Id", "dbo.LoaiDuAn");
+            DropForeignKey("dbo.PhiHoaHong", "NhanVienId", "dbo.NhanVien");
+            DropForeignKey("dbo.DuAn", "TinhThanhPhoId", "dbo.TinhThanhPho");
+            DropForeignKey("dbo.DuAn", "LoaiDuAnId", "dbo.LoaiDuAn");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.DuAn", new[] { "LoaiDuAn_Id" });
+            DropIndex("dbo.PhiHoaHong", new[] { "NhanVienId" });
+            DropIndex("dbo.DuAn", new[] { "TinhThanhPhoId" });
+            DropIndex("dbo.DuAn", new[] { "LoaiDuAnId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.TinhThanhPho");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.PhiHoaHong");
+            DropTable("dbo.NhanVien");
+            DropTable("dbo.TinhThanhPho");
             DropTable("dbo.LoaiDuAn");
             DropTable("dbo.DuAn");
         }

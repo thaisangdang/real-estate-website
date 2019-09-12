@@ -54,11 +54,10 @@ namespace RealEstates.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            var viewModel = new DuAnViewModel
+            var viewModel = new DuAnViewModel (duAn)
             {
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
-                DuAn = duAn
             };
 
             return View("DuAnForm", viewModel);
@@ -86,6 +85,7 @@ namespace RealEstates.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
                 var viewModel = new DuAnViewModel
                 {
                     LoaiDuAns = _context.LoaiDuAns.ToList(),
@@ -100,20 +100,24 @@ namespace RealEstates.Areas.Admin.Controllers
                 string fileExtension = Path.GetExtension(duAn.ImageFile.FileName);
                 string fileName = DateTime.Now.ToString("ddMMyyy") + "-" + fileNameWithoutExtension.Trim() + fileExtension;
                 //Get Upload path from Web.Config file AppSettings.  
-                string UploadPath = ConfigurationManager.AppSettings["DuAnImages"].ToString();
+                string UploadPath = ConfigurationManager.AppSettings["AnhDaiDienDuAn"].ToString();
                 //Its Create complete path to store in server.  
                 duAn.AnhDaiDien = UploadPath + fileName;
                 //To copy and save file into server.  
-                duAn.ImageFile.SaveAs(duAn.AnhDaiDien);
+                duAn.ImageFile.SaveAs(Server.MapPath(duAn.AnhDaiDien));
             }
             catch (Exception ex)
             {
                 ExceptionLogger.SendErrorToText(ex);
             }
 
-            duAn.ThongTinDuAn = HttpUtility.HtmlDecode(duAn.ThongTinDuAn);
+            duAn.GioiThieuDuAn = HttpUtility.HtmlDecode(duAn.GioiThieuDuAn);
             duAn.ViTri = HttpUtility.HtmlDecode(duAn.ViTri);
+            duAn.HaTang = HttpUtility.HtmlDecode(duAn.HaTang);
+            duAn.ThietKe = HttpUtility.HtmlDecode(duAn.ThietKe);
+            duAn.MatBang = HttpUtility.HtmlDecode(duAn.MatBang);
             duAn.Media = HttpUtility.HtmlDecode(duAn.Media);
+            duAn.HoTroTaiChinh = HttpUtility.HtmlDecode(duAn.HoTroTaiChinh);
 
             if (duAn.Id == 0)
             {

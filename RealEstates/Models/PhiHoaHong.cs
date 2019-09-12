@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+    Tính phí xong phải trừ số lượng trong dự án, dự án số đơn vị = 0 thì không hiện trên web
+ */
+
 namespace RealEstates.Models
 {
     [Table("PhiHoaHong")]
@@ -15,15 +19,12 @@ namespace RealEstates.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [StringLength(200)]
         [Display(Name = "Đơn vị dự án")]
-        public string DonViDuAn { get; set; } // căn 33 tầng trệt, lô 5, phòng ....
-                                              //public virtual DonViDuAn DonViDuAn { get; set; }
+        public string DonViDuAn { get; set; } // bán gì, trong dự án nào
+
         [Display(Name = "Giá đơn vị dự án")]
         [Column(TypeName = "money")]
         public decimal GiaDonViDuAn { get; set; }
-
-        public virtual NhanVienSales NhanVienSales { get; set; }
 
         [Display(Name = "Phần trăm hoa hồng")]
         [Range(0, 100)]
@@ -37,13 +38,18 @@ namespace RealEstates.Models
         [Column(TypeName = "money")]
         public decimal TongChi { get; set; }
 
+        [Display(Name = "Nhân viên sales")]
+        public int NhanVienId { get; set; }
+
+        public NhanVien NhanVienSales { get; set; }
+
         [Display(Name = "Nhân viên")]
-        public string NguoiChi { get; set; }
+        public string NguoiChi { get; set; } // Lưu email account
 
         [Display(Name = "Ngày chi")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime NgayChi { get; set; }
 
-        [StringLength(500)]
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
 

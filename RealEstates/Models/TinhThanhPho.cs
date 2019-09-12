@@ -11,7 +11,7 @@ namespace RealEstates.Models
     public class TinhThanhPho
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Tỉnh/TP")]
         public int Id { get; set; }
 
@@ -19,6 +19,6 @@ namespace RealEstates.Models
         [Display(Name = "Tỉnh/TP")]
         public string Ten { get; set; }
 
-        public virtual ICollection<DuAn> DuAns { get; set; }
+        public ICollection<DuAn> DuAns { get; set; }
     }
 }

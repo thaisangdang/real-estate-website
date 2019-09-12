@@ -8,7 +8,7 @@ namespace RealEstates.Helper
 {
     public class ExceptionLogger
     {
-        private static string ErrorlineNo, Errormsg, extype, exurl, hostIp, ErrorLocation, HostAdd;
+        private static string ErrorlineNo, Errormsg, extype, exurl, hostIp, ErrorLocation;
 
         public static void SendErrorToText(Exception ex)
         {

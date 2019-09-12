@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstates.Areas.Admin.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,28 +9,33 @@ using System.Threading.Tasks;
 
 namespace RealEstates.Models
 {
-    [Table("NhanVienSales")]
-    public class NhanVienSales
+    [Table("NhanVien")]
+    public class NhanVien
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [StringLength(200)]
+        [Required]
         [Display(Name = "Họ tên")]
         public string HoTen { get; set; }
 
-        [EmailAddress]
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [StringLength(13)]
+        [Required]
         [Display(Name = "Số điện thoại")]
         public string SoDienThoai { get; set; }
 
-        public string AccountId { get; set; }
+        [Required]
+        [Display(Name = "Phân quyền")]
+        public string PhanQuyen { get; set; }
 
-        public virtual ICollection<PhiHoaHong> PhiHoaHongs { get; set; }
+        [Required]
+        public string Account { get; set; } // email of ApplicationUser
+
+        public ICollection<PhiHoaHong> PhiHoaHongs { get; set; }
 
     }
 }
