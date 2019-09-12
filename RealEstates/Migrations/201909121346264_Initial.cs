@@ -30,13 +30,16 @@ namespace RealEstates.Migrations
                         TinhThanhPhoId = c.Int(nullable: false),
                         SoDonViDuAn = c.Int(nullable: false),
                         AnhDaiDien = c.String(),
+                        NguoiDangId = c.Int(nullable: false),
                         NgayDang = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.LoaiDuAn", t => t.LoaiDuAnId, cascadeDelete: true)
+                .ForeignKey("dbo.NhanVien", t => t.NguoiDangId, cascadeDelete: true)
                 .ForeignKey("dbo.TinhThanhPho", t => t.TinhThanhPhoId, cascadeDelete: true)
                 .Index(t => t.LoaiDuAnId)
-                .Index(t => t.TinhThanhPhoId);
+                .Index(t => t.TinhThanhPhoId)
+                .Index(t => t.NguoiDangId);
             
             CreateTable(
                 "dbo.LoaiDuAn",
@@ -49,15 +52,6 @@ namespace RealEstates.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.TinhThanhPho",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Ten = c.String(maxLength: 200),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.NhanVien",
                 c => new
                     {
@@ -65,52 +59,14 @@ namespace RealEstates.Migrations
                         HoTen = c.String(nullable: false),
                         Email = c.String(nullable: false),
                         SoDienThoai = c.String(nullable: false),
-                        PhanQuyen = c.String(nullable: false),
-                        Account = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.PhiHoaHong",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        DonViDuAn = c.String(),
-                        GiaDonViDuAn = c.Decimal(nullable: false, storeType: "money"),
-                        PhanTramHoaHong = c.Double(nullable: false),
-                        PhiKhac = c.Decimal(nullable: false, storeType: "money"),
-                        TongChi = c.Decimal(nullable: false, storeType: "money"),
-                        NhanVienId = c.Int(nullable: false),
-                        NguoiChi = c.String(),
-                        NgayChi = c.DateTime(nullable: false),
-                        GhiChu = c.String(),
+                        AccountId = c.String(nullable: false, maxLength: 128),
+                        PhanQuyen_Id = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.NhanVien", t => t.NhanVienId, cascadeDelete: true)
-                .Index(t => t.NhanVienId);
-            
-            CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
+                .ForeignKey("dbo.AspNetUsers", t => t.AccountId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.PhanQuyen_Id, cascadeDelete: true)
+                .Index(t => t.AccountId)
+                .Index(t => t.PhanQuyen_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -157,34 +113,91 @@ namespace RealEstates.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
+            CreateTable(
+                "dbo.PhiHoaHong",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DonViDuAn = c.String(),
+                        GiaDonViDuAn = c.Decimal(nullable: false, storeType: "money"),
+                        PhanTramHoaHong = c.Double(nullable: false),
+                        PhiKhac = c.Decimal(nullable: false, storeType: "money"),
+                        TongChi = c.Decimal(nullable: false, storeType: "money"),
+                        NhanVienSalesId = c.Int(nullable: false),
+                        NguoiChi = c.String(),
+                        NgayChi = c.DateTime(nullable: false),
+                        GhiChu = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.NhanVien", t => t.NhanVienSalesId, cascadeDelete: true)
+                .Index(t => t.NhanVienSalesId);
+            
+            CreateTable(
+                "dbo.TinhThanhPho",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Ten = c.String(maxLength: 200),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.DuAn", "TinhThanhPhoId", "dbo.TinhThanhPho");
+            DropForeignKey("dbo.PhiHoaHong", "NhanVienSalesId", "dbo.NhanVien");
+            DropForeignKey("dbo.NhanVien", "PhanQuyen_Id", "dbo.AspNetRoles");
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.DuAn", "NguoiDangId", "dbo.NhanVien");
+            DropForeignKey("dbo.NhanVien", "AccountId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.PhiHoaHong", "NhanVienId", "dbo.NhanVien");
-            DropForeignKey("dbo.DuAn", "TinhThanhPhoId", "dbo.TinhThanhPho");
             DropForeignKey("dbo.DuAn", "LoaiDuAnId", "dbo.LoaiDuAn");
+            DropIndex("dbo.PhiHoaHong", new[] { "NhanVienSalesId" });
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.PhiHoaHong", new[] { "NhanVienId" });
+            DropIndex("dbo.NhanVien", new[] { "PhanQuyen_Id" });
+            DropIndex("dbo.NhanVien", new[] { "AccountId" });
+            DropIndex("dbo.DuAn", new[] { "NguoiDangId" });
             DropIndex("dbo.DuAn", new[] { "TinhThanhPhoId" });
             DropIndex("dbo.DuAn", new[] { "LoaiDuAnId" });
+            DropTable("dbo.TinhThanhPho");
+            DropTable("dbo.PhiHoaHong");
+            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.PhiHoaHong");
             DropTable("dbo.NhanVien");
-            DropTable("dbo.TinhThanhPho");
             DropTable("dbo.LoaiDuAn");
             DropTable("dbo.DuAn");
         }

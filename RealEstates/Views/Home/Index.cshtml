@@ -7,37 +7,37 @@
     <div class="col-sm-12 col-md-3 frm-search">
         @using (Html.BeginForm("Search", "Home", FormMethod.Get))
         {
-            @*<select name="PhanLoai" class="form-control select2">
-                    <option value="">Loại</option>
-                    <option value="1" @if (ViewBag.PhanLoai == 1) { @("selected") }>Cho thuê</option>
-                    <option value="2" @if (ViewBag.PhanLoai == 2) { @("selected") }>Cần bán</option>
+            @*<select name="phanloai" class="form-control select2">
+                    <option value="">loại</option>
+                    <option value="1" @if (viewbag.phanloai == 1) { @("selected") }>cho thuê</option>
+                    <option value="2" @if (viewbag.phanloai == 2) { @("selected") }>cần bán</option>
                 </select>*@
-            @*<select name="LoaiBDS" class="form-control select2">
-                    <option value="">Loại Dự án</option>
-                    @foreach (var item in ViewBag.IdLoaiDuAns as SelectList)
+            @*<select name="loaibds" class="form-control select2">
+                    <option value="">loại dự án</option>
+                    @foreach (var item in viewbag.idloaiduans as selectlist)
                     {
-                        <option value="@item.Value" @if (ViewBag.LoaiDuAn == item.Value) { @("selected") }>@item.Text</option>
+                        <option value="@item.value" @if (viewbag.loaiduan == item.value) { @("selected") }>@item.text</option>
                     }
                 </select>
-                <select name="Tinh" class="form-control select2">
-                    <option value="">Địa phương</option>
-                    @foreach (var item in ViewBag.IdTinh as SelectList)
+                <select name="tinh" class="form-control select2">
+                    <option value="">địa phương</option>
+                    @foreach (var item in viewbag.idtinh as selectlist)
                     {
-                        <option value="@item.Value" @if (ViewBag.Tinh == item.Value) { @("selected") }>@item.Text</option>
+                        <option value="@item.value" @if (viewbag.tinh == item.value) { @("selected") }>@item.text</option>
                     }
                 </select>
-                <select name="DienTich1" class="form-control select2">
-                    <option value="">Diện tích</option>
-                    @foreach (var item in ViewBag.DienTich as SelectList)
+                <select name="dientich1" class="form-control select2">
+                    <option value="">diện tích</option>
+                    @foreach (var item in viewbag.dientich as selectlist)
                     {
-                        <option value="@item.Value" @if (ViewBag.DienTich1 == item.Value) { @("selected") }>@item.Text</option>
+                        <option value="@item.value" @if (viewbag.dientich1 == item.value) { @("selected") }>@item.text</option>
                     }
                 </select>
-                <select name="KhoangGia1" class="form-control select2">
-                    <option value="">Khoảng giá</option>
-                    @foreach (var item in ViewBag.KhoangGia as SelectList)
+                <select name="khoanggia1" class="form-control select2">
+                    <option value="">khoảng giá</option>
+                    @foreach (var item in viewbag.khoanggia as selectlist)
                     {
-                        <option value="@item.Value" @if (ViewBag.KhoangGia1 == item.Value) { @("selected") }>@item.Text</option>
+                        <option value="@item.value" @if (viewbag.khoanggia1 == item.value) { @("selected") }>@item.text</option>
                     }
                 </select>*@
             <button type="submit" class="btn btn-primary btn-raised btn-block"><i class="fa fa-search" aria-hidden="true"></i></button>

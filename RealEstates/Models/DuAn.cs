@@ -44,7 +44,7 @@ namespace RealEstates.Models
         [Display(Name = "Loại hình phát triển")]
         public int LoaiDuAnId { get; set; }
 
-        public virtual LoaiDuAn LoaiDuAn { get; set; }
+        public LoaiDuAn LoaiDuAn { get; set; }
 
         [Required]
         [Display(Name = "Quy mô dự án")]
@@ -101,6 +101,12 @@ namespace RealEstates.Models
 
         [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
+
+        [Required]
+        [Display(Name = "Người đăng")]
+        public int NguoiDangId { get; set; }
+
+        public NhanVien NguoiDang { get; set; }
 
         [Display(Name = "Ngày đăng")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

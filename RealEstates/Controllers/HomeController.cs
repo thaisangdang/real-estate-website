@@ -11,6 +11,7 @@ namespace RealEstates.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 

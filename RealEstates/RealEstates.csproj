@@ -203,9 +203,13 @@
     <Compile Include="Areas\Admin\Controllers\UploadFileController.cs" />
     <Compile Include="Helper\ExceptionLogger.cs" />
     <Compile Include="Areas\Admin\Models\DemoUploadFie.cs" />
-    <Compile Include="Migrations\201909120901286_Initial.cs" />
-    <Compile Include="Migrations\201909120901286_Initial.Designer.cs">
-      <DependentUpon>201909120901286_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201909121346264_Initial.cs" />
+    <Compile Include="Migrations\201909121346264_Initial.Designer.cs">
+      <DependentUpon>201909121346264_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909121622169_whatChanges.cs" />
+    <Compile Include="Migrations\201909121622169_whatChanges.Designer.cs">
+      <DependentUpon>201909121622169_whatChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\DuAnViewModel.cs" />
@@ -222,6 +226,7 @@
     <Compile Include="Models\DuAn.cs" />
     <Compile Include="Areas\Admin\Models\IdentityModels.cs" />
     <Compile Include="Models\LoaiDuAn.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LoaiDuAnViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -1050,8 +1055,11 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909120901286_Initial.resx">
-      <DependentUpon>201909120901286_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909121346264_Initial.resx">
+      <DependentUpon>201909121346264_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909121622169_whatChanges.resx">
+      <DependentUpon>201909121622169_whatChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

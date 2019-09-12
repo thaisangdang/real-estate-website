@@ -38,13 +38,13 @@ namespace RealEstates.Models
         [Column(TypeName = "money")]
         public decimal TongChi { get; set; }
 
+        [Required]
         [Display(Name = "Nhân viên sales")]
-        public int NhanVienId { get; set; }
+        public int NhanVienSalesId { get; set; }
 
         public NhanVien NhanVienSales { get; set; }
 
-        [Display(Name = "Nhân viên")]
-        public string NguoiChi { get; set; } // Lưu email account
+        public string NguoiChi { get; set; }
 
         [Display(Name = "Ngày chi")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

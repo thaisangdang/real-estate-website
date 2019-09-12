@@ -1,4 +1,5 @@
-﻿using RealEstates.Areas.Admin.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using RealEstates.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,12 +29,13 @@ namespace RealEstates.Models
         [Display(Name = "Số điện thoại")]
         public string SoDienThoai { get; set; }
 
-        [Required]
-        [Display(Name = "Phân quyền")]
-        public string PhanQuyen { get; set; }
+        [Display(Name = "Tài khoản")]
+        public string AccountId { get; set; }
 
         [Required]
-        public string Account { get; set; } // email of ApplicationUser
+        public ApplicationUser Account { get; set; }
+
+        public ICollection<DuAn> DuAns { get; set; }
 
         public ICollection<PhiHoaHong> PhiHoaHongs { get; set; }
 
