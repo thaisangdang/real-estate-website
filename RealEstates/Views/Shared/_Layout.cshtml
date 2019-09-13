@@ -1,4 +1,4 @@
-﻿@model RealEstates.ViewModels.HomeViewModel
+﻿@using RealEstates.ViewModels
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,9 @@
 
     <!-- Custom styles for this template-->
     <link href="~/Content/sb-admin.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
     <style>
         body {
@@ -35,7 +38,7 @@
                             Dự án
                         </a>
                         <div class="dropdown-menu bg-dark">
-                            @foreach (var loaiDuAn in Model.LoaiDuAns)
+                            @foreach (var loaiDuAn in NavViewModel.getLoaiDuAns())
                             {
                                 @Html.ActionLink(loaiDuAn.TenLoai, "List", "DuAn", new { id = loaiDuAn.Id }, new { @class = "nav-link text-light bg-dark" })
                             }
@@ -44,13 +47,23 @@
                         </div>
                     </div>
                 </li>
-                <li>@Html.ActionLink("Nhà đất bán", "Index", "TinRao", new { loaiTinRao = "ban"}, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Nhà đất cho thuê", "Index", "TinRao", new { loaiTinRao = "choThue"}, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Nhà đất bán", "Index", "TinRao", new { loaiTinRao = "ban" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Nhà đất cho thuê", "Index", "TinRao", new { loaiTinRao = "choThue" }, new { @class = "nav-link" })</li>
                 <li>@Html.ActionLink("Giới thiệu", "About", "Home", null, new { @class = "nav-link" })</li>
                 <li>@Html.ActionLink("Liên hệ", "Contact", "Home", null, new { @class = "nav-link" })</li>
             </ul>
             @*@Html.Partial("_LoginPartial")*@
-
+            <!-- Navbar Search -->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm dự án..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
         </div>
     </div>
@@ -131,5 +144,6 @@
 
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

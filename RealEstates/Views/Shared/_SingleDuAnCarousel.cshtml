@@ -9,11 +9,11 @@
             }
             else
             {
-                <img src="~/Content/img/noimg.png" alt="" class="img-thumbnail image-detail">
+                <img src="~/Content/Images/AnhDaiDienDuAn/notfound.jpg" alt="" class="img-thumbnail image-detail">
             }
         </div>
         <div class="col-sm-12">
-            <a href="@Url.Action("Detail", "DuAn", new { id = Model.Id })">
+            <a href="@Url.Action("Details", "DuAn", new { id = Model.Id })">
                 <h3 class="text-center">
                     @Html.DisplayFor(model => model.TenDuAn)
                 </h3>

@@ -9,6 +9,7 @@ using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity; // xài eagerloading phải thêm namespace này
+using Microsoft.AspNet.Identity;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
@@ -124,7 +125,11 @@ namespace RealEstates.Areas.Admin.Controllers
 
             if (duAn.Id == 0)
             {
+                var userId = User.Identity.GetUserId();
+                var nguoiDang = _context.NhanViens.SingleOrDefault(x => x.AccountId == userId);
+                duAn.NguoiDangId = nguoiDang.Id;
                 duAn.NgayDang = DateTime.Now;
+
                 _context.DuAns.Add(duAn);
             }
             else

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace RealEstates.Controllers
 {
@@ -13,21 +14,23 @@ namespace RealEstates.Controllers
     {
         public ApplicationDbContext _context;
 
-        public HomeController()
-        {
-            _context = new ApplicationDbContext();
-        }
-
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
         }
 
         public ActionResult Index()
         {
             var viewModel = new HomeViewModel
             {
-                LoaiDuAns = _context.LoaiDuAns.ToList()
+                DuAns = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho).ToList(),
+                LoaiDuAns = _context.LoaiDuAns.ToList(),
+                TinhThanhPhos = _context.TinhThanhPhos.ToList()
             };
 
             return View(viewModel);
@@ -35,14 +38,20 @@ namespace RealEstates.Controllers
 
         public ActionResult About()
         {
+            var viewModel = new HomeViewModel
+            {
+            };
 
-            return View();
+            return View(viewModel);
         }
 
         public ActionResult Contact()
         {
+            var viewModel = new HomeViewModel
+            {
+            };
 
-            return View();
+            return View(viewModel);
         }
     }
 }
