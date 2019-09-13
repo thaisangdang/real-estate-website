@@ -1,12 +1,11 @@
-﻿using RealEstates.Areas.Admin.Models;
-using RealEstates.Helper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using RealEstates.Models;
 using RealEstates.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
+using RealEstates.Helper;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity; // xài eagerloading phải thêm namespace này

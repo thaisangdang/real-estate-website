@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RealEstates.Models;
+using RealEstates.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +11,26 @@ namespace RealEstates.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        public ApplicationDbContext _context;
+
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         public ActionResult Index()
         {
+            var viewModel = new HomeViewModel
+            {
+                LoaiDuAns = _context.LoaiDuAns.ToList()
+            };
 
-            return View();
+            return View(viewModel);
         }
 
         public ActionResult About()

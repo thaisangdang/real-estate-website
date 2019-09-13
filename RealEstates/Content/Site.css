@@ -32,3 +32,15 @@ label.error {
 input.error {
     border: 2px solid red;
 }
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+    pointer-events: none;
+}
+
+.navbar-nav {
+    color: white;
+}

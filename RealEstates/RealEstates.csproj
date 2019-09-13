@@ -201,6 +201,8 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyPhiHoaHongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadFileController.cs" />
+    <Compile Include="Controllers\DuAnController.cs" />
+    <Compile Include="Controllers\TinRaoController.cs" />
     <Compile Include="Helper\ExceptionLogger.cs" />
     <Compile Include="Areas\Admin\Models\DemoUploadFie.cs" />
     <Compile Include="Migrations\201909121346264_Initial.cs" />
@@ -1040,6 +1042,9 @@
     <Content Include="Areas\Admin\Views\Shared\_AdminMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_StaffMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_SalesManMenu.cshtml" />
+    <Content Include="Views\DuAn\Index.cshtml" />
+    <Content Include="Views\DuAn\List.cshtml" />
+    <Content Include="Views\TinRao\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
