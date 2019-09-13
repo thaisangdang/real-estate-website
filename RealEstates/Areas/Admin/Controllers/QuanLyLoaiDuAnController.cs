@@ -14,14 +14,14 @@ namespace RealEstates.Areas.Admin.Controllers
     {
         public ApplicationDbContext _context;
 
-        public QuanLyLoaiDuAnController()
-        {
-            _context = new ApplicationDbContext();
-        }
-
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+
+        public QuanLyLoaiDuAnController()
+        {
+            _context = new ApplicationDbContext();
         }
 
         // GET: Admin/QuanLyLoaiDuAn

@@ -198,9 +198,11 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyChatController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyDuAnController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiDuAnController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyPhanCongDuAnController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyPhiHoaHongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadFileController.cs" />
+    <Compile Include="Areas\Admin\Models\PhanCongDuAnViewModel.cs" />
     <Compile Include="Controllers\DuAnController.cs" />
     <Compile Include="Controllers\TinRaoController.cs" />
     <Compile Include="Helper\ExceptionLogger.cs" />
@@ -925,6 +927,8 @@
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
     <Content Include="Areas\Admin\Views\UploadFile\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongDuAn\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongDuAn\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
