@@ -213,7 +213,24 @@
     <Compile Include="Migrations\201909121622169_whatChanges.Designer.cs">
       <DependentUpon>201909121622169_whatChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909130537230_whatChanges1.cs" />
+    <Compile Include="Migrations\201909130537230_whatChanges1.Designer.cs">
+      <DependentUpon>201909130537230_whatChanges1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130542250_whatChanges2.cs" />
+    <Compile Include="Migrations\201909130542250_whatChanges2.Designer.cs">
+      <DependentUpon>201909130542250_whatChanges2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130543171_whatChanges3.cs" />
+    <Compile Include="Migrations\201909130543171_whatChanges3.Designer.cs">
+      <DependentUpon>201909130543171_whatChanges3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130557281_whatChanges4.cs" />
+    <Compile Include="Migrations\201909130557281_whatChanges4.Designer.cs">
+      <DependentUpon>201909130557281_whatChanges4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\PhanCongDuAn.cs" />
     <Compile Include="ViewModels\DuAnViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
@@ -1075,6 +1092,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909121622169_whatChanges.resx">
       <DependentUpon>201909121622169_whatChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130537230_whatChanges1.resx">
+      <DependentUpon>201909130537230_whatChanges1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130542250_whatChanges2.resx">
+      <DependentUpon>201909130542250_whatChanges2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130543171_whatChanges3.resx">
+      <DependentUpon>201909130543171_whatChanges3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130557281_whatChanges4.resx">
+      <DependentUpon>201909130557281_whatChanges4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

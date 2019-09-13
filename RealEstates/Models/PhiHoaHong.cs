@@ -19,16 +19,11 @@ namespace RealEstates.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display(Name = "Đơn vị dự án")]
-        public string DonViDuAn { get; set; } // bán gì, trong dự án nào
+        [Required]
+        [Display(Name = "Phân công dự án")]
+        public int PhanCongDuAnId { get; set; }
 
-        [Display(Name = "Giá đơn vị dự án")]
-        [Column(TypeName = "money")]
-        public decimal GiaDonViDuAn { get; set; }
-
-        [Display(Name = "Phần trăm hoa hồng")]
-        [Range(0, 100)]
-        public double PhanTramHoaHong { get; set; }
+        public PhanCongDuAn PhanCongDuAn { get; set; }
 
         [Display(Name = "Phí khác")]
         [Column(TypeName = "money")]
@@ -44,6 +39,7 @@ namespace RealEstates.Models
 
         public NhanVien NhanVienSales { get; set; }
 
+        [Display(Name = "Người chi")]
         public string NguoiChi { get; set; }
 
         [Display(Name = "Ngày chi")]

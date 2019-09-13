@@ -112,6 +112,8 @@ namespace RealEstates.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? NgayDang { get; set; }
 
+        public ICollection<PhanCongDuAn> PhanCongDuAns { get; set; }
+
         //[DisplayFormat(DataFormatString = "{0:N0} tầng")]
     }
 }
