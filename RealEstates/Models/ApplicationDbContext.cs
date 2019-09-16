@@ -13,6 +13,7 @@ namespace RealEstates.Models
         public DbSet<DuAn> DuAns { get; set; }
         public DbSet<LoaiDuAn> LoaiDuAns { get; set; }
         public DbSet<TinhThanhPho> TinhThanhPhos { get; set; }
+        public DbSet<QuanHuyen> QuanHuyens { get; set; }
         public DbSet<NhanVien> NhanViens { get; set; }
         public DbSet<PhanCongDuAn> PhanCongDuAns { get; set; }
         public DbSet<PhiHoaHong> PhiHoaHongs { get; set; }

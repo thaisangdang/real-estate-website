@@ -97,22 +97,9 @@ namespace RealEstates.Areas.Admin.Controllers
 
             if (duAn.ImageFile != null)
             {
-                try
-                {
-                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(duAn.ImageFile.FileName);
-                    string fileExtension = Path.GetExtension(duAn.ImageFile.FileName);
-                    string fileName = duAn.TenDuAn + DateTime.Now.ToString("ddMMyyy") + "-" + fileNameWithoutExtension.Trim() + fileExtension;
-                    //Get Upload path from Web.Config file AppSettings.  
-                    string UploadPath = ConfigurationManager.AppSettings["AnhDaiDienDuAn"].ToString();
-                    //Its Create complete path to store in server.  
-                    duAn.AnhDaiDien = UploadPath + fileName;
-                    //To copy and save file into server.  
-                    duAn.ImageFile.SaveAs(Server.MapPath(duAn.AnhDaiDien));
-                }
-                catch (Exception ex)
-                {
-                    ExceptionLogger.SendErrorToText(ex);
-                }
+                //Get Upload path from Web.Config file AppSettings.  
+                string uploadPath = ConfigurationManager.AppSettings["AnhDaiDienDuAn"].ToString();
+                duAn.AnhDaiDien = saveFile(duAn.ImageFile, uploadPath);
             }
 
             duAn.GioiThieuDuAn = HttpUtility.HtmlDecode(duAn.GioiThieuDuAn);
@@ -152,9 +139,11 @@ namespace RealEstates.Areas.Admin.Controllers
                 duAnInDb.SoDonViDuAn = duAn.SoDonViDuAn;
                 duAnInDb.LoaiDuAnId = duAn.LoaiDuAnId;
                 duAnInDb.TinhThanhPhoId = duAn.TinhThanhPhoId;
-                // chưa xóa ảnh cũ
                 if (!string.IsNullOrEmpty(duAn.AnhDaiDien))
                 {
+                    // Xóa ảnh cũ
+                    deleteFile(duAnInDb.AnhDaiDien);
+                    // Thay bằng ảnh mới
                     duAnInDb.AnhDaiDien = duAn.AnhDaiDien;
                 }
             }
@@ -174,12 +163,52 @@ namespace RealEstates.Areas.Admin.Controllers
             }
 
             var duAn = _context.DuAns.Single(x => x.Id == id);
+            deleteFile(duAn.AnhDaiDien);
+
             _context.DuAns.Remove(duAn);
 
             _context.SaveChanges();
 
             return RedirectToAction("Index", "QuanLyDuAn");
         }
+
+        #region Helper
+        public string saveFile(HttpPostedFileBase imageFile, string uploadPath)
+        {
+            string filePath = "";
+            try
+            {
+                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(imageFile.FileName);
+                string fileExtension = Path.GetExtension(imageFile.FileName);
+                string fileName = DateTime.Now.ToString("ddMMyyy") + "-" + fileNameWithoutExtension.Trim() + fileExtension;
+                //Its Create complete path to store in server.  
+                filePath = uploadPath + fileName;
+                //To copy and save file into server.  
+                imageFile.SaveAs(Server.MapPath(filePath));
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.SendErrorToText(ex);
+            }
+
+            return filePath;
+        }
+
+        public void deleteFile(string filePath)
+        {
+            try
+            {
+                if (System.IO.File.Exists(Server.MapPath(filePath)))
+                {
+                    System.IO.File.Delete(Server.MapPath(filePath));
+                }
+            }
+            catch (IOException ex)
+            {
+                ExceptionLogger.SendErrorToText(ex);
+            }
+        }
+        #endregion
 
     }
 }

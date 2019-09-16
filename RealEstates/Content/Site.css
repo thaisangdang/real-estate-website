@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -43,4 +44,29 @@ input.error {
 
 .navbar-nav {
     color: white;
+}
+
+.frm-search .form-group {
+    padding-top: 0;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.nav-link {
+    outline: none;
+}
+
+.nav-item:hover {
+    padding: 0;
+    margin: 0;
+    transform: none;
+}
+
+.tab-content {
+    height: 16rem;
+}
+
+.card-body {
+    padding: 0;
+    margin: 0;
 }

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace RealEstates.Controllers
 {
+    [AllowAnonymous]
     public class DuAnController : Controller
     {
         public ApplicationDbContext _context;

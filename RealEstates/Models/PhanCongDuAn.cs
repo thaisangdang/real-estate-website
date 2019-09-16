@@ -20,16 +20,23 @@ namespace RealEstates.Models
 
         public DuAn DuAn { get; set; }
 
-        [Display(Name = "Đơn vị dự án")]
-        public string DonViDuAn { get; set; } // bán gì, trong dự án nào
+        [Display(Name = "Đơn vị sản phẩm")]
+        public string DonViSanPham { get; set; } // bán gì, trong dự án nào
 
-        [Display(Name = "Giá đơn vị dự án")]
+        [Display(Name = "Giá đơn vị sản phẩm")]
         [Column(TypeName = "money")]
         public decimal GiaDonViDuAn { get; set; }
 
         [Display(Name = "Phần trăm hoa hồng")]
         [Range(0, 100)]
         public double PhanTramHoaHong { get; set; }
+
+        [Display(Name = "Sản phẩm cho thuê")] // dùng checkbox
+        public bool IsRent { get; set; }
+
+        [Display(Name = "Giá thuê tháng đầu")]
+        [Column(TypeName = "money")]
+        public decimal GiaThueThangDau { get; set; }
 
         [Required]
         [Display(Name = "Nhân viên sales")]

@@ -22,6 +22,7 @@ namespace RealEstates.Models
         public string HoTen { get; set; }
 
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

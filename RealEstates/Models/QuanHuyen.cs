@@ -7,21 +7,23 @@ using System.Web;
 
 namespace RealEstates.Models
 {
-    [Table("TinhThanhPho")]
-    public class TinhThanhPho
+    [Table("QuanHuyen")]
+    public class QuanHuyen
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display(Name = "Tỉnh/TP")]
+        [Display(Name = "Tên")]
         public string Ten { get; set; }
 
-        [Display(Name = "Tên viết tắt")]
-        public string Code { get; set; }
+        [Display(Name = "Prefix")]
+        public string Prefix { get; set; }
 
-        public ICollection<DuAn> DuAns { get; set; }
+        [Display(Name = "Tỉnh thành phố")]
+        public int TinhThanhPhoId { get; set; }
 
-        public ICollection<QuanHuyen> QuanHuyens { get; set; }
+        public TinhThanhPho TinhThanhPho { get; set; }
+
     }
 }
