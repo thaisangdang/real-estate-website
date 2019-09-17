@@ -12,6 +12,8 @@
     }
 </style>
 
+@Html.Partial("~/Views/Shared/_Alert.cshtml")
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách dự án trong hệ thống</h6>
@@ -57,7 +59,8 @@
                                     <span class="text-white"><i class="fas fa-trash fa-fw"></i></span>
                                 </a>
                             </td>
-                        </tr>   
+                        </tr>
+
                     }
                 </tbody>
             </table>
@@ -94,7 +97,7 @@
 @section scripts
 {
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var table = $('#dataTable').DataTable({
                 "columns": [
                     null,

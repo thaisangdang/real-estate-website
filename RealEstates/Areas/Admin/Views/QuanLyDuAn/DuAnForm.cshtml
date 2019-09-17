@@ -5,6 +5,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    #menuQuanLyDuAn {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
 <p>
     <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
         <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
@@ -17,135 +24,144 @@
         <h6 class="m-0 font-weight-bold text-primary d-inline-block">@Model.Title</h6>
     </div>
     <div class="card-body">
+        <br />
         @using (Html.BeginForm("Save", "QuanLyDuAn", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-horizontal">
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TenDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
-                    @Html.EditorFor(model => model.TenDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-12" })
-                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.GiaTu, htmlAttributes: new { @class = "control-label col-md-12" })
-                    @Html.EditorFor(model => model.GiaTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ChuDauTu, htmlAttributes: new { @class = "control-label col-md-12" })
-                    @Html.EditorFor(model => model.ChuDauTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TongDienTich, htmlAttributes: new { @class = "control-label col-md-12" })
-                    @Html.EditorFor(model => model.TongDienTich, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TienDoDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
-                    @Html.EditorFor(model => model.TienDoDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(m => m.LoaiDuAnId, new { @class = "control-label col-md-12" })
-                    @Html.DropDownListFor(m => m.LoaiDuAnId, new SelectList(Model.LoaiDuAns, "Id", "TenLoai", Model.LoaiDuAnId), "", new { @class = "form-control col-md-12 select2" })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.QuyMoDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
-                    @Html.EditorFor(model => model.QuyMoDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                </div>
-            </div>
+    <div class="form-horizontal">
+        <div class="col-md-6">
             <div class="form-group">
-                @Html.LabelFor(model => model.GioiThieuDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
-                <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.GioiThieuDuAn, new { @class = "form-control col-md-12", @id = "GioiThieuDuAn" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.ViTri, htmlAttributes: new { @class = "control-label col-md-12" })
-                <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.ViTri, new { @class = "form-control col-md-12", @id = "ViTri" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.HaTang, htmlAttributes: new { @class = "control-label col-md-12" })
-                <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.HaTang, new { @class = "form-control col-md-12", @id = "HaTang" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.ThietKe, htmlAttributes: new { @class = "control-label col-md-12" })
-                <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.ThietKe, new { @class = "form-control col-md-12", @id = "ThietKe" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.MatBang, htmlAttributes: new { @class = "control-label col-md-12" })
-                <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.MatBang, new { @class = "form-control col-md-12", @id = "MatBang" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Media, htmlAttributes: new { @class = "control-label col-md-12" })
-                <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.Media, new { @class = "form-control col-md-12", @id = "Media" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.HoTroTaiChinh, htmlAttributes: new { @class = "control-label col-md-12" })
-                <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.HoTroTaiChinh, new { @class = "form-control col-md-12", @id = "HoTroTaiChinh" })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(m => m.TinhThanhPhoId, new { @class = "control-label col-md-12" })
-                    @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "", new { @class = "form-control col-md-12 select2" })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.SoDonViDuAn, new { @class = "control-label col-md-12" })
-                    @Html.TextBoxFor(model => model.SoDonViDuAn, new { @class = "form-control col-md-12" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-12" })
-                <div class="col-md-12">
-                    <input type="file" name="ImageFile" accept="image/*" />
-                </div>
-            </div>
-            @if (Model.Id != 0)
-            {
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NgayDang, htmlAttributes: new { @class = "control-label col-md-12" })
-                    <div class="col-md-12">
-                        @Html.DisplayFor(model => model.NgayDang, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                    </div>
-                </div>
-            }
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-12">
-                    @Html.HiddenFor(m => m.Id)
-                    <input type="submit" class="btn btn-success" value="Lưu" />
-                </div>
+                @Html.LabelFor(model => model.TenDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.EditorFor(model => model.TenDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.GiaTu, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.EditorFor(model => model.GiaTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChuDauTu, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.EditorFor(model => model.ChuDauTu, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TongDienTich, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.EditorFor(model => model.TongDienTich, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TienDoDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.EditorFor(model => model.TienDoDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.LoaiDuAnId, new { @class = "control-label col-md-12" })
+                @Html.DropDownListFor(m => m.LoaiDuAnId, new SelectList(Model.LoaiDuAns, "Id", "TenLoai", Model.LoaiDuAnId), "", new { @class = "form-control col-md-12 select2" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuyMoDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+                @Html.EditorFor(model => model.QuyMoDuAn, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.GioiThieuDuAn, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.GioiThieuDuAn, new { @class = "form-control col-md-12", @id = "GioiThieuDuAn" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ViTri, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.ViTri, new { @class = "form-control col-md-12", @id = "ViTri" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.HaTang, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.HaTang, new { @class = "form-control col-md-12", @id = "HaTang" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ThietKe, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.ThietKe, new { @class = "form-control col-md-12", @id = "ThietKe" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MatBang, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.MatBang, new { @class = "form-control col-md-12", @id = "MatBang" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Media, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Media, new { @class = "form-control col-md-12", @id = "Media" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.HoTroTaiChinh, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.HoTroTaiChinh, new { @class = "form-control col-md-12", @id = "HoTroTaiChinh" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.TinhThanhPhoId, new { @class = "control-label col-md-12" })
+                @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "",
+                    new { @class = "form-control col-md-12 select2", @id = "TinhThanhPho" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.QuanHuyenId, new { @class = "control-label col-md-12" })
+                @Html.DropDownListFor(m => m.QuanHuyenId, new SelectList(Model.QuanHuyens.Where(x => x.TinhThanhPhoId == Model.TinhThanhPhoId), "Id", "Ten", Model.QuanHuyenId), "",
+                    new { @class = "form-control col-md-12 select2", @id = "QuanHuyen" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.SoDonViSanPham, new { @class = "control-label col-md-12" })
+                @Html.TextBoxFor(model => model.SoDonViSanPham, new { @class = "form-control col-md-12" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                <input type="file" name="ImageFile" accept="image/*" />
+            </div>
+        </div>
+        @if (Model.Id != 0)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.NgayDang, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div class="col-md-12">
+                    @Html.DisplayFor(model => model.NgayDang, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12">
+                @Html.HiddenFor(m => m.Id)
+                <input type="submit" class="btn btn-success" value="Lưu" />
+            </div>
+        </div>
+    </div>
         }
     </div>
 </div>
@@ -165,6 +181,33 @@
             CKEDITOR.replace('Media');
             CKEDITOR.replace('HoTroTaiChinh');
         });
-        $(document).ready(function () {$(".select2").select2(); });
+
+        $(document).ready(function () {
+            $(".select2").select2();
+            $("#TinhThanhPho").change(function () {
+                var selectedValue = $(this).children("option:selected").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/api/DuAnApi/GetQuanHuyens/?tinhThanhPhoId=" + selectedValue,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var selectElement = $("#QuanHuyen");
+                        selectElement.empty();
+                        data.forEach(function (quanHuyen) {
+                            var $option = $("<option/>", {
+                                value: quanHuyen.id,
+                                text: quanHuyen.ten
+                            });
+                            selectElement.append($option);
+                        });
+                    },
+                    failure: function (data) {
+                    },
+                    error: function (data) {
+                    }
+                });
+            });
+        });
     </script>
 }

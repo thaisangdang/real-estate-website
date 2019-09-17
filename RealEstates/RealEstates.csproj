@@ -47,8 +47,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
@@ -190,6 +190,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminDashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SalesManDashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffDashboardController.cs" />
+    <Compile Include="Controllers\Api\DuAnApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\QuanLyTaiKhoanApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
@@ -204,6 +208,7 @@
     <Compile Include="Areas\Admin\Models\PhanCongDuAnViewModel.cs" />
     <Compile Include="Controllers\DuAnController.cs" />
     <Compile Include="Controllers\TinRaoController.cs" />
+    <Compile Include="Dtos\QuanHuyenDto.cs" />
     <Compile Include="Helper\ExceptionLogger.cs" />
     <Compile Include="Migrations\201909121346264_Initial.cs" />
     <Compile Include="Migrations\201909121346264_Initial.Designer.cs">
@@ -253,8 +258,33 @@
     <Compile Include="Migrations\201909160524072_whatChanges10.Designer.cs">
       <DependentUpon>201909160524072_whatChanges10.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909160533339_whatChanges11.cs" />
+    <Compile Include="Migrations\201909160533339_whatChanges11.Designer.cs">
+      <DependentUpon>201909160533339_whatChanges11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909160555494_whatChanges12.cs" />
+    <Compile Include="Migrations\201909160555494_whatChanges12.Designer.cs">
+      <DependentUpon>201909160555494_whatChanges12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909170453121_whatChanges13.cs" />
+    <Compile Include="Migrations\201909170453121_whatChanges13.Designer.cs">
+      <DependentUpon>201909170453121_whatChanges13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909170538251_whatChanges14.cs" />
+    <Compile Include="Migrations\201909170538251_whatChanges14.Designer.cs">
+      <DependentUpon>201909170538251_whatChanges14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909170701379_whatChanges15.cs" />
+    <Compile Include="Migrations\201909170701379_whatChanges15.Designer.cs">
+      <DependentUpon>201909170701379_whatChanges15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909170702437_whatChanges16.cs" />
+    <Compile Include="Migrations\201909170702437_whatChanges16.Designer.cs">
+      <DependentUpon>201909170702437_whatChanges16.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\PhanCongDuAn.cs" />
+    <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Models\QuanHuyen.cs" />
     <Compile Include="ViewModels\DuAnViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -936,7 +966,6 @@
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTaiKhoan\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\Index.cshtml" />
@@ -950,9 +979,12 @@
     <Content Include="Areas\Admin\Views\QuanLyLoaiDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\DuAnForm.cshtml" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
-    <Content Include="Areas\Admin\Views\QuanLyDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhanCongDuAn\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhanCongDuAn\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDuAn\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminDashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesManDashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\StaffDashboard\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1091,7 +1123,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_AlertPartial.cshtml" />
+    <Content Include="Views\Shared\_Alert.cshtml" />
     <Content Include="Views\Shared\_SingleDuAnCarousel.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminMenu.cshtml" />
@@ -1150,6 +1182,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909160524072_whatChanges10.resx">
       <DependentUpon>201909160524072_whatChanges10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909160533339_whatChanges11.resx">
+      <DependentUpon>201909160533339_whatChanges11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909160555494_whatChanges12.resx">
+      <DependentUpon>201909160555494_whatChanges12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909170453121_whatChanges13.resx">
+      <DependentUpon>201909170453121_whatChanges13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909170538251_whatChanges14.resx">
+      <DependentUpon>201909170538251_whatChanges14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909170701379_whatChanges15.resx">
+      <DependentUpon>201909170701379_whatChanges15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909170702437_whatChanges16.resx">
+      <DependentUpon>201909170702437_whatChanges16.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

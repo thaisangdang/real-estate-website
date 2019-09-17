@@ -20,7 +20,7 @@
 </p>
 
 <div>
-    <h4>DuAn</h4>
+    <h4>Chi tiết dự án</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -29,6 +29,22 @@
 
         <dd>
             @Html.DisplayFor(model => model.LoaiDuAn.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiDangId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiDang.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuanHuyen.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuanHuyen.Ten)
         </dd>
 
         <dt>
@@ -100,7 +116,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GioiThieuDuAn)
+            @Html.Raw(Model.GioiThieuDuAn)
         </dd>
 
         <dt>
@@ -108,7 +124,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ViTri)
+            @Html.Raw(Model.ViTri)
         </dd>
 
         <dt>
@@ -116,7 +132,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HaTang)
+            @Html.Raw(Model.HaTang)
         </dd>
 
         <dt>
@@ -124,7 +140,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ThietKe)
+            @Html.Raw(Model.ThietKe)
         </dd>
 
         <dt>
@@ -132,7 +148,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MatBang)
+            @Html.Raw(Model.MatBang)
         </dd>
 
         <dt>
@@ -140,7 +156,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Media)
+            @Html.Raw(Model.Media)
         </dd>
 
         <dt>
@@ -148,15 +164,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HoTroTaiChinh)
+            @Html.Raw(Model.HoTroTaiChinh)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SoDonViDuAn)
+            @Html.DisplayNameFor(model => model.SoDonViSanPham)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SoDonViDuAn)
+            @Html.DisplayFor(model => model.SoDonViSanPham)
         </dd>
 
         <dt>
@@ -164,7 +180,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AnhDaiDien)
+            @if (!string.IsNullOrEmpty(Model.AnhDaiDien))
+            {
+                <img src="@Html.DisplayFor(model => model.AnhDaiDien)" alt="@Html.DisplayFor(model => model.TenDuAn)" class="img-thumbnail image-detail">
+            }
+            else
+            {
+                <img src="~/Content/Images/AnhDaiDienDuAn/notfound.jpg" alt="" class="img-thumbnail image-detail">
+            }
         </dd>
 
         <dt>
@@ -177,3 +200,7 @@
 
     </dl>
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

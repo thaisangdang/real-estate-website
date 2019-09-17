@@ -33,7 +33,7 @@
 </head>
 <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-primary static-top">
-        <a class="navbar-brand mr-1" href="index.html">Real Estates</a>
+        <a class="navbar-brand mr-1" href="#">Real Estates</a>
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
         </button>
@@ -93,9 +93,6 @@
         <!-- Sidebar -->
         <ul class="sidebar navbar-nav">
             @{
-                <li class="nav-item">
-                    @Html.ActionLink("Dashboard", "Index", "Dashboard", null, new { @class = "nav-link", @id = "menuDashBoard" })
-                </li>
                 if (User.IsInRole(RoleName.Administrator))
                 {
                     @Html.Partial("_AdminMenu")

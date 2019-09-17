@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using RealEstates.Dtos;
+using RealEstates.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,11 @@ namespace RealEstates.App_Start
         public MappingProfile()
         {
             // Domain to Dto
+            Mapper.CreateMap<QuanHuyen, QuanHuyenDto>();
 
             // Dto to Domain
+            Mapper.CreateMap<QuanHuyenDto, QuanHuyen>()
+                .ForMember(x => x.Id, opt => opt.Ignore());
         }
     }
 }

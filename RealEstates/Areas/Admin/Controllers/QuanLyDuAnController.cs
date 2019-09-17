@@ -32,7 +32,12 @@ namespace RealEstates.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var duAns = new List<DuAn>();
-            duAns = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho).ToList();
+            duAns = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho).Include(z => z.QuanHuyen).ToList();
+            if (TempData["success"] != null)
+            {
+                ViewBag.Success = TempData["success"].ToString();
+                TempData.Remove("success");
+            }
 
             return View(duAns);
         }
@@ -41,7 +46,8 @@ namespace RealEstates.Areas.Admin.Controllers
         {
             var viewModel = new DuAnViewModel {
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
-                TinhThanhPhos = _context.TinhThanhPhos.ToList()
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList()
             };
 
             return View("DuAnForm", viewModel);
@@ -59,8 +65,8 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList()
             };
-
             return View("DuAnForm", viewModel);
         }
 
@@ -70,8 +76,8 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 return RedirectToAction("Index");
             }
-
-            var duAn = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho).SingleOrDefault(x => x.Id == id);
+            var duAn = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho)
+                .Include(z => z.QuanHuyen).Include(u => u.NguoiDang).SingleOrDefault(x => x.Id == id);
             if (duAn == null)
             {
                 return HttpNotFound();
@@ -90,7 +96,8 @@ namespace RealEstates.Areas.Admin.Controllers
                 var viewModel = new DuAnViewModel
                 {
                     LoaiDuAns = _context.LoaiDuAns.ToList(),
-                    TinhThanhPhos = _context.TinhThanhPhos.ToList()
+                    TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                    QuanHuyens = _context.QuanHuyens.ToList()
                 };
                 return View("DuAnForm", viewModel);
             }
@@ -116,7 +123,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 var nguoiDang = _context.NhanViens.SingleOrDefault(x => x.AccountId == userId);
                 duAn.NguoiDangId = nguoiDang.Id;
                 duAn.NgayDang = DateTime.Now;
-
+                TempData["success"] = "Thêm mới thành công";
                 _context.DuAns.Add(duAn);
             }
             else
@@ -136,9 +143,10 @@ namespace RealEstates.Areas.Admin.Controllers
                 duAnInDb.MatBang = duAn.MatBang;
                 duAnInDb.Media = duAn.Media;
                 duAnInDb.HoTroTaiChinh = duAn.HoTroTaiChinh;
-                duAnInDb.SoDonViDuAn = duAn.SoDonViDuAn;
+                duAnInDb.SoDonViSanPham = duAn.SoDonViSanPham;
                 duAnInDb.LoaiDuAnId = duAn.LoaiDuAnId;
                 duAnInDb.TinhThanhPhoId = duAn.TinhThanhPhoId;
+                duAnInDb.QuanHuyenId = duAn.QuanHuyenId;
                 if (!string.IsNullOrEmpty(duAn.AnhDaiDien))
                 {
                     // Xóa ảnh cũ
@@ -146,8 +154,8 @@ namespace RealEstates.Areas.Admin.Controllers
                     // Thay bằng ảnh mới
                     duAnInDb.AnhDaiDien = duAn.AnhDaiDien;
                 }
+                TempData["success"] = "Cập nhật thành công";
             }
-
             _context.SaveChanges();
 
             return RedirectToAction("Index", "QuanLyDuAn");
@@ -161,13 +169,11 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-
             var duAn = _context.DuAns.Single(x => x.Id == id);
             deleteFile(duAn.AnhDaiDien);
-
             _context.DuAns.Remove(duAn);
-
             _context.SaveChanges();
+            TempData["success"] = "Xóa thành công";
 
             return RedirectToAction("Index", "QuanLyDuAn");
         }

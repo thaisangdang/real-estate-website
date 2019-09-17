@@ -25,7 +25,7 @@ namespace RealEstates.Models
 
         [Required]
         [Column(TypeName = "money")]
-        [Display(Name = "Giá từ")]
+        [Display(Name = "Giá từ (VNĐ)")]
         public decimal GiaTu { get; set; }
 
         [Required]
@@ -33,8 +33,9 @@ namespace RealEstates.Models
         public string ChuDauTu { get; set; }
 
         [Required]
-        [Display(Name = "Tổng diện tích")]
-        public string TongDienTich { get; set; }
+        [Display(Name = "Tổng diện tích (m2)")]
+        [Range(0, int.MaxValue)]
+        public int TongDienTich { get; set; }
 
         [Required]
         [Display(Name = "Tiến độ dự án")]
@@ -44,6 +45,7 @@ namespace RealEstates.Models
         [Display(Name = "Loại hình phát triển")]
         public int LoaiDuAnId { get; set; }
 
+        [Display(Name = "Loại hình phát triển")]
         public LoaiDuAn LoaiDuAn { get; set; }
 
         [Required]
@@ -89,12 +91,20 @@ namespace RealEstates.Models
         [Display(Name = "Tỉnh/Thành phố")]
         public int TinhThanhPhoId { get; set; }
 
+        [Display(Name = "Tỉnh/Thành phố")]
         public TinhThanhPho TinhThanhPho { get; set; }
 
+        [Required]
+        [Display(Name = "Quận huyện")]
+        public int QuanHuyenId { get; set; }
+
+        [Display(Name = "Quận huyện")]
+        public QuanHuyen QuanHuyen { get; set; }
+
         [Required(ErrorMessage = "Số đơn vị phải >= 0")]
-        [Display(Name = "Số đơn vị dự án")]
+        [Display(Name = "Số đơn vị sản phẩm")]
         [Range(0, int.MaxValue)]
-        public int SoDonViDuAn { get; set; }
+        public int SoDonViSanPham { get; set; }
 
         [Display(Name = "Ảnh đại diện")]
         public string AnhDaiDien { get; set; }
@@ -106,6 +116,7 @@ namespace RealEstates.Models
         [Display(Name = "Người đăng")]
         public int NguoiDangId { get; set; }
 
+        [Display(Name = "Người đăng")]
         public NhanVien NguoiDang { get; set; }
 
         [Display(Name = "Ngày đăng")]

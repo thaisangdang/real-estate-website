@@ -1,9 +1,9 @@
-﻿@if (!string.IsNullOrEmpty(ViewBag.AlertSuccess))
+﻿@if (!string.IsNullOrEmpty(ViewBag.Success))
 {
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-success alert-dismissible show" role="alert">
-                <strong>Thành công:</strong> @ViewBag.AlertSuccess
+                <strong>Thành công:</strong> @ViewBag.Success
                 <button type="button" class="close" data-dismiss="alert" aria-label="Đóng">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,12 +11,12 @@
         </div>
     </div>
 }
-@if (!string.IsNullOrEmpty(ViewBag.AlertError))
+@if (!string.IsNullOrEmpty(ViewBag.Error))
 {
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-warning alert-dismissible show" role="alert">
-                <strong>Lỗi:</strong> @ViewBag.AlertError
+                <strong>Lỗi:</strong> @ViewBag.Error
                 <button type="button" class="close" data-dismiss="alert" aria-label="Đóng">
                     <span aria-hidden="true">&times;</span>
                 </button>

@@ -12,6 +12,8 @@
     }
 </style>
 
+@Html.Partial("~/Views/Shared/_Alert.cshtml")
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách loại dự án trong hệ thống</h6>
@@ -37,12 +39,12 @@
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.TenLoai)</td>
                             @*@if (item.ChoThue)
-                        {
-                            <td>Dự án cho thuuê</td>
-                        } else
-                        {
-                            <td>Dự án bán</td>
-                        }*@
+                                {
+                                    <td>Dự án cho thuuê</td>
+                                } else
+                                {
+                                    <td>Dự án bán</td>
+                                }*@
                             <td>@Html.DisplayFor(modelItem => item.MoTa)</td>
                             <td>
                                 <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Sửa">
@@ -58,15 +60,15 @@
                     }
                 </tbody>
                 @*<tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                </tr>
-            </tfoot>*@
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                    </tfoot>*@
             </table>
         </div>
     </div>
@@ -101,7 +103,7 @@
 @section scripts
 {
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var table = $('#dataTable').DataTable({
                 "columns": [
                     null,

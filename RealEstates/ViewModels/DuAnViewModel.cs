@@ -22,8 +22,7 @@ namespace RealEstates.ViewModels
         public string DiaChi { get; set; }
 
         [Required]
-        [Column(TypeName = "money")]
-        [Display(Name = "Giá từ")]
+        [Display(Name = "Giá từ (VNĐ)")]
         public decimal GiaTu { get; set; }
 
         [Required]
@@ -31,8 +30,8 @@ namespace RealEstates.ViewModels
         public string ChuDauTu { get; set; }
 
         [Required]
-        [Display(Name = "Tổng diện tích")]
-        public string TongDienTich { get; set; }
+        [Display(Name = "Tổng diện tích (m2)")]
+        public int TongDienTich { get; set; }
 
         [Required]
         [Display(Name = "Tiến độ dự án")]
@@ -85,10 +84,14 @@ namespace RealEstates.ViewModels
         [Display(Name = "Tỉnh/Thành phố")]
         public int TinhThanhPhoId { get; set; }
 
+        [Required]
+        [Display(Name = "Quận huyện")]
+        public int QuanHuyenId { get; set; }
+
         [Required(ErrorMessage = "Số đơn vị phải >= 0")]
-        [Display(Name = "Số đơn vị dự án")]
+        [Display(Name = "Số đơn vị sản phẩm")]
         [Range(0, int.MaxValue)]
-        public int SoDonViDuAn { get; set; }
+        public int SoDonViSanPham { get; set; }
 
         [Display(Name = "Ảnh đại diện")]
         [AllowHtml]
@@ -113,6 +116,8 @@ namespace RealEstates.ViewModels
 
         public IEnumerable<TinhThanhPho> TinhThanhPhos { get; set; }
 
+        public IEnumerable<QuanHuyen> QuanHuyens { get; set; }
+
         public DuAnViewModel()
         {
             Id = 0;
@@ -123,7 +128,6 @@ namespace RealEstates.ViewModels
             Id = duAn.Id;
             TenDuAn = duAn.TenDuAn;
             DiaChi = duAn.DiaChi;
-            GiaTu = duAn.GiaTu;
             ChuDauTu = duAn.ChuDauTu;
             TongDienTich = duAn.TongDienTich;
             TienDoDuAn = duAn.TienDoDuAn;
@@ -135,10 +139,11 @@ namespace RealEstates.ViewModels
             MatBang = duAn.MatBang;
             Media = duAn.Media;
             HoTroTaiChinh = duAn.HoTroTaiChinh;
-            SoDonViDuAn = duAn.SoDonViDuAn;
+            SoDonViSanPham = duAn.SoDonViSanPham;
             AnhDaiDien = duAn.AnhDaiDien;
             NgayDang = duAn.NgayDang;
             TinhThanhPhoId = duAn.TinhThanhPhoId;
+            QuanHuyenId = duAn.QuanHuyenId;
             LoaiDuAnId = duAn.LoaiDuAnId;
         }
 

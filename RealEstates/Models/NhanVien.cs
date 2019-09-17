@@ -30,6 +30,11 @@ namespace RealEstates.Models
         [Display(Name = "Số điện thoại")]
         public string SoDienThoai { get; set; }
 
+        [Display(Name = "Phòng ban")]
+        public int PhongBanId { get; set; }
+
+        public PhongBan PhongBan { get; set; }
+
         [Display(Name = "Tài khoản")]
         public string AccountId { get; set; }
 

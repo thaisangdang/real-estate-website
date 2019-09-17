@@ -53,6 +53,11 @@ namespace RealEstates.Areas.Admin.Controllers
                 profile.RoleName = _context.Roles.SingleOrDefault(r => r.Id == roleId).Name;
                 profiles.Add(profile);
             }
+            if (TempData["success"] != null)
+            {
+                ViewBag.Success = TempData["success"].ToString();
+                TempData.Remove("success");
+            }
 
             return View(profiles);
         }
@@ -104,7 +109,7 @@ namespace RealEstates.Areas.Admin.Controllers
             _context.Users.Remove(user);
             _context.SaveChanges();
 
-            ViewBag.AlertSuccess = "Xóa thành công";
+            TempData["success"] = "Xóa thành công";
 
             return RedirectToAction("Index", "QuanLyTaiKhoan");
         }
@@ -133,7 +138,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 {
                     await UserManager.AddToRoleAsync(user.Id, role.Name);
 
-                    ViewBag.AlertSuccess = "Tạo tài khoản thành công";
+                    TempData["success"] = "Thêm mới thành công";
 
                     return RedirectToAction("Index", "QuanLyTaiKhoan");
                 }

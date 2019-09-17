@@ -29,6 +29,11 @@ namespace RealEstates.Areas.Admin.Controllers
         {
             var loaiDuAns = new List<LoaiDuAn>();
             loaiDuAns = _context.LoaiDuAns.ToList();
+            if (TempData["success"] != null)
+            {
+                ViewBag.Success = TempData["success"].ToString();
+                TempData.Remove("success");
+            }
 
             return View(loaiDuAns);
         }
@@ -75,12 +80,14 @@ namespace RealEstates.Areas.Admin.Controllers
             if (loaiDuAn.Id == 0)
             {
                 _context.LoaiDuAns.Add(loaiDuAn);
+                TempData["success"] = "Thêm mới thành công";
             }
             else
             {
                 var loaiDuAnInDb = _context.LoaiDuAns.Single(x => x.Id == loaiDuAn.Id);
                 loaiDuAnInDb.TenLoai = loaiDuAn.TenLoai;
                 loaiDuAnInDb.MoTa = loaiDuAn.MoTa;
+                TempData["success"] = "Cập nhật thành công";
             }
 
             _context.SaveChanges();
@@ -96,11 +103,10 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-
             var loaiDuAn = _context.LoaiDuAns.Single(x => x.Id == id);
             _context.LoaiDuAns.Remove(loaiDuAn);
-
             _context.SaveChanges();
+            TempData["success"] = "Xóa thành công";
 
             return RedirectToAction("Index", "QuanLyLoaiDuAn");
 
