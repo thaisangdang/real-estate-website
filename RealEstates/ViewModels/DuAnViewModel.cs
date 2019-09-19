@@ -1,4 +1,5 @@
-﻿using RealEstates.Models;
+﻿using RealEstates.Helper;
+using RealEstates.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -100,6 +101,11 @@ namespace RealEstates.ViewModels
         [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
 
+        [Required]
+        [Display(Name = "Trạng thái")]
+        [Range(1, 4)]
+        public int TrangThai { get; set; }
+
         [Display(Name = "Ngày đăng")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? NgayDang { get; set; }
@@ -118,9 +124,12 @@ namespace RealEstates.ViewModels
 
         public IEnumerable<QuanHuyen> QuanHuyens { get; set; }
 
+        public IEnumerable<Option> TrangThaiDuAn { get; set; }
+
         public DuAnViewModel()
         {
             Id = 0;
+            TrangThai = 1; // mặc định dự án đang mở bán
         }
 
         public DuAnViewModel(DuAn duAn)
@@ -145,6 +154,7 @@ namespace RealEstates.ViewModels
             TinhThanhPhoId = duAn.TinhThanhPhoId;
             QuanHuyenId = duAn.QuanHuyenId;
             LoaiDuAnId = duAn.LoaiDuAnId;
+            TrangThai = duAn.TrangThai;
         }
 
     }

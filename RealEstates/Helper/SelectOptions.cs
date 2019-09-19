@@ -6,11 +6,44 @@ using System.Web;
 
 namespace RealEstates.Helper
 {
-    public class SearchOption
+    public static class SelectOptions
     {
         public static List<Option> DienTich;
         public static List<Option> KhoangGia { get; set; }
         public static List<Option> ThoiGian { get; set; }
+        public static List<Option> TrangThaiNhanVien { get; set; }
+        public static List<Option> TrangThaiDuAn { get; set; }
+
+        public static List<Option> getTrangThaiDuAn
+        {
+            get
+            {
+                if (TrangThaiDuAn == null)
+                {
+                    TrangThaiDuAn = new List<Option>();
+                    TrangThaiDuAn.Add(new Option() { Id = 1, Text = "Mở bán" } ); // mặc định
+                    TrangThaiDuAn.Add(new Option() { Id = 2, Text = "Dự án mẫu" } );
+                    TrangThaiDuAn.Add(new Option() { Id = 3, Text = "Tạm ngưng" } );
+                    TrangThaiDuAn.Add(new Option() { Id = 4, Text = "Đã bán hết" } ); // thuộc tính số đơn vị dự án là để xử lý phân công dự án cho nhân viên sales
+                }
+                return TrangThaiDuAn;
+            }
+        }
+
+        public static List<Option> getTrangThaiNhanVien
+        {
+            get
+            {
+                if (TrangThaiNhanVien == null)
+                {
+                    TrangThaiNhanVien = new List<Option>();
+                    TrangThaiNhanVien.Add(new Option() { Id = 1, Text = "Đang làm việc" });
+                    TrangThaiNhanVien.Add(new Option() { Id = 2, Text = "Đã chuyển phòng ban" });
+                    TrangThaiNhanVien.Add(new Option() { Id = 3, Text = "Đã nghỉ việc" });
+                }
+                return TrangThaiNhanVien;
+            }
+        }
 
         public static List<Option> getDienTich
         {
@@ -38,9 +71,9 @@ namespace RealEstates.Helper
                     KhoangGia.Add(new Option() { Id = 1, Text = "Dưới 2 triệu" });
                     KhoangGia.Add(new Option() { Id = 2, Text = "Từ 2 triệu đến dưới 5 triệu" });
                     KhoangGia.Add(new Option() { Id = 3, Text = "Trên 5 triệu" });
-                    KhoangGia.Add(new Option() { Id = 11, Text = "Dưới 500 triệu" });
-                    KhoangGia.Add(new Option() { Id = 12, Text = "Từ 500 triệu đến dưới 2 tỉ" });
-                    KhoangGia.Add(new Option() { Id = 13, Text = "Trên 2 tỉ" });
+                    KhoangGia.Add(new Option() { Id = 4, Text = "Dưới 500 triệu" });
+                    KhoangGia.Add(new Option() { Id = 5, Text = "Từ 500 triệu đến dưới 2 tỉ" });
+                    KhoangGia.Add(new Option() { Id = 6, Text = "Trên 2 tỉ" });
                 }
                 return KhoangGia;
             }

@@ -140,6 +140,12 @@
                 @Html.TextBoxFor(model => model.SoDonViSanPham, new { @class = "form-control col-md-12" })
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12" })
+                @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiDuAn, "Id", "Text", Model.TrangThai), "", new { @class = "form-control col-md-12 select2" })
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-12" })
             <div class="col-md-12">

@@ -1,0 +1,70 @@
+﻿@using RealEstates.Helper
+@model RealEstates.Models.NhanVien
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyNhanVien {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<h2>Thông tin nhân viên</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhongBan.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhongBan.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @SelectOptions.getTrangThaiDuAn.Single(x => x.Id == Model.TrangThai).Text)
+        </dd>
+
+    </dl>
+</div>

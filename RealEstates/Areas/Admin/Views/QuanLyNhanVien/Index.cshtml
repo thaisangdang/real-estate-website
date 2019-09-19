@@ -1,0 +1,152 @@
+﻿@model RealEstates.Areas.Admin.Models.QuanLyNhanVienViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyNhanVien {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+@Html.Partial("~/Views/Shared/_Alert.cshtml")
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách nhân viên trong hệ thống</h6>
+        <a href="@Url.Action("New")" class="btn btn-success float-right" title="Tạo mới">
+            <span class="text-white"><i class="fas fa-plus fa-fw"></i> Thêm mới</span>
+        </a>
+    </div>
+    <div class="card-body">
+        <br />
+        <div class="form-horizontal" style="margin-left: 1rem;">
+            @using (Html.BeginForm("Search", "QuanLyNhanVien", FormMethod.Post, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col d-inline">
+                            @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "Id", "Name"), "Phân quyền", new { @class = "form-control select2", @id = "searchButton" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="table-responsive">
+            <table id="dataTable" class="table table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Họ Tên</th>
+                        <th>Phòng ban</th>
+                        <th>SĐT</th>
+                        <th>Tài khoản</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.NhanViens)
+                    {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Details","QuanLyNhanVien", new { id = item.Id })" title="Chi tiết">
+                                @Html.DisplayFor(modelItem => item.HoTen)
+                            </a>
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.PhongBan.Ten)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SoDienThoai)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Account.Email)</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Thêm mới">
+                                <span class="text-white"><i class="fas fa-edit fa-fw"></i></span>
+                            </a>
+                            @* hiển thị ds các nhân viên đã có tài khoản và chưa có tài khoản, click nút chỉnh sửa có thể
+            gán tài khoản (từ ds tài khoản chưa được phân cho nhân viên) hoặc đổi trạng thái đã nghỉ làm hoặc chuyển phòng ban*@
+                        </td>
+                        <td>
+                            <a href="#modalConfirm" data-id="@item.Id" data-toggle="modal" data-target="#modalConfirm" class="btn btn-danger modalLink" title="Xóa">
+                                <span class="text-white"><i class="fas fa-trash fa-fw"></i></span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa Thông tin nhân viên</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có thực sự muốn xóa?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("Delete", "QuanLyNhanVien"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("id", "", new { @class = "hiddenid" })
+                    <input type="hidden" name="id" id="btndelete" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "columns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    { "width": "5%" },
+                    { "width": "5%" }
+                ],
+                "language": {
+                    "infoEmpty": "Không có dữ liệu",
+                    "search": "Tìm theo tên",
+                    "emptyTable": "Không có dữ liệu",
+                    "lengthMenu": "Hiển thị _MENU_ mục",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Kế tiếp",
+                        "previous": "Trước"
+                    },
+                }
+            });
+        });
+
+        $(document).ready(function () { $(".select2").select2(); });
+
+        $("#searchButton").change(function () {
+            var selectedValue = $(this).children("option:selected").val();
+            document.forms["searchForm"].submit();
+        });
+
+        $(document).on("click", ".modalLink", function () {
+            var passedID = $(this).data('id');
+            $(".hiddenid").val(passedID);
+        });
+
+    </script>
+}

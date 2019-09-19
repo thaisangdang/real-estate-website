@@ -104,6 +104,7 @@ namespace RealEstates.Models
         [Required(ErrorMessage = "Số đơn vị phải >= 0")]
         [Display(Name = "Số đơn vị sản phẩm")]
         [Range(0, int.MaxValue)]
+        [DisplayFormat(DataFormatString = "{0:N0} sản phẩm")]
         public int SoDonViSanPham { get; set; }
 
         [Display(Name = "Ảnh đại diện")]
@@ -119,8 +120,13 @@ namespace RealEstates.Models
         [Display(Name = "Người đăng")]
         public NhanVien NguoiDang { get; set; }
 
+        [Required]
+        [Display(Name = "Trạng thái")]
+        [Range(1, 4)]
+        public int TrangThai { get; set; }
+
         [Display(Name = "Ngày đăng")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:G/dd/MM/yyyy}")]
         public DateTime? NgayDang { get; set; }
 
         public ICollection<PhanCongDuAn> PhanCongDuAns { get; set; }

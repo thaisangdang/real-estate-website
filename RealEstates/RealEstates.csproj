@@ -191,8 +191,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminDashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyNhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\SalesManDashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDashboardController.cs" />
+    <Compile Include="Areas\Admin\Models\NhanVienViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyNhanVienViewModel.cs" />
     <Compile Include="Controllers\Api\DuAnApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\QuanLyTaiKhoanApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
@@ -282,6 +285,18 @@
     <Compile Include="Migrations\201909170702437_whatChanges16.Designer.cs">
       <DependentUpon>201909170702437_whatChanges16.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909171059478_whatChanges17.cs" />
+    <Compile Include="Migrations\201909171059478_whatChanges17.Designer.cs">
+      <DependentUpon>201909171059478_whatChanges17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909190231327_whatChanges18.cs" />
+    <Compile Include="Migrations\201909190231327_whatChanges18.Designer.cs">
+      <DependentUpon>201909190231327_whatChanges18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909190736132_whatChanges19.cs" />
+    <Compile Include="Migrations\201909190736132_whatChanges19.Designer.cs">
+      <DependentUpon>201909190736132_whatChanges19.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\PhanCongDuAn.cs" />
     <Compile Include="Models\PhongBan.cs" />
@@ -293,7 +308,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helper\SearchOption.cs" />
+    <Compile Include="Helper\SelectOptions.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\PhiHoaHong.cs" />
@@ -985,6 +1000,9 @@
     <Content Include="Areas\Admin\Views\AdminDashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SalesManDashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\StaffDashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyNhanVien\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyNhanVien\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyNhanVien\NhanVienForm.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1200,6 +1218,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909170702437_whatChanges16.resx">
       <DependentUpon>201909170702437_whatChanges16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909171059478_whatChanges17.resx">
+      <DependentUpon>201909171059478_whatChanges17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909190231327_whatChanges18.resx">
+      <DependentUpon>201909190231327_whatChanges18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909190736132_whatChanges19.resx">
+      <DependentUpon>201909190736132_whatChanges19.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using RealEstates.Areas.Admin.Models;
+using RealEstates.Helper;
 using RealEstates.Models;
 using RealEstates.ViewModels;
 using System;
@@ -100,16 +101,22 @@ namespace RealEstates.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             if (!ModelState.IsValid)
-            {
                 return HttpNotFound();
-            }
+
             var loaiDuAn = _context.LoaiDuAns.Single(x => x.Id == id);
-            _context.LoaiDuAns.Remove(loaiDuAn);
-            _context.SaveChanges();
-            TempData["success"] = "Xóa thành công";
+            try
+            {
+                _context.LoaiDuAns.Remove(loaiDuAn);
+                _context.SaveChanges();
+                TempData["success"] = "Xóa thành công";
+            }
+            catch (Exception ex)
+            {
+                TempData["error"] = "Không thể xóa do loại dự án đã có dữ liệu dự án";
+                ExceptionLogger.SendErrorToText(ex);
+            }
 
             return RedirectToAction("Index", "QuanLyLoaiDuAn");
-
         }
     }
 }

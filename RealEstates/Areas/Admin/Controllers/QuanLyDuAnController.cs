@@ -18,14 +18,14 @@ namespace RealEstates.Areas.Admin.Controllers
     {
         public ApplicationDbContext _context;
 
-        public QuanLyDuAnController()
-        {
-            _context = new ApplicationDbContext();
-        }
-
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+
+        public QuanLyDuAnController()
+        {
+            _context = new ApplicationDbContext();
         }
 
         // GET: Admin/QuanLyDuAn
@@ -47,7 +47,8 @@ namespace RealEstates.Areas.Admin.Controllers
             var viewModel = new DuAnViewModel {
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
-                QuanHuyens = _context.QuanHuyens.ToList()
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
             };
 
             return View("DuAnForm", viewModel);
@@ -65,7 +66,8 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
-                QuanHuyens = _context.QuanHuyens.ToList()
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
             };
             return View("DuAnForm", viewModel);
         }
@@ -92,12 +94,13 @@ namespace RealEstates.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                //var errors = ModelState.Values.SelectMany(v => v.Errors);
                 var viewModel = new DuAnViewModel
                 {
                     LoaiDuAns = _context.LoaiDuAns.ToList(),
                     TinhThanhPhos = _context.TinhThanhPhos.ToList(),
-                    QuanHuyens = _context.QuanHuyens.ToList()
+                    QuanHuyens = _context.QuanHuyens.ToList(),
+                    TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
                 };
                 return View("DuAnForm", viewModel);
             }
@@ -147,6 +150,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 duAnInDb.LoaiDuAnId = duAn.LoaiDuAnId;
                 duAnInDb.TinhThanhPhoId = duAn.TinhThanhPhoId;
                 duAnInDb.QuanHuyenId = duAn.QuanHuyenId;
+                duAnInDb.TrangThai = duAn.TrangThai;
                 if (!string.IsNullOrEmpty(duAn.AnhDaiDien))
                 {
                     // Xóa ảnh cũ
@@ -170,10 +174,19 @@ namespace RealEstates.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             var duAn = _context.DuAns.Single(x => x.Id == id);
-            deleteFile(duAn.AnhDaiDien);
-            _context.DuAns.Remove(duAn);
-            _context.SaveChanges();
-            TempData["success"] = "Xóa thành công";
+            var anhdDaiDien = duAn.AnhDaiDien;
+            try
+            {
+                _context.DuAns.Remove(duAn);
+                _context.SaveChanges();
+                deleteFile(anhdDaiDien);
+                TempData["success"] = "Xóa thành công";
+            }
+            catch (Exception ex)
+            {
+                TempData["error"] = "Không thể xóa dự án đã phân công hoặc có doanh thu";
+                ExceptionLogger.SendErrorToText(ex);
+            }
 
             return RedirectToAction("Index", "QuanLyDuAn");
         }
@@ -215,6 +228,5 @@ namespace RealEstates.Areas.Admin.Controllers
             }
         }
         #endregion
-
     }
 }

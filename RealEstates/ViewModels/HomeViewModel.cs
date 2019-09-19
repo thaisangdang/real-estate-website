@@ -34,8 +34,8 @@ namespace RealEstates.ViewModels
 
         public HomeViewModel()
         {
-            DienTichs = SearchOption.getDienTich;
-            KhoangGias = SearchOption.getKhoangGia;
+            DienTichs = SelectOptions.getDienTich;
+            KhoangGias = SelectOptions.getKhoangGia;
         }
     }
 }
