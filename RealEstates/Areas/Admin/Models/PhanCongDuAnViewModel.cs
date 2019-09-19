@@ -9,24 +9,11 @@ namespace RealEstates.Areas.Admin.Models
 {
     public class PhanCongDuAnViewModel
     {
-        [Display(Name = "Tỉnh thành phố")]
-        public int TinhThanhPhoId { get; set; }
-
-        [Display(Name = "Loại dự án")]
-        public int LoaiDuAnId { get; set; }
-
-        [Display(Name = "Tên dự án")]
-        public string TenDuAn { get; set; }
-
         public DuAn DuAn { get; set; }
 
         public PhanCongDuAn PhanCongDuAn { get; set; }
 
         public IEnumerable<NhanVien> NhanViens { get; set; }
-
-        public IEnumerable<LoaiDuAn> LoaiDuAns { get; set; }
-
-        public IEnumerable<TinhThanhPho> TinhThanhPhos { get; set; }
 
         public IEnumerable<DuAn> DuAns { get; set; }
 

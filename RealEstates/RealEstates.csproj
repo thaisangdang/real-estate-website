@@ -195,6 +195,7 @@
     <Compile Include="Areas\Admin\Controllers\SalesManDashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDashboardController.cs" />
     <Compile Include="Areas\Admin\Models\NhanVienViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PhanCongDuAnViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyNhanVienViewModel.cs" />
     <Compile Include="Controllers\Api\DuAnApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\QuanLyTaiKhoanApiController.cs" />
@@ -208,7 +209,7 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyPhanCongDuAnController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyPhiHoaHongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanController.cs" />
-    <Compile Include="Areas\Admin\Models\PhanCongDuAnViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyPhanCongDuAnViewModel.cs" />
     <Compile Include="Controllers\DuAnController.cs" />
     <Compile Include="Controllers\TinRaoController.cs" />
     <Compile Include="Dtos\QuanHuyenDto.cs" />
