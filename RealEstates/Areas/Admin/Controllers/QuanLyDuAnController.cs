@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity; // xài eagerloading phải thêm namespace này
 using Microsoft.AspNet.Identity;
+using RealEstates.Areas.Admin.Models;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
@@ -31,15 +32,51 @@ namespace RealEstates.Areas.Admin.Controllers
         // GET: Admin/QuanLyDuAn
         public ActionResult Index()
         {
-            var duAns = new List<DuAn>();
-            duAns = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho).Include(z => z.QuanHuyen).ToList();
             if (TempData["success"] != null)
             {
                 ViewBag.Success = TempData["success"].ToString();
                 TempData.Remove("success");
             }
 
-            return View(duAns);
+            var viewModel = new QuanLyDuAnViewModel
+            {
+                LoaiDuAns = _context.LoaiDuAns.ToList(),
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        public ActionResult Search(int? tinhThanhPhoId, int? quanHuyenId, int? loaiDuAnId)
+        {
+            var viewModel = new QuanLyDuAnViewModel();
+            viewModel.DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList();
+
+            if (tinhThanhPhoId.HasValue)
+            {
+                viewModel.TinhThanhPhoId = tinhThanhPhoId.Value;
+                viewModel.DuAns = viewModel.DuAns.Where(x => x.TinhThanhPho.Id == tinhThanhPhoId);
+            }
+
+            if (quanHuyenId.HasValue)
+            {
+                viewModel.QuanHuyenId = quanHuyenId.Value;
+                viewModel.DuAns = viewModel.DuAns.Where(x => x.QuanHuyen.Id == quanHuyenId);
+            }
+
+            if (loaiDuAnId.HasValue)
+            {
+                viewModel.LoaiDuAnId = loaiDuAnId.Value;
+                viewModel.DuAns = viewModel.DuAns.Where(x => x.LoaiDuAn.Id == loaiDuAnId);
+            }
+
+            viewModel.TinhThanhPhos = _context.TinhThanhPhos.ToList();
+            viewModel.QuanHuyens = _context.QuanHuyens.ToList();
+            viewModel.LoaiDuAns = _context.LoaiDuAns.ToList();
+
+            return View("Index", viewModel);
         }
 
         public ViewResult New()

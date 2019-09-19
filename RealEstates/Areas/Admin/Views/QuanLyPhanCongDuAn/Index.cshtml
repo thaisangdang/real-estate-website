@@ -16,7 +16,10 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách dự án trong hệ thống</h6>
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">Dự án đã được phân công trong hệ thống</h6>
+        <a href="@Url.Action("New")" class="btn btn-success float-right" title="Tạo mới">
+            <span class="text-white"><i class="fas fa-plus fa-fw"></i> Thêm phân công mới</span>
+        </a>
     </div>
     <div class="card-body">
         <br />
@@ -89,7 +92,7 @@
 {
     <script>
         $(document).ready(function () {
-            var table = $('#dataTable').DataTable({
+            $('#dataTable').DataTable({
                 "columns": [
                     null,
                     null,
@@ -111,10 +114,9 @@
                     },
                 }
             });
-        });
 
-        $(document).ready(function () {
             $(".select2").select2();
+
             $("#TinhThanhPho").change(function () {
                 var selectedValue = $(this).children("option:selected").val();
                 $.ajax({

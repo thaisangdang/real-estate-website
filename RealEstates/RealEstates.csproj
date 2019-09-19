@@ -196,6 +196,7 @@
     <Compile Include="Areas\Admin\Controllers\StaffDashboardController.cs" />
     <Compile Include="Areas\Admin\Models\NhanVienViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PhanCongDuAnViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyDuAnViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyNhanVienViewModel.cs" />
     <Compile Include="Controllers\Api\DuAnApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\QuanLyTaiKhoanApiController.cs" />
@@ -297,6 +298,10 @@
     <Compile Include="Migrations\201909190736132_whatChanges19.cs" />
     <Compile Include="Migrations\201909190736132_whatChanges19.Designer.cs">
       <DependentUpon>201909190736132_whatChanges19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909191814219_whatChanges20.cs" />
+    <Compile Include="Migrations\201909191814219_whatChanges20.Designer.cs">
+      <DependentUpon>201909191814219_whatChanges20.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\PhanCongDuAn.cs" />
@@ -1228,6 +1233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909190736132_whatChanges19.resx">
       <DependentUpon>201909190736132_whatChanges19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909191814219_whatChanges20.resx">
+      <DependentUpon>201909191814219_whatChanges20.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

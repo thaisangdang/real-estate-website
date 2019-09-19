@@ -126,7 +126,7 @@ namespace RealEstates.Models
         public int TrangThai { get; set; }
 
         [Display(Name = "Ngày đăng")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:G/dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy hh:mm tt}")]
         public DateTime? NgayDang { get; set; }
 
         public ICollection<PhanCongDuAn> PhanCongDuAns { get; set; }
