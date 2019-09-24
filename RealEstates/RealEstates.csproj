@@ -195,7 +195,7 @@
     <Compile Include="Areas\Admin\Controllers\SalesManDashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDashboardController.cs" />
     <Compile Include="Areas\Admin\Models\NhanVienViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\PhanCongDuAnViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PhanCongSanPhamViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyDuAnViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyNhanVienViewModel.cs" />
     <Compile Include="Controllers\Api\DuAnApiController.cs" />
@@ -207,10 +207,10 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyChatController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyDuAnController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiDuAnController.cs" />
-    <Compile Include="Areas\Admin\Controllers\QuanLyPhanCongDuAnController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyPhanCongSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyPhiHoaHongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanController.cs" />
-    <Compile Include="Areas\Admin\Models\QuanLyPhanCongDuAnViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyPhanCongSanPhamViewModel.cs" />
     <Compile Include="Controllers\DuAnController.cs" />
     <Compile Include="Controllers\TinRaoController.cs" />
     <Compile Include="Dtos\QuanHuyenDto.cs" />
@@ -303,8 +303,20 @@
     <Compile Include="Migrations\201909191814219_whatChanges20.Designer.cs">
       <DependentUpon>201909191814219_whatChanges20.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909240620507_whatChanges21.cs" />
+    <Compile Include="Migrations\201909240620507_whatChanges21.Designer.cs">
+      <DependentUpon>201909240620507_whatChanges21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909240833004_whatChanges22.cs" />
+    <Compile Include="Migrations\201909240833004_whatChanges22.Designer.cs">
+      <DependentUpon>201909240833004_whatChanges22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909240839396_whatChanges23.cs" />
+    <Compile Include="Migrations\201909240839396_whatChanges23.Designer.cs">
+      <DependentUpon>201909240839396_whatChanges23.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\PhanCongDuAn.cs" />
+    <Compile Include="Models\PhanCongSanPham.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Models\QuanHuyen.cs" />
     <Compile Include="ViewModels\DuAnViewModel.cs" />
@@ -1000,8 +1012,8 @@
     <Content Include="Areas\Admin\Views\QuanLyLoaiDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\DuAnForm.cshtml" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
-    <Content Include="Areas\Admin\Views\QuanLyPhanCongDuAn\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyPhanCongDuAn\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SalesManDashboard\Index.cshtml" />
@@ -1009,6 +1021,8 @@
     <Content Include="Areas\Admin\Views\QuanLyNhanVien\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyNhanVien\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyNhanVien\NhanVienForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\PhanCongSanPhamForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\ThongBao.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1236,6 +1250,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909191814219_whatChanges20.resx">
       <DependentUpon>201909191814219_whatChanges20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909240620507_whatChanges21.resx">
+      <DependentUpon>201909240620507_whatChanges21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909240833004_whatChanges22.resx">
+      <DependentUpon>201909240833004_whatChanges22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909240839396_whatChanges23.resx">
+      <DependentUpon>201909240839396_whatChanges23.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -36,7 +36,8 @@ namespace RealEstates.Areas.Admin.Controllers
             var viewModel = new QuanLyNhanVienViewModel
             {
                 NhanViens = _context.NhanViens.Include(x => x.PhongBan).Include(z => z.Account).ToList(),
-                Roles = _context.Roles.ToList()
+                Roles = _context.Roles.ToList(),
+                TrangThaiNhanVien = SelectOptions.getTrangThaiNhanVien
             };
             return View(viewModel);
         }
@@ -48,7 +49,8 @@ namespace RealEstates.Areas.Admin.Controllers
                 NhanViens = _context.NhanViens.Include(x => x.PhongBan).Include(z => z.Account)
                 .Where(nv => nv.Account.Roles.FirstOrDefault().RoleId == roleId)
                 .ToList(),
-                Roles = _context.Roles.ToList()
+                Roles = _context.Roles.ToList(),
+                TrangThaiNhanVien = SelectOptions.getTrangThaiNhanVien
             };
 
             return View("Index", viewModel);

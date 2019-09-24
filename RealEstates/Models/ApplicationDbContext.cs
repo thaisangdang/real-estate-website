@@ -16,7 +16,7 @@ namespace RealEstates.Models
         public DbSet<QuanHuyen> QuanHuyens { get; set; }
         public DbSet<PhongBan> PhongBans { get; set; }
         public DbSet<NhanVien> NhanViens { get; set; }
-        public DbSet<PhanCongDuAn> PhanCongDuAns { get; set; }
+        public DbSet<PhanCongSanPham> PhanCongSanPhams { get; set; }
         public DbSet<PhiHoaHong> PhiHoaHongs { get; set; }
 
         public ApplicationDbContext()

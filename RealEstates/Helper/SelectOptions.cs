@@ -21,10 +21,10 @@ namespace RealEstates.Helper
                 if (TrangThaiDuAn == null)
                 {
                     TrangThaiDuAn = new List<Option>();
-                    TrangThaiDuAn.Add(new Option() { Id = 1, Text = "Mở bán" } ); // mặc định
+                    TrangThaiDuAn.Add(new Option() { Id = 1, Text = "Đang mở bán" } );
                     TrangThaiDuAn.Add(new Option() { Id = 2, Text = "Dự án mẫu" } );
                     TrangThaiDuAn.Add(new Option() { Id = 3, Text = "Tạm ngưng" } );
-                    TrangThaiDuAn.Add(new Option() { Id = 4, Text = "Đã bán hết" } ); // thuộc tính số đơn vị dự án là để xử lý phân công dự án cho nhân viên sales
+                    TrangThaiDuAn.Add(new Option() { Id = 4, Text = "Đã bán hết" } );
                 }
                 return TrangThaiDuAn;
             }

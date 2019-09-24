@@ -7,8 +7,8 @@ using System.Web;
 
 namespace RealEstates.Models
 {
-    [Table("PhanCongDuAn")]
-    public class PhanCongDuAn
+    [Table("PhanCongSanPham")]
+    public class PhanCongSanPham
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

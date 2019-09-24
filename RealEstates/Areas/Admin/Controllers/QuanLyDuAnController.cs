@@ -43,7 +43,8 @@ namespace RealEstates.Areas.Admin.Controllers
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.ToList(),
-                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList()
+                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList(),
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
             };
 
             return View(viewModel);
@@ -51,7 +52,13 @@ namespace RealEstates.Areas.Admin.Controllers
 
         public ActionResult Search(int? tinhThanhPhoId, int? quanHuyenId, int? loaiDuAnId)
         {
-            var viewModel = new QuanLyDuAnViewModel();
+            var viewModel = new QuanLyDuAnViewModel {
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                LoaiDuAns = _context.LoaiDuAns.ToList(),
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
+            };
+
             viewModel.DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList();
 
             if (tinhThanhPhoId.HasValue)
@@ -71,10 +78,6 @@ namespace RealEstates.Areas.Admin.Controllers
                 viewModel.LoaiDuAnId = loaiDuAnId.Value;
                 viewModel.DuAns = viewModel.DuAns.Where(x => x.LoaiDuAn.Id == loaiDuAnId);
             }
-
-            viewModel.TinhThanhPhos = _context.TinhThanhPhos.ToList();
-            viewModel.QuanHuyens = _context.QuanHuyens.ToList();
-            viewModel.LoaiDuAns = _context.LoaiDuAns.ToList();
 
             return View("Index", viewModel);
         }

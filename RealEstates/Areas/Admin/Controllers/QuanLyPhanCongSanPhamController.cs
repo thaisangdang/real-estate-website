@@ -6,11 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using RealEstates.Helper;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
     [Authorize(Roles = RoleName.Administrator)]
-    public class QuanLyPhanCongDuAnController : Controller
+    public class QuanLyPhanCongSanPhamController : Controller
     {
         public ApplicationDbContext _context;
 
@@ -19,12 +20,12 @@ namespace RealEstates.Areas.Admin.Controllers
             _context.Dispose();
         }
 
-        public QuanLyPhanCongDuAnController()
+        public QuanLyPhanCongSanPhamController()
         {
             _context = new ApplicationDbContext();
         }
 
-        // GET: Admin/QuanLyPhanCongDuAn
+        // GET: Admin/QuanLyPhanCongSanPham
         public ActionResult Index()
         {
             if (TempData["success"] != null)
@@ -32,20 +33,21 @@ namespace RealEstates.Areas.Admin.Controllers
                 ViewBag.Success = TempData["success"].ToString();
                 TempData.Remove("success");
             }
-            var viewModel = new QuanLyPhanCongDuAnViewModel
+            var viewModel = new QuanLyPhanCongSanPhamViewModel
             {
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.ToList(),
-                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList()
+                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList(),
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
             };
 
             return View(viewModel);
         }
 
-        public ActionResult Search(int? tinhThanhPhoId, int? quanHuyenId, int? loaiDuAnId)
+        public ActionResult Search(int? tinhThanhPhoId, int? quanHuyenId, int? loaiDuAnId, int? trangThai)
         {
-            var viewModel = new QuanLyPhanCongDuAnViewModel();
+            var viewModel = new QuanLyPhanCongSanPhamViewModel();
             viewModel.DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList();
 
             if (tinhThanhPhoId.HasValue)
@@ -66,23 +68,38 @@ namespace RealEstates.Areas.Admin.Controllers
                 viewModel.DuAns = viewModel.DuAns.Where(x => x.LoaiDuAn.Id == loaiDuAnId);
             }
 
+            if (trangThai.HasValue)
+            {
+                viewModel.TrangThai = trangThai.Value;
+                viewModel.DuAns = viewModel.DuAns.Where(x => x.TrangThai == trangThai);
+            }
+
             viewModel.TinhThanhPhos = _context.TinhThanhPhos.ToList();
             viewModel.QuanHuyens = _context.QuanHuyens.ToList();
             viewModel.LoaiDuAns = _context.LoaiDuAns.ToList();
+            viewModel.TrangThaiDuAn = SelectOptions.getTrangThaiDuAn;
 
             return View("Index", viewModel);
         }
 
-        public ActionResult Edit(int id)
+
+
+        public ActionResult ThongBao(int id)
         {
             var duAn = _context.DuAns.SingleOrDefault(x => x.Id == id);
 
-            var viewModel = new QuanLyPhanCongDuAnViewModel
+            var viewModel = new QuanLyPhanCongSanPhamViewModel
             {
 
             };
 
             return View(viewModel);
+        }
+
+        public ActionResult New()
+        {
+
+            return View("PhanCongSanPhamForm");
         }
     }
 }

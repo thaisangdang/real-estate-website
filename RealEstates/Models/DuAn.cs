@@ -104,7 +104,8 @@ namespace RealEstates.Models
         [Required(ErrorMessage = "Số đơn vị phải >= 0")]
         [Display(Name = "Số đơn vị sản phẩm")]
         [Range(0, int.MaxValue)]
-        [DisplayFormat(DataFormatString = "{0:N0} sản phẩm")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        //[DisplayFormat(DataFormatString = "{0:N0} sản phẩm")]
         public int SoDonViSanPham { get; set; }
 
         [Display(Name = "Ảnh đại diện")]
@@ -129,8 +130,19 @@ namespace RealEstates.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy hh:mm tt}")]
         public DateTime? NgayDang { get; set; }
 
-        public ICollection<PhanCongDuAn> PhanCongDuAns { get; set; }
+        [Range(0, int.MaxValue)]
+        [Display(Name = "Tổng sản phẩm đã bán hoặc cho thuê")]
+        public int TongSpDaBanHoacChoThue { get; set; } // cập nhật lúc nhân viên sales báo cáo thành công
 
-        //[DisplayFormat(DataFormatString = "{0:N0} tầng")]
+        [Range(0, int.MaxValue)]
+        [Display(Name = "Tổng sản phẩm đã tính hoa hồng")]
+        public int TongSpDaTinhHoaHong { get; set; } // cập nhật lúc tính phí hoa hồng cho nhân viên sales
+
+        [Column(TypeName = "money")]
+        [Display(Name = "Tổng doanh thu hiện tại (VNĐ)")]
+        public int TongDoanhThuHienTai { get; set; } // cập nhật lúc tính phí hoa hồng
+
+        public ICollection<PhanCongSanPham> PhanCongSanPhams { get; set; }
+
     }
 }

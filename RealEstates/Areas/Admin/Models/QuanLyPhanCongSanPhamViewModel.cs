@@ -1,4 +1,5 @@
-﻿using RealEstates.Models;
+﻿using RealEstates.Helper;
+using RealEstates.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,16 +8,19 @@ using System.Web;
 
 namespace RealEstates.Areas.Admin.Models
 {
-    public class QuanLyPhanCongDuAnViewModel
+    public class QuanLyPhanCongSanPhamViewModel
     {
         [Display(Name = "Tỉnh thành phố")]
-        public int TinhThanhPhoId { get; set; }
+        public int TinhThanhPhoId { get; set; } // dùng cho chức năng tìm kiếm
 
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
 
         [Display(Name = "Loại dự án")]
         public int LoaiDuAnId { get; set; }
+
+        [Display(Name = "Trạng thái dự án")]
+        public int TrangThai { get; set; }
 
         public IEnumerable<LoaiDuAn> LoaiDuAns { get; set; }
 
@@ -25,6 +29,8 @@ namespace RealEstates.Areas.Admin.Models
         public IEnumerable<QuanHuyen> QuanHuyens { get; set; }
 
         public IEnumerable<DuAn> DuAns { get; set; }
+
+        public IEnumerable<Option> TrangThaiDuAn { get; set; }
 
     }
 }

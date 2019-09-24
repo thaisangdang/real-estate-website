@@ -18,7 +18,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách nhân viên trong hệ thống</h6>
         <a href="@Url.Action("New")" class="btn btn-success float-right" title="Tạo mới">
-            <span class="text-white"><i class="fas fa-plus fa-fw"></i> Thêm mới</span>
+            <span class="text-white"><i class="fas fa-plus fa-fw"></i> Thêm nhân viên</span>
         </a>
     </div>
     <div class="card-body">
@@ -44,7 +44,8 @@
                         <th>Họ Tên</th>
                         <th>Phòng ban</th>
                         <th>SĐT</th>
-                        <th>Tài khoản</th>
+                        <th>Tài khoản đăng nhập</th>
+                        <th>Trạng thái</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -62,7 +63,12 @@
                         <td>@Html.DisplayFor(modelItem => item.SoDienThoai)</td>
                         <td>@Html.DisplayFor(modelItem => item.Account.Email)</td>
                         <td>
-                            <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Thêm mới">
+                            <div class="rounded-pill text-light @Model.GetLableColor(item.TrangThai) text-center">
+                                @Model.TrangThaiNhanVien.Single(x => x.Id == item.TrangThai).Text
+                            </div>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Cập nhật">
                                 <span class="text-white"><i class="fas fa-edit fa-fw"></i></span>
                             </a>
                             @* hiển thị ds các nhân viên đã có tài khoản và chưa có tài khoản, click nút chỉnh sửa có thể
@@ -114,6 +120,7 @@
         $(document).ready(function () {
             $('#dataTable').DataTable({
                 "columns": [
+                    null,
                     null,
                     null,
                     null,

@@ -10,12 +10,10 @@
     @Html.ActionLink("Loại dự án", "Index", "QuanLyLoaiDuAn", null, new { @class = "nav-link", @id = "menuQuanLyLoaiDuAn" })
 </li>
 
-@* danh sách dự án đã phân công cho nhân viên sales, lọc theo loại dự án + tỉnh thành phố + dự án , hiển thị trạng thái hoàn thành hay chưa, có nút "Phân công dự án" *@
 <li class="nav-item">
-    @Html.ActionLink("Phân công dự án", "Index", "QuanLyPhanCongDuAn", null, new { @class = "nav-link", @id = "menuQuanLyPhanCongDuAn" })
+    @Html.ActionLink("Sales", "Index", "QuanLyPhanCongSanPham", null, new { @class = "nav-link", @id = "menuQuanLyPhanCongSanPham" })
 </li>
 
-@* Danh sách phí hoa hồng đã được lập, lọc theo loại dự án + tỉnh thành phố + dự án + nhân viên sales *@
 <li class="nav-item">
     @Html.ActionLink("Phí hoa hồng", "Index", "QuanLyPhiHoaHong", null, new { @class = "nav-link", @id = "menuQuanLyPhiHoaHong" })
 </li>

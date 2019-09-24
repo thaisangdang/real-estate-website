@@ -1,4 +1,5 @@
-﻿using RealEstates.Models;
+﻿using RealEstates.Helper;
+using RealEstates.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,5 +26,30 @@ namespace RealEstates.Areas.Admin.Models
         public IEnumerable<QuanHuyen> QuanHuyens { get; set; }
 
         public IEnumerable<DuAn> DuAns { get; set; }
+
+        public IEnumerable<Option> TrangThaiDuAn { get; set; }
+
+        public string GetLableColor(int trangThai)
+        {
+            string color = "";
+            switch (trangThai)
+            {
+                case 1:
+                    color = "bg-success";
+                    break;
+                case 2:
+                    color = "bg-info";
+                    break;
+                case 3:
+                    color = "bg-secondary";
+                    break;
+                case 4:
+                    color = "bg-danger";
+                    break;
+                default:
+                    break;
+            }
+            return color;
+        }
     }
 }

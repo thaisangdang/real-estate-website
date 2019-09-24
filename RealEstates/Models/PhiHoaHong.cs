@@ -20,10 +20,10 @@ namespace RealEstates.Models
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Phân công dự án")]
-        public int PhanCongDuAnId { get; set; }
+        [Display(Name = "Phân công sản phẩm")]
+        public int PhanCongSanPhamId { get; set; }
 
-        public PhanCongDuAn PhanCongDuAn { get; set; }
+        public PhanCongSanPham PhanCongSanPham { get; set; }
 
         [Display(Name = "Phí khác")]
         [Column(TypeName = "money")]
