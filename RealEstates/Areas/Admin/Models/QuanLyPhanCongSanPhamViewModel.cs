@@ -11,7 +11,7 @@ namespace RealEstates.Areas.Admin.Models
     public class QuanLyPhanCongSanPhamViewModel
     {
         [Display(Name = "Tỉnh thành phố")]
-        public int TinhThanhPhoId { get; set; } // dùng cho chức năng tìm kiếm
+        public int TinhThanhPhoId { get; set; }
 
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
@@ -20,7 +20,7 @@ namespace RealEstates.Areas.Admin.Models
         public int LoaiDuAnId { get; set; }
 
         [Display(Name = "Trạng thái dự án")]
-        public int TrangThai { get; set; }
+        public int TrangThai { get; set; } // dùng cho chức năng tìm kiếm
 
         public IEnumerable<LoaiDuAn> LoaiDuAns { get; set; }
 

@@ -19,6 +19,9 @@ namespace RealEstates.Areas.Admin.Models
         [Display(Name = "Loại dự án")]
         public int LoaiDuAnId { get; set; }
 
+        [Display(Name = "Trạng thái dự án")]
+        public int TrangThai { get; set; } // dùng cho chức năng tìm kiếm
+
         public IEnumerable<LoaiDuAn> LoaiDuAns { get; set; }
 
         public IEnumerable<TinhThanhPho> TinhThanhPhos { get; set; }

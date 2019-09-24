@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RealEstates.Models.LoaiDuAn>
+﻿@model RealEstates.Areas.Admin.Models.QuanLyLoaiDuAnViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -27,25 +27,22 @@
             <table id="dataTable" class="table table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.TenLoai)</th>
-                        <th>@Html.DisplayNameFor(model => model.MoTa)</th>
+                        <th>Loại dự án</th>
+                        <th>Mô tả</th>
+                        <th>Tổng số dự án</th>
+                        <th>Số dự án đang mở bán</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.LoaiDuAns)
                     {
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.TenLoai)</td>
-                            @*@if (item.ChoThue)
-                                {
-                                    <td>Dự án cho thuuê</td>
-                                } else
-                                {
-                                    <td>Dự án bán</td>
-                                }*@
                             <td>@Html.DisplayFor(modelItem => item.MoTa)</td>
+                            <td class="text-center">@Model.DuAns.Where(x => x.LoaiDuAn.Id == item.Id).Count()</td>
+                            <td class="text-center">@Model.DuAns.Where(x => x.LoaiDuAn.Id == item.Id && x.TrangThai == 1).Count()</td>
                             <td>
                                 <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Sửa">
                                     <span class="text-white"><i class="fas fa-edit fa-fw"></i></span>
@@ -59,16 +56,6 @@
                         </tr>
                     }
                 </tbody>
-                @*<tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                    </tfoot>*@
             </table>
         </div>
     </div>
@@ -106,6 +93,8 @@
         $(document).ready(function () {
             $('#dataTable').DataTable({
                 "columns": [
+                    null,
+                    null,
                     null,
                     null,
                     { "width": "5%" },

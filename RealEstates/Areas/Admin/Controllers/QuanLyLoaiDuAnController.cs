@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
@@ -28,15 +29,19 @@ namespace RealEstates.Areas.Admin.Controllers
         // GET: Admin/QuanLyLoaiDuAn
         public ActionResult Index()
         {
-            var loaiDuAns = new List<LoaiDuAn>();
-            loaiDuAns = _context.LoaiDuAns.ToList();
             if (TempData["success"] != null)
             {
                 ViewBag.Success = TempData["success"].ToString();
                 TempData.Remove("success");
             }
 
-            return View(loaiDuAns);
+            var viewModel = new QuanLyLoaiDuAnViewModel
+            {
+                LoaiDuAns = _context.LoaiDuAns.ToList(),
+                DuAns = _context.DuAns.Include(x => x.LoaiDuAn).ToList()
+            };
+
+            return View(viewModel);
         }
 
         public ViewResult New()

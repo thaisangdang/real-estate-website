@@ -197,6 +197,7 @@
     <Compile Include="Areas\Admin\Models\NhanVienViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PhanCongSanPhamViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyDuAnViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyLoaiDuAnViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyNhanVienViewModel.cs" />
     <Compile Include="Controllers\Api\DuAnApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\QuanLyTaiKhoanApiController.cs" />

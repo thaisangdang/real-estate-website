@@ -50,7 +50,7 @@ namespace RealEstates.Areas.Admin.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Search(int? tinhThanhPhoId, int? quanHuyenId, int? loaiDuAnId)
+        public ActionResult Search(int? tinhThanhPhoId, int? quanHuyenId, int? loaiDuAnId, int? trangThai)
         {
             var viewModel = new QuanLyDuAnViewModel {
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
@@ -77,6 +77,12 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 viewModel.LoaiDuAnId = loaiDuAnId.Value;
                 viewModel.DuAns = viewModel.DuAns.Where(x => x.LoaiDuAn.Id == loaiDuAnId);
+            }
+
+            if (trangThai.HasValue)
+            {
+                viewModel.TrangThai = trangThai.Value;
+                viewModel.DuAns = viewModel.DuAns.Where(x => x.TrangThai == trangThai);
             }
 
             return View("Index", viewModel);
