@@ -192,7 +192,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 duAnInDb.MatBang = duAn.MatBang;
                 duAnInDb.Media = duAn.Media;
                 duAnInDb.HoTroTaiChinh = duAn.HoTroTaiChinh;
-                duAnInDb.SoDonViSanPham = duAn.SoDonViSanPham;
+                duAnInDb.SoSanPham = duAn.SoSanPham;
                 duAnInDb.LoaiDuAnId = duAn.LoaiDuAnId;
                 duAnInDb.TinhThanhPhoId = duAn.TinhThanhPhoId;
                 duAnInDb.QuanHuyenId = duAn.QuanHuyenId;

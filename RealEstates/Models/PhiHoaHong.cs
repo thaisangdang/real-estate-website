@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
-    Tính phí xong phải trừ số lượng trong dự án, dự án số đơn vị = 0 thì không hiện trên web
+    Tính phí xong phải trừ số lượng trong dự án, dự án số sản phẩm = 0 thì không hiện trên web
  */
 
 namespace RealEstates.Models

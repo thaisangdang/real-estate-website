@@ -1,4 +1,4 @@
-﻿@model RealEstates.Areas.Admin.Models.QuanLyPhanCongSanPhamViewModel
+﻿@model RealEstates.Areas.Admin.Models.SalesViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +6,7 @@
 }
 
 <style>
-    #menuQuanLyPhanCongSanPham {
+    #menuSales {
         color: white;
         background-color: dodgerblue;
     }
@@ -17,9 +17,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary d-inline-block">Dự án có sản phẩm được phân công cho nhân viên sales</h6>                            
-    @* chọn phân công sẽ tiếp tục hiện ra 1 list những sản phẩm đã phân công cho nhân viên sales với trạng thái
-        chưa hoàn thành, đã hoàn thành, đã tính hoa hồng, chưa tính hoa hồng
-         bấm vào mục phân công cụ thể để thấy bảng phân công vào sản phẩm của dự án cụ thể *@
         <a href="@Url.Action("New")" class="btn btn-success float-right" title="Phân công sản phẩm">
             <span class="text-white"><i class="fas fa-plus fa-fw"></i> Phân công sản phẩm</span>
         </a>
@@ -27,7 +24,7 @@
     <div class="card-body">
         <br />
         <div class="form-horizontal" style="margin-left: 1rem;">
-            @using (Html.BeginForm("Search", "QuanLyPhanCongSanPham", FormMethod.Get, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
+            @using (Html.BeginForm("Search", "Sales", FormMethod.Get, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -67,6 +64,7 @@
                         <th>Số sản phẩm</th> 
                         <th>Đã bán/cho thuê</th>
                         <th>Đã tính hoa hồng</th>
+                        <th>Chi tiết</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,7 +72,7 @@
                     {
                     <tr>
                         <td>
-                            <a href="@Url.Action("ThongBao","QuanLyPhanCongSanPham", new { id = item.Id})" title="Chi tiết">
+                            <a href="@Url.Action("ThongBao","Sales", new { id = item.Id})" title="Chi tiết">
                                 <span class="badge badge-danger">4</span> Báo cáo công việc mới
                             </a>
                         </td>
@@ -90,9 +88,14 @@
                                 @Model.TrangThaiDuAn.Single(x => x.Id == item.TrangThai).Text
                             </div>
                         </td>
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.SoDonViSanPham)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.SoSanPham)</td>
                         <td class="text-center">@Html.DisplayFor(modelItem => item.TongSpDaBanHoacChoThue)</td>
                         <td class="text-center">@Html.DisplayFor(modelItem => item.TongSpDaTinhHoaHong)</td>
+                        <td>
+                            <a href="@Url.Action("PhanCongs", new { id = item.Id})" class="btn btn-info" title="Chi tiết">
+                                <span class="text-white"><i class="fas fa-eye fa-fw"></i></span>
+                            </a>
+                        </td>
                     </tr>
 
                     }
@@ -113,6 +116,7 @@
                     null,
                     null,
                     { "width": "15%" },
+                    { "width": "5%" },
                     { "width": "5%" },
                     { "width": "5%" },
                     { "width": "5%" }

@@ -20,14 +20,15 @@ namespace RealEstates.Models
 
         public DuAn DuAn { get; set; }
 
-        [Display(Name = "Đơn vị sản phẩm")]
-        public string DonViSanPham { get; set; } // bán gì, trong dự án nào
+        [Display(Name = "Sản phẩm")]
+        public string SanPham { get; set; }
 
-        [Display(Name = "Giá đơn vị sản phẩm")]
+        [Display(Name = "Giá sản phẩm")]
         [Column(TypeName = "money")]
-        public decimal GiaDonViDuAn { get; set; }
+        public decimal GiaSanPham { get; set; }
 
         [Display(Name = "Phần trăm hoa hồng")]
+        [DisplayFormat(DataFormatString = "{0:N0}%")]
         [Range(0, 100)]
         public double PhanTramHoaHong { get; set; }
 
@@ -45,7 +46,10 @@ namespace RealEstates.Models
         public NhanVien NhanVienSales { get; set; }
 
         [Display(Name = "Trạng thái")] // hoàn thành hay chưa
-        public bool TrangThai { get; set; }
+        public int TrangThai { get; set; }
+
+        [Display(Name = "Tính phí hoa hồng")] // hoàn thành hay chưa
+        public bool DaTinhHoaHong { get; set; }
 
         [Display(Name = "Người tạo")]
         public string NguoTao { get; set; }

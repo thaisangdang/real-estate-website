@@ -42,6 +42,8 @@ namespace RealEstates.ViewModels
         [Display(Name = "Loại hình phát triển")]
         public int LoaiDuAnId { get; set; }
 
+        public LoaiDuAn LoaiDuAn { get; set; }
+
         [Required]
         [Display(Name = "Quy mô dự án")]
         public string QuyMoDuAn { get; set; }
@@ -85,14 +87,18 @@ namespace RealEstates.ViewModels
         [Display(Name = "Tỉnh/Thành phố")]
         public int TinhThanhPhoId { get; set; }
 
+        public TinhThanhPho TinhThanhPho { get; set; }
+
         [Required]
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
 
-        [Required(ErrorMessage = "Số đơn vị phải >= 0")]
-        [Display(Name = "Số đơn vị sản phẩm")]
+        public QuanHuyen QuanHuyen { get; set; }
+
+        [Required(ErrorMessage = "Số sản phẩm phải >= 0")]
+        [Display(Name = "Số sản phẩm")]
         [Range(0, int.MaxValue)]
-        public int SoDonViSanPham { get; set; }
+        public int SoSanPham { get; set; }
 
         [Display(Name = "Ảnh đại diện")]
         [AllowHtml]
@@ -107,8 +113,14 @@ namespace RealEstates.ViewModels
         public int TrangThai { get; set; }
 
         [Display(Name = "Ngày đăng")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy hh:mm tt}")]
         public DateTime? NgayDang { get; set; }
+
+        [Display(Name = "Tổng sản phẩm đã bán hoặc cho thuê")]
+        public int TongSpDaBanHoacChoThue { get; set; }
+
+        [Display(Name = "Tổng sản phẩm đã tính hoa hồng")]
+        public int TongSpDaTinhHoaHong { get; set; }
 
         public string Title
         {
@@ -148,7 +160,7 @@ namespace RealEstates.ViewModels
             MatBang = duAn.MatBang;
             Media = duAn.Media;
             HoTroTaiChinh = duAn.HoTroTaiChinh;
-            SoDonViSanPham = duAn.SoDonViSanPham;
+            SoSanPham = duAn.SoSanPham;
             AnhDaiDien = duAn.AnhDaiDien;
             NgayDang = duAn.NgayDang;
             TinhThanhPhoId = duAn.TinhThanhPhoId;

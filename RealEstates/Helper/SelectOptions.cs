@@ -13,6 +13,7 @@ namespace RealEstates.Helper
         public static List<Option> ThoiGian { get; set; }
         public static List<Option> TrangThaiNhanVien { get; set; }
         public static List<Option> TrangThaiDuAn { get; set; }
+        public static List<Option> TrangThaiPhanCongSanPham { get; set; }
 
         public static List<Option> getTrangThaiDuAn
         {
@@ -42,6 +43,21 @@ namespace RealEstates.Helper
                     TrangThaiNhanVien.Add(new Option() { Id = 3, Text = "Đã nghỉ việc" });
                 }
                 return TrangThaiNhanVien;
+            }
+        }
+
+        public static List<Option> getTrangThaiPhanCongSanPham
+        {
+            get
+            {
+                if (TrangThaiPhanCongSanPham == null)
+                {
+                    TrangThaiPhanCongSanPham = new List<Option>();
+                    TrangThaiPhanCongSanPham.Add(new Option() { Id = 1, Text = "Chưa hoàn thành" });
+                    TrangThaiPhanCongSanPham.Add(new Option() { Id = 2, Text = "Đã hoàn thành" });
+                    TrangThaiPhanCongSanPham.Add(new Option() { Id = 3, Text = "Đã hủy" });
+                }
+                return TrangThaiPhanCongSanPham;
             }
         }
 

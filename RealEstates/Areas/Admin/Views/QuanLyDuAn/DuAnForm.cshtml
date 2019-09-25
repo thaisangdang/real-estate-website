@@ -136,8 +136,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                @Html.LabelFor(model => model.SoDonViSanPham, new { @class = "control-label col-md-12" })
-                @Html.TextBoxFor(model => model.SoDonViSanPham, new { @class = "form-control col-md-12" })
+                @Html.LabelFor(model => model.SoSanPham, new { @class = "control-label col-md-12" })
+                @Html.TextBoxFor(model => model.SoSanPham, new { @class = "form-control col-md-12" })
             </div>
         </div>
         <div class="col-md-6">
@@ -186,6 +186,9 @@
             CKEDITOR.replace('MatBang');
             CKEDITOR.replace('Media');
             CKEDITOR.replace('HoTroTaiChinh');
+            CKEDITOR.editorConfig = function( config ) {
+                config.language = 'vi';
+            };
         });
 
         $(document).ready(function () {
