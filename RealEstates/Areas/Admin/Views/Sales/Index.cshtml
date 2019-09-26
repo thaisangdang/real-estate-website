@@ -17,9 +17,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary d-inline-block">Dự án có sản phẩm được phân công cho nhân viên sales</h6>                            
-        <a href="@Url.Action("New")" class="btn btn-success float-right" title="Phân công sản phẩm">
-            <span class="text-white"><i class="fas fa-plus fa-fw"></i> Phân công sản phẩm</span>
-        </a>
     </div>
     <div class="card-body">
         <br />
@@ -62,8 +59,9 @@
                         <th>Địa chỉ</th>
                         <th>Trạng thái dự án</th> 
                         <th>Số sản phẩm</th> 
-                        <th>Đã bán/cho thuê</th>
-                        <th>Đã tính hoa hồng</th>
+                        <th>Sản phẩm đã bán/cho thuê</th>
+                        <th>Sản phẩm đã tính hoa hồng</th>
+                        <th>Doanh thu hiện tại</th>
                         <th>Chi tiết</th>
                     </tr>
                 </thead>
@@ -73,7 +71,7 @@
                     <tr>
                         <td>
                             <a href="@Url.Action("ThongBao","Sales", new { id = item.Id})" title="Chi tiết">
-                                <span class="badge badge-danger">4</span> Báo cáo công việc mới
+                                <span class="badge badge-danger">4</span> Báo cáo công việc mới (hiện thông báo hoàn thành của nhân viên sales chổ này, chưa xử lý)
                             </a>
                         </td>
                         <td>
@@ -91,8 +89,9 @@
                         <td class="text-center">@Html.DisplayFor(modelItem => item.SoSanPham)</td>
                         <td class="text-center">@Html.DisplayFor(modelItem => item.TongSpDaBanHoacChoThue)</td>
                         <td class="text-center">@Html.DisplayFor(modelItem => item.TongSpDaTinhHoaHong)</td>
+                        <td class="text-center">chưa xử lý</td>
                         <td>
-                            <a href="@Url.Action("PhanCongs", new { id = item.Id})" class="btn btn-info" title="Chi tiết">
+                            <a href="@Url.Action("PhanCongByDuAn", new { id = item.Id})" class="btn btn-info" title="Chi tiết">
                                 <span class="text-white"><i class="fas fa-eye fa-fw"></i></span>
                             </a>
                         </td>
@@ -119,6 +118,7 @@
                     { "width": "5%" },
                     { "width": "5%" },
                     { "width": "5%" },
+                    null,
                     { "width": "5%" }
                 ],
                 "language": {

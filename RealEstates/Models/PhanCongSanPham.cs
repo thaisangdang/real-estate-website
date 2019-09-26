@@ -23,9 +23,9 @@ namespace RealEstates.Models
         [Display(Name = "Sản phẩm")]
         public string SanPham { get; set; }
 
-        [Display(Name = "Giá sản phẩm")]
+        [Display(Name = "Giá bán sản phẩm")]
         [Column(TypeName = "money")]
-        public decimal GiaSanPham { get; set; }
+        public decimal GiaBanSanPham { get; set; }
 
         [Display(Name = "Phần trăm hoa hồng")]
         [DisplayFormat(DataFormatString = "{0:N0}%")]

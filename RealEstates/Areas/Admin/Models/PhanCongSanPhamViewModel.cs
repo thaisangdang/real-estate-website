@@ -17,14 +17,16 @@ namespace RealEstates.Areas.Admin.Models
         [Display(Name = "Dự án")]
         public int DuAnId { get; set; }
 
-        [Display(Name = "Sản phẩm")]
+        public DuAn DuAn { get; set; }
+
+        [Display(Name = "Sản phẩm cần bán hoặc cho thuê")]
         public string SanPham { get; set; }
 
-        [Display(Name = "Giá sản phẩm (VNĐ)")]
+        [Display(Name = "Giá bán sản phẩm (VNĐ)")]
         [Column(TypeName = "money")]
-        public decimal GiaSanPham { get; set; }
+        public decimal GiaBanSanPham { get; set; }
 
-        [Display(Name = "Phần trăm hoa hồng")]
+        [Display(Name = "Phần trăm hoa hồng (%)")]
         [DisplayFormat(DataFormatString = "{0:N0}%")]
         [Range(0, 100)]
         public double PhanTramHoaHong { get; set; }
@@ -39,6 +41,8 @@ namespace RealEstates.Areas.Admin.Models
         [Required]
         [Display(Name = "Nhân viên sales")]
         public int NhanVienSalesId { get; set; }
+
+        public NhanVien NhanVienSales { get; set; }
 
         [Display(Name = "Trạng thái")] // hoàn thành hay chưa
         public int TrangThai { get; set; }
@@ -78,7 +82,7 @@ namespace RealEstates.Areas.Admin.Models
             Id = phanCongSanPham.Id;
             DuAnId = phanCongSanPham.DuAnId;
             SanPham = phanCongSanPham.SanPham;
-            GiaSanPham = phanCongSanPham.GiaSanPham;
+            GiaBanSanPham = phanCongSanPham.GiaBanSanPham;
             PhanTramHoaHong = phanCongSanPham.PhanTramHoaHong;
             IsRent = phanCongSanPham.IsRent;
             GiaThueThangDau = phanCongSanPham.GiaThueThangDau;

@@ -192,8 +192,11 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminDashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyNhanVienController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyPhanCongSanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyTinRaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\SalesManDashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDashboardController.cs" />
+    <Compile Include="Areas\Admin\Models\DanhSachPhanCongViewModel.cs" />
     <Compile Include="Areas\Admin\Models\NhanVienViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PhanCongSanPhamViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyDuAnViewModel.cs" />
@@ -335,6 +338,10 @@
     <Compile Include="Migrations\201909251452145_whatChanges28.cs" />
     <Compile Include="Migrations\201909251452145_whatChanges28.Designer.cs">
       <DependentUpon>201909251452145_whatChanges28.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909260315509_whatChanges29.cs" />
+    <Compile Include="Migrations\201909260315509_whatChanges29.Designer.cs">
+      <DependentUpon>201909260315509_whatChanges29.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\PhanCongSanPham.cs" />
@@ -1041,8 +1048,9 @@
     <Content Include="Areas\Admin\Views\QuanLyNhanVien\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyNhanVien\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyNhanVien\NhanVienForm.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\PhanCongSanPhamForm.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\ThongBao.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\PhanCongSanPhamForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinRao\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1294,6 +1302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909251452145_whatChanges28.resx">
       <DependentUpon>201909251452145_whatChanges28.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909260315509_whatChanges29.resx">
+      <DependentUpon>201909260315509_whatChanges29.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,6 +9,7 @@ using System.Data.Entity;
 using RealEstates.Helper;
 using RealEstates.ViewModels;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
@@ -27,7 +28,6 @@ namespace RealEstates.Areas.Admin.Controllers
             _context = new ApplicationDbContext();
         }
 
-        // GET: Admin/QuanLyPhanCongSanPham
         public ActionResult Index()
         {
             if (TempData["success"] != null)
@@ -45,25 +45,6 @@ namespace RealEstates.Areas.Admin.Controllers
             };
 
             return View(viewModel);
-        }
-
-        private IEnumerable<DuAnViewModel> getAllDuAns()
-        {
-            var duAnViewModels = new List<DuAnViewModel>();
-            var duAnsInDb = _context.DuAns.Include(x => x.TinhThanhPho).Include(z => z.QuanHuyen).Include(y => y.LoaiDuAn).ToList();
-            foreach (var duAn in duAnsInDb)
-            {
-                var duAnViewModel = new DuAnViewModel(duAn);
-                duAnViewModel.LoaiDuAn = duAn.LoaiDuAn;
-                duAnViewModel.TinhThanhPho = duAn.TinhThanhPho;
-                duAnViewModel.QuanHuyen = duAn.QuanHuyen;
-                duAnViewModel.TongSpDaBanHoacChoThue = 
-                    _context.PhanCongSanPhams.Where(x => x.DuAnId == duAn.Id && x.TrangThai == 2).ToList().Count();
-                duAnViewModel.TongSpDaTinhHoaHong =
-                    _context.PhanCongSanPhams.Where(x => x.DuAnId == duAn.Id && x.DaTinhHoaHong).ToList().Count();
-                duAnViewModels.Add(duAnViewModel);
-            }
-            return duAnViewModels;
         }
 
         public ActionResult Search(int? tinhThanhPhoId, int? quanHuyenId, int? loaiDuAnId, int? trangThai)
@@ -104,54 +85,24 @@ namespace RealEstates.Areas.Admin.Controllers
             return View("Index", viewModel);
         }
 
-        // list phân công sản phẩm được thông báo hoàn thành
-        public ActionResult ThongBao(int duAnId)
+        private IEnumerable<DuAnViewModel> getAllDuAns()
         {
-            var duAn = _context.DuAns.SingleOrDefault(x => x.Id == duAnId);
-
-            var viewModel = new SalesViewModel
+            var duAnViewModels = new List<DuAnViewModel>();
+            var duAnsInDb = _context.DuAns.Include(x => x.TinhThanhPho).Include(z => z.QuanHuyen).Include(y => y.LoaiDuAn).ToList();
+            foreach (var duAn in duAnsInDb)
             {
-
-            };
-
-            return View(viewModel);
+                var duAnViewModel = new DuAnViewModel(duAn);
+                duAnViewModel.LoaiDuAn = duAn.LoaiDuAn;
+                duAnViewModel.TinhThanhPho = duAn.TinhThanhPho;
+                duAnViewModel.QuanHuyen = duAn.QuanHuyen;
+                duAnViewModel.TongSpDaBanHoacChoThue =
+                    _context.PhanCongSanPhams.Where(x => x.DuAnId == duAn.Id && x.TrangThai == 2).ToList().Count();
+                duAnViewModel.TongSpDaTinhHoaHong =
+                    _context.PhanCongSanPhams.Where(x => x.DuAnId == duAn.Id && x.DaTinhHoaHong).ToList().Count();
+                duAnViewModels.Add(duAnViewModel);
+            }
+            return duAnViewModels;
         }
 
-        // form phân công sản phẩm cho nhân viên sales
-        public ActionResult New()
-        {
-            var role = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
-            var viewModel = new PhanCongSanPhamViewModel
-            {
-                // nhân viên đang làm việc, có tài khoản phân quyền là sales, không quan tâm phòng ban
-                NhanViens = _context.NhanViens.Where(x => x.TrangThai == 1
-                    && x.Account.Roles.First().RoleId == role.Id).ToList(),
-                // Dự án có trạng thái đang mở bán và số sản phẩm >0
-                DuAns = _context.DuAns.Where(x => x.TrangThai == 1 && x.SoSanPham > 0).ToList(),
-                TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSanPham
-            };
-
-            return View("PhanCongSanPhamForm", viewModel);
-        }
-
-        // list những sản phẩm đã phân công cho nhân viên sales với trạng thái
-        // chưa hoàn thành, đã hoàn thành, đã tính hoa hồng, chưa tính hoa hồng
-        public ActionResult Sales(int duAnId)
-        {
-
-            return View();
-        }
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Save(PhanCongSanPham phanCongSanPham)
-        {
-            return View();
-        }
     }
 }
