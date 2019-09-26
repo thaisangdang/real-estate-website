@@ -1051,6 +1051,7 @@
     <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\PhanCongSanPhamForm.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTinRao\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />

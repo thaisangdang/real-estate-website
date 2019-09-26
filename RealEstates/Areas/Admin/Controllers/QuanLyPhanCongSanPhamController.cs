@@ -135,7 +135,19 @@ namespace RealEstates.Areas.Admin.Controllers
                     && x.SoSanPham > _context.PhanCongSanPhams.Where(y => y.DuAnId == x.Id).Count()).ToList(),
                 TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSanPham
             };
+            viewModel.DuAn = phanCongSanPham.DuAn;
+            viewModel.NhanVienSales = phanCongSanPham.NhanVienSales;
             return View("PhanCongSanPhamForm", viewModel);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var phanCongInDb = _context.PhanCongSanPhams.Include(x => x.DuAn).Include(x => x.NhanVienSales).SingleOrDefault(x => x.Id == id);
+            if (phanCongInDb == null)
+            {
+                return HttpNotFound();
+            }
+            return View(phanCongInDb);
         }
 
         [HttpPost]
