@@ -20,6 +20,7 @@ namespace RealEstates.Models
 
         public DuAn DuAn { get; set; }
 
+        [Required]
         [Display(Name = "Sản phẩm")]
         public string SanPham { get; set; }
 
@@ -27,6 +28,7 @@ namespace RealEstates.Models
         [Column(TypeName = "money")]
         public decimal GiaBanSanPham { get; set; }
 
+        [Required]
         [Display(Name = "Phần trăm hoa hồng")]
         [DisplayFormat(DataFormatString = "{0:N0}%")]
         [Range(0, 100)]

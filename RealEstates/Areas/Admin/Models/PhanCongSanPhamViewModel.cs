@@ -13,7 +13,6 @@ namespace RealEstates.Areas.Admin.Models
     {
         public int Id { get; set; }
 
-        [Required]
         [Display(Name = "Dự án")]
         public int DuAnId { get; set; }
 
@@ -38,7 +37,6 @@ namespace RealEstates.Areas.Admin.Models
         [Column(TypeName = "money")]
         public decimal GiaThueThangDau { get; set; }
 
-        [Required]
         [Display(Name = "Nhân viên sales")]
         public int NhanVienSalesId { get; set; }
 
@@ -67,7 +65,7 @@ namespace RealEstates.Areas.Admin.Models
         {
             get
             {
-                return Id == 0 ? "Phân công sản phẩm cho nhân viên sales" : "Chỉnh sửa thông tin phân công";
+                return Id == 0 ? "Phân công sản phẩm cho nhân viên sales" : "Cập nhật trạng thái phân công";
             }
         }
 

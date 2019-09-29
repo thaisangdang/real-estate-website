@@ -343,6 +343,10 @@
     <Compile Include="Migrations\201909260315509_whatChanges29.Designer.cs">
       <DependentUpon>201909260315509_whatChanges29.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909262330325_whatChanges30.cs" />
+    <Compile Include="Migrations\201909262330325_whatChanges30.Designer.cs">
+      <DependentUpon>201909262330325_whatChanges30.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\PhanCongSanPham.cs" />
     <Compile Include="Models\PhongBan.cs" />
@@ -1306,6 +1310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909260315509_whatChanges29.resx">
       <DependentUpon>201909260315509_whatChanges29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909262330325_whatChanges30.resx">
+      <DependentUpon>201909262330325_whatChanges30.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -34,6 +34,11 @@ namespace RealEstates.Areas.Admin.Controllers
                 ViewBag.Success = TempData["success"].ToString();
                 TempData.Remove("success");
             }
+            if (TempData["error"] != null)
+            {
+                ViewBag.Error = TempData["error"].ToString();
+                TempData.Remove("error");
+            }
 
             var viewModel = new QuanLyLoaiDuAnViewModel
             {

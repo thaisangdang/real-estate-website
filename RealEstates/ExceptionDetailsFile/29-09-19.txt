@@ -1,0 +1,144 @@
+-----------Exception Details on  9/29/2019 11:06:13 AM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 9/29/2019 11:06:13 AM
+
+Error Line No : ine 112
+
+Error Message: DbUpdateException
+
+Exception Type: System.Data.Entity.Infrastructure.DbUpdateException
+
+Error Location : An error occurred while updating the entries. See the inner exception for details.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyTaiKhoan/Delete
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  9/29/2019 11:08:26 AM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 9/29/2019 11:08:26 AM
+
+Error Line No : ine 117
+
+Error Message: DbUpdateException
+
+Exception Type: System.Data.Entity.Infrastructure.DbUpdateException
+
+Error Location : An error occurred while updating the entries. See the inner exception for details.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyTaiKhoan/Delete
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  9/29/2019 11:09:14 AM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 9/29/2019 11:09:14 AM
+
+Error Line No : ine 117
+
+Error Message: DbUpdateException
+
+Exception Type: System.Data.Entity.Infrastructure.DbUpdateException
+
+Error Location : An error occurred while updating the entries. See the inner exception for details.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyTaiKhoan/Delete
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  9/29/2019 3:04:17 PM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 9/29/2019 3:04:17 PM
+
+Error Line No : ine 117
+
+Error Message: DbUpdateException
+
+Exception Type: System.Data.Entity.Infrastructure.DbUpdateException
+
+Error Location : An error occurred while updating the entries. See the inner exception for details.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyTaiKhoan/Delete
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  9/29/2019 3:05:11 PM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 9/29/2019 3:05:11 PM
+
+Error Line No : ine 162
+
+Error Message: DbUpdateException
+
+Exception Type: System.Data.Entity.Infrastructure.DbUpdateException
+
+Error Location : An error occurred while updating the entries. See the inner exception for details.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyNhanVien/Delete
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  9/29/2019 3:05:16 PM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 9/29/2019 3:05:16 PM
+
+Error Line No : ine 162
+
+Error Message: DbUpdateException
+
+Exception Type: System.Data.Entity.Infrastructure.DbUpdateException
+
+Error Location : An error occurred while updating the entries. See the inner exception for details.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyNhanVien/Delete
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+

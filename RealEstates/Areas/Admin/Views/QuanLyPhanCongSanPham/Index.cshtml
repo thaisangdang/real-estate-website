@@ -69,7 +69,11 @@
                     @foreach (var item in Model.PhanCongSanPhams)
                     {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.SanPham)</td>
+                        <td>
+                            <a href="@Url.Action("Details", new { id = item.Id})" title="Chi tiết">
+                                @Html.DisplayFor(modelItem => item.SanPham)
+                            </a>
+                        </td>
                         <td>@Html.DisplayFor(modelItem => item.DuAn.TenDuAn)</td>
                         @if (item.IsRent)
                         {
@@ -101,17 +105,17 @@
                                 @*<div class="rounded-pill p-1 text-light bg-danger text-center"></div>*@
                             </td>
                         }
-                        <td>
-                            <a href="@Url.Action("Details", new { id = item.Id})" class="btn btn-info" title="Chi tiết">
-                                <span class="text-white"><i class="fas fa-eye fa-fw"></i></span>
-                            </a>
-                        </td>
-                        <td>
-                            @* chọn cập nhật để tính phí hoa hồng hoặc cập nhật thông tin phân công sản phẩm *@
-                            <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Cập nhật">
-                                <span class="text-white"><i class="fas fa-edit fa-fw"></i></span>
-                            </a>
-                        </td>
+                    <td>
+                        @* chọn cập nhật để tính phí hoa hồng hoặc cập nhật thông tin phân công sản phẩm *@
+                        <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Cập nhật">
+                            <span class="text-white"><i class="fas fa-edit fa-fw"></i></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Delete", new { id = item.Id})" class="btn btn-danger" title="Xóa">
+                            <span class="text-white"><i class="fas fa-trash fa-fw"></i></span>
+                        </a>
+                    </td>
                     </tr>
 
                     }

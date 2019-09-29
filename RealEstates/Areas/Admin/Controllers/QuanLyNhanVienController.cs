@@ -33,6 +33,11 @@ namespace RealEstates.Areas.Admin.Controllers
                 ViewBag.Success = TempData["success"].ToString();
                 TempData.Remove("success");
             }
+            if (TempData["error"] != null)
+            {
+                ViewBag.Error = TempData["error"].ToString();
+                TempData.Remove("error");
+            }
             var viewModel = new QuanLyNhanVienViewModel
             {
                 NhanViens = _context.NhanViens.Include(x => x.PhongBan).Include(z => z.Account).ToList(),

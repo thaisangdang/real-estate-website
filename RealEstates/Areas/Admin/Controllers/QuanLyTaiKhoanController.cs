@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using RealEstates.Areas.Admin.Models;
+using RealEstates.Helper;
 using RealEstates.Models;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,11 @@ namespace RealEstates.Areas.Admin.Controllers
                 ViewBag.Success = TempData["success"].ToString();
                 TempData.Remove("success");
             }
+            if (TempData["error"] != null)
+            {
+                ViewBag.Error = TempData["error"].ToString();
+                TempData.Remove("error");
+            }
 
             return View(profiles);
         }
@@ -75,20 +81,19 @@ namespace RealEstates.Areas.Admin.Controllers
 
         public ActionResult Edit(string id)
         {
-            var user = _context.Users.SingleOrDefault(p => p.Id == id);
-            var userRole = UserManager.GetRoles(User.Identity.GetUserId()).First();
+            var user = _context.Users.Include(x => x.Roles).SingleOrDefault(p => p.Id == id);
+            var roles = _context.Roles.ToList();
 
             if (user == null)
             {
                 return HttpNotFound();
             }
 
-            var roles = _context.Roles.ToList();
             var viewModel = new UserProfileViewModel
             {
                 Id = user.Id,
                 Email = user.Email,
-                RoleName = userRole,
+                RoleName = roles.FirstOrDefault(x => x.Id == user.Roles.First().RoleId).Name,
                 RoleId = user.Roles.First().RoleId,
                 Roles = roles
             };
@@ -106,10 +111,17 @@ namespace RealEstates.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            _context.Users.Remove(user);
-            _context.SaveChanges();
-
-            TempData["success"] = "Xóa thành công";
+            try
+            {
+                _context.Users.Remove(user);
+                _context.SaveChanges();
+                TempData["success"] = "Xóa thành công";
+            }
+            catch (Exception ex)
+            {
+                TempData["error"] = "Không thể xóa tài khoản của nhân viên đã được phân công bán hàng";
+                ExceptionLogger.SendErrorToText(ex);
+            }
 
             return RedirectToAction("Index", "QuanLyTaiKhoan");
         }
