@@ -196,9 +196,11 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyTinRaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\SalesManDashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDashboardController.cs" />
+    <Compile Include="Areas\Admin\Models\BaoCaoCongViecViewModel.cs" />
     <Compile Include="Areas\Admin\Models\DanhSachPhanCongViewModel.cs" />
     <Compile Include="Areas\Admin\Models\NhanVienViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PhanCongSanPhamViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyBaoCaoCongViecViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyDuAnViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyLoaiDuAnViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyNhanVienViewModel.cs" />
@@ -1056,6 +1058,7 @@
     <Content Include="Areas\Admin\Views\QuanLyTinRao\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyBaoCaoCongViec\BaoCaoCongViecForm.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />

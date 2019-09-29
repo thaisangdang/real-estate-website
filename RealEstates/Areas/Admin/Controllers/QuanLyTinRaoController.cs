@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator, Staff")]
     public class QuanLyTinRaoController : Controller
     {
         // GET: Admin/QuanLyTinRao
