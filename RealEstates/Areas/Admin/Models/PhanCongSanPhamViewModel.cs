@@ -53,7 +53,7 @@ namespace RealEstates.Areas.Admin.Models
 
         [Display(Name = "Ngày tạo")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy hh:mm tt}")]
-        public DateTime NgayTao { get; set; }
+        public DateTime? NgayTao { get; set; }
 
         public IEnumerable<NhanVien> NhanViens { get; set; }
 

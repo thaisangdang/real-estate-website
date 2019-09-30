@@ -24,7 +24,7 @@ namespace RealEstates.Models
         [Display(Name = "Sản phẩm")]
         public string SanPham { get; set; }
 
-        [Display(Name = "Giá bán sản phẩm")]
+        [Display(Name = "Giá bán sản phẩm (VNĐ)")]
         [Column(TypeName = "money")]
         public decimal GiaBanSanPham { get; set; }
 
@@ -37,7 +37,7 @@ namespace RealEstates.Models
         [Display(Name = "Sản phẩm cho thuê")] // dùng checkbox
         public bool IsRent { get; set; }
 
-        [Display(Name = "Giá thuê tháng đầu")]
+        [Display(Name = "Giá thuê tháng đầu (VNĐ)")]
         [Column(TypeName = "money")]
         public decimal GiaThueThangDau { get; set; }
 
@@ -58,7 +58,7 @@ namespace RealEstates.Models
 
         [Display(Name = "Ngày tạo")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime NgayTao { get; set; }
+        public DateTime? NgayTao { get; set; }
 
         public ICollection<PhiHoaHong> PhiHoaHongs { get; set; }
 
