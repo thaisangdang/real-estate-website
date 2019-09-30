@@ -53,6 +53,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 {
                     duAns.Add(item.PhanCongSanPham.DuAn);
                 }
+                nhanVienSales.Add(salesMan);
             }
             else
             {
@@ -126,6 +127,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 {
                     duAns.Add(item.PhanCongSanPham.DuAn);
                 }
+                nhanVienSales.Add(salesMan);
             }
             else
             {
@@ -135,26 +137,26 @@ namespace RealEstates.Areas.Admin.Controllers
                 phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSanPham).Include(x => x.PhanCongSanPham.NhanVienSales).Include(X => X.PhanCongSanPham.DuAn).ToList();
             }
 
-            if (duAnId.HasValue)
-            {
-                duAns = duAns.Where(x => x.Id == duAnId.Value).ToList();
-            }
-
-            if (nhanVienSalesId.HasValue)
-            {
-                nhanVienSales = nhanVienSales.Where(x => x.Id == nhanVienSalesId.Value).ToList();
-            }
-
             var viewModel = new QuanLyPhiHoaHongViewModel
             {
                 PhiHoaHongs = phiHoaHongs,
                 DuAns = duAns,
-                NhanVienSales = nhanVienSales,
-                NhanVienSalesId = nhanVienSalesId.Value,
-                DuAnId = duAnId.Value
+                NhanVienSales = nhanVienSales
             };
 
-            return View(viewModel);
+            if (duAnId.HasValue)
+            {
+                viewModel.DuAnId = duAnId.Value;
+                viewModel.PhiHoaHongs = viewModel.PhiHoaHongs.Where(x => x.PhanCongSanPham.DuAnId == duAnId.Value);
+            }
+
+            if (nhanVienSalesId.HasValue)
+            {
+                viewModel.NhanVienSalesId = nhanVienSalesId.Value;
+                viewModel.PhiHoaHongs = viewModel.PhiHoaHongs.Where(x => x.PhanCongSanPham.NhanVienSalesId == nhanVienSalesId.Value);
+            }
+
+            return View("Index", viewModel);
         }
 
         [HttpPost]
@@ -170,6 +172,7 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 phiHoaHong.NgayTao = DateTime.Now;
                 _context.PhiHoaHongs.Add(phiHoaHong);
+                _context.PhanCongSanPhams.SingleOrDefault(x => x.Id == phiHoaHong.PhanCongSanPhamId).DaTinhHoaHong = true;
                 _context.SaveChanges();
                 TempData["success"] = "Cập nhật thành công";
             }

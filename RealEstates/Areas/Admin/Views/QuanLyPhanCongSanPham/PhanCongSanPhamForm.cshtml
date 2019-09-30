@@ -134,17 +134,24 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                @if (Model.Id > 0)
+                @if (Model.Id > 0 && !Model.DaTinhHoaHong)
                 {
                     @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
                     @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiPhanCong, "Id", "Text", Model.TrangThai), "", new { @class = "form-control col-md-12 select2" })
+                }
+                else
+                {
+                    @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
+                    <p class="col-md-12">
+                        @Model.TrangThaiPhanCong.SingleOrDefault(x => x.Id == Model.TrangThai).Text
+                    </p>
                 }
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-12">
                 @Html.HiddenFor(m => m.Id)
-                @if (Model.Id > 0)
+                @if (Model.Id > 0 && !Model.DaTinhHoaHong)
                 {
                     @Html.HiddenFor(m => m.DuAnId)
                     @Html.HiddenFor(m => m.SanPham)
@@ -154,7 +161,10 @@
                     @Html.HiddenFor(m => m.PhanTramHoaHong)
                     @Html.HiddenFor(m => m.NhanVienSalesId)
                 }
-                <input type="submit" class="btn btn-success" value="Lưu" />
+                @if (!Model.DaTinhHoaHong)
+                {
+                    <input type="submit" class="btn btn-success" value="Lưu" />
+                }
             </div>
         </div>
     </div>
