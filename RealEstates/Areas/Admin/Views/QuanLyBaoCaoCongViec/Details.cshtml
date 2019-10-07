@@ -1,0 +1,120 @@
+﻿@model RealEstates.Models.PhanCongSanPham
+@using RealEstates.Helper
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyBaoCaoCongViec {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<div>
+    <h4>Chi tiết công việc được phân công</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DuAn.TenDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DuAn.TenDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhanVienSales.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhanVienSales.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SanPham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SanPham)
+        </dd>
+
+        @if (Model.IsRent)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.GiaThueThangDau)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GiaThueThangDau)
+            </dd>
+        }
+        else
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.GiaBanSanPham)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GiaBanSanPham)
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanTramHoaHong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanTramHoaHong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        @*<dd>
+            @{
+                SelectOptions.getTrangThaiPhanCongSanPham.SingleOrDefault(x => x.Id == Model.TrangThai).Text
+            }
+        </dd>*@
+
+        <dt>Hoa hồng</dt>
+
+        <dd>
+            @if (Model.DaTinhHoaHong)
+            {
+                <p>Đã tính hoa hồng</p>
+            }
+            else
+            {
+                <p>Chưa tính hoa hồng</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+    </dl>
+</div>

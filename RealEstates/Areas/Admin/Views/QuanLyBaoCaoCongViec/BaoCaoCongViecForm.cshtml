@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @if (Model.PhanCongSanPham.TrangThai != 3 || !Model.PhanCongSanPham.DaTinhHoaHong) // đã tính hoa hồng rồi sẽ không được sửa lại
+                        @if (Model.PhanCongSanPham.TrangThai != 3 && !Model.PhanCongSanPham.DaTinhHoaHong) // đã tính hoa hồng rồi sẽ không được sửa lại
                         {
                             @Html.LabelFor(m => m.PhanCongSanPham.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
                             @Html.DropDownListFor(m => m.PhanCongSanPham.TrangThai, new SelectList(Model.TrangThaiCongViec.Where(x => x.Id != 3), "Id", "Text", Model.PhanCongSanPham.TrangThai), "", new { @class = "form-control col-md-12 select2" })
@@ -98,7 +98,10 @@
                             @Html.HiddenFor(m => m.PhanCongSanPham.PhanTramHoaHong)
                             @Html.HiddenFor(m => m.PhanCongSanPham.NhanVienSalesId)
                         }
-                        <input type="submit" class="btn btn-success" value="Lưu" />
+                        @if (Model.PhanCongSanPham.TrangThai != 3 && !Model.PhanCongSanPham.DaTinhHoaHong)
+                        {
+                            <input type="submit" class="btn btn-success" value="Lưu" />
+                        }
                     </div>
                 </div>
             </div>
