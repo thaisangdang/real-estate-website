@@ -17,11 +17,13 @@ namespace RealEstates.Areas.Admin.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext _context;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -154,16 +156,50 @@ namespace RealEstates.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async System.Threading.Tasks.Task<ActionResult> SaveAsync(UserProfileViewModel profile)
+        {
+            if (!ModelState.IsValid)
+            {
+                var roles = _context.Roles.ToList();
+                var viewModel = new UserProfileViewModel
+                {
+                    Roles = roles
+                };
+                return View("Register", viewModel);
+            }
 
-       // POST: /Account/Register
-       [HttpPost]
+            var role = _context.Roles.SingleOrDefault(r => r.Id == profile.RoleId);
+
+            if (string.IsNullOrEmpty(profile.Id))
+            {
+                var user = new ApplicationUser { UserName = profile.Email, Email = profile.Email };
+                var result = await UserManager.CreateAsync(user, profile.Password);
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, role.Name);
+
+                    TempData["success"] = "Thêm mới thành công";
+
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        // POST: /Account/Register
+        [HttpPost]
        [AllowAnonymous]
        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { Email = model.Email };
+                var user = new ApplicationUser { Email = model.Email, UserName = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -411,7 +447,13 @@ namespace RealEstates.Areas.Admin.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Dashboard");
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Logout()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
@@ -422,6 +464,7 @@ namespace RealEstates.Areas.Admin.Controllers
 
         protected override void Dispose(bool disposing)
         {
+            _context.Dispose();
             if (disposing)
             {
                 if (_userManager != null)
