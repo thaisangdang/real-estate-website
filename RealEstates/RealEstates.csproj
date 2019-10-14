@@ -1079,6 +1079,8 @@
     <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyBaoCaoCongViec\BaoCaoCongViecForm.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhiHoaHong\PhiHoaHongForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhiHoaHong\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyBaoCaoCongViec\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />

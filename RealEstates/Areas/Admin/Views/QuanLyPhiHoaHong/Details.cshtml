@@ -1,0 +1,105 @@
+﻿@model RealEstates.Models.PhiHoaHong
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyPhiHoaHong {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<div>
+    <h4>Chi tiết phí hoa hồng đã tính</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Nhân viên sales
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanCongSanPham.NhanVienSales.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanCongSanPham.DuAn.TenDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanCongSanPham.DuAn.TenDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanCongSanPham.SanPham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanCongSanPham.SanPham)
+        </dd>
+
+        @if (Model.PhanCongSanPham.IsRent)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.PhanCongSanPham.GiaThueThangDau)
+            </dt>
+
+            <dd>
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.PhanCongSanPham.GiaThueThangDau)
+            </dd>
+        }
+        else
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.PhanCongSanPham.GiaBanSanPham)
+            </dt>
+
+            <dd>
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.PhanCongSanPham.GiaBanSanPham)
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanCongSanPham.PhanTramHoaHong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanCongSanPham.PhanTramHoaHong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongChi)
+        </dt>
+
+        <dd>
+            @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.TongChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+
+    </dl>
+</div>

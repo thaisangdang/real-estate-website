@@ -32,10 +32,13 @@
                             @Html.DropDownListFor(m => m.DuAnId, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAnId), "Dự án",
                                 new { @class = "form-control select2", @id = "DuAn" })
                         </div>
-                        <div class="col d-inline">
-                            @Html.DropDownListFor(m => m.NhanVienSalesId, new SelectList(Model.NhanVienSales, "Id", "HoTen", Model.NhanVienSalesId), "Nhân viên Sales",
-                                new { @class = "form-control select2", @id = "NhanVienSales" })
-                        </div>
+                        @if (!User.IsInRole("SalesMan"))
+                        {
+                            <div class="col d-inline">
+                                @Html.DropDownListFor(m => m.NhanVienSalesId, new SelectList(Model.NhanVienSales, "Id", "HoTen", Model.NhanVienSalesId), "Nhân viên Sales",
+                                    new { @class = "form-control select2", @id = "NhanVienSales" })
+                            </div>
+                        }
                         <div class="col d-inline">
                             <button type="submit" class="btn btn-secondary"><span class="text-black-50"><i class="fas fa-search fa-fw"></i></span> Tìm kiếm</button>
                         </div>
