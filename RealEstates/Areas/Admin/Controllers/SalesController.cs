@@ -13,7 +13,7 @@ using Microsoft.AspNet.Identity;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
-    [Authorize(Roles = RoleName.Administrator)]
+    [Authorize(Roles = "Administrator, Staff")]
     public class SalesController : Controller
     {
         public ApplicationDbContext _context;

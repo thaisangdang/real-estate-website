@@ -37,13 +37,18 @@ namespace RealEstates.Areas.Admin.Controllers
                 ViewBag.Success = TempData["success"].ToString();
                 TempData.Remove("success");
             }
+            if (TempData["error"] != null)
+            {
+                ViewBag.Error = TempData["error"].ToString();
+                TempData.Remove("error");
+            }
 
             var viewModel = new QuanLyDuAnViewModel
             {
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.ToList(),
-                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList(),
+                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).Include(y => y.LoaiDuAn).ToList(),
                 TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
             };
 
@@ -53,13 +58,12 @@ namespace RealEstates.Areas.Admin.Controllers
         public ActionResult Search(int? tinhThanhPhoId, int? quanHuyenId, int? loaiDuAnId, int? trangThai)
         {
             var viewModel = new QuanLyDuAnViewModel {
+                LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.ToList(),
-                LoaiDuAns = _context.LoaiDuAns.ToList(),
+                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).Include(y => y.LoaiDuAn).ToList(),
                 TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
             };
-
-            viewModel.DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(y => y.LoaiDuAn).ToList();
 
             if (tinhThanhPhoId.HasValue)
             {

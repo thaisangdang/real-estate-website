@@ -54,7 +54,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.GiaThueThangDau)
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaThueThangDau)
             </dd>
         }
         else
@@ -64,7 +64,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.GiaBanSanPham)
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaBanSanPham)
             </dd>
         }
 

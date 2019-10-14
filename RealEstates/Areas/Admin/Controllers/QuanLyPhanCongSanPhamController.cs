@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
-    [Authorize(Roles = RoleName.Administrator)]
+    [Authorize(Roles = "Administrator, Staff")]
     public class QuanLyPhanCongSanPhamController : Controller
     {
         public ApplicationDbContext _context;
@@ -29,12 +29,15 @@ namespace RealEstates.Areas.Admin.Controllers
         // GET: Admin/QuanLyPhanCongSanPham
         public ActionResult Index()
         {
-            // list những sản phẩm đã phân công cho nhân viên sales với trạng thái
-            // chưa hoàn thành, đã hoàn thành, đã tính hoa hồng, chưa tính hoa hồng, có bộ lọc các trạng thái trên
             if (TempData["success"] != null)
             {
                 ViewBag.Success = TempData["success"].ToString();
                 TempData.Remove("success");
+            }
+            if (TempData["error"] != null)
+            {
+                ViewBag.Error = TempData["error"].ToString();
+                TempData.Remove("error");
             }
 
             var phanCongsInDb = _context.PhanCongSanPhams.Include(x => x.DuAn).Include(x => x.NhanVienSales).ToList();
@@ -51,9 +54,8 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 PhanCongSanPhams = phanCongViewModels,
                 TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSanPham,
-                DuAns = _context.DuAns.Where(x => x.TrangThai == 1).ToList(),
-                NhanVienSales = _context.NhanViens.Where(x => x.TrangThai == 1
-                    && x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList()
+                DuAns = _context.DuAns.ToList(),
+                NhanVienSales = _context.NhanViens.Where(x => x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList()
             };
             return View(viewModel);
         }
@@ -74,9 +76,8 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 PhanCongSanPhams = phanCongViewModels,
                 TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSanPham,
-                DuAns = _context.DuAns.Where(x => x.TrangThai == 1).ToList(),
-                NhanVienSales = _context.NhanViens.Where(x => x.TrangThai == 1
-                    && x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList()
+                DuAns = _context.DuAns.ToList(),
+                NhanVienSales = _context.NhanViens.Where(x => x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList()
             };
 
             if (trangThai.HasValue)
@@ -123,12 +124,10 @@ namespace RealEstates.Areas.Admin.Controllers
             if (phanCongSanPham == null)
             {
                 return HttpNotFound();
-                // Dự án có trạng thái đang mở bán và tổng số sản phẩm > số sản phẩm đã bán hoặc cho thuê
             }
             var role = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
             var viewModel = new PhanCongSanPhamViewModel(phanCongSanPham)
             {
-                // nhân viên đang làm việc, có tài khoản phân quyền là sales, không quan tâm phòng ban
                 NhanViens = _context.NhanViens.Where(x => x.TrangThai == 1
                     && x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList(),
                 DuAns = _context.DuAns.Where(x => x.TrangThai == 1
@@ -157,6 +156,7 @@ namespace RealEstates.Areas.Admin.Controllers
             var role = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
             if (!ModelState.IsValid)
             {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
                 var viewModel = new PhanCongSanPhamViewModel
                 {
                     // nhân viên đang làm việc, có tài khoản phân quyền là sales, không quan tâm phòng ban
@@ -182,18 +182,41 @@ namespace RealEstates.Areas.Admin.Controllers
             else
             {
                 var phanCongInDb = _context.PhanCongSanPhams.Single(x => x.Id == phanCongSanPham.Id);
-                phanCongInDb.DuAnId = phanCongSanPham.DuAnId;
-                phanCongInDb.SanPham = phanCongSanPham.SanPham;
-                phanCongInDb.GiaBanSanPham = phanCongSanPham.GiaBanSanPham;
-                phanCongInDb.PhanTramHoaHong = phanCongSanPham.PhanTramHoaHong;
-                phanCongInDb.IsRent = phanCongSanPham.IsRent;
-                phanCongInDb.GiaThueThangDau = phanCongSanPham.GiaThueThangDau;
-                phanCongInDb.NhanVienSalesId = phanCongSanPham.NhanVienSalesId;
+                //phanCongInDb.DuAnId = phanCongSanPham.DuAnId;
+                //phanCongInDb.SanPham = phanCongSanPham.SanPham;
+                //phanCongInDb.GiaBanSanPham = phanCongSanPham.GiaBanSanPham;
+                //phanCongInDb.PhanTramHoaHong = phanCongSanPham.PhanTramHoaHong;
+                //phanCongInDb.IsRent = phanCongSanPham.IsRent;
+                //phanCongInDb.GiaThueThangDau = phanCongSanPham.GiaThueThangDau;
+                //phanCongInDb.NhanVienSalesId = phanCongSanPham.NhanVienSalesId;
                 phanCongInDb.TrangThai = phanCongSanPham.TrangThai;
-                phanCongInDb.DaTinhHoaHong = phanCongSanPham.DaTinhHoaHong;
+                //phanCongInDb.DaTinhHoaHong = phanCongSanPham.DaTinhHoaHong;
                 TempData["success"] = "Cập nhật thành công";
             }
             _context.SaveChanges();
+
+            return RedirectToAction("Index", "QuanLyPhanCongSanPham");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                return HttpNotFound();
+            }
+            var phanCongSP = _context.PhanCongSanPhams.Single(x => x.Id == id);
+            try
+            {
+                _context.PhanCongSanPhams.Remove(phanCongSP);
+                _context.SaveChanges();
+                TempData["success"] = "Xóa thành công";
+            }
+            catch (Exception ex)
+            {
+                TempData["error"] = "Không thể xóa phân công đã tính hoa hồng";
+                ExceptionLogger.SendErrorToText(ex);
+            }
 
             return RedirectToAction("Index", "QuanLyPhanCongSanPham");
         }

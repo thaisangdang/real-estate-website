@@ -6,10 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*
-    Tính phí xong phải trừ số lượng trong dự án, dự án số sản phẩm = 0 thì không hiện trên web
- */
-
 namespace RealEstates.Models
 {
     [Table("PhiHoaHong")]
@@ -25,26 +21,19 @@ namespace RealEstates.Models
 
         public PhanCongSanPham PhanCongSanPham { get; set; }
 
-        [Display(Name = "Phí khác")]
-        [Column(TypeName = "money")]
-        public decimal PhiKhac { get; set; }
-
         [Display(Name = "Tổng tiền")]
         [Column(TypeName = "money")]
         public decimal TongChi { get; set; }
 
-        [Required]
-        [Display(Name = "Nhân viên sales")]
-        public int NhanVienSalesId { get; set; }
+        [Display(Name = "Người tạo")]
+        public int NguoiTaoId { get; set; }
 
-        public NhanVien NhanVienSales { get; set; }
+        [Display(Name = "Người tạo")]
+        public NhanVien NguoiTao { get; set; }
 
-        [Display(Name = "Người chi")]
-        public string NguoiChi { get; set; }
-
-        [Display(Name = "Ngày chi")]
+        [Display(Name = "Ngày tạo")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime NgayChi { get; set; }
+        public DateTime? NgayTao { get; set; }
 
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
