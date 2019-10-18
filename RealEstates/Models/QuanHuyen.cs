@@ -22,10 +22,11 @@ namespace RealEstates.Models
 
         [Display(Name = "Tỉnh thành phố")]
         public int TinhThanhPhoId { get; set; }
-
         public TinhThanhPho TinhThanhPho { get; set; }
 
         public ICollection<DuAn> DuAns { get; set; }
+
+        public ICollection<NhaDat> NhaDats { get; set; }
 
     }
 }

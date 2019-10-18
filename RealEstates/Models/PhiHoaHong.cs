@@ -15,11 +15,9 @@ namespace RealEstates.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Phân công sản phẩm")]
-        public int PhanCongSanPhamId { get; set; }
-
-        public PhanCongSanPham PhanCongSanPham { get; set; }
+        [Display(Name = "Phân công sales")]
+        public int PhanCongSalesId { get; set; }
+        public PhanCongSales PhanCongSales { get; set; }
 
         [Display(Name = "Tổng tiền")]
         [Column(TypeName = "money")]
@@ -27,16 +25,10 @@ namespace RealEstates.Models
 
         [Display(Name = "Người tạo")]
         public int NguoiTaoId { get; set; }
-
-        [Display(Name = "Người tạo")]
         public NhanVien NguoiTao { get; set; }
 
         [Display(Name = "Ngày tạo")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? NgayTao { get; set; }
-
-        [Display(Name = "Ghi chú")]
-        public string GhiChu { get; set; }
-
     }
 }

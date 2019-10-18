@@ -29,76 +29,76 @@
             <div class="form-horizontal">
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.PhanCongSanPham.DuAnId, new { @class = "control-label col-md-12 font-weight-bold" })
-                        <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSanPham.DuAn.TenDuAn)</p>
+                        @Html.LabelFor(m => m.PhanCongSales.DuAnId, new { @class = "control-label col-md-12 font-weight-bold" })
+                        <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSales.DuAn.TenDuAn)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.PhanCongSanPham.SanPham, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        <p class="col-md-12">@Html.DisplayFor(model => model.PhanCongSanPham.SanPham)</p>
+                        @Html.LabelFor(model => model.PhanCongSales.SanPham, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        <p class="col-md-12">@Html.DisplayFor(model => model.PhanCongSales.SanPham)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @if (Model.PhanCongSanPham.IsRent)
+                        @if (Model.PhanCongSales.IsRent)
                         {
-                            @Html.LabelFor(model => model.PhanCongSanPham.GiaThueThangDau, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                            <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSanPham.GiaThueThangDau)</p>
+                            @Html.LabelFor(model => model.PhanCongSales.GiaThueThangDau, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                            <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSales.GiaThueThangDau)</p>
                         }
                         else
                         {
-                            @Html.LabelFor(model => model.PhanCongSanPham.GiaBanSanPham, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                            <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSanPham.GiaBanSanPham)</p>
+                            @Html.LabelFor(model => model.PhanCongSales.GiaBanSanPham, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                            <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSales.GiaBanSanPham)</p>
                         }
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.PhanCongSanPham.PhanTramHoaHong, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSanPham.PhanTramHoaHong)</p>
+                        @Html.LabelFor(model => model.PhanCongSales.PhanTramHoaHong, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSales.PhanTramHoaHong)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.PhanCongSanPham.NhanVienSalesId, new { @class = "control-label col-md-12 font-weight-bold" })
-                        <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSanPham.NhanVienSales.HoTen))</p>
+                        @Html.LabelFor(m => m.PhanCongSales.NhanVienSalesId, new { @class = "control-label col-md-12 font-weight-bold" })
+                        <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSales.NhanVienSales.HoTen))</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.PhanCongSanPham.NgayTao, new { @class = "control-label col-md-12 font-weight-bold" })
-                        <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSanPham.NgayTao))</p>
+                        @Html.LabelFor(m => m.PhanCongSales.NgayTao, new { @class = "control-label col-md-12 font-weight-bold" })
+                        <p class="col-md-12">@Html.DisplayFor(m => m.PhanCongSales.NgayTao))</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @if (Model.PhanCongSanPham.TrangThai != 3 && !Model.PhanCongSanPham.DaTinhHoaHong) // đã tính hoa hồng rồi sẽ không được sửa lại
+                        @if (Model.PhanCongSales.TrangThai != 3 && !Model.PhanCongSales.DaTinhHoaHong) // đã tính hoa hồng rồi sẽ không được sửa lại
                         {
-                            @Html.LabelFor(m => m.PhanCongSanPham.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
-                            @Html.DropDownListFor(m => m.PhanCongSanPham.TrangThai, new SelectList(Model.TrangThaiCongViec.Where(x => x.Id != 3), "Id", "Text", Model.PhanCongSanPham.TrangThai), "", new { @class = "form-control col-md-12 select2" })
+                            @Html.LabelFor(m => m.PhanCongSales.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
+                            @Html.DropDownListFor(m => m.PhanCongSales.TrangThai, new SelectList(Model.TrangThaiCongViec.Where(x => x.Id != 3), "Id", "Text", Model.PhanCongSales.TrangThai), "", new { @class = "form-control col-md-12 select2" })
                         }
                         else
                         {
-                            @Html.LabelFor(m => m.PhanCongSanPham.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
-                            <p class="col-md-12">@Html.DisplayFor(m => m.TrangThaiCongViec.SingleOrDefault(x => x.Id == Model.PhanCongSanPham.TrangThai).Text)</p>
+                            @Html.LabelFor(m => m.PhanCongSales.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
+                            <p class="col-md-12">@Html.DisplayFor(m => m.TrangThaiCongViec.SingleOrDefault(x => x.Id == Model.PhanCongSales.TrangThai).Text)</p>
                         }
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-12">
-                        @Html.HiddenFor(m => m.PhanCongSanPham.Id)
-                        @if (Model.PhanCongSanPham.Id > 0)
+                        @Html.HiddenFor(m => m.PhanCongSales.Id)
+                        @if (Model.PhanCongSales.Id > 0)
                         {
-                            @Html.HiddenFor(m => m.PhanCongSanPham.DuAnId)
-                            @Html.HiddenFor(m => m.PhanCongSanPham.SanPham)
-                            @Html.HiddenFor(m => m.PhanCongSanPham.IsRent)
-                            @Html.HiddenFor(m => m.PhanCongSanPham.GiaBanSanPham)
-                            @Html.HiddenFor(m => m.PhanCongSanPham.GiaThueThangDau)
-                            @Html.HiddenFor(m => m.PhanCongSanPham.PhanTramHoaHong)
-                            @Html.HiddenFor(m => m.PhanCongSanPham.NhanVienSalesId)
+                            @Html.HiddenFor(m => m.PhanCongSales.DuAnId)
+                            @Html.HiddenFor(m => m.PhanCongSales.SanPham)
+                            @Html.HiddenFor(m => m.PhanCongSales.IsRent)
+                            @Html.HiddenFor(m => m.PhanCongSales.GiaBanSanPham)
+                            @Html.HiddenFor(m => m.PhanCongSales.GiaThueThangDau)
+                            @Html.HiddenFor(m => m.PhanCongSales.PhanTramHoaHong)
+                            @Html.HiddenFor(m => m.PhanCongSales.NhanVienSalesId)
                         }
-                        @if (Model.PhanCongSanPham.TrangThai != 3 && !Model.PhanCongSanPham.DaTinhHoaHong)
+                        @if (Model.PhanCongSales.TrangThai != 3 && !Model.PhanCongSales.DaTinhHoaHong)
                         {
                             <input type="submit" class="btn btn-success" value="Lưu" />
                         }

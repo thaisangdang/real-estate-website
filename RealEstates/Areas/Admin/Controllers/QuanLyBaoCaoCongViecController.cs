@@ -42,23 +42,23 @@ namespace RealEstates.Areas.Admin.Controllers
 
             var userId = User.Identity.GetUserId();
             var salesMan = _context.NhanViens.Single(y => y.Account.Id == userId);
-            var phanCongsInDb = _context.PhanCongSanPhams.Include(x => x.DuAn).Include(x => x.NhanVienSales)
+            var phanCongsInDb = _context.PhanCongSales.Include(x => x.NhaDat).Include(x => x.NhaDat.DuAn).Include(x => x.NhanVienSales)
                 .Where(x => x.NhanVienSales.Id == salesMan.Id).ToList();
-            var phanCongViewModels = new List<PhanCongSanPhamViewModel>();
+            var phanCongViewModels = new List<PhanCongSalesViewModel>();
             var duAns = new List<DuAn>();
             foreach (var phanCongInDb in phanCongsInDb)
             {
-                var phanCong = new PhanCongSanPhamViewModel(phanCongInDb);
-                phanCong.DuAn = phanCongInDb.DuAn;
+                var phanCong = new PhanCongSalesViewModel(phanCongInDb);
+                phanCong.NhaDat.DuAn = phanCongInDb.NhaDat.DuAn;
                 phanCong.NhanVienSales = phanCongInDb.NhanVienSales;
                 phanCongViewModels.Add(phanCong);
-                duAns.Add(phanCongInDb.DuAn);
+                duAns.Add(phanCongInDb.NhaDat.DuAn);
             }
             var role = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
             var viewModel = new QuanLyBaoCaoCongViecViewModel
             {
-                PhanCongSanPhams = phanCongViewModels,
-                TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSanPham,
+                PhanCongSales = phanCongViewModels,
+                TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSales,
                 DuAns = duAns
             };
             return View(viewModel);
@@ -68,36 +68,36 @@ namespace RealEstates.Areas.Admin.Controllers
         {
             var userId = User.Identity.GetUserId();
             var salesMan = _context.NhanViens.Single(y => y.Account.Id == userId);
-            var phanCongsInDb = _context.PhanCongSanPhams.Include(x => x.DuAn).Include(x => x.NhanVienSales)
+            var phanCongsInDb = _context.PhanCongSales.Include(x => x.NhaDat.DuAn).Include(x => x.NhanVienSales)
                 .Where(x => x.NhanVienSales.Id == salesMan.Id).ToList();
-            var phanCongViewModels = new List<PhanCongSanPhamViewModel>();
+            var phanCongViewModels = new List<PhanCongSalesViewModel>();
             var duAns = new List<DuAn>();
             foreach (var phanCongInDb in phanCongsInDb)
             {
-                var phanCong = new PhanCongSanPhamViewModel(phanCongInDb);
-                phanCong.DuAn = phanCongInDb.DuAn;
+                var phanCong = new PhanCongSalesViewModel(phanCongInDb);
+                phanCong.NhaDat.DuAn = phanCongInDb.NhaDat.DuAn;
                 phanCong.NhanVienSales = phanCongInDb.NhanVienSales;
                 phanCongViewModels.Add(phanCong);
-                duAns.Add(phanCongInDb.DuAn);
+                duAns.Add(phanCongInDb.NhaDat.DuAn);
             }
             var role = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
             var viewModel = new QuanLyBaoCaoCongViecViewModel
             {
-                PhanCongSanPhams = phanCongViewModels,
-                TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSanPham,
+                PhanCongSales = phanCongViewModels,
+                TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSales,
                 DuAns = duAns
             };
 
             if (trangThai.HasValue)
             {
                 viewModel.TrangThai = trangThai.Value;
-                viewModel.PhanCongSanPhams = viewModel.PhanCongSanPhams.Where(x => x.TrangThai == trangThai);
+                viewModel.PhanCongSales = viewModel.PhanCongSales.Where(x => x.TrangThai == trangThai);
             }
 
             if (duAnId.HasValue)
             {
                 viewModel.DuAnId = duAnId.Value;
-                viewModel.PhanCongSanPhams = viewModel.PhanCongSanPhams.Where(x => x.DuAn.Id == duAnId);
+                viewModel.PhanCongSales = viewModel.PhanCongSales.Where(x => x.NhaDat.DuAn.Id == duAnId);
             }
 
             return View("Index", viewModel);
@@ -105,23 +105,23 @@ namespace RealEstates.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            var phanCongSanPham = _context.PhanCongSanPhams.Include(x => x.DuAn).Include(x => x.NhanVienSales).SingleOrDefault(x => x.Id == id);
-            if (phanCongSanPham == null)
+            var phanCongSales = _context.PhanCongSales.Include(x => x.NhaDat).Include(x => x.NhanVienSales).SingleOrDefault(x => x.Id == id);
+            if (phanCongSales == null)
             {
                 return HttpNotFound();
             }
             var role = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
             var viewModel = new BaoCaoCongViecViewModel
             {
-                PhanCongSanPham = phanCongSanPham,
-                TrangThaiCongViec = SelectOptions.getTrangThaiPhanCongSanPham
+                PhanCongSales = phanCongSales,
+                TrangThaiCongViec = SelectOptions.getTrangThaiPhanCongSales
             };
             return View("BaoCaoCongViecForm", viewModel);
         }
 
         public ActionResult Details(int id)
         {
-            var phanCongInDb = _context.PhanCongSanPhams.Include(x => x.DuAn).Include(x => x.NhanVienSales).SingleOrDefault(x => x.Id == id);
+            var phanCongInDb = _context.PhanCongSales.Include(x => x.NhaDat).Include(x => x.NhanVienSales).SingleOrDefault(x => x.Id == id);
             if (phanCongInDb == null)
             {
                 return HttpNotFound();
@@ -131,21 +131,21 @@ namespace RealEstates.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(PhanCongSanPham phanCongSanPham)
+        public ActionResult Save(PhanCongSales phanCongSales)
         {
             if (!ModelState.IsValid)
             {
                 var role = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
                 var viewModel = new BaoCaoCongViecViewModel
                 {
-                    PhanCongSanPham = phanCongSanPham,
-                    TrangThaiCongViec = SelectOptions.getTrangThaiPhanCongSanPham
+                    PhanCongSales = phanCongSales,
+                    TrangThaiCongViec = SelectOptions.getTrangThaiPhanCongSales
                 };
                 return View("BaoCaoCongViecForm", viewModel);
             }
 
-            var phanCongInDb = _context.PhanCongSanPhams.Single(x => x.Id == phanCongSanPham.Id);
-            phanCongInDb.TrangThai = phanCongSanPham.TrangThai;
+            var phanCongInDb = _context.PhanCongSales.Single(x => x.Id == phanCongSales.Id);
+            phanCongInDb.TrangThai = phanCongSales.TrangThai;
             TempData["success"] = "Cập nhật thành công";
 
             _context.SaveChanges();

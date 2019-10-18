@@ -14,8 +14,8 @@ namespace RealEstates.Areas.Admin.Models
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Phân công sản phẩm")]
-        public int PhanCongSanPhamId { get; set; }
+        [Display(Name = "Phân công sales")]
+        public int PhanCongSalesId { get; set; }
 
         [Display(Name = "Tổng tiền (VNĐ)")]
         [Column(TypeName = "money")]
@@ -28,26 +28,24 @@ namespace RealEstates.Areas.Admin.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? NgayTao { get; set; }
 
-        [Display(Name = "Ghi chú")]
-        public string GhiChu { get; set; }
-
         // Details for display
         [Display(Name = "Nhân viên sales")]
         public string NhanVienSales { get; set; } // họ tên
         
         [Display(Name = "Dự án")]
         public string TenDuAn { get; set; }
-        
-        [Display(Name = "Sản phẩm")]
-        public string SanPham { get; set; }
+
+        [Display(Name = "Nhà đất")]
+        public int NhaDatId { get; set; }
+        public NhaDat NhaDat { get; set; }
 
         public bool IsRent { get; set; }
 
-        [Display(Name = "Giá thuê tháng đầu (VNĐ)")]
-        public decimal GiaThueThangDau { get; set; }
+        [Display(Name = "Giá thuê (VNĐ)")]
+        public decimal GiaThue { get; set; }
 
-        [Display(Name = "Giá bán sản phẩm (VNĐ)")]
-        public decimal GiaBanSanPham { get; set; }
+        [Display(Name = "Giá bán (VNĐ)")]
+        public decimal GiaBan { get; set; }
 
         [Display(Name = "Phần trăm hoa hồng")]
         public double PhanTramHoaHong { get; set; }
@@ -55,7 +53,7 @@ namespace RealEstates.Areas.Admin.Models
         public PhiHoaHongViewModel(PhiHoaHong phiHoaHong)
         {
             Id = 0;
-            PhanCongSanPhamId = phiHoaHong.PhanCongSanPhamId;
+            PhanCongSalesId = phiHoaHong.PhanCongSalesId;
             NguoiTaoId = phiHoaHong.NguoiTaoId;
             TongChi = phiHoaHong.TongChi;
         }

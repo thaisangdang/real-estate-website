@@ -65,18 +65,18 @@
                     @foreach (var item in Model.PhiHoaHongs)
                     {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.PhanCongSanPham.NhanVienSales.HoTen)</td>
-                        <td>@Html.DisplayFor(modelItem => item.PhanCongSanPham.DuAn.TenDuAn)</td>
-                        <td>@Html.DisplayFor(modelItem => item.PhanCongSanPham.SanPham)</td>
-                        @if (item.PhanCongSanPham.IsRent)
+                        <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhanVienSales.HoTen)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.DuAn.TenDuAn)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.TieuDe)</td>
+                        @if (item.PhanCongSales.NhaDat.LoaiNhaDat.IsRent)
                         {
-                            <td>@Html.DisplayFor(modelItem => item.PhanCongSanPham.GiaThueThangDau)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.GiaThue)</td>
                         }
                         else
                         {
-                            <td>@Html.DisplayFor(modelItem => item.PhanCongSanPham.GiaBanSanPham)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.GiaBan)</td>
                         }
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.PhanCongSanPham.PhanTramHoaHong)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.PhanCongSales.PhanTramHoaHong)</td>
                         <td class="text-center">@Html.DisplayFor(modelItem => item.TongChi)</td>
                         <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>
                         <td>

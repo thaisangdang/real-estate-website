@@ -47,11 +47,11 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 var salesManAccountId = User.Identity.GetUserId();
                 var salesMan = _context.NhanViens.SingleOrDefault(x => x.Account.Id == salesManAccountId);
-                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSanPham).Include(x => x.PhanCongSanPham.NhanVienSales).Include(X => X.PhanCongSanPham.DuAn)
-                    .Where(x => x.PhanCongSanPham.NhanVienSales.Id == salesMan.Id).ToList();
+                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn)
+                    .Where(x => x.PhanCongSales.NhanVienSales.Id == salesMan.Id).ToList();
                 foreach (var item in phiHoaHongs)
                 {
-                    duAns.Add(item.PhanCongSanPham.DuAn);
+                    duAns.Add(item.PhanCongSales.NhaDat.DuAn);
                 }
                 nhanVienSales.Add(salesMan);
             }
@@ -60,7 +60,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 var salesRole = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
                 nhanVienSales = _context.NhanViens.Where(x => x.Account.Roles.FirstOrDefault().RoleId == salesRole.Id).ToList();
                 duAns = _context.DuAns.ToList();
-                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSanPham).Include(x => x.PhanCongSanPham.NhanVienSales).Include(X => X.PhanCongSanPham.DuAn).ToList();
+                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn).ToList();
             }
 
             var viewModel = new QuanLyPhiHoaHongViewModel
@@ -76,36 +76,36 @@ namespace RealEstates.Areas.Admin.Controllers
         [Authorize(Roles = RoleName.Administrator)]
         public ActionResult New(int id)
         {
-            var phanCongSanPham = _context.PhanCongSanPhams.Include(x => x.DuAn).Include(x => x.NhanVienSales).SingleOrDefault(x => x.Id == id);
-            if (phanCongSanPham == null)
+            var phanCongSales = _context.PhanCongSales.Include(x => x.NhaDat.DuAn).Include(x => x.NhanVienSales).SingleOrDefault(x => x.Id == id);
+            if (phanCongSales == null)
                 return HttpNotFound();
 
             var userId = User.Identity.GetUserId();
             var phiHoaHong = new PhiHoaHong();
-            phiHoaHong.PhanCongSanPhamId = phanCongSanPham.Id;
+            phiHoaHong.PhanCongSalesId = phanCongSales.Id;
             phiHoaHong.NguoiTaoId = _context.NhanViens.SingleOrDefault(x => x.Account.Id == userId).Id;
             var viewModel = new PhiHoaHongViewModel(phiHoaHong)
             {
-                NhanVienSales = phanCongSanPham.NhanVienSales.HoTen,
-                TenDuAn = phanCongSanPham.DuAn.TenDuAn,
-                SanPham = phanCongSanPham.SanPham,
-                IsRent = phanCongSanPham.IsRent,
-                GiaThueThangDau = phanCongSanPham.GiaThueThangDau,
-                GiaBanSanPham = phanCongSanPham.GiaBanSanPham,
-                PhanTramHoaHong = phanCongSanPham.PhanTramHoaHong
+                NhanVienSales = phanCongSales.NhanVienSales.HoTen,
+                TenDuAn = phanCongSales.NhaDat.DuAn.TenDuAn,
+                NhaDat = phanCongSales.NhaDat,
+                IsRent = phanCongSales.NhaDat.LoaiNhaDat.IsRent,
+                GiaThue = phanCongSales.NhaDat.GiaThue,
+                GiaBan = phanCongSales.NhaDat.GiaBan,
+                PhanTramHoaHong = phanCongSales.PhanTramHoaHong
             };
                         
-            if (phanCongSanPham.IsRent)
-                viewModel.TongChi = phanCongSanPham.GiaThueThangDau * (decimal)(phanCongSanPham.PhanTramHoaHong / 100);
+            if (phanCongSales.NhaDat.LoaiNhaDat.IsRent)
+                viewModel.TongChi = phanCongSales.NhaDat.GiaThue * (decimal)(phanCongSales.PhanTramHoaHong / 100);
             else
-                viewModel.TongChi = phanCongSanPham.GiaBanSanPham * (decimal)(phanCongSanPham.PhanTramHoaHong / 100);
+                viewModel.TongChi = phanCongSales.NhaDat.GiaBan * (decimal)(phanCongSales.PhanTramHoaHong / 100);
 
             return View("PhiHoaHongForm", viewModel);
         }
 
         public ActionResult Details(int id)
         {
-            var phiHoaHong = _context.PhiHoaHongs.Include(x => x.PhanCongSanPham).Include(x => x.PhanCongSanPham.NhanVienSales).Include(X => X.PhanCongSanPham.DuAn).SingleOrDefault(x => x.Id == id);
+            var phiHoaHong = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn).SingleOrDefault(x => x.Id == id);
             if (phiHoaHong == null)
                 return HttpNotFound();
             return View(phiHoaHong);
@@ -121,11 +121,11 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 var salesManAccountId = User.Identity.GetUserId();
                 var salesMan = _context.NhanViens.SingleOrDefault(x => x.Account.Id == salesManAccountId);
-                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSanPham).Include(x => x.PhanCongSanPham.NhanVienSales).Include(X => X.PhanCongSanPham.DuAn)
-                    .Where(x => x.PhanCongSanPham.NhanVienSales.Id == salesMan.Id).ToList();
+                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn)
+                    .Where(x => x.PhanCongSales.NhanVienSales.Id == salesMan.Id).ToList();
                 foreach (var item in phiHoaHongs)
                 {
-                    duAns.Add(item.PhanCongSanPham.DuAn);
+                    duAns.Add(item.PhanCongSales.NhaDat.DuAn);
                 }
                 nhanVienSales.Add(salesMan);
             }
@@ -134,7 +134,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 var salesRole = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
                 nhanVienSales = _context.NhanViens.Where(x => x.Account.Roles.FirstOrDefault().RoleId == salesRole.Id).ToList();
                 duAns = _context.DuAns.ToList();
-                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSanPham).Include(x => x.PhanCongSanPham.NhanVienSales).Include(X => X.PhanCongSanPham.DuAn).ToList();
+                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn).ToList();
             }
 
             var viewModel = new QuanLyPhiHoaHongViewModel
@@ -147,13 +147,13 @@ namespace RealEstates.Areas.Admin.Controllers
             if (duAnId.HasValue)
             {
                 viewModel.DuAnId = duAnId.Value;
-                viewModel.PhiHoaHongs = viewModel.PhiHoaHongs.Where(x => x.PhanCongSanPham.DuAnId == duAnId.Value);
+                viewModel.PhiHoaHongs = viewModel.PhiHoaHongs.Where(x => x.PhanCongSales.NhaDat.DuAn.Id == duAnId.Value);
             }
 
             if (nhanVienSalesId.HasValue)
             {
                 viewModel.NhanVienSalesId = nhanVienSalesId.Value;
-                viewModel.PhiHoaHongs = viewModel.PhiHoaHongs.Where(x => x.PhanCongSanPham.NhanVienSalesId == nhanVienSalesId.Value);
+                viewModel.PhiHoaHongs = viewModel.PhiHoaHongs.Where(x => x.PhanCongSales.NhanVienSalesId == nhanVienSalesId.Value);
             }
 
             return View("Index", viewModel);
@@ -166,13 +166,13 @@ namespace RealEstates.Areas.Admin.Controllers
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
-                return RedirectToAction("New", phiHoaHong.PhanCongSanPham.Id);
+                return RedirectToAction("New", phiHoaHong.PhanCongSales.Id);
             }
             if (phiHoaHong.Id == 0)
             {
                 phiHoaHong.NgayTao = DateTime.Now;
                 _context.PhiHoaHongs.Add(phiHoaHong);
-                _context.PhanCongSanPhams.SingleOrDefault(x => x.Id == phiHoaHong.PhanCongSanPhamId).DaTinhHoaHong = true;
+                _context.PhanCongSales.SingleOrDefault(x => x.Id == phiHoaHong.PhanCongSalesId).DaTinhHoaHong = true;
                 _context.SaveChanges();
                 TempData["success"] = "Cập nhật thành công";
             }

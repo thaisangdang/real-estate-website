@@ -9,7 +9,7 @@ namespace RealEstates.Areas.Admin.Models
 {
     public class BaoCaoCongViecViewModel
     {
-        public PhanCongSanPham PhanCongSanPham { get; set; }
+        public PhanCongSales PhanCongSales { get; set; }
 
         public IEnumerable<Option> TrangThaiCongViec { get; set; }
     }

@@ -90,14 +90,12 @@ namespace RealEstates.Models
         [Required]
         [Display(Name = "Tỉnh/Thành phố")]
         public int TinhThanhPhoId { get; set; }
-
         [Display(Name = "Tỉnh/Thành phố")]
         public TinhThanhPho TinhThanhPho { get; set; }
 
         [Required]
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
-
         [Display(Name = "Quận huyện")]
         public QuanHuyen QuanHuyen { get; set; }
 
@@ -130,7 +128,8 @@ namespace RealEstates.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy hh:mm tt}")]
         public DateTime? NgayDang { get; set; }
 
-        public ICollection<PhanCongSanPham> PhanCongSanPhams { get; set; }
+        public ICollection<PhanCongSales> PhanCongSales { get; set; }
 
+        public ICollection<NhaDat> NhaDats { get; set; }
     }
 }

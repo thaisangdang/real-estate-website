@@ -51,5 +51,7 @@ namespace RealEstates.Models
 
         public ICollection<PhiHoaHong> PhiHoaHongs { get; set; }
 
+        public ICollection<PhanCongSales> PhanCongSales { get; set; }
+
     }
 }

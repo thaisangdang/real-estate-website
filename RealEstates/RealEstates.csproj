@@ -191,15 +191,17 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminDashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyLoaiNhaDatController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyNhaDatController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyNhanVienController.cs" />
-    <Compile Include="Areas\Admin\Controllers\QuanLyPhanCongSanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyPhanCongSalesController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTinRaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\SalesManDashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDashboardController.cs" />
     <Compile Include="Areas\Admin\Models\BaoCaoCongViecViewModel.cs" />
     <Compile Include="Areas\Admin\Models\DanhSachPhanCongViewModel.cs" />
     <Compile Include="Areas\Admin\Models\NhanVienViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\PhanCongSanPhamViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PhanCongSalesViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PhiHoaHongViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyBaoCaoCongViecViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyDuAnViewModel.cs" />
@@ -223,154 +225,18 @@
     <Compile Include="Controllers\TinRaoController.cs" />
     <Compile Include="Dtos\QuanHuyenDto.cs" />
     <Compile Include="Helper\ExceptionLogger.cs" />
-    <Compile Include="Migrations\201909121346264_Initial.cs" />
-    <Compile Include="Migrations\201909121346264_Initial.Designer.cs">
-      <DependentUpon>201909121346264_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909121622169_whatChanges.cs" />
-    <Compile Include="Migrations\201909121622169_whatChanges.Designer.cs">
-      <DependentUpon>201909121622169_whatChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909130537230_whatChanges1.cs" />
-    <Compile Include="Migrations\201909130537230_whatChanges1.Designer.cs">
-      <DependentUpon>201909130537230_whatChanges1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909130542250_whatChanges2.cs" />
-    <Compile Include="Migrations\201909130542250_whatChanges2.Designer.cs">
-      <DependentUpon>201909130542250_whatChanges2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909130543171_whatChanges3.cs" />
-    <Compile Include="Migrations\201909130543171_whatChanges3.Designer.cs">
-      <DependentUpon>201909130543171_whatChanges3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909130557281_whatChanges4.cs" />
-    <Compile Include="Migrations\201909130557281_whatChanges4.Designer.cs">
-      <DependentUpon>201909130557281_whatChanges4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909150821515_whatChanges5.cs" />
-    <Compile Include="Migrations\201909150821515_whatChanges5.Designer.cs">
-      <DependentUpon>201909150821515_whatChanges5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909150904354_whatChanges6.cs" />
-    <Compile Include="Migrations\201909150904354_whatChanges6.Designer.cs">
-      <DependentUpon>201909150904354_whatChanges6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909160436217_whatChanges7.cs" />
-    <Compile Include="Migrations\201909160436217_whatChanges7.Designer.cs">
-      <DependentUpon>201909160436217_whatChanges7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909160515362_whatChanges8.cs" />
-    <Compile Include="Migrations\201909160515362_whatChanges8.Designer.cs">
-      <DependentUpon>201909160515362_whatChanges8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909160516596_whatChanges9.cs" />
-    <Compile Include="Migrations\201909160516596_whatChanges9.Designer.cs">
-      <DependentUpon>201909160516596_whatChanges9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909160524072_whatChanges10.cs" />
-    <Compile Include="Migrations\201909160524072_whatChanges10.Designer.cs">
-      <DependentUpon>201909160524072_whatChanges10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909160533339_whatChanges11.cs" />
-    <Compile Include="Migrations\201909160533339_whatChanges11.Designer.cs">
-      <DependentUpon>201909160533339_whatChanges11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909160555494_whatChanges12.cs" />
-    <Compile Include="Migrations\201909160555494_whatChanges12.Designer.cs">
-      <DependentUpon>201909160555494_whatChanges12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909170453121_whatChanges13.cs" />
-    <Compile Include="Migrations\201909170453121_whatChanges13.Designer.cs">
-      <DependentUpon>201909170453121_whatChanges13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909170538251_whatChanges14.cs" />
-    <Compile Include="Migrations\201909170538251_whatChanges14.Designer.cs">
-      <DependentUpon>201909170538251_whatChanges14.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909170701379_whatChanges15.cs" />
-    <Compile Include="Migrations\201909170701379_whatChanges15.Designer.cs">
-      <DependentUpon>201909170701379_whatChanges15.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909170702437_whatChanges16.cs" />
-    <Compile Include="Migrations\201909170702437_whatChanges16.Designer.cs">
-      <DependentUpon>201909170702437_whatChanges16.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909171059478_whatChanges17.cs" />
-    <Compile Include="Migrations\201909171059478_whatChanges17.Designer.cs">
-      <DependentUpon>201909171059478_whatChanges17.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909190231327_whatChanges18.cs" />
-    <Compile Include="Migrations\201909190231327_whatChanges18.Designer.cs">
-      <DependentUpon>201909190231327_whatChanges18.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909190736132_whatChanges19.cs" />
-    <Compile Include="Migrations\201909190736132_whatChanges19.Designer.cs">
-      <DependentUpon>201909190736132_whatChanges19.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909191814219_whatChanges20.cs" />
-    <Compile Include="Migrations\201909191814219_whatChanges20.Designer.cs">
-      <DependentUpon>201909191814219_whatChanges20.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909240620507_whatChanges21.cs" />
-    <Compile Include="Migrations\201909240620507_whatChanges21.Designer.cs">
-      <DependentUpon>201909240620507_whatChanges21.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909240833004_whatChanges22.cs" />
-    <Compile Include="Migrations\201909240833004_whatChanges22.Designer.cs">
-      <DependentUpon>201909240833004_whatChanges22.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909240839396_whatChanges23.cs" />
-    <Compile Include="Migrations\201909240839396_whatChanges23.Designer.cs">
-      <DependentUpon>201909240839396_whatChanges23.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909250943123_whatChanges24.cs" />
-    <Compile Include="Migrations\201909250943123_whatChanges24.Designer.cs">
-      <DependentUpon>201909250943123_whatChanges24.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909251104310_whatChanges25.cs" />
-    <Compile Include="Migrations\201909251104310_whatChanges25.Designer.cs">
-      <DependentUpon>201909251104310_whatChanges25.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909251108246_whatChanges26.cs" />
-    <Compile Include="Migrations\201909251108246_whatChanges26.Designer.cs">
-      <DependentUpon>201909251108246_whatChanges26.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909251400575_whatChanges27.cs" />
-    <Compile Include="Migrations\201909251400575_whatChanges27.Designer.cs">
-      <DependentUpon>201909251400575_whatChanges27.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909251452145_whatChanges28.cs" />
-    <Compile Include="Migrations\201909251452145_whatChanges28.Designer.cs">
-      <DependentUpon>201909251452145_whatChanges28.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909260315509_whatChanges29.cs" />
-    <Compile Include="Migrations\201909260315509_whatChanges29.Designer.cs">
-      <DependentUpon>201909260315509_whatChanges29.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909262330325_whatChanges30.cs" />
-    <Compile Include="Migrations\201909262330325_whatChanges30.Designer.cs">
-      <DependentUpon>201909262330325_whatChanges30.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909291532152_whatChange.cs" />
-    <Compile Include="Migrations\201909291532152_whatChange.Designer.cs">
-      <DependentUpon>201909291532152_whatChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909300233345_whatChange1.cs" />
-    <Compile Include="Migrations\201909300233345_whatChange1.Designer.cs">
-      <DependentUpon>201909300233345_whatChange1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909300319319_whatChange2.cs" />
-    <Compile Include="Migrations\201909300319319_whatChange2.Designer.cs">
-      <DependentUpon>201909300319319_whatChange2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909300329208_whatChange3.cs" />
-    <Compile Include="Migrations\201909300329208_whatChange3.Designer.cs">
-      <DependentUpon>201909300329208_whatChange3.cs</DependentUpon>
+    <Compile Include="Migrations\201910181003181_Initial.cs" />
+    <Compile Include="Migrations\201910181003181_Initial.Designer.cs">
+      <DependentUpon>201910181003181_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\PhanCongSanPham.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\LoaiNhaDat.cs" />
+    <Compile Include="Models\PhanCongSales.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Models\QuanHuyen.cs" />
+    <Compile Include="Models\NhaDat.cs" />
+    <Compile Include="Models\TinRaoBDS.cs" />
     <Compile Include="ViewModels\DuAnViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
@@ -1072,14 +938,16 @@
     <Content Include="Areas\Admin\Views\QuanLyNhanVien\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyNhanVien\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyNhanVien\NhanVienForm.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\PhanCongSanPhamForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSales\PhanCongSales.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTinRao\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyPhanCongSanPham\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSales\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSales\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyBaoCaoCongViec\BaoCaoCongViecForm.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhiHoaHong\PhiHoaHongForm.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhiHoaHong\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyBaoCaoCongViec\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyLoaiNhaDat\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyNhaDat\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1242,113 +1110,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909121346264_Initial.resx">
-      <DependentUpon>201909121346264_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909121622169_whatChanges.resx">
-      <DependentUpon>201909121622169_whatChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909130537230_whatChanges1.resx">
-      <DependentUpon>201909130537230_whatChanges1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909130542250_whatChanges2.resx">
-      <DependentUpon>201909130542250_whatChanges2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909130543171_whatChanges3.resx">
-      <DependentUpon>201909130543171_whatChanges3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909130557281_whatChanges4.resx">
-      <DependentUpon>201909130557281_whatChanges4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909150821515_whatChanges5.resx">
-      <DependentUpon>201909150821515_whatChanges5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909150904354_whatChanges6.resx">
-      <DependentUpon>201909150904354_whatChanges6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909160436217_whatChanges7.resx">
-      <DependentUpon>201909160436217_whatChanges7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909160515362_whatChanges8.resx">
-      <DependentUpon>201909160515362_whatChanges8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909160516596_whatChanges9.resx">
-      <DependentUpon>201909160516596_whatChanges9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909160524072_whatChanges10.resx">
-      <DependentUpon>201909160524072_whatChanges10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909160533339_whatChanges11.resx">
-      <DependentUpon>201909160533339_whatChanges11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909160555494_whatChanges12.resx">
-      <DependentUpon>201909160555494_whatChanges12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909170453121_whatChanges13.resx">
-      <DependentUpon>201909170453121_whatChanges13.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909170538251_whatChanges14.resx">
-      <DependentUpon>201909170538251_whatChanges14.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909170701379_whatChanges15.resx">
-      <DependentUpon>201909170701379_whatChanges15.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909170702437_whatChanges16.resx">
-      <DependentUpon>201909170702437_whatChanges16.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909171059478_whatChanges17.resx">
-      <DependentUpon>201909171059478_whatChanges17.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909190231327_whatChanges18.resx">
-      <DependentUpon>201909190231327_whatChanges18.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909190736132_whatChanges19.resx">
-      <DependentUpon>201909190736132_whatChanges19.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909191814219_whatChanges20.resx">
-      <DependentUpon>201909191814219_whatChanges20.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909240620507_whatChanges21.resx">
-      <DependentUpon>201909240620507_whatChanges21.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909240833004_whatChanges22.resx">
-      <DependentUpon>201909240833004_whatChanges22.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909240839396_whatChanges23.resx">
-      <DependentUpon>201909240839396_whatChanges23.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909250943123_whatChanges24.resx">
-      <DependentUpon>201909250943123_whatChanges24.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909251104310_whatChanges25.resx">
-      <DependentUpon>201909251104310_whatChanges25.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909251108246_whatChanges26.resx">
-      <DependentUpon>201909251108246_whatChanges26.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909251400575_whatChanges27.resx">
-      <DependentUpon>201909251400575_whatChanges27.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909251452145_whatChanges28.resx">
-      <DependentUpon>201909251452145_whatChanges28.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909260315509_whatChanges29.resx">
-      <DependentUpon>201909260315509_whatChanges29.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909262330325_whatChanges30.resx">
-      <DependentUpon>201909262330325_whatChanges30.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909291532152_whatChange.resx">
-      <DependentUpon>201909291532152_whatChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909300233345_whatChange1.resx">
-      <DependentUpon>201909300233345_whatChange1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909300319319_whatChange2.resx">
-      <DependentUpon>201909300319319_whatChange2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909300329208_whatChange3.resx">
-      <DependentUpon>201909300329208_whatChange3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910181003181_Initial.resx">
+      <DependentUpon>201910181003181_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

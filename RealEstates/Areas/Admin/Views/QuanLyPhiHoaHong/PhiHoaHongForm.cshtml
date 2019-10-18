@@ -42,24 +42,24 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                @Html.LabelFor(model => model.SanPham, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                <p class="col-md-12">@Html.DisplayFor(model => model.SanPham)</p>
+                @Html.LabelFor(model => model.NhaDat.TieuDe, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                <p class="col-md-12">@Html.DisplayFor(model => model.NhaDat.TieuDe)</p>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 @if (Model.IsRent)
                 {
-                    @Html.LabelFor(model => model.GiaThueThangDau, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                    @Html.LabelFor(model => model.GiaThue, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
                     <p class="col-md-12">
-                        @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaThueThangDau)
+                        @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaThue)
                     </p>
                 }
                 else
                 {
-                    @Html.LabelFor(model => model.GiaBanSanPham, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                    @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
                     <p class="col-md-12">
-                        @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaBanSanPham)
+                        @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaBan)
                     </p>
                 }
             </div>
@@ -76,12 +76,6 @@
                 <p class="col-md-12 text-danger">@string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.TongChi)</p>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                <p class="col-md-12">@Html.TextAreaFor(m => m.GhiChu)</p>
-            </div>
-        </div>
         @if (Model.Id > 0)
         {
             <div class="col-md-6">
@@ -93,7 +87,7 @@
         }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-12">
-                @Html.HiddenFor(m => m.PhanCongSanPhamId)
+                @Html.HiddenFor(m => m.PhanCongSalesId)
                 @Html.HiddenFor(m => m.NguoiTaoId)
                 @Html.HiddenFor(m => m.TongChi)
                 <input type="submit" class="btn btn-success" value="Xác nhận" />

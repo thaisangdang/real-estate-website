@@ -1,5 +1,5 @@
-﻿@model RealEstates.Models.PhanCongSales
-@using RealEstates.Helper
+﻿@using RealEstates.Helper
+@model RealEstates.Models.PhanCongSales
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 }
 
 <style>
-    #menuQuanLyBaoCaoCongViec {
+    #menuQuanLyPhanCongSales {
         color: white;
         background-color: dodgerblue;
     }
@@ -21,7 +21,6 @@
 </p>
 
 <div>
-    <h4>Chi tiết công việc được phân công</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -33,7 +32,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NhanVienSales.HoTen)
+            Nhân viên Sales
         </dt>
 
         <dd>
@@ -55,7 +54,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.GiaThueThangDau)
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaThueThangDau)
             </dd>
         }
         else
@@ -65,7 +64,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.GiaBanSanPham)
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaBanSanPham)
             </dd>
         }
 
@@ -81,24 +80,22 @@
             @Html.DisplayNameFor(model => model.TrangThai)
         </dt>
 
-        @*<dd>
-            @{
-                SelectOptions.getTrangThaiPhanCongSales.SingleOrDefault(x => x.Id == Model.TrangThai).Text
-            }
-        </dd>*@
-
-        <dt>Hoa hồng</dt>
-
         <dd>
-            @if (Model.DaTinhHoaHong)
-            {
-                <p>Đã tính hoa hồng</p>
-            }
-            else
-            {
-                <p>Chưa tính hoa hồng</p>
-            }
+            @SelectOptions.getTrangThaiPhanCongSales.SingleOrDefault(x => x.Id == Model.TrangThai).Text
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DaTinhHoaHong)
+        </dt>
+
+        @if (Model.DaTinhHoaHong)
+        {
+            <dd>Đã tính hoa hồng</dd>
+        }
+        else
+        {
+            <dd>Chưa tính hoa hồng</dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.NguoTao)

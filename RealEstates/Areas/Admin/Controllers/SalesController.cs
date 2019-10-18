@@ -96,9 +96,9 @@ namespace RealEstates.Areas.Admin.Controllers
                 duAnViewModel.TinhThanhPho = duAn.TinhThanhPho;
                 duAnViewModel.QuanHuyen = duAn.QuanHuyen;
                 duAnViewModel.TongSpDaBanHoacChoThue =
-                    _context.PhanCongSanPhams.Where(x => x.DuAnId == duAn.Id && x.TrangThai == 2).ToList().Count();
+                    _context.PhanCongSales.Where(x => x.NhaDat.DuAn.Id == duAn.Id && x.TrangThai == 2).ToList().Count();
                 duAnViewModel.TongSpDaTinhHoaHong =
-                    _context.PhanCongSanPhams.Where(x => x.DuAnId == duAn.Id && x.DaTinhHoaHong).ToList().Count();
+                    _context.PhanCongSales.Where(x => x.NhaDat.DuAn.Id == duAn.Id && x.DaTinhHoaHong).ToList().Count();
                 duAnViewModels.Add(duAnViewModel);
             }
             return duAnViewModels;

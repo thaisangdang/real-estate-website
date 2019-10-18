@@ -7,23 +7,20 @@ using System.Web;
 
 namespace RealEstates.Models
 {
-    [Table("TinhThanhPho")]
-    public class TinhThanhPho
+    [Table("LoaiNhaDat")]
+    public class LoaiNhaDat
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display(Name = "Tỉnh/TP")]
-        public string Ten { get; set; }
+        [Display(Name = "Loại nhà đất")]
+        public string TenLoai { get; set; }
 
-        [Display(Name = "Tên viết tắt")]
-        public string Code { get; set; }
-
-        public ICollection<DuAn> DuAns { get; set; }
+        // cho thuê hay bán
+        [Display(Name = "Nhà đất cho thuê")] // dùng checkbox
+        public bool IsRent { get; set; }
 
         public ICollection<NhaDat> NhaDats { get; set; }
-
-        public ICollection<QuanHuyen> QuanHuyens { get; set; }
     }
 }

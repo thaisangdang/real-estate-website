@@ -1,0 +1,197 @@
+﻿@model RealEstates.Areas.Admin.Models.PhanCongSalesViewModel
+
+@{
+    ViewBag.Title = "PhanCongSalesForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyPhanCongSales {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">@Model.Title</h6>
+        @if (Model.TrangThai == 2 && !Model.DaTinhHoaHong) // hoa hồng tính xong rồi không được tính lại
+            // nếu muốn tính lại thì đổi trạng thái phân công thành hủy rồi tạo phân công mới để tính
+        {
+            <a href="@Url.Action("New", "QuanLyPhiHoaHong", new { id = Model.Id})" class="btn btn-success float-right" title="Tính phí hoa hồng">
+                <span class="text-white"><i class="fas fa-plus fa-fw"></i> Tính phí hoa hồng</span>
+            </a>
+        }
+    </div>
+    <div class="card-body">
+        <br />
+        @using (Html.BeginForm("Save", "QuanLyPhanCongSales", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.NhaDat.DuAn.Id, new { @class = "control-label col-md-12 font-weight-bold" })
+                @if (Model.Id == 0)
+                {
+                    @Html.DropDownListFor(m => m.NhaDat.DuAn.Id, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAns), "Chọn dự án", new { @class = "form-control col-md-12 select2" })
+                }
+                else
+                {
+                    @Html.DropDownListFor(m => m.NhaDat.DuAn.Id, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAns), "Chọn dự án", new { @class = "form-control col-md-12 select2", @disabled = "disabled" })
+                }
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.NhaDat.TieuDe, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                @if (Model.Id == 0)
+                {
+                    @Html.EditorFor(model => model.NhaDat.TieuDe, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                }
+                else
+                {
+                    @Html.EditorFor(model => model.NhaDat.TieuDe, new { htmlAttributes = new { @class = "form-control col-md-12", @disabled = "disabled" } })
+                }
+            </div>
+        </div>
+        <div class="col-md-6">
+            @if (Model.Id == 0)
+            {
+                <div class="form-check">
+                    @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent" })
+                    @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
+                </div>
+            }
+            else
+            {
+                <div class="form-check">
+                    @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent", @disabled = "disabled" })
+                    @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
+                </div>
+            }
+        </div>
+        <div class="col-md-6" id="giaThue" style="display: none;">
+            <div class="form-group">
+                @Html.LabelFor(model => model.GiaThue, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                @if (Model.Id == 0)
+                {
+                    @Html.EditorFor(model => model.GiaThue, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                }
+                else
+                {
+                    @Html.EditorFor(model => model.GiaThue, new { htmlAttributes = new { @class = "form-control col-md-12", @disabled = "disabled" } })
+                }
+            </div>
+        </div>
+        <div class="col-md-6" id="giaBan">
+            <div class="form-group">
+                @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                @if (Model.Id == 0)
+                {
+                    @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                }
+                else
+                {
+                    @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control col-md-12", @disabled = "disabled" } })
+                }
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhanTramHoaHong, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                @if (Model.Id == 0)
+                {
+                    @Html.EditorFor(model => model.PhanTramHoaHong, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                }
+                else
+                {
+                    @Html.EditorFor(model => model.PhanTramHoaHong, new { htmlAttributes = new { @class = "form-control col-md-12", @disabled = "disabled" } })
+                }
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.NhanVienSalesId, new { @class = "control-label col-md-12 font-weight-bold" })
+                @if (Model.Id == 0)
+                {
+                    @Html.DropDownListFor(m => m.NhanVienSalesId, new SelectList(Model.NhanViens, "Id", "HoTen", " Email", Model.NhanVienSalesId), "", new { @class = "form-control col-md-12 select2" })
+                    
+                }
+                else
+                {
+                    @Html.DropDownListFor(m => m.NhanVienSalesId, new SelectList(Model.NhanViens, "Id", "HoTen", Model.NhanVienSalesId), "", new { @class = "form-control col-md-12 select2", @disabled = "disabled" })
+                }
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @if (Model.Id > 0 && !Model.DaTinhHoaHong)
+                {
+                    @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
+                    @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiPhanCong, "Id", "Text", Model.TrangThai), "", new { @class = "form-control col-md-12 select2" })
+                }
+                else
+                {
+                    @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
+                    <p class="col-md-12">
+                        @Model.TrangThaiPhanCong.SingleOrDefault(x => x.Id == Model.TrangThai).Text
+                    </p>
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12">
+                @Html.HiddenFor(m => m.Id)
+                @if (Model.Id > 0 && !Model.DaTinhHoaHong)
+                {
+                    @Html.HiddenFor(m => m.NhaDat.DuAn.Id)
+                    @Html.HiddenFor(m => m.NhaDat.TieuDe)
+                    @Html.HiddenFor(m => m.IsRent)
+                    @Html.HiddenFor(m => m.GiaBan)
+                    @Html.HiddenFor(m => m.GiaThue)
+                    @Html.HiddenFor(m => m.PhanTramHoaHong)
+                    @Html.HiddenFor(m => m.NhanVienSalesId)
+                }
+                @if (!Model.DaTinhHoaHong)
+                {
+                    <input type="submit" class="btn btn-success" value="Lưu" />
+                }
+            </div>
+        </div>
+    </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $(".select2").select2();
+        });
+
+        function disPlayHandle() {
+            var isRent = document.getElementById("isRent");
+            var giaThue = document.getElementById("giaThue");
+            var giaBan = document.getElementById("giaBan");
+            if (isRent.checked) {
+                giaThue.style.display = "block";
+                giaBan.style.display = "none";
+            } else {
+                giaThue.style.display = "none";
+                giaBan.style.display = "block";
+            }
+        }
+    </script>
+}
+

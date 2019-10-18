@@ -8,12 +8,14 @@ namespace RealEstates.Helper
 {
     public static class SelectOptions
     {
-        public static List<Option> DienTich;
+        public static List<Option> DienTich { get; set; }
         public static List<Option> KhoangGia { get; set; }
         public static List<Option> ThoiGian { get; set; }
         public static List<Option> TrangThaiNhanVien { get; set; }
         public static List<Option> TrangThaiDuAn { get; set; }
-        public static List<Option> TrangThaiPhanCongSanPham { get; set; }
+        public static List<Option> TrangThaiPhanCongSales { get; set; }
+        public static List<Option> LoaiTinRaoBDS { get; set; }
+        public static List<Option> TrangThaiTinRao { get; set; }
 
         public static List<Option> getTrangThaiDuAn
         {
@@ -46,18 +48,18 @@ namespace RealEstates.Helper
             }
         }
 
-        public static List<Option> getTrangThaiPhanCongSanPham
+        public static List<Option> getTrangThaiPhanCongSales
         {
             get
             {
-                if (TrangThaiPhanCongSanPham == null)
+                if (TrangThaiPhanCongSales == null)
                 {
-                    TrangThaiPhanCongSanPham = new List<Option>();
-                    TrangThaiPhanCongSanPham.Add(new Option() { Id = 1, Text = "Chưa hoàn thành" });
-                    TrangThaiPhanCongSanPham.Add(new Option() { Id = 2, Text = "Đã hoàn thành" });
-                    TrangThaiPhanCongSanPham.Add(new Option() { Id = 3, Text = "Đã hủy" });
+                    TrangThaiPhanCongSales = new List<Option>();
+                    TrangThaiPhanCongSales.Add(new Option() { Id = 1, Text = "Chưa hoàn thành" });
+                    TrangThaiPhanCongSales.Add(new Option() { Id = 2, Text = "Đã hoàn thành" });
+                    TrangThaiPhanCongSales.Add(new Option() { Id = 3, Text = "Đã hủy" });
                 }
-                return TrangThaiPhanCongSanPham;
+                return TrangThaiPhanCongSales;
             }
         }
 
@@ -107,6 +109,35 @@ namespace RealEstates.Helper
                     ThoiGian.Add(new Option() { Id = 3, Text = "Trên 1 năm" });
                 }
                 return ThoiGian;
+            }
+        }
+
+        public static List<Option> getLoaiTinRaoBDS
+        {
+            get
+            {
+                if (LoaiTinRaoBDS == null)
+                {
+                    LoaiTinRaoBDS = new List<Option>();
+                    LoaiTinRaoBDS.Add(new Option() { Id = 1, Text = "BĐS cần bán/thuê" });
+                    LoaiTinRaoBDS.Add(new Option() { Id = 2, Text = "BĐS cần mua/cho thuê" });
+                }
+                return LoaiTinRaoBDS;
+            }
+        }
+
+        public static List<Option> getTrangThaiTinRao
+        {
+            get
+            {
+                if (TrangThaiTinRao == null)
+                {
+                    TrangThaiTinRao = new List<Option>();
+                    TrangThaiTinRao.Add(new Option() { Id = 1, Text = "Chờ duyệt" });
+                    TrangThaiTinRao.Add(new Option() { Id = 2, Text = "Đã duyệt" });
+                    TrangThaiTinRao.Add(new Option() { Id = 3, Text = "Ngừng đăng tin" });
+                }
+                return TrangThaiTinRao;
             }
         }
     }

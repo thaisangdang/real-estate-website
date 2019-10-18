@@ -29,52 +29,52 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhanCongSanPham.NhanVienSales.HoTen)
+            @Html.DisplayFor(model => model.PhanCongSales.NhanVienSales.HoTen)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhanCongSanPham.DuAn.TenDuAn)
+            @Html.DisplayNameFor(model => model.PhanCongSales.NhaDat.DuAn.TenDuAn)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhanCongSanPham.DuAn.TenDuAn)
+            @Html.DisplayFor(model => model.PhanCongSales.NhaDat.DuAn.TenDuAn)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhanCongSanPham.SanPham)
+            @Html.DisplayNameFor(model => model.PhanCongSales.NhaDat.TieuDe)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhanCongSanPham.SanPham)
+            @Html.DisplayFor(model => model.PhanCongSales.NhaDat.TieuDe)
         </dd>
 
-        @if (Model.PhanCongSanPham.IsRent)
+        @if (Model.PhanCongSales.NhaDat.LoaiNhaDat.IsRent)
         {
             <dt>
-                @Html.DisplayNameFor(model => model.PhanCongSanPham.GiaThueThangDau)
+                @Html.DisplayNameFor(model => model.PhanCongSales.NhaDat.GiaThue)
             </dt>
 
             <dd>
-                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.PhanCongSanPham.GiaThueThangDau)
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.PhanCongSales.NhaDat.GiaThue)
             </dd>
         }
         else
         {
             <dt>
-                @Html.DisplayNameFor(model => model.PhanCongSanPham.GiaBanSanPham)
+                @Html.DisplayNameFor(model => model.PhanCongSales.NhaDat.GiaBan)
             </dt>
 
             <dd>
-                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.PhanCongSanPham.GiaBanSanPham)
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.PhanCongSales.NhaDat.GiaBan)
             </dd>
         }
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhanCongSanPham.PhanTramHoaHong)
+            @Html.DisplayNameFor(model => model.PhanCongSales.PhanTramHoaHong)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhanCongSanPham.PhanTramHoaHong)
+            @Html.DisplayFor(model => model.PhanCongSales.PhanTramHoaHong)
         </dd>
 
         <dt>
@@ -91,14 +91,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.NgayTao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GhiChu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GhiChu)
         </dd>
 
     </dl>
