@@ -11,7 +11,7 @@ using RealEstates.Helper;
 namespace RealEstates.Areas.Admin.Controllers
 {
     [Authorize(Roles = RoleName.Administrator)]
-    public class QuanLyNhanVienController : Controller
+    public class QuanLyThongTinNVController : Controller
     {
         public ApplicationDbContext _context;
 
@@ -20,7 +20,7 @@ namespace RealEstates.Areas.Admin.Controllers
             _context.Dispose();
         }
 
-        public QuanLyNhanVienController()
+        public QuanLyThongTinNVController()
         {
             _context = new ApplicationDbContext();
         }

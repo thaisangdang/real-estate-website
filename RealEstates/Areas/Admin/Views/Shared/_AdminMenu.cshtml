@@ -1,43 +1,74 @@
 ﻿<li class="nav-item">
-    @Html.ActionLink("Dashboard", "Index", "AdminDashboard", null, new { @class = "nav-link", @id = "menuAdminDashboard" })
+    @Html.ActionLink("Dashboard", "Index", "AdminDashboard", null, new { @class = "nav-link text-light", @id = "menuAdminDashboard" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Quản lý dự án", "Index", "QuanLyDuAn", null, new { @class = "nav-link", @id = "menuQuanLyDuAn" })
+<div class="sidebar-heading p-3 font-weight-bold"><i class="fas fa-building fa-fw"></i> Dự án</div>
+
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Quản lý loại dự án", "Index", "QuanLyLoaiDuAn", null, new { @class = "nav-link text-light", @id = "menuQuanLyLoaiDuAn" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Thống kê dự án", "Index", "Sales", null, new { @class = "nav-link", @id = "menuSales" })
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Quản lý dự án", "Index", "QuanLyDuAn", null, new { @class = "nav-link text-light", @id = "menuQuanLyDuAn" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Phân công Sales", "Index", "QuanLyPhanCongSales", null, new { @class = "nav-link", @id = "menuQuanLyPhanCongSales" })
+<div class="sidebar-heading p-3 font-weight-bold"><i class="fas fa-home fa-fw"></i> Nhà đất</div>
+
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Quản lý loại nhà đất", "Index", "QuanLyLoaiNhaDat", null, new { @class = "nav-link text-light", @id = "menuQuanLoaiNhaDat" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Quản lý phí hoa hồng", "Index", "QuanLyPhiHoaHong", null, new { @class = "nav-link", @id = "menuQuanLyPhiHoaHong" })
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Quản lý nhà đất", "Index", "QuanLyNhaDat", null, new { @class = "nav-link text-light", @id = "menuQuanLyNhaDat" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Quản lý tin rao BĐS", "Index", "QuanLyTinRao", null, new { @class = "nav-link", @id = "menuQuanLyTinRao" })
+<div class="sidebar-heading p-3 font-weight-bold"><i class="fas fa-list fa-fw"></i> Sales</div>
+
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Phân công Sales", "Index", "QuanLyPhanCongSales", null, new { @class = "nav-link text-light", @id = "menuQuanLyPhanCongSales" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Báo cáo thống kê", "Index", "QuanLyBaoCaoThongKe", null, new { @class = "nav-link", @id = "menuQuanLyBaoCaoThongKe" })
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Quản lý phí hoa hồng", "Index", "QuanLyPhiHoaHong", null, new { @class = "nav-link text-light", @id = "menuQuanLyPhiHoaHong" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Quản lý loại dự án", "Index", "QuanLyLoaiDuAn", null, new { @class = "nav-link", @id = "menuQuanLyLoaiDuAn" })
+<div class="sidebar-heading p-3 font-weight-bold"> <i class="fas fa-print fa-fw"></i>Thống kê</div>
+
+<li class="nav-item bg-primary">
+    @* dự án bán/cho thuê được bao nhiêu sp, bao nhiêu sp đã tính hoa hồng, theo tháng, theo quý, năm *@
+    @Html.ActionLink("Thống kê dự án", "ThongKeDuAn", "QuanLyBaoCaoThongKe", null, new { @class = "nav-link text-light", @id = "menuThongKeDuAn" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Thông tin nhân viên", "Index", "QuanLyNhanVien", null, new { @class = "nav-link", @id = "menuQuanLyNhanVien" })
+<li class="nav-item bg-primary">
+    @* bao nhiêu nhà đất đã bán/cho thuê, bao nhiêu đã tính hoa hồng, theo tháng, theo quý, năm *@
+    @Html.ActionLink("Thống kê nhà đất", "ThongKeNhaDat", "QuanLyBaoCaoThongKe", null, new { @class = "nav-link text-light", @id = "menuThongKeNhaDat" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Quản lý tài khoản", "Index", "QuanLyTaiKhoan", null, new { @class = "nav-link", @id = "menuQuanLyTaiKhoan" })
+<li class="nav-item bg-primary">
+    @* nhân viên sales đang sales bao nhiêu nhà đất, bao nhiêu đã hoàn thành, tổng hoa hồng đã tính trong tháng, theo quý, năm *@
+    @Html.ActionLink("Nhân viên Sales", "ThongKeNVSales", "QuanLyBaoCaoThongKe", null, new { @class = "nav-link text-light", @id = "menuThongKeNVSales" })
 </li>
 
-<li class="nav-item">
-    @Html.ActionLink("Quản lý chat", "Index", "QuanLyChat", null, new { @class = "nav-link", @id = "menuQuanLyChat" })
+<div class="sidebar-heading p-3 font-weight-bold"><i class="fas fa-male fa-fw"></i> Nhân viên</div>
+
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Thông tin nhân viên", "Index", "QuanLyThongTinNV", null, new { @class = "nav-link text-light", @id = "menuQuanLyThongTinNV" })
+</li>
+
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Tài khoản nhân viên", "Index", "QuanLyTaiKhoanNV", null, new { @class = "nav-link text-light", @id = "menuQuanLyTaiKhoanNV" })
+</li>
+
+<div class="sidebar-heading p-3 font-weight-bold"><i class="fas fa-address-card fa-fw"></i> Khách hàng</div>
+
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Thông tin khách hàng", "Index", "QuanLyThongTinKH", null, new { @class = "nav-link text-light", @id = "menuQuanLyThongTinKH" })
+</li>
+
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Tài khoản khách hàng", "Index", "QuanLyTaiKhoanKH", null, new { @class = "nav-link text-light", @id = "menuQuanLyTaiKhoanKH" })
+</li>
+
+<li class="nav-item bg-primary">
+    @Html.ActionLink("Quản lý chat", "Index", "QuanLyChat", null, new { @class = "nav-link text-light", @id = "menuQuanLyChat" })
 </li>

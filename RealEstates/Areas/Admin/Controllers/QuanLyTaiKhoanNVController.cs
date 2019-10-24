@@ -13,7 +13,7 @@ using System.Web.Mvc;
 namespace RealEstates.Areas.Admin.Controllers
 {
     [Authorize(Roles = RoleName.Administrator)]
-    public class QuanLyTaiKhoanController : Controller
+    public class QuanLyTaiKhoanNVController : Controller
     {
         private ApplicationDbContext _context;
         private ApplicationUserManager _userManager;
@@ -30,7 +30,7 @@ namespace RealEstates.Areas.Admin.Controllers
             }
         }
 
-        public QuanLyTaiKhoanController()
+        public QuanLyTaiKhoanNVController()
         {
             _context = new ApplicationDbContext();
         }

@@ -6,10 +6,9 @@ using System.Web.Mvc;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Administrator, Staff")]
-    public class QuanLyTinRaoController : Controller
+    public class QuanLyTaiKhoanKHController : Controller
     {
-        // GET: Admin/QuanLyTinRao
+        // GET: Admin/QuanLyTaiKhoanKH
         public ActionResult Index()
         {
             return View();
