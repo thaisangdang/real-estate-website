@@ -6,7 +6,7 @@
 }
 
 <style>
-    #menuQuanLyNhanVien {
+    #menuQuanLyThongTinNV {
         color: white;
         background-color: dodgerblue;
     }
@@ -24,7 +24,7 @@
     <div class="card-body">
         <br />
         <div class="form-horizontal" style="margin-left: 1rem;">
-            @using (Html.BeginForm("Search", "QuanLyNhanVien", FormMethod.Post, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
+            @using (Html.BeginForm("Search", "QuanLyThongTinNV", FormMethod.Post, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -55,7 +55,7 @@
                     {
                     <tr>
                         <td>
-                            <a href="@Url.Action("Details","QuanLyNhanVien", new { id = item.Id })" title="Chi tiết">
+                            <a href="@Url.Action("Details","QuanLyThongTinNV", new { id = item.Id })" title="Chi tiết">
                                 @Html.DisplayFor(modelItem => item.HoTen)
                             </a>
                         </td>
@@ -101,7 +101,7 @@
                 Bạn có thực sự muốn xóa?
             </div>
             <div class="modal-footer">
-                @using (Html.BeginForm("Delete", "QuanLyNhanVien"))
+                @using (Html.BeginForm("Delete", "QuanLyThongTinNV"))
                 {
                     @Html.AntiForgeryToken()
                     @Html.Hidden("id", "", new { @class = "hiddenid" })

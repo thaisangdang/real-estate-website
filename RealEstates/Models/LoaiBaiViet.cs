@@ -7,20 +7,16 @@ using System.Web;
 
 namespace RealEstates.Models
 {
-    [Table("LoaiNhaDat")]
-    public class LoaiNhaDat
+    [Table("LoaiBaiViet")]
+    public class LoaiBaiViet
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display(Name = "Loại nhà đất")]
+        [Display(Name = "Loại bài viết")]
         public string TenLoai { get; set; }
 
-        // cho thuê hay bán
-        [Display(Name = "Nhà đất cho thuê")]
-        public bool IsRent { get; set; }
-
-        public ICollection<NhaDat> NhaDats { get; set; }
+        public ICollection<BaiViet> BaiViets { get; set; }
     }
 }

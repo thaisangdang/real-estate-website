@@ -1,0 +1,58 @@
+﻿@model RealEstates.ViewModels.LoaiNhaDatViewModel
+
+@{
+    ViewBag.Title = "LoaiNhaDatForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyLoaiNhaDat {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">@Model.Title</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Save", "QuanLyLoaiNhaDat", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TenLoai, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.TenLoai, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <div class="form-check">
+                        @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent" })
+                        @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.HiddenFor(m => m.Id)
+                    <input type="submit" class="btn btn-success" value="Lưu" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -191,12 +191,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminDashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyBaiVietController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyLoaiBaiVietController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiNhaDatController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyNhaDatController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyThongTinDNController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyThongTinNVController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyPhanCongSalesController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanKHController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyThongTinKHController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyTinRaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\SalesManDashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDashboardController.cs" />
     <Compile Include="Areas\Admin\Models\BaoCaoCongViecViewModel.cs" />
@@ -207,6 +211,7 @@
     <Compile Include="Areas\Admin\Models\QuanLyBaoCaoCongViecViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyDuAnViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyLoaiDuAnViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyLoaiNhaDatViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyNhanVienViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyPhiHoaHongViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -230,8 +235,27 @@
     <Compile Include="Migrations\201910181003181_Initial.Designer.cs">
       <DependentUpon>201910181003181_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910241400266_whatChanges.cs" />
+    <Compile Include="Migrations\201910241400266_whatChanges.Designer.cs">
+      <DependentUpon>201910241400266_whatChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910241600530_whatChanges1.cs" />
+    <Compile Include="Migrations\201910241600530_whatChanges1.Designer.cs">
+      <DependentUpon>201910241600530_whatChanges1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910241603233_whatChanges2.cs" />
+    <Compile Include="Migrations\201910241603233_whatChanges2.Designer.cs">
+      <DependentUpon>201910241603233_whatChanges2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910241608104_whatChanges3.cs" />
+    <Compile Include="Migrations\201910241608104_whatChanges3.Designer.cs">
+      <DependentUpon>201910241608104_whatChanges3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BaiViet.cs" />
+    <Compile Include="Models\DoanhNghiepBDS.cs" />
     <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\LoaiBaiViet.cs" />
     <Compile Include="Models\LoaiNhaDat.cs" />
     <Compile Include="Models\PhanCongSales.cs" />
     <Compile Include="Models\PhongBan.cs" />
@@ -253,6 +277,7 @@
     <Compile Include="Areas\Admin\Models\IdentityModels.cs" />
     <Compile Include="Models\LoaiDuAn.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\LoaiNhaDatViewModel.cs" />
     <Compile Include="ViewModels\NavViewModel.cs" />
     <Compile Include="ViewModels\LoaiDuAnViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -930,7 +955,7 @@
     <Content Include="Areas\Admin\Views\QuanLyLoaiDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\DuAnForm.cshtml" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
-    <Content Include="Areas\Admin\Views\QuanLyBaoCaoThongKe\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyBaoCaoThongKe\ThongKeDuAn.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SalesManDashboard\Index.cshtml" />
@@ -949,6 +974,11 @@
     <Content Include="Areas\Admin\Views\QuanLyNhaDat\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTaiKhoanKH\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyThongTinKH\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyLoaiNhaDat\LoaiNhaDatForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyLoaiNhaDat\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinRao\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyThongTinDN\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyBaiViet\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1101,6 +1131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\QuanLyLoaiBaiViet\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1114,6 +1145,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910181003181_Initial.resx">
       <DependentUpon>201910181003181_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241400266_whatChanges.resx">
+      <DependentUpon>201910241400266_whatChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241600530_whatChanges1.resx">
+      <DependentUpon>201910241600530_whatChanges1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241603233_whatChanges2.resx">
+      <DependentUpon>201910241603233_whatChanges2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241608104_whatChanges3.resx">
+      <DependentUpon>201910241608104_whatChanges3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

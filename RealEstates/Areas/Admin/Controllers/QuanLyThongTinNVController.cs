@@ -149,7 +149,7 @@ namespace RealEstates.Areas.Admin.Controllers
             }
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "QuanLyNhanVien");
+            return RedirectToAction("Index", "QuanLyThongTinNV");
         }
 
         [HttpPost]
@@ -173,7 +173,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 ExceptionLogger.SendErrorToText(ex);
             }
 
-            return RedirectToAction("Index", "QuanLyNhanVien");
+            return RedirectToAction("Index", "QuanLyThongTinNV");
         }
     }
 }

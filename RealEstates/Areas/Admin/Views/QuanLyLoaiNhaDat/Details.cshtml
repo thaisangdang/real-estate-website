@@ -1,4 +1,4 @@
-﻿@model RealEstates.Models.LoaiDuAn
+﻿@model RealEstates.Models.LoaiNhaDat
 
 @{
     ViewBag.Title = "Details";
@@ -6,7 +6,7 @@
 }
 
 <style>
-    #menuQuanLyLoaiDuAn {
+    #menuQuanLyLoaiNhaDat {
         color: white;
         background-color: dodgerblue;
     }
@@ -20,7 +20,7 @@
 </p>
 
 <div>
-    <h4>Chi tiết loại dự án</h4>
+    <h4>Chi tiết loại nhà đất</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -32,16 +32,17 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
+            @Html.DisplayNameFor(model => model.IsRent)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
+        @if (Model.IsRent)
+        {
+            <dd>Nhà đất cho thuê</dd>
+        }
+        else
+        {
+            <dd>Nhà đất bán</dd>
+        }
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Trở về danh sách", "Index")
-</p>

@@ -28,7 +28,7 @@ namespace RealEstates.Areas.Admin.Controllers
             _context = new ApplicationDbContext();
         }
 
-        public ActionResult Index()
+        public ActionResult ThongKeDuAn()
         {
             if (TempData["success"] != null)
             {

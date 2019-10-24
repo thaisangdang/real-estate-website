@@ -32,6 +32,10 @@ namespace RealEstates.Models
         [Display(Name = "Chủ đầu tư")]
         public string ChuDauTu { get; set; }
 
+        [Display(Name = "Doanh nghiệp BĐS")]
+        public int DoanhNghiepBDSId { get; set; }
+        public DoanhNghiepBDS DoanhNghiepBDS { get; set; }
+
         [Required]
         [Display(Name = "Tổng diện tích (m2)")]
         [Range(0, int.MaxValue)]

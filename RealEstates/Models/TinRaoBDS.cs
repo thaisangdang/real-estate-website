@@ -18,7 +18,10 @@ namespace RealEstates.Models
         public int NhaDatId { get; set; }
         public NhaDat NhaDat { get; set; }
 
-        public int LoaiTinRao { get; set; } // cần bán/cầnthuê - cần mua/cần cho thuê
+        [Display(Name = "Ảnh đại diện")]
+        public string AnhDaiDien { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
 
         [Display(Name = "Ngày bắt đầu đăng tin rao")]
         public DateTime NgayBatDauDangTinRao { get; set; }
