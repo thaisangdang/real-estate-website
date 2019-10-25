@@ -14,9 +14,12 @@ namespace RealEstates.App_Start
         {
             // Domain to Dto
             Mapper.CreateMap<QuanHuyen, QuanHuyenDto>();
+            Mapper.CreateMap<LoaiNhaDat, LoaiNhaDatDto>();
 
             // Dto to Domain
             Mapper.CreateMap<QuanHuyenDto, QuanHuyen>()
+                .ForMember(x => x.Id, opt => opt.Ignore());
+            Mapper.CreateMap<LoaiNhaDatDto, LoaiNhaDat>()
                 .ForMember(x => x.Id, opt => opt.Ignore());
         }
     }

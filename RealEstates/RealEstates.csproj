@@ -191,6 +191,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminDashboardController.cs" />
+    <Compile Include="Controllers\Api\LoaiNhaDatApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyBaiVietController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiBaiVietController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiNhaDatController.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Areas\Admin\Models\QuanLyDuAnViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyLoaiDuAnViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyLoaiNhaDatViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyNhaDatViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyNhanVienViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyPhiHoaHongViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -229,6 +231,7 @@
     <Compile Include="Areas\Admin\Models\SalesViewModel.cs" />
     <Compile Include="Controllers\DuAnController.cs" />
     <Compile Include="Controllers\TinRaoController.cs" />
+    <Compile Include="Dtos\LoaiNhaDatDto.cs" />
     <Compile Include="Dtos\QuanHuyenDto.cs" />
     <Compile Include="Helper\ExceptionLogger.cs" />
     <Compile Include="Migrations\201910181003181_Initial.cs" />
@@ -250,6 +253,26 @@
     <Compile Include="Migrations\201910241608104_whatChanges3.cs" />
     <Compile Include="Migrations\201910241608104_whatChanges3.Designer.cs">
       <DependentUpon>201910241608104_whatChanges3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910241715367_whatChanges4.cs" />
+    <Compile Include="Migrations\201910241715367_whatChanges4.Designer.cs">
+      <DependentUpon>201910241715367_whatChanges4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910250111389_whatChanges5.cs" />
+    <Compile Include="Migrations\201910250111389_whatChanges5.Designer.cs">
+      <DependentUpon>201910250111389_whatChanges5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910250254138_whatChanges6.cs" />
+    <Compile Include="Migrations\201910250254138_whatChanges6.Designer.cs">
+      <DependentUpon>201910250254138_whatChanges6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910250311266_whatChanges7.cs" />
+    <Compile Include="Migrations\201910250311266_whatChanges7.Designer.cs">
+      <DependentUpon>201910250311266_whatChanges7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910250354334_whatChanges8.cs" />
+    <Compile Include="Migrations\201910250354334_whatChanges8.Designer.cs">
+      <DependentUpon>201910250354334_whatChanges8.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaiViet.cs" />
@@ -286,6 +309,7 @@
     <Compile Include="Models\TinhThanhPho.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\NhaDatViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-flatly.min.css" />
@@ -979,6 +1003,9 @@
     <Content Include="Areas\Admin\Views\QuanLyTinRao\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyThongTinDN\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyBaiViet\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyNhaDat\NhaDatForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyLoaiBaiViet\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyNhaDat\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1131,7 +1158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\QuanLyLoaiBaiViet\" />
+    <Folder Include="Areas\Admin\Views\LoaiNhaDatApi\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1157,6 +1184,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910241608104_whatChanges3.resx">
       <DependentUpon>201910241608104_whatChanges3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241715367_whatChanges4.resx">
+      <DependentUpon>201910241715367_whatChanges4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910250111389_whatChanges5.resx">
+      <DependentUpon>201910250111389_whatChanges5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910250254138_whatChanges6.resx">
+      <DependentUpon>201910250254138_whatChanges6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910250311266_whatChanges7.resx">
+      <DependentUpon>201910250311266_whatChanges7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910250354334_whatChanges8.resx">
+      <DependentUpon>201910250354334_whatChanges8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

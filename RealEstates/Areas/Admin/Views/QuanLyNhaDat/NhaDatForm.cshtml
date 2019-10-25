@@ -1,0 +1,254 @@
+﻿@model RealEstates.ViewModels.NhaDatViewModel
+
+@{
+    ViewBag.Title = "DuAnForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyNhaDat {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">@Model.Title</h6>
+    </div>
+    <div class="card-body">
+        <br />
+        @using (Html.BeginForm("Save", "QuanLyNhaDat", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Ten, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DuAnId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.DuAnId, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAnId), "",
+                            new { @class = "form-control col-md-12 select2" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.TinhThanhPhoId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "",
+                            new { @class = "form-control col-md-12 select2", @id = "TinhThanhPho" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.QuanHuyenId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.QuanHuyenId, new SelectList(Model.QuanHuyens.Where(x => x.TinhThanhPhoId == Model.TinhThanhPhoId), "Id", "Ten", Model.QuanHuyenId), "",
+                            new { @class = "form-control col-md-12 select2", @id = "QuanHuyen" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.Id == 0)
+                    {
+                        <div class="form-check">
+                            @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent" })
+                            @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-check">
+                            @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent", @disabled = "disabled" })
+                            @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6" id="giaThue" style="display: none;">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GiaThue, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @if (Model.Id == 0)
+                        {
+                            @Html.EditorFor(model => model.GiaThue, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.GiaThue, new { htmlAttributes = new { @class = "form-control col-md-12", @disabled = "disabled" } })
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6" id="giaBan">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @if (Model.Id == 0)
+                        {
+                            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control col-md-12", @disabled = "disabled" } })
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LoaiNhaDatId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.LoaiNhaDatId, new SelectList(Model.LoaiNhaDats, "Id", "Ten", Model.LoaiNhaDatId), "",
+                            new { @class = "form-control col-md-12 select2", @id = "LoaiNhaDat" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DienTich, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DienTich, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.HuongNha, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.HuongNha, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SoPhong, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.SoPhong, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ThongTinMoTa, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-12">
+                            @Html.TextAreaFor(model => model.ThongTinMoTa, new { @class = "form-control col-md-12", @id = "ThongTinMoTa" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Media, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-12">
+                            @Html.TextAreaFor(model => model.Media, new { @class = "form-control col-md-12", @id = "Media" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TuKhoa, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.TuKhoa, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BanDo, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.BanDo, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    @Html.HiddenFor(m => m.Id)
+                    <input type="submit" class="btn btn-success" value="Lưu" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function () {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('ThongTinMoTa');
+            CKEDITOR.replace('Media');
+            CKEDITOR.editorConfig = function (config) {
+                config.language = 'vi';
+            };
+        });
+
+        $(document).ready(function () {
+            $(".select2").select2();
+            $("#TinhThanhPho").change(function () {
+                var selectedValue = $(this).children("option:selected").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/api/DuAnApi/GetQuanHuyens/?tinhThanhPhoId=" + selectedValue,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var selectElement = $("#QuanHuyen");
+                        selectElement.empty();
+                        data.forEach(function (quanHuyen) {
+                            var $option = $("<option/>", {
+                                value: quanHuyen.id,
+                                text: quanHuyen.ten
+                            });
+                            selectElement.append($option);
+                        });
+                    },
+                    failure: function (data) {
+                    },
+                    error: function (data) {
+                    }
+                });
+            });
+        });
+
+        function disPlayHandle() {
+            var isRent = document.getElementById("isRent");
+            var giaThue = document.getElementById("giaThue");
+            var giaBan = document.getElementById("giaBan");
+            if (isRent.checked) {
+                giaThue.style.display = "block";
+                giaBan.style.display = "none";
+            } else {
+                giaThue.style.display = "none";
+                giaBan.style.display = "block";
+            }
+            loadLoaiNhaDat();
+        }
+
+        function loadLoaiNhaDat() {
+            var isRent = document.getElementById("isRent").checked;
+            $.ajax({
+                type: "GET",
+                url: "/api/LoaiNhaDatApi/GetLoaiNhaDats/?isRent=" + isRent,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var selectElement = $("#LoaiNhaDat");
+                    selectElement.empty();
+                    data.forEach(function (loaiNhaDat) {
+                        var $option = $("<option/>", {
+                            value: loaiNhaDat.id,
+                            text: loaiNhaDat.tenLoai
+                        });
+                        selectElement.append($option);
+                    });
+                },
+                failure: function (data) {
+                },
+                error: function (data) {
+                }
+            });
+        }
+
+    </script>
+}

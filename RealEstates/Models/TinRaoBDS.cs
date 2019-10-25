@@ -18,6 +18,10 @@ namespace RealEstates.Models
         public int NhaDatId { get; set; }
         public NhaDat NhaDat { get; set; }
 
+        [Required]
+        [Display(Name = "Tiêu đề")]
+        public string TieuDe { get; set; }
+
         [Display(Name = "Ảnh đại diện")]
         public string AnhDaiDien { get; set; }
         [NotMapped]

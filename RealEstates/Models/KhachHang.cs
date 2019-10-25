@@ -30,8 +30,6 @@ namespace RealEstates.Models
         public string AccountId { get; set; }
         public ApplicationUser Account { get; set; }
 
-        public ICollection<NhaDat> NhaDats { get; set; }
-
         public ICollection<TinRaoBDS> TinRaoBDSs { get; set; }
     }
 }

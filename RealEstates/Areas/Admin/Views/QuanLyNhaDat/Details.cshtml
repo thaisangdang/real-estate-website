@@ -1,0 +1,159 @@
+﻿@model RealEstates.Models.NhaDat
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyLoaiNhaDat {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<div>
+    <h4>Chi tiết nhà đất</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DuAn.TenDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DuAn.TenDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiNhaDat.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiNhaDat.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuanHuyen.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuanHuyen.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhThanhPho.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhThanhPho.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsRent)
+        </dt>
+
+        @if (Model.IsRent)
+        {
+            <dd>Nhà đất cho thuê</dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.GiaThue)
+            </dt>
+
+            <dd>
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaThue)
+            </dd>
+        }
+        else
+        {
+            <dd>Nhà đất bán</dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.GiaBan)
+            </dt>
+
+            <dd>
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaBan)
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienTich)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienTich)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HuongNha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HuongNha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoPhong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoPhong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThongTinMoTa)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.ThongTinMoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Media)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Media)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TuKhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TuKhoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BanDo)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.BanDo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+    </dl>
+</div>
+
