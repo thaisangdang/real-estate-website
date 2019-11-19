@@ -157,6 +157,10 @@ namespace RealEstates.Areas.Admin.Controllers
                 return View("NhaDatForm", viewModel);
             }
 
+            nhaDat.ThongTinMoTa = HttpUtility.HtmlDecode(nhaDat.ThongTinMoTa);
+            nhaDat.Media = HttpUtility.HtmlDecode(nhaDat.Media);
+            nhaDat.BanDo = HttpUtility.HtmlDecode(nhaDat.BanDo);
+
             if (nhaDat.Id == 0)
             {
                 nhaDat.NgayTao = DateTime.Now;

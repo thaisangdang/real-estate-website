@@ -98,7 +98,8 @@ namespace RealEstates.Areas.Admin.Controllers
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.ToList(),
-                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn,
+                DoanhNghiepBDSs = _context.DoanhNghiepBDSs.ToList()
             };
 
             return View("DuAnForm", viewModel);
@@ -117,7 +118,8 @@ namespace RealEstates.Areas.Admin.Controllers
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.ToList(),
-                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn,
+                DoanhNghiepBDSs = _context.DoanhNghiepBDSs.ToList()
             };
             return View("DuAnForm", viewModel);
         }
@@ -128,7 +130,7 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 return RedirectToAction("Index");
             }
-            var duAn = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho)
+            var duAn = _context.DuAns.Include(x => x.LoaiDuAn).Include(x => x.DoanhNghiepBDS).Include(y => y.TinhThanhPho)
                 .Include(z => z.QuanHuyen).Include(u => u.NguoiDang).SingleOrDefault(x => x.Id == id);
             if (duAn == null)
             {
@@ -150,7 +152,8 @@ namespace RealEstates.Areas.Admin.Controllers
                     LoaiDuAns = _context.LoaiDuAns.ToList(),
                     TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                     QuanHuyens = _context.QuanHuyens.ToList(),
-                    TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
+                    TrangThaiDuAn = SelectOptions.getTrangThaiDuAn,
+                    DoanhNghiepBDSs = _context.DoanhNghiepBDSs.ToList()
                 };
                 return View("DuAnForm", viewModel);
             }
@@ -186,6 +189,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 duAnInDb.DiaChi = duAn.DiaChi;
                 duAnInDb.GiaTu = duAn.GiaTu;
                 duAnInDb.ChuDauTu = duAn.ChuDauTu;
+                duAnInDb.DoanhNghiepBDSId = duAn.DoanhNghiepBDSId;
                 duAnInDb.TongDienTich = duAn.TongDienTich;
                 duAnInDb.TienDoDuAn = duAn.TienDoDuAn;
                 duAnInDb.QuyMoDuAn = duAn.QuyMoDuAn;

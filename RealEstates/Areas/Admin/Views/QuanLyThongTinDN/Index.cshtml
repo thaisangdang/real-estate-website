@@ -1,8 +1,122 @@
-﻿
+﻿@model RealEstates.Areas.Admin.Models.QuanLyThongTinDNViewModel
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<style>
+    #menuQuanLyThongTinDN {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
 
+@Html.Partial("~/Views/Shared/_Alert.cshtml")
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách doanh nghiệp</h6>
+        <a href="@Url.Action("New")" class="btn btn-success float-right" title="Tạo mới">
+            <span class="text-white"><i class="fas fa-plus fa-fw"></i> Thêm thông tin doanh nghiệp</span>
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <br />
+            <table id="dataTable" class="table table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.DoanhNghiepBDSs)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Ten)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
+                            <td>@Html.DisplayFor(modelItem => item.SoDienThoai)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Sửa">
+                                    <span class="text-white"><i class="fas fa-edit fa-fw"></i></span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#modalConfirm" data-id="@item.Id" data-toggle="modal" data-target="#modalConfirm" class="btn btn-danger modalLink" title="Xóa">
+                                    <span class="text-white"><i class="fas fa-trash fa-fw"></i></span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa thông tin doanh nghiệp</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có thực sự muốn xóa?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("Delete", "QuanLyThongTinDN"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("id", "", new { @class = "hiddenid" })
+                    <input type="hidden" name="id" id="btndelete" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "columns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    { "width": "5%" },
+                    { "width": "5%" }
+                ],
+                "language": {
+                    "infoEmpty": "Không có dữ liệu",
+                    "search": "Tìm theo từ khóa",
+                    "emptyTable": "Không có dữ liệu",
+                    "lengthMenu": "Hiển thị _MENU_ mục",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Kế tiếp",
+                        "previous": "Trước"
+                    },
+                }
+            });
+        });
+        $(document).on("click", ".modalLink", function () {
+            var passedID = $(this).data('id');
+            $(".hiddenid").val(passedID);
+        });
+    </script>
+}

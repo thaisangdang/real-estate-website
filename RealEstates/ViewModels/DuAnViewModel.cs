@@ -30,6 +30,10 @@ namespace RealEstates.ViewModels
         [Display(Name = "Chủ đầu tư")]
         public string ChuDauTu { get; set; }
 
+        [Display(Name = "Doanh nghiệp BĐS")]
+        public int DoanhNghiepBDSId { get; set; }
+        public DoanhNghiepBDS DoanhNghiepBDS { get; set; }
+
         [Required]
         [Display(Name = "Tổng diện tích (m2)")]
         public int TongDienTich { get; set; }
@@ -138,6 +142,8 @@ namespace RealEstates.ViewModels
 
         public IEnumerable<Option> TrangThaiDuAn { get; set; }
 
+        public IEnumerable<DoanhNghiepBDS> DoanhNghiepBDSs { get; set; }
+
         public DuAnViewModel()
         {
             Id = 0;
@@ -150,6 +156,7 @@ namespace RealEstates.ViewModels
             TenDuAn = duAn.TenDuAn;
             DiaChi = duAn.DiaChi;
             ChuDauTu = duAn.ChuDauTu;
+            DoanhNghiepBDSId = duAn.DoanhNghiepBDSId;
             TongDienTich = duAn.TongDienTich;
             TienDoDuAn = duAn.TienDoDuAn;
             QuyMoDuAn = duAn.QuyMoDuAn;

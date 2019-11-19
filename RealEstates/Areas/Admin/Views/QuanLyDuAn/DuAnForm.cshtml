@@ -56,6 +56,13 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
+                @Html.LabelFor(m => m.DoanhNghiepBDSId, new { @class = "control-label col-md-12" })
+                @Html.DropDownListFor(m => m.DoanhNghiepBDSId, new SelectList(Model.DoanhNghiepBDSs, "Id", "Ten", Model.DoanhNghiepBDSId), "Doanh nghiệp BĐS",
+                    new { @class = "form-control col-md-12 select2" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
                 @Html.LabelFor(model => model.TongDienTich, htmlAttributes: new { @class = "control-label col-md-12" })
                 @Html.EditorFor(model => model.TongDienTich, new { htmlAttributes = new { @class = "form-control col-md-12" } })
             </div>
