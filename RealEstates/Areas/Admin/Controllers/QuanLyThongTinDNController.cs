@@ -22,6 +22,11 @@ namespace RealEstates.Areas.Admin.Controllers
             _context.Dispose();
         }
 
+        public QuanLyThongTinDNController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         // GET: Admin/QuanLyThongTinDN
         public ActionResult Index()
         {
@@ -45,7 +50,8 @@ namespace RealEstates.Areas.Admin.Controllers
 
         public ViewResult New()
         {
-            return View("ThongTinDNForm");
+            var viewModel = new ThongTinDNViewModel();
+            return View("ThongTinDNForm", viewModel);
         }
 
         public ActionResult Edit(int id)
