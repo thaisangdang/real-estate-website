@@ -97,7 +97,6 @@ namespace RealEstates.Models
         [Display(Name = "Tỉnh/Thành phố")]
         public TinhThanhPho TinhThanhPho { get; set; }
 
-        [Required]
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
         [Display(Name = "Quận huyện")]

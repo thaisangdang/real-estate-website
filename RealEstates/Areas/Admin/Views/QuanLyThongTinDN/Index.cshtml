@@ -6,9 +6,12 @@
 }
 
 <style>
-    #menuQuanLyThongTinDN {
+    #menuQuanLyDuAn {
         color: white;
         background-color: dodgerblue;
+    }
+    .outsite {
+        margin-right: 20px;
     }
 </style>
 
@@ -16,8 +19,11 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách doanh nghiệp</h6>
-        <a href="@Url.Action("New")" class="btn btn-success float-right" title="Tạo mới">
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách doanh nghiệp BĐS</h6>
+        <a href="@Url.Action("Index","QuanLyDuAn")" class="btn btn-success float-right">
+            <span class="text-white">Danh sách dự án</span>
+        </a>
+        <a href="@Url.Action("New")" class="outsite btn btn-success float-right" title="Tạo mới">
             <span class="text-white"><i class="fas fa-plus fa-fw"></i> Thêm thông tin doanh nghiệp</span>
         </a>
     </div>

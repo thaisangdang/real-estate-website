@@ -9,12 +9,14 @@ using System.Web.Mvc;
 
 namespace RealEstates.ViewModels
 {
+    // những nhà đất được phân công cho nhân viên sales sẽ tự động được đăng tin rao
+    // nhà đất đã bán/cho thuê (trạng thái phân công hoàn thành) sẽ không load tin rao
     public class NhaDatViewModel
     {
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Nhà đất")]
+        [Display(Name = "Tên nhà đất")]
         public string Ten { get; set; }
 
         [Display(Name = "Dự án")]
@@ -74,7 +76,7 @@ namespace RealEstates.ViewModels
         public string Media { get; set; }
 
         [Display(Name = "Từ khóa tìm kiếm")]
-        public string TuKhoa { get; set; }
+        public string TuKhoa { get; set; } // từ khóa vô hạn, thêm càng nhiều càng dễ kiếm
 
         [Display(Name = "Bản đồ")]
         public string BanDo { get; set; }
@@ -82,6 +84,11 @@ namespace RealEstates.ViewModels
         [Display(Name = "Ngày tạo")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? NgayTao { get; set; }
+
+        [Display(Name = "Ảnh đại diện")]
+        public string AnhDaiDien { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
 
         public IEnumerable<DuAn> DuAns { get; set; }
         public IEnumerable<LoaiNhaDat> LoaiNhaDats { get; set; }

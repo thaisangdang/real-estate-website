@@ -45,7 +45,6 @@ namespace RealEstates.ViewModels
         [Required]
         [Display(Name = "Loại hình phát triển")]
         public int LoaiDuAnId { get; set; }
-
         public LoaiDuAn LoaiDuAn { get; set; }
 
         [Required]
@@ -90,13 +89,10 @@ namespace RealEstates.ViewModels
         [Required]
         [Display(Name = "Tỉnh/Thành phố")]
         public int TinhThanhPhoId { get; set; }
-
         public TinhThanhPho TinhThanhPho { get; set; }
 
-        [Required]
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
-
         public QuanHuyen QuanHuyen { get; set; }
 
         [Required(ErrorMessage = "Số sản phẩm phải >= 0")]

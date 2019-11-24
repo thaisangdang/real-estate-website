@@ -277,6 +277,14 @@
     <Compile Include="Migrations\201911191838187_whatChanges9.Designer.cs">
       <DependentUpon>201911191838187_whatChanges9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911230419105_whatChanges10.cs" />
+    <Compile Include="Migrations\201911230419105_whatChanges10.Designer.cs">
+      <DependentUpon>201911230419105_whatChanges10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241621372_whatChanges11.cs" />
+    <Compile Include="Migrations\201911241621372_whatChanges11.Designer.cs">
+      <DependentUpon>201911241621372_whatChanges11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaiViet.cs" />
     <Compile Include="Models\DoanhNghiepBDS.cs" />
@@ -1897,6 +1905,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911191838187_whatChanges9.resx">
       <DependentUpon>201911191838187_whatChanges9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911230419105_whatChanges10.resx">
+      <DependentUpon>201911230419105_whatChanges10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241621372_whatChanges11.resx">
+      <DependentUpon>201911241621372_whatChanges11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

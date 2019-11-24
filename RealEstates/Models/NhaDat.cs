@@ -84,6 +84,11 @@ namespace RealEstates.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? NgayTao { get; set; }
 
+        [Display(Name = "Ảnh đại diện")]
+        public string AnhDaiDien { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
+
         public ICollection<PhanCongSales> PhanCongSales { get; set; }
 
         public ICollection<TinRaoBDS> TinRaoBDSs { get; set; }

@@ -8,7 +8,7 @@ using System.Web;
 
 namespace RealEstates.Models
 {
-    [Table("KhachHang")]
+    [Table("KhachHang")] // chỉ có thể gọi là khách hàng, vì người đăng tin rao hoặc người đứng ra liên hệ không chắc là chủ nhà đất
     public class KhachHang
     {
         [Key]

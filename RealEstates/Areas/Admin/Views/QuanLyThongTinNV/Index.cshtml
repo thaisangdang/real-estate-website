@@ -10,6 +10,9 @@
         color: white;
         background-color: dodgerblue;
     }
+    #new {
+       margin-right: 20px;
+    }
 </style>
 
 @Html.Partial("~/Views/Shared/_Alert.cshtml")
@@ -17,7 +20,10 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách nhân viên trong hệ thống</h6>
-        <a href="@Url.Action("New")" class="btn btn-success float-right" title="Tạo mới">
+        <a href="@Url.Action("Index","QuanLyTaiKhoanNV")" class="btn btn-success float-right">
+            <span class="text-white">Danh sách tài khoản nhân viên</span>
+        </a>
+        <a id="new" href="@Url.Action("New")" class="btn btn-success float-right" title="Tạo mới">
             <span class="text-white"><i class="fas fa-plus fa-fw"></i> Thêm nhân viên</span>
         </a>
     </div>
