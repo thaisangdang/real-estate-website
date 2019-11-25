@@ -1,0 +1,72 @@
+-----------Exception Details on  11/25/2019 10:56:53 AM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 11/25/2019 10:56:53 AM
+
+Error Line No : ine 157
+
+Error Message: DirectoryNotFoundException
+
+Exception Type: System.IO.DirectoryNotFoundException
+
+Error Location : Could not find a part of the path 'D:\dotnet\real-estate-website\RealEstates\Content\Images\AnhDaiDienNhaDat\25112019-no-photo-available-300x225.png'.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyThongTinDN/Save
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  11/25/2019 11:05:27 AM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 11/25/2019 11:05:27 AM
+
+Error Line No : ine 260
+
+Error Message: DirectoryNotFoundException
+
+Exception Type: System.IO.DirectoryNotFoundException
+
+Error Location : Could not find a part of the path 'D:\dotnet\real-estate-website\RealEstates\Content\Images\AnhDaiDienNhaDat\25112019-20191106154250-021b.jpg'.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyDuAn/Save
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  11/25/2019 11:35:12 AM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 11/25/2019 11:35:12 AM
+
+Error Line No : ine 250
+
+Error Message: DirectoryNotFoundException
+
+Exception Type: System.IO.DirectoryNotFoundException
+
+Error Location : Could not find a part of the path 'D:\dotnet\real-estate-website\RealEstates\Content\Images\AnhDaiDienNhaDat\25112019-20191124055650-66bc_wm.jpg'.
+
+ Error Page Url: https://localhost:44359/Admin/QuanLyNhaDat/Save
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+

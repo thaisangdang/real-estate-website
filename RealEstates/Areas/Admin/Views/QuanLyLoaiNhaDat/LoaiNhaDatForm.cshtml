@@ -6,7 +6,7 @@
 }
 
 <style>
-    #menuQuanLyLoaiNhaDat {
+    #menuQuanLyNhaDat {
         color: white;
         background-color: dodgerblue;
     }
@@ -15,7 +15,7 @@
 <p>
     <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
         <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
-        Trở về danh sách
+        Trở về danh sách loại nhà đất
     </a>
 </p>
 
@@ -33,6 +33,7 @@
                 @Html.LabelFor(m => m.TenLoai, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
                     @Html.TextBoxFor(m => m.TenLoai, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TenLoai, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">

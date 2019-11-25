@@ -224,7 +224,6 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyChatController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyDuAnController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiDuAnController.cs" />
-    <Compile Include="Areas\Admin\Controllers\QuanLyBaoCaoThongKeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyPhiHoaHongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanNVController.cs" />
     <Compile Include="Areas\Admin\Models\SalesViewModel.cs" />
@@ -1633,7 +1632,6 @@
     <Content Include="Areas\Admin\Views\QuanLyLoaiDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\DuAnForm.cshtml" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
-    <Content Include="Areas\Admin\Views\QuanLyBaoCaoThongKe\ThongKeDuAn.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyDuAn\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SalesManDashboard\Index.cshtml" />

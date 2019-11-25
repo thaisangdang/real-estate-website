@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,16 +20,19 @@ namespace RealEstates.ViewModels
 
         [Display(Name = "Dự án")]
         public int DuAnId { get; set; }
+
         public DuAn DuAn { get; set; }
 
         [Required]
         [Display(Name = "Tỉnh thành phố")]
         public int TinhThanhPhoId { get; set; }
+
         public TinhThanhPho TinhThanhPho { get; set; }
 
         [Required]
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
+
         public QuanHuyen QuanHuyen { get; set; }
 
         [Display(Name = "Địa chỉ")]
@@ -51,6 +53,7 @@ namespace RealEstates.ViewModels
         [Required]
         [Display(Name = "Loại nhà đất")]
         public int LoaiNhaDatId { get; set; }
+
         public LoaiNhaDat LoaiNhaDat { get; set; }
 
         [Required]
@@ -87,6 +90,7 @@ namespace RealEstates.ViewModels
 
         [Display(Name = "Ảnh đại diện")]
         public string AnhDaiDien { get; set; }
+
         [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
 
@@ -111,12 +115,13 @@ namespace RealEstates.ViewModels
         public NhaDatViewModel(NhaDat nhaDat)
         {
             Id = nhaDat.Id;
+            Ten = nhaDat.Ten;
             DuAnId = nhaDat.DuAnId;
             IsRent = nhaDat.IsRent;
             LoaiNhaDatId = nhaDat.LoaiNhaDatId;
             TinhThanhPhoId = nhaDat.LoaiNhaDatId;
             QuanHuyenId = nhaDat.QuanHuyenId;
-            DiaChi = nhaDat.DiaChi;            
+            DiaChi = nhaDat.DiaChi;
             GiaBan = nhaDat.GiaBan;
             GiaThue = nhaDat.GiaThue;
             DienTich = nhaDat.DienTich;
@@ -126,8 +131,8 @@ namespace RealEstates.ViewModels
             Media = nhaDat.Media;
             TuKhoa = nhaDat.TuKhoa;
             BanDo = nhaDat.BanDo;
+            AnhDaiDien = nhaDat.AnhDaiDien;
             NgayTao = nhaDat.NgayTao;
         }
-
     }
 }

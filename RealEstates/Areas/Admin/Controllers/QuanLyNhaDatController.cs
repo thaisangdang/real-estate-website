@@ -1,13 +1,15 @@
 ﻿using RealEstates.Areas.Admin.Models;
+using RealEstates.Helper;
 using RealEstates.Models;
+using RealEstates.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity;
-using RealEstates.ViewModels;
-using RealEstates.Helper;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
@@ -99,7 +101,7 @@ namespace RealEstates.Areas.Admin.Controllers
             var viewModel = new NhaDatViewModel
             {
                 DuAns = _context.DuAns.ToList(),
-                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                LoaiNhaDats = _context.LoaiNhaDats.Where(x => !x.IsRent).ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.Include(x => x.TinhThanhPho).ToList(),
             };
@@ -157,6 +159,12 @@ namespace RealEstates.Areas.Admin.Controllers
                 return View("NhaDatForm", viewModel);
             }
 
+            if (nhaDat.ImageFile != null)
+            {
+                string uploadPath = ConfigurationManager.AppSettings["AnhDaiDienNhaDat"].ToString();
+                nhaDat.AnhDaiDien = saveFile(nhaDat.ImageFile, uploadPath);
+            }
+
             nhaDat.ThongTinMoTa = HttpUtility.HtmlDecode(nhaDat.ThongTinMoTa);
             nhaDat.Media = HttpUtility.HtmlDecode(nhaDat.Media);
             nhaDat.BanDo = HttpUtility.HtmlDecode(nhaDat.BanDo);
@@ -186,6 +194,11 @@ namespace RealEstates.Areas.Admin.Controllers
                 nhaDatInDb.TuKhoa = nhaDat.TuKhoa;
                 nhaDatInDb.BanDo = nhaDat.BanDo;
                 nhaDatInDb.NgayTao = nhaDat.NgayTao;
+                if (!string.IsNullOrEmpty(nhaDat.AnhDaiDien))
+                {
+                    deleteFile(nhaDat.AnhDaiDien);
+                    nhaDatInDb.AnhDaiDien = nhaDat.AnhDaiDien;
+                }
                 TempData["success"] = "Cập nhật thành công";
             }
 
@@ -204,10 +217,12 @@ namespace RealEstates.Areas.Admin.Controllers
             }
 
             var nhaDat = _context.NhaDats.Single(x => x.Id == id);
+            var anhDaiDien = nhaDat.AnhDaiDien;
             try
             {
                 _context.NhaDats.Remove(nhaDat);
                 _context.SaveChanges();
+                deleteFile(anhDaiDien);
                 TempData["success"] = "Xóa thành công";
             }
             catch (Exception ex)
@@ -218,5 +233,45 @@ namespace RealEstates.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "QuanLyNhaDat");
         }
+
+        #region Helper
+
+        public string saveFile(HttpPostedFileBase imageFile, string uploadPath)
+        {
+            string filePath = "";
+            try
+            {
+                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(imageFile.FileName);
+                string fileExtension = Path.GetExtension(imageFile.FileName);
+                string fileName = DateTime.Now.ToString("ddMMyyy") + "-" + fileNameWithoutExtension.Trim() + fileExtension;
+                //Its Create complete path to store in server.
+                filePath = uploadPath + fileName;
+                //To copy and save file into server.
+                imageFile.SaveAs(Server.MapPath(filePath));
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.SendErrorToText(ex);
+            }
+
+            return filePath;
+        }
+
+        public void deleteFile(string filePath)
+        {
+            try
+            {
+                if (System.IO.File.Exists(Server.MapPath(filePath)))
+                {
+                    System.IO.File.Delete(Server.MapPath(filePath));
+                }
+            }
+            catch (IOException ex)
+            {
+                ExceptionLogger.SendErrorToText(ex);
+            }
+        }
+
+        #endregion Helper
     }
 }

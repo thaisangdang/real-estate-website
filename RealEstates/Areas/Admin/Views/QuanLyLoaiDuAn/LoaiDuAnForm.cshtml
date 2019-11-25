@@ -33,12 +33,14 @@
                 @Html.LabelFor(m => m.LoaiDuAn.TenLoai, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
                     @Html.TextBoxFor(m => m.LoaiDuAn.TenLoai, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LoaiDuAn.TenLoai, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.LoaiDuAn.MoTa, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
                     @Html.TextAreaFor(m => m.LoaiDuAn.MoTa, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LoaiDuAn.MoTa, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
@@ -47,43 +49,6 @@
                     <input type="submit" class="btn btn-success" value="Lưu" />
                 </div>
             </div>
-
-            @*if (Model.LoaiDuAn.Id == 0)
-                {
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.LoaiDuAn.TenLoai, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.LoaiDuAn.TenLoai, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.LoaiDuAn.MoTa, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(m => m.LoaiDuAn.MoTa, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            @Html.HiddenFor(m => m.LoaiDuAn.Id)
-                            <input type="submit" class="btn btn-success" value="Lưu" />
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.LoaiDuAn.TenLoai, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.DisplayFor(m => m.LoaiDuAn.TenLoai)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.LoaiDuAn.MoTa, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.DisplayFor(m => m.LoaiDuAn.MoTa)
-                        </div>
-                    </div>
-                }*@
         }
     </div>
 </div>

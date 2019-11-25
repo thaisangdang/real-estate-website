@@ -43,6 +43,7 @@
                         @if (Model.Id == 0)
                         {
                             @Html.DropDownListFor(m => m.NhaDat.DuAn.Id, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAns), "Chọn dự án", new { @class = "form-control col-md-12 select2" })
+                            @Html.ValidationMessageFor(m => m.NhaDat.DuAn.Id, "", new { @class = "text-danger" })
                         }
                         else
                         {
@@ -53,10 +54,11 @@
                 <div class="col-md-6">
                     @if (Model.Id == 0)
                     {
-                        <div class="form-check">
-                            @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent" })
-                            @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
-                        </div>
+                    <div class="form-check">
+                        @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent" })
+                        @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
+                        @Html.ValidationMessageFor(m => m.IsRent, "", new { @class = "text-danger" })
+                    </div>
                     }
                     else
                     {
@@ -72,6 +74,7 @@
                         @if (Model.Id == 0)
                         {
                             @Html.EditorFor(model => model.GiaThue, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                            @Html.ValidationMessageFor(m => m.GiaThue, "", new { @class = "text-danger" })
                         }
                         else
                         {
@@ -85,6 +88,7 @@
                         @if (Model.Id == 0)
                         {
                             @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                            @Html.ValidationMessageFor(m => m.GiaThue, "", new { @class = "text-danger" })
                         }
                         else
                         {
@@ -98,6 +102,7 @@
                         @if (Model.Id == 0)
                         {
                             @Html.EditorFor(model => model.PhanTramHoaHong, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                            @Html.ValidationMessageFor(m => m.PhanTramHoaHong, "", new { @class = "text-danger" })
                         }
                         else
                         {
@@ -111,6 +116,7 @@
                         @if (Model.Id == 0)
                         {
                             @Html.DropDownListFor(m => m.NhanVienSalesId, new SelectList(Model.NhanViens, "Id", "HoTen", " Email", Model.NhanVienSalesId), "", new { @class = "form-control col-md-12 select2" })
+                            @Html.ValidationMessageFor(m => m.NhanVienSalesId, "", new { @class = "text-danger" })
 
                         }
                         else
@@ -125,6 +131,7 @@
                         {
                             @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
                             @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiPhanCong, "Id", "Text", Model.TrangThai), "", new { @class = "form-control col-md-12 select2" })
+                            @Html.ValidationMessageFor(m => m.TrangThai, "", new { @class = "text-danger" })
                         }
                         else
                         {

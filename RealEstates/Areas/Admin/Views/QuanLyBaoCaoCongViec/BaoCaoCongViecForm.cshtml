@@ -82,6 +82,7 @@
                         {
                             @Html.LabelFor(m => m.PhanCongSales.TrangThai, new { @class = "control-label col-md-12 font-weight-bold" })
                             <p class="col-md-12">@Html.DisplayFor(m => m.TrangThaiCongViec.SingleOrDefault(x => x.Id == Model.PhanCongSales.TrangThai).Text)</p>
+                            @Html.ValidationMessageFor(m => m.PhanCongSales.TrangThai, "", new { @class = "text-danger" })
                         }
                     </div>
                 </div>
