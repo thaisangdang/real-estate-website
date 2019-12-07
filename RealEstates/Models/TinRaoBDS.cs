@@ -11,6 +11,9 @@ namespace RealEstates.Models
     // tin rao cho mục đích sàn giao dịch bất động sản
     // khách hàng đăng ký tài khoản để tự đăng tin rao bán/cho thuê, tìm mua/tìm thuê
     // công ty không can thiệp, cũng như không phân công cho sales bán/cho thuê dùm
+    // form tin rao không cần nhập lại thông tin khách hàng vì đã có thông tin
+    // khách hàng lúc đăng nhập
+
     [Table("TinRaoBDS")]
     public class TinRaoBDS
     {

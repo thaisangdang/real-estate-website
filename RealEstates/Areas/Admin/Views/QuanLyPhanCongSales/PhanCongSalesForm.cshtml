@@ -39,10 +39,25 @@
             <div class="form-horizontal">
                 <div class="col-md-6">
                     <div class="form-group">
+                        @Html.LabelFor(m => m.NhanVienSalesId, new { @class = "control-label col-md-12 font-weight-bold" })
+                        @if (Model.Id == 0)
+                        {
+                            @Html.DropDownListFor(m => m.NhanVienSalesId, new SelectList(Model.NhanViens, "Id", "HoTen", " Email", Model.NhanVienSalesId), "", new { @class = "form-control col-md-12 select2" })
+                            @Html.ValidationMessageFor(m => m.NhanVienSalesId, "", new { @class = "text-danger" })
+
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(m => m.NhanVienSalesId, new SelectList(Model.NhanViens, "Id", "HoTen", Model.NhanVienSalesId), "", new { @class = "form-control col-md-12 select2", @disabled = "disabled" })
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
                         @Html.LabelFor(m => m.DuAnId, new { @class = "control-label col-md-12 font-weight-bold" })
                         @if (Model.Id == 0)
                         {
-                            @Html.DropDownListFor(m => m.DuAnId ,new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAnId), "",
+                            @Html.DropDownListFor(m => m.DuAnId, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAnId), "",
                                 new { @class = "form-control col-md-12 select2", @id = "DuAn" })
                         }
                         else
@@ -66,51 +81,6 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    @if (Model.Id == 0)
-                    {
-                        <div class="form-check">
-                            @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent" })
-                            @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
-                            @Html.ValidationMessageFor(m => m.IsRent, "", new { @class = "text-danger" })
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="form-check">
-                            @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent", @disabled = "disabled" })
-                            @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
-                        </div>
-                    }
-                </div>
-                <div class="col-md-6" id="giaThue" style="display: none;">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.GiaThue, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @if (Model.Id == 0)
-                        {
-                            @Html.EditorFor(model => model.GiaThue, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                            @Html.ValidationMessageFor(m => m.GiaThue, "", new { @class = "text-danger" })
-                        }
-                        else
-                        {
-                            @Html.EditorFor(model => model.GiaThue, new { htmlAttributes = new { @class = "form-control col-md-12", @disabled = "disabled" } })
-                        }
-                    </div>
-                </div>
-                <div class="col-md-6" id="giaBan">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @if (Model.Id == 0)
-                        {
-                            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                            @Html.ValidationMessageFor(m => m.GiaThue, "", new { @class = "text-danger" })
-                        }
-                        else
-                        {
-                            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control col-md-12", @disabled = "disabled" } })
-                        }
-                    </div>
-                </div>
-                <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.PhanTramHoaHong, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
                         @if (Model.Id == 0)
@@ -121,21 +91,6 @@
                         else
                         {
                             @Html.EditorFor(model => model.PhanTramHoaHong, new { htmlAttributes = new { @class = "form-control col-md-12", @disabled = "disabled" } })
-                        }
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.NhanVienSalesId, new { @class = "control-label col-md-12 font-weight-bold" })
-                        @if (Model.Id == 0)
-                        {
-                            @Html.DropDownListFor(m => m.NhanVienSalesId, new SelectList(Model.NhanViens, "Id", "HoTen", " Email", Model.NhanVienSalesId), "", new { @class = "form-control col-md-12 select2" })
-                            @Html.ValidationMessageFor(m => m.NhanVienSalesId, "", new { @class = "text-danger" })
-
-                        }
-                        else
-                        {
-                            @Html.DropDownListFor(m => m.NhanVienSalesId, new SelectList(Model.NhanViens, "Id", "HoTen", Model.NhanVienSalesId), "", new { @class = "form-control col-md-12 select2", @disabled = "disabled" })
                         }
                     </div>
                 </div>
@@ -163,9 +118,6 @@
                         {
                             @Html.HiddenFor(m => m.NhaDatId)
                             @Html.HiddenFor(m => m.DuAnId)
-                            @Html.HiddenFor(m => m.IsRent)
-                            @Html.HiddenFor(m => m.GiaBan)
-                            @Html.HiddenFor(m => m.GiaThue)
                             @Html.HiddenFor(m => m.PhanTramHoaHong)
                             @Html.HiddenFor(m => m.NhanVienSalesId)
                         }

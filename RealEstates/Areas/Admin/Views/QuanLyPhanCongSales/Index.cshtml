@@ -68,52 +68,58 @@
                 <tbody>
                     @foreach (var item in Model.PhanCongSales)
                     {
-                    <tr>
-                        <td>
-                            <a href="@Url.Action("Details", new { id = item.Id})" title="Chi tiết">
-                                @Html.DisplayFor(modelItem => item.NhaDat.Ten)
-                            </a>
-                        </td>
-                        <td>@Html.DisplayFor(modelItem => item.DuAn.TenDuAn)</td>
-                        @if (item.NhaDat.LoaiNhaDat.IsRent)
-                        {
-                            <td class="text-center">
-                                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.NhaDat.GiaThue)
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("Details", new { id = item.Id})" title="Chi tiết">
+                                    @Html.DisplayFor(modelItem => item.NhaDat.Ten)
+                                </a>
                             </td>
-                        }
-                        else
-                        {
+                            <td>@Html.DisplayFor(modelItem => item.DuAn.TenDuAn)</td>
+                            @if (item.NhaDat.LoaiNhaDat.IsRent)
+                            {
+                                <td class="text-center">
+                                    @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.NhaDat.GiaThue)
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-center">
+                                    @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.NhaDat.GiaBan)
+                                </td>
+                            }
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.PhanTramHoaHong)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NhanVienSales.HoTen)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>
                             <td class="text-center">
-                                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.NhaDat.GiaBan)
+                                <div class="rounded-pill p-1 text-light @Model.GetLableColor(item.TrangThai) text-center">
+                                    @Model.TrangThaiPhanCong.Single(x => x.Id == item.TrangThai).Text
+                                </div>
                             </td>
-                        }
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.PhanTramHoaHong)</td>
-                        <td>@Html.DisplayFor(modelItem => item.NhanVienSales.HoTen)</td>
-                        <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>
-                        <td class="text-center">
-                            <div class="rounded-pill p-1 text-light @Model.GetLableColor(item.TrangThai) text-center">
-                                @Model.TrangThaiPhanCong.Single(x => x.Id == item.TrangThai).Text
-                            </div>
-                        </td>
-                        @if (item.DaTinhHoaHong)
-                        {
-                            <td class="text-success text-center">Đã tính hoa hồng</td>
-                        }
-                        else
-                        {
-                            <td class="text-danger text-center">Chưa tính</td>
-                        }
-                        <td>
-                            <a href="@Url.Action("Details", new { id = item.Id})" class="btn btn-info" title="Chi tiết">
-                                <span class="text-white"><i class="fas fa-eye fa-fw"></i></span>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Cập nhật">
-                                <span class="text-white"><i class="fas fa-edit fa-fw"></i></span>
-                            </a>
-                        </td>
-                    </tr>
+                            @if (item.TrangThai == 2 && !item.DaTinhHoaHong) // đã hoàn thành và chưa tính hoa hồng
+                            {
+                                <td>
+                                    <a href="@Url.Action("New", "QuanLyPhiHoaHong", new { id = item.Id })" title="Tính hoa hồng">Tính hoa hồng</a>
+                                </td>
+                            }
+                            else if (item.TrangThai == 2 && item.DaTinhHoaHong) // đã hoàn thành và đã tính hoa hồng
+                            {
+                                <td class="text-success text-center">Đã tính hoa hồng</td>
+                            }
+                            else
+                            {
+                                <td class="text-success text-center">Chưa tính hoa hồng</td>
+                            }
+                            <td>
+                                <a href="@Url.Action("Details", new { id = item.Id})" class="btn btn-info" title="Chi tiết">
+                                    <span class="text-white"><i class="fas fa-eye fa-fw"></i></span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Cập nhật">
+                                    <span class="text-white"><i class="fas fa-edit fa-fw"></i></span>
+                                </a>
+                            </td>
+                        </tr>
 
                     }
                 </tbody>

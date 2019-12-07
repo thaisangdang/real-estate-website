@@ -3,7 +3,6 @@ using RealEstates.Areas.Admin.Models;
 using RealEstates.Helper;
 using RealEstates.Models;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -14,10 +13,12 @@ namespace RealEstates.Areas.Admin.Controllers
     public class QuanLyPhanCongSalesController : Controller
     {
         public ApplicationDbContext _context;
+
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
         }
+
         public QuanLyPhanCongSalesController()
         {
             _context = new ApplicationDbContext();
@@ -91,7 +92,8 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 NhanViens = _context.NhanViens.Where(x => x.TrangThai == 1
                     && x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList(),
-                DuAns = _context.DuAns.Where(x => x.TrangThai == 1).ToList(),
+                DuAns = _context.DuAns.Where(x => x.TrangThai == 1
+                && _context.NhaDats.Where(y => y.DuAnId == x.Id).Count() > 0).ToList(),
                 NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Where(x => _context.PhanCongSales.FirstOrDefault(y => y.NhaDatId == x.Id) == null),
                 TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSales
             };
@@ -110,11 +112,12 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 NhanViens = _context.NhanViens.Where(x => x.TrangThai == 1
                     && x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList(),
-                DuAns = _context.DuAns.Where(x => x.TrangThai == 1).ToList(),
+                DuAns = _context.DuAns.Where(x => x.TrangThai == 1
+                && _context.NhaDats.Where(y => y.DuAnId == x.Id).Count() > 0).ToList(),
                 NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Where(x => _context.PhanCongSales.FirstOrDefault(y => y.NhaDatId == x.Id) == null),
                 TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSales
             };
-            viewModel.NhaDat.DuAn = phanCongSales.NhaDat.DuAn;
+            viewModel.NhaDat = phanCongSales.NhaDat;
             viewModel.NhanVienSales = phanCongSales.NhanVienSales;
             return View("PhanCongSalesForm", viewModel);
         }
@@ -141,7 +144,8 @@ namespace RealEstates.Areas.Admin.Controllers
                 {
                     NhanViens = _context.NhanViens.Where(x => x.TrangThai == 1
                         && x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList(),
-                    DuAns = _context.DuAns.Where(x => x.TrangThai == 1).ToList(),
+                    DuAns = _context.DuAns.Where(x => x.TrangThai == 1
+                    && _context.NhaDats.Where(y => y.DuAnId == x.Id).Count() > 0).ToList(),
                     NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Where(x => _context.PhanCongSales.FirstOrDefault(y => y.NhaDatId == x.Id) == null),
                     TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSales
                 };

@@ -39,14 +39,16 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(m => m.DuAnId, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.DuAnId, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAnId), "",
-                            new { @class = "form-control col-md-12 select2" })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @if (Model.Id == 0)
+                        {
+                            @Html.DropDownListFor(m => m.DuAnId, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAnId), "",
+                                new { @class = "form-control col-md-12 select2" })
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(m => m.DuAnId, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAnId), "",
+                            new { @class = "form-control col-md-12 select2", @disabled = "disabled" })
+                        }
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -94,8 +96,16 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(m => m.LoaiNhaDatId, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.LoaiNhaDatId, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai", Model.LoaiNhaDatId), "",
-                            new { @class = "form-control col-md-12 select2", @id = "LoaiNhaDat" })
+                        @if (Model.Id == 0)
+                        {
+                            @Html.DropDownListFor(m => m.LoaiNhaDatId, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai", Model.LoaiNhaDatId), "",
+                                new { @class = "form-control col-md-12 select2", @id = "LoaiNhaDat" })
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(m => m.LoaiNhaDatId, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai", Model.LoaiNhaDatId), "",
+                            new { @class = "form-control col-md-12 select2", @id = "LoaiNhaDat", @disabled = "disabled" })
+                        }
                     </div>
                 </div>
                 <div class="col-md-6">

@@ -33,9 +33,6 @@ namespace RealEstates.Models
         public int LoaiNhaDatId { get; set; }
         public LoaiNhaDat LoaiNhaDat { get; set; }
 
-        [Display(Name = "Địa chỉ")]
-        public string DiaChi { get; set; }
-
         [Display(Name = "Giá bán (VNĐ)")]
         [Column(TypeName = "money")]
         public decimal GiaBan { get; set; }

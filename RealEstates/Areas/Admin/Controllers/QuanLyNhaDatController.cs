@@ -179,7 +179,6 @@ namespace RealEstates.Areas.Admin.Controllers
                 nhaDatInDb.DuAnId = nhaDat.DuAnId;
                 nhaDatInDb.IsRent = nhaDat.IsRent;
                 nhaDatInDb.LoaiNhaDatId = nhaDat.LoaiNhaDatId;
-                nhaDatInDb.DiaChi = nhaDat.DiaChi;
                 nhaDatInDb.GiaBan = nhaDat.GiaBan;
                 nhaDatInDb.GiaThue = nhaDat.GiaThue;
                 nhaDatInDb.DienTich = nhaDat.DienTich;

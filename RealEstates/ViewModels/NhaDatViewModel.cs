@@ -23,20 +23,6 @@ namespace RealEstates.ViewModels
 
         public DuAn DuAn { get; set; }
 
-        [Required]
-        [Display(Name = "Tỉnh thành phố")]
-        public int TinhThanhPhoId { get; set; }
-
-        public TinhThanhPho TinhThanhPho { get; set; }
-
-        [Required]
-        [Display(Name = "Quận huyện")]
-        public int QuanHuyenId { get; set; }
-
-        public QuanHuyen QuanHuyen { get; set; }
-
-        [Display(Name = "Địa chỉ")]
-        public string DiaChi { get; set; }
 
         [Required]
         [Display(Name = "Nhà đất cho thuê")]
@@ -119,9 +105,6 @@ namespace RealEstates.ViewModels
             DuAnId = nhaDat.DuAnId;
             IsRent = nhaDat.IsRent;
             LoaiNhaDatId = nhaDat.LoaiNhaDatId;
-            TinhThanhPhoId = nhaDat.LoaiNhaDatId;
-            QuanHuyenId = nhaDat.QuanHuyenId;
-            DiaChi = nhaDat.DiaChi;
             GiaBan = nhaDat.GiaBan;
             GiaThue = nhaDat.GiaThue;
             DienTich = nhaDat.DienTich;
