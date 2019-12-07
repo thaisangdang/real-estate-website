@@ -41,31 +41,31 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SanPham)
+            @Html.DisplayNameFor(model => model.NhaDat.Ten)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SanPham)
+            @Html.DisplayFor(model => model.NhaDat.Ten)
         </dd>
 
-        @if (Model.IsRent)
+        @if (Model.NhaDat.IsRent)
         {
             <dt>
-                @Html.DisplayNameFor(model => model.GiaThueThangDau)
+                @Html.DisplayNameFor(model => model.NhaDat.GiaThue)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.GiaThueThangDau)
+                @Html.DisplayFor(model => model.NhaDat.GiaThue)
             </dd>
         }
         else
         {
             <dt>
-                @Html.DisplayNameFor(model => model.GiaBanSanPham)
+                @Html.DisplayNameFor(model => model.NhaDat.GiaBan)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.GiaBanSanPham)
+                @Html.DisplayFor(model => model.NhaDat.GiaBan)
             </dd>
         }
 
@@ -80,12 +80,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.TrangThai)
         </dt>
-
-        @*<dd>
-            @{
-                SelectOptions.getTrangThaiPhanCongSales.SingleOrDefault(x => x.Id == Model.TrangThai).Text
-            }
-        </dd>*@
 
         <dt>Hoa hồng</dt>
 

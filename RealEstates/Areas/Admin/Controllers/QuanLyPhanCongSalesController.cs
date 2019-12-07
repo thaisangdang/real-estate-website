@@ -84,20 +84,14 @@ namespace RealEstates.Areas.Admin.Controllers
             return View("Index", viewModel);
         }
 
-        // form phân công nhà đất cho nhân viên sales
         public ActionResult New()
         {
             var role = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
             var viewModel = new PhanCongSalesViewModel
             {
-                // nhân viên đang làm việc, có tài khoản phân quyền là sales, không quan tâm phòng ban
                 NhanViens = _context.NhanViens.Where(x => x.TrangThai == 1
                     && x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList(),
-                // Dự án có trạng thái đang mở bán và tổng số sản phẩm > số sản phẩm đã bán hoặc cho thuê
-                //DuAns = _context.DuAns.Where(x => x.TrangThai == 1
-                //    && x.SoSanPham > _context.PhanCongSales.Where(y => y.NhaDat.DuAn.Id == x.Id).Count()).ToList(),
                 DuAns = _context.DuAns.Where(x => x.TrangThai == 1).ToList(),
-                // Nhà đất chưa bán hoặc cho thuê
                 NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Where(x => _context.PhanCongSales.FirstOrDefault(y => y.NhaDatId == x.Id) == null),
                 TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSales
             };
@@ -116,8 +110,7 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 NhanViens = _context.NhanViens.Where(x => x.TrangThai == 1
                     && x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList(),
-                DuAns = _context.DuAns.Where(x => x.TrangThai == 1
-                    && x.SoSanPham > _context.PhanCongSales.Where(y => y.NhaDat.DuAn.Id == x.Id).Count()).ToList(),
+                DuAns = _context.DuAns.Where(x => x.TrangThai == 1).ToList(),
                 NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Where(x => _context.PhanCongSales.FirstOrDefault(y => y.NhaDatId == x.Id) == null),
                 TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSales
             };
@@ -146,13 +139,10 @@ namespace RealEstates.Areas.Admin.Controllers
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
                 var viewModel = new PhanCongSalesViewModel
                 {
-                    // nhân viên đang làm việc, có tài khoản phân quyền là sales, không quan tâm phòng ban
                     NhanViens = _context.NhanViens.Where(x => x.TrangThai == 1
                         && x.Account.Roles.FirstOrDefault().RoleId == role.Id).ToList(),
-                    // Dự án có trạng thái đang mở bán và tổng số sản phẩm > số sản phẩm đã bán hoặc cho thuê
-                    DuAns = _context.DuAns.Where(x => x.TrangThai == 1
-                        && x.SoSanPham > _context.PhanCongSales.Where(y => y.NhaDat.DuAn.Id == x.Id).Count()).ToList(),
-                    NhaDats = _context.NhaDats.Where(x => _context.PhanCongSales.FirstOrDefault(y => y.NhaDatId == x.Id) == null),
+                    DuAns = _context.DuAns.Where(x => x.TrangThai == 1).ToList(),
+                    NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Where(x => _context.PhanCongSales.FirstOrDefault(y => y.NhaDatId == x.Id) == null),
                     TrangThaiPhanCong = SelectOptions.getTrangThaiPhanCongSales
                 };
                 return View("PhanCongSalesForm", viewModel);
@@ -170,15 +160,8 @@ namespace RealEstates.Areas.Admin.Controllers
             else
             {
                 var phanCongInDb = _context.PhanCongSales.Single(x => x.Id == phanCongSales.Id);
-                //phanCongInDb.DuAnId = phanCongSales.DuAnId;
-                //phanCongInDb.SanPham = phanCongSales.SanPham;
-                //phanCongInDb.GiaBanSanPham = phanCongSales.GiaBanSanPham;
-                //phanCongInDb.PhanTramHoaHong = phanCongSales.PhanTramHoaHong;
-                //phanCongInDb.IsRent = phanCongSales.IsRent;
-                //phanCongInDb.GiaThueThangDau = phanCongSales.GiaThueThangDau;
-                //phanCongInDb.NhanVienSalesId = phanCongSales.NhanVienSalesId;
                 phanCongInDb.TrangThai = phanCongSales.TrangThai;
-                //phanCongInDb.DaTinhHoaHong = phanCongSales.DaTinhHoaHong;
+                phanCongInDb.DaTinhHoaHong = phanCongSales.DaTinhHoaHong;
                 TempData["success"] = "Cập nhật thành công";
             }
             _context.SaveChanges();

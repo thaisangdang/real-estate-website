@@ -18,7 +18,9 @@ namespace RealEstates.Controllers.Api
         // GET /api/GetNhaDats/1
         public IHttpActionResult GetNhaDats(int duAnId)
         {
-            var nhaDatsInDb = _context.NhaDats.Where(x => x.DuAnId == duAnId).ToList();
+            var nhaDatsInDb = _context.NhaDats.Where(x => (x.DuAnId == duAnId)
+                && (_context.PhanCongSales.FirstOrDefault(y => y.NhaDatId == x.Id) == null))
+                .ToList();
             var nhaDatDtos = nhaDatsInDb.Select(Mapper.Map<NhaDat, NhaDatDto>);
             return Ok(nhaDatDtos);
         }

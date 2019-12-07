@@ -49,7 +49,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 DuAns = _context.DuAns.ToList(),
                 LoaiNhaDats = _context.LoaiNhaDats.ToList(),
                 NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Include(x => x.DuAn)
-                .Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).ToList()
+                .Include(x => x.DuAn.TinhThanhPho).Include(x => x.DuAn.QuanHuyen).ToList()
             };
 
             return View(viewModel);
@@ -64,19 +64,19 @@ namespace RealEstates.Areas.Admin.Controllers
                 DuAns = _context.DuAns.ToList(),
                 LoaiNhaDats = _context.LoaiNhaDats.ToList(),
                 NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Include(x => x.DuAn)
-                .Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).ToList()
+                .Include(x => x.DuAn.TinhThanhPho).Include(x => x.DuAn.QuanHuyen).ToList()
             };
 
             if (tinhThanhPhoId.HasValue)
             {
                 viewModel.TinhThanhPhoId = tinhThanhPhoId.Value;
-                viewModel.NhaDats = viewModel.NhaDats.Where(x => x.TinhThanhPho.Id == tinhThanhPhoId);
+                viewModel.NhaDats = viewModel.NhaDats.Where(x => x.DuAn.TinhThanhPho.Id == tinhThanhPhoId);
             }
 
             if (quanHuyenId.HasValue)
             {
                 viewModel.QuanHuyenId = quanHuyenId.Value;
-                viewModel.NhaDats = viewModel.NhaDats.Where(x => x.QuanHuyen.Id == quanHuyenId);
+                viewModel.NhaDats = viewModel.NhaDats.Where(x => x.DuAn.QuanHuyen.Id == quanHuyenId);
             }
 
             if (duAnId.HasValue)
@@ -111,8 +111,7 @@ namespace RealEstates.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            var nhaDat = _context.NhaDats.Include(x => x.LoaiNhaDat).Include(x => x.DuAn)
-                .Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).SingleOrDefault(x => x.Id == id);
+            var nhaDat = _context.NhaDats.Include(x => x.LoaiNhaDat).Include(x => x.DuAn).SingleOrDefault(x => x.Id == id);
             if (nhaDat == null)
             {
                 return HttpNotFound();
@@ -131,8 +130,7 @@ namespace RealEstates.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
-            var nhaDat = _context.NhaDats.Include(x => x.DuAn).Include(x => x.LoaiNhaDat)
-                .Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).SingleOrDefault(x => x.Id == id);
+            var nhaDat = _context.NhaDats.Include(x => x.DuAn).Include(x => x.LoaiNhaDat).SingleOrDefault(x => x.Id == id);
 
             if (nhaDat == null)
             {
@@ -181,8 +179,6 @@ namespace RealEstates.Areas.Admin.Controllers
                 nhaDatInDb.DuAnId = nhaDat.DuAnId;
                 nhaDatInDb.IsRent = nhaDat.IsRent;
                 nhaDatInDb.LoaiNhaDatId = nhaDat.LoaiNhaDatId;
-                nhaDatInDb.TinhThanhPhoId = nhaDat.LoaiNhaDatId;
-                nhaDatInDb.QuanHuyenId = nhaDat.QuanHuyenId;
                 nhaDatInDb.DiaChi = nhaDat.DiaChi;
                 nhaDatInDb.GiaBan = nhaDat.GiaBan;
                 nhaDatInDb.GiaThue = nhaDat.GiaThue;

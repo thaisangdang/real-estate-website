@@ -45,20 +45,6 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.TinhThanhPhoId, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "",
-                            new { @class = "form-control col-md-12 select2", @id = "TinhThanhPho" })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.QuanHuyenId, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.QuanHuyenId, new SelectList(Model.QuanHuyens.Where(x => x.TinhThanhPhoId == Model.TinhThanhPhoId), "Id", "Ten", Model.QuanHuyenId), "",
-                            new { @class = "form-control col-md-12 select2", @id = "QuanHuyen" })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
                         @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-12" })
                         @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                     </div>
@@ -188,30 +174,6 @@
 
         $(document).ready(function () {
             $(".select2").select2();
-            $("#TinhThanhPho").change(function () {
-                var selectedValue = $(this).children("option:selected").val();
-                $.ajax({
-                    type: "GET",
-                    url: "/api/DuAnApi/GetQuanHuyens/?tinhThanhPhoId=" + selectedValue,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (data) {
-                        var selectElement = $("#QuanHuyen");
-                        selectElement.empty();
-                        data.forEach(function (quanHuyen) {
-                            var $option = $("<option />", {
-                                value: quanHuyen.id,
-                                text: quanHuyen.ten
-                            });
-                            selectElement.append($option);
-                        });
-                    },
-                    failure: function (data) {
-                    },
-                    error: function (data) {
-                    }
-                });
-            });
         });
 
         function disPlayHandle() {

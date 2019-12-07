@@ -19,6 +19,7 @@ namespace RealEstates.Models
         [Display(Name = "Nhà đất")]
         public string Ten { get; set; }
 
+        [Required]
         [Display(Name = "Dự án")]
         public int DuAnId { get; set; }
         public DuAn DuAn { get; set; }
@@ -31,14 +32,6 @@ namespace RealEstates.Models
         [Display(Name = "Loại nhà đất")] // load loại nhà đất theo thuộc tính Isrent ở trên 
         public int LoaiNhaDatId { get; set; }
         public LoaiNhaDat LoaiNhaDat { get; set; }
-
-        [Display(Name = "Tỉnh thành phố")]
-        public int TinhThanhPhoId { get; set; }
-        public TinhThanhPho TinhThanhPho { get; set; }
-
-        [Display(Name = "Quận huyện")]
-        public int QuanHuyenId { get; set; }
-        public QuanHuyen QuanHuyen { get; set; }
 
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
@@ -76,7 +69,7 @@ namespace RealEstates.Models
         [Display(Name = "Từ khóa tìm kiếm")]
         public string TuKhoa { get; set; }
 
-        [Display(Name = "Bản đồ vị trí")] // bản đồ
+        [Display(Name = "Bản đồ")]
         [AllowHtml]
         public string BanDo { get; set; }
 

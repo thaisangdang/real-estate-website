@@ -22,8 +22,6 @@ namespace RealEstates.Models
 
         public ICollection<DuAn> DuAns { get; set; }
 
-        public ICollection<NhaDat> NhaDats { get; set; }
-
         public ICollection<QuanHuyen> QuanHuyens { get; set; }
     }
 }

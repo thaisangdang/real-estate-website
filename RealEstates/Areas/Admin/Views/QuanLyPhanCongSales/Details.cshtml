@@ -40,31 +40,32 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SanPham)
+            @Html.DisplayNameFor(model => model.NhaDat.Ten
+       )
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SanPham)
+            @Html.DisplayFor(model => model.NhaDat.Ten)
         </dd>
 
-        @if (Model.IsRent)
+        @if (Model.NhaDat.IsRent)
         {
             <dt>
-                @Html.DisplayNameFor(model => model.GiaThueThangDau)
+                @Html.DisplayNameFor(model => model.NhaDat.GiaThue)
             </dt>
 
             <dd>
-                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaThueThangDau)
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.NhaDat.GiaThue)
             </dd>
         }
         else
         {
             <dt>
-                @Html.DisplayNameFor(model => model.GiaBanSanPham)
+                @Html.DisplayNameFor(model => model.NhaDat.GiaBan)
             </dt>
 
             <dd>
-                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaBanSanPham)
+                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.NhaDat.GiaBan)
             </dd>
         }
 

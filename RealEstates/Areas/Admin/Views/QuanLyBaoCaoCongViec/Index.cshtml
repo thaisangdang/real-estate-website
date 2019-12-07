@@ -64,17 +64,17 @@
                     <tr>
                         <td>
                             <a href="@Url.Action("Details", new { id = item.Id})" title="Chi tiết">
-                                @Html.DisplayFor(modelItem => item.SanPham)
+                                @Html.DisplayFor(modelItem => item.NhaDat.Ten)
                             </a>
                         </td>
                         <td>@Html.DisplayFor(modelItem => item.DuAn.TenDuAn)</td>
                         @if (item.IsRent)
                         {
-                            <td class="text-center">@Html.DisplayFor(modelItem => item.GiaThueThangDau)</td>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.NhaDat.GiaThue)</td>
                         }
                         else
                         {
-                            <td class="text-center">@Html.DisplayFor(modelItem => item.GiaBanSanPham)</td>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.NhaDat.GiaBan)</td>
                         }
                         <td class="text-center">@Html.DisplayFor(modelItem => item.PhanTramHoaHong)</td>
                         <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>
