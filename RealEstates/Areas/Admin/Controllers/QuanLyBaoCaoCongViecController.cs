@@ -49,7 +49,7 @@ namespace RealEstates.Areas.Admin.Controllers
             foreach (var phanCongInDb in phanCongsInDb)
             {
                 var phanCong = new PhanCongSalesViewModel(phanCongInDb);
-                phanCong.NhaDat.DuAn = phanCongInDb.NhaDat.DuAn;
+                phanCong.NhaDat = phanCongInDb.NhaDat;
                 phanCong.NhanVienSales = phanCongInDb.NhanVienSales;
                 phanCongViewModels.Add(phanCong);
                 duAns.Add(phanCongInDb.NhaDat.DuAn);
@@ -75,7 +75,7 @@ namespace RealEstates.Areas.Admin.Controllers
             foreach (var phanCongInDb in phanCongsInDb)
             {
                 var phanCong = new PhanCongSalesViewModel(phanCongInDb);
-                phanCong.NhaDat.DuAn = phanCongInDb.NhaDat.DuAn;
+                phanCong.NhaDat = phanCongInDb.NhaDat;
                 phanCong.NhanVienSales = phanCongInDb.NhanVienSales;
                 phanCongViewModels.Add(phanCong);
                 duAns.Add(phanCongInDb.NhaDat.DuAn);

@@ -68,7 +68,7 @@
                             </a>
                         </td>
                         <td>@Html.DisplayFor(modelItem => item.DuAn.TenDuAn)</td>
-                        @if (item.IsRent)
+                        @if (item.NhaDat.IsRent)
                         {
                             <td class="text-center">@Html.DisplayFor(modelItem => item.NhaDat.GiaThue)</td>
                         }

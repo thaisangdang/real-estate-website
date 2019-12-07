@@ -47,7 +47,8 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 var salesManAccountId = User.Identity.GetUserId();
                 var salesMan = _context.NhanViens.SingleOrDefault(x => x.Account.Id == salesManAccountId);
-                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn)
+                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales)
+                    .Include(X => X.PhanCongSales.NhaDat.DuAn).Include(x => x.PhanCongSales.NhaDat.LoaiNhaDat)
                     .Where(x => x.PhanCongSales.NhanVienSales.Id == salesMan.Id).ToList();
                 foreach (var item in phiHoaHongs)
                 {
@@ -60,7 +61,8 @@ namespace RealEstates.Areas.Admin.Controllers
                 var salesRole = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
                 nhanVienSales = _context.NhanViens.Where(x => x.Account.Roles.FirstOrDefault().RoleId == salesRole.Id).ToList();
                 duAns = _context.DuAns.ToList();
-                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn).ToList();
+                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales)
+                    .Include(X => X.PhanCongSales.NhaDat.DuAn).Include(x => x.PhanCongSales.NhaDat.LoaiNhaDat).ToList();
             }
 
             var viewModel = new QuanLyPhiHoaHongViewModel
@@ -76,7 +78,8 @@ namespace RealEstates.Areas.Admin.Controllers
         [Authorize(Roles = RoleName.Administrator)]
         public ActionResult New(int id)
         {
-            var phanCongSales = _context.PhanCongSales.Include(x => x.NhaDat.DuAn).Include(x => x.NhanVienSales).SingleOrDefault(x => x.Id == id);
+            var phanCongSales = _context.PhanCongSales.Include(x => x.NhaDat.DuAn).Include(x => x.NhaDat.LoaiNhaDat)
+                .Include(x => x.NhanVienSales).SingleOrDefault(x => x.Id == id);
             if (phanCongSales == null)
                 return HttpNotFound();
 
@@ -105,7 +108,8 @@ namespace RealEstates.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
-            var phiHoaHong = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn).SingleOrDefault(x => x.Id == id);
+            var phiHoaHong = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales)
+                .Include(X => X.PhanCongSales.NhaDat.DuAn).Include(x => x.PhanCongSales.NhaDat.LoaiNhaDat).SingleOrDefault(x => x.Id == id);
             if (phiHoaHong == null)
                 return HttpNotFound();
             return View(phiHoaHong);
@@ -121,7 +125,8 @@ namespace RealEstates.Areas.Admin.Controllers
             {
                 var salesManAccountId = User.Identity.GetUserId();
                 var salesMan = _context.NhanViens.SingleOrDefault(x => x.Account.Id == salesManAccountId);
-                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn)
+                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales)
+                    .Include(X => X.PhanCongSales.NhaDat.DuAn).Include(X => X.PhanCongSales.NhaDat.LoaiNhaDat)
                     .Where(x => x.PhanCongSales.NhanVienSales.Id == salesMan.Id).ToList();
                 foreach (var item in phiHoaHongs)
                 {
@@ -134,7 +139,8 @@ namespace RealEstates.Areas.Admin.Controllers
                 var salesRole = _context.Roles.Single(x => x.Name == RoleName.SalesMan);
                 nhanVienSales = _context.NhanViens.Where(x => x.Account.Roles.FirstOrDefault().RoleId == salesRole.Id).ToList();
                 duAns = _context.DuAns.ToList();
-                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales).Include(X => X.PhanCongSales.NhaDat.DuAn).ToList();
+                phiHoaHongs = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales)
+                    .Include(X => X.PhanCongSales.NhaDat.DuAn).Include(x => x.PhanCongSales.NhaDat.LoaiNhaDat).ToList();
             }
 
             var viewModel = new QuanLyPhiHoaHongViewModel
