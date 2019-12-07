@@ -14,6 +14,14 @@ namespace RealEstates.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        // tại sao chỉ phân công cho nhân viên sales nhà đất thuộc dự án??
+        // vì nhà đất thuộc dự án có giá trị lớn, số lượng nhiều, pháp lý rõ ràng và lâu dài, đủ cơ sở trả tiền hoa hồng cho sales
+        // nhà đất đơn lẻ thường có giá trị thấp hơn, tính ra hoa hồng không nhiều mà chi phí bỏ ra cho các công việc liên quan lớn, không đủ trả lương cho sales
+        // cho khách hàng đăng tin rao rồi thu phí tin rao thôi, tin rao không phân cho sales đi bán
+        [Display(Name = "Dự Án")]
+        public int DuAnId { get; set; }
+        public DuAn DuAn { get; set; }
+
         [Display(Name = "Nhà đất")]
         public int NhaDatId { get; set; } // nhà đất thuộc dự án, hoặc nhà đất đơn lẻ
         public NhaDat NhaDat { get; set; }

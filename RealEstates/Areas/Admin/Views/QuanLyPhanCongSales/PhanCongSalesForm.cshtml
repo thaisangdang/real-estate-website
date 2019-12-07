@@ -39,26 +39,40 @@
             <div class="form-horizontal">
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.NhaDat.DuAn.Id, new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.LabelFor(m => m.DuAnId, new { @class = "control-label col-md-12 font-weight-bold" })
                         @if (Model.Id == 0)
                         {
-                            @Html.DropDownListFor(m => m.NhaDat.DuAn.Id, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAns), "Chọn dự án", new { @class = "form-control col-md-12 select2" })
-                            @Html.ValidationMessageFor(m => m.NhaDat.DuAn.Id, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(m => m.DuAnId ,new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAnId), "",
+                                new { @class = "form-control col-md-12 select2", @id = "DuAn" })
                         }
                         else
                         {
-                            @Html.DropDownListFor(m => m.NhaDat.DuAn.Id, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAns), "Chọn dự án", new { @class = "form-control col-md-12 select2", @disabled = "disabled" })
+                            @Html.DropDownListFor(m => m.DuAnId, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAns), "Chọn dự án", new { @class = "form-control col-md-12 select2", @disabled = "disabled" })
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.NhaDatId, new { @class = "control-label col-md-12 font-weight-bold" })
+                        @if (Model.Id == 0)
+                        {
+                            @Html.DropDownListFor(m => m.NhaDatId, new SelectList(Model.NhaDats.Where(x => x.DuAn.Id == Model.DuAnId), "Id", "Ten", Model.NhaDatId), "",
+                                new { @class = "form-control col-md-12 select2", @id = "NhaDat" })
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(m => m.NhaDatId, new SelectList(Model.NhaDats, "Id", "Ten", Model.NhaDat), "Chọn nhà đất", new { @class = "form-control col-md-12 select2", @disabled = "disabled" })
                         }
                     </div>
                 </div>
                 <div class="col-md-6">
                     @if (Model.Id == 0)
                     {
-                    <div class="form-check">
-                        @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent" })
-                        @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
-                        @Html.ValidationMessageFor(m => m.IsRent, "", new { @class = "text-danger" })
-                    </div>
+                        <div class="form-check">
+                            @Html.CheckBoxFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-input", onclick = "disPlayHandle()", @id = "isRent" })
+                            @Html.LabelFor(model => model.IsRent, htmlAttributes: new { @class = "form-check-label font-weight-bold" })
+                            @Html.ValidationMessageFor(m => m.IsRent, "", new { @class = "text-danger" })
+                        </div>
                     }
                     else
                     {
@@ -147,7 +161,8 @@
                         @Html.HiddenFor(m => m.Id)
                         @if (Model.Id > 0 && !Model.DaTinhHoaHong)
                         {
-                            @Html.HiddenFor(m => m.NhaDat.DuAn.Id)
+                            @Html.HiddenFor(m => m.NhaDatId)
+                            @Html.HiddenFor(m => m.DuAnId)
                             @Html.HiddenFor(m => m.IsRent)
                             @Html.HiddenFor(m => m.GiaBan)
                             @Html.HiddenFor(m => m.GiaThue)
@@ -169,10 +184,6 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        $(document).ready(function () {
-            $(".select2").select2();
-        });
-
         function disPlayHandle() {
             var isRent = document.getElementById("isRent");
             var giaThue = document.getElementById("giaThue");
@@ -185,6 +196,33 @@
                 giaBan.style.display = "block";
             }
         }
+
+        $(document).ready(function () {
+            $(".select2").select2();
+            $("#DuAn").change(function () {
+                var selectedValue = $(this).children("option:selected").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/api/NhaDatApi/GetNhaDats/?duAnId=" + selectedValue,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var selectElement = $("#NhaDat");
+                        selectElement.empty();
+                        data.forEach(function (nhaDat) {
+                            var $option = $("<option />", {
+                                value: nhaDat.id,
+                                text: nhaDat.ten
+                            });
+                            selectElement.append($option);
+                        });
+                    },
+                    failure: function (data) {
+                    },
+                    error: function (data) {
+                    }
+                });
+            });
+        });
     </script>
 }
-

@@ -13,9 +13,12 @@ namespace RealEstates.Areas.Admin.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Nhà đất cần bán hoặc cho thuê")]
-        public int NhaDatId { get; set; }
+        [Display(Name = "Dự Án")]
+        public int DuAnId { get; set; }
+        public DuAn DuAn { get; set; }
 
+        [Display(Name = "Nhà đất thuộc dự án")]
+        public int NhaDatId { get; set; }
         public NhaDat NhaDat { get; set; }
 
         [Display(Name = "Nhà đất cho thuê")]
@@ -56,6 +59,8 @@ namespace RealEstates.Areas.Admin.Models
 
         public IEnumerable<DuAn> DuAns { get; set; }
 
+        public IEnumerable<NhaDat> NhaDats { get; set; }
+
         public IEnumerable<Option> TrangThaiPhanCong { get; set; }
 
         public string Title
@@ -75,6 +80,7 @@ namespace RealEstates.Areas.Admin.Models
         public PhanCongSalesViewModel(PhanCongSales phanCongSales)
         {
             Id = phanCongSales.Id;
+            DuAnId = phanCongSales.DuAnId;
             NhaDatId = phanCongSales.NhaDatId;
             PhanTramHoaHong = phanCongSales.PhanTramHoaHong;
             IsRent = phanCongSales.NhaDat.LoaiNhaDat.IsRent;

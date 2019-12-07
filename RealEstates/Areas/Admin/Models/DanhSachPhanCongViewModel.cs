@@ -15,7 +15,7 @@ namespace RealEstates.Areas.Admin.Models
 
         public int NhanVienSalesId { get; set; }
 
-        public IEnumerable<PhanCongSalesViewModel> PhanCongSales { get; set; }
+        public IEnumerable<PhanCongSales> PhanCongSales { get; set; }
         public IEnumerable<Option> TrangThaiPhanCong { get; set; }
         public IEnumerable<DuAn> DuAns { get; set; }
         public IEnumerable<NhanVien> NhanVienSales { get; set; }

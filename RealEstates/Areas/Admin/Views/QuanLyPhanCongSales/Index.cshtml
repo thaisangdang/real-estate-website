@@ -71,20 +71,20 @@
                     <tr>
                         <td>
                             <a href="@Url.Action("Details", new { id = item.Id})" title="Chi tiết">
-                                @Html.DisplayFor(modelItem => item.NhaDat.TieuDe)
+                                @Html.DisplayFor(modelItem => item.NhaDat.Ten)
                             </a>
                         </td>
-                        <td>@Html.DisplayFor(modelItem => item.NhaDat.TieuDe)</td>
-                        @if (item.IsRent)
+                        <td>@Html.DisplayFor(modelItem => item.DuAn.TenDuAn)</td>
+                        @if (item.NhaDat.LoaiNhaDat.IsRent)
                         {
                             <td class="text-center">
-                                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.GiaThue)
+                                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.NhaDat.GiaThue)
                             </td>
                         }
                         else
                         {
                             <td class="text-center">
-                                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.GiaBan)
+                                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.NhaDat.GiaBan)
                             </td>
                         }
                         <td class="text-center">@Html.DisplayFor(modelItem => item.PhanTramHoaHong)</td>

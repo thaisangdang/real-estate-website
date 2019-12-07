@@ -8,6 +8,9 @@ using System.Web.Mvc;
 
 namespace RealEstates.Models
 {
+    // tin rao cho mục đích sàn giao dịch bất động sản
+    // khách hàng đăng ký tài khoản để tự đăng tin rao bán/cho thuê, tìm mua/tìm thuê
+    // công ty không can thiệp, cũng như không phân công cho sales bán/cho thuê dùm
     [Table("TinRaoBDS")]
     public class TinRaoBDS
     {
@@ -16,16 +19,12 @@ namespace RealEstates.Models
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Nhà đất cho thuê")]
-        public bool IsRent { get; set; }
+        [Display(Name = "Loại tin rao")]
+        public int LoaiTinRao { get; set; }
 
-        [Display(Name = "Giá bán (VNĐ)")]
+        [Display(Name = "Giá tiền (VNĐ)")]
         [Column(TypeName = "money")]
-        public decimal GiaBan { get; set; }
-
-        [Display(Name = "Giá thuê (VNĐ)")]
-        [Column(TypeName = "money")]
-        public decimal GiaThue { get; set; }
+        public decimal GiaTien { get; set; }
 
         [Required]
         [Display(Name = "Loại nhà đất")]

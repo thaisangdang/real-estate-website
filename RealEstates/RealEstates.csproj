@@ -227,9 +227,11 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyPhiHoaHongController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanNVController.cs" />
     <Compile Include="Areas\Admin\Models\SalesViewModel.cs" />
+    <Compile Include="Controllers\Api\NhaDatApiController.cs" />
     <Compile Include="Controllers\DuAnController.cs" />
     <Compile Include="Controllers\TinRaoController.cs" />
     <Compile Include="Dtos\LoaiNhaDatDto.cs" />
+    <Compile Include="Dtos\NhaDatDto.cs" />
     <Compile Include="Dtos\QuanHuyenDto.cs" />
     <Compile Include="Helper\ExceptionLogger.cs" />
     <Compile Include="Migrations\201910181003181_Initial.cs" />
@@ -283,6 +285,14 @@
     <Compile Include="Migrations\201911241621372_whatChanges11.cs" />
     <Compile Include="Migrations\201911241621372_whatChanges11.Designer.cs">
       <DependentUpon>201911241621372_whatChanges11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912030308213_whatChanges12.cs" />
+    <Compile Include="Migrations\201912030308213_whatChanges12.Designer.cs">
+      <DependentUpon>201912030308213_whatChanges12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912070430506_whatChanges13.cs" />
+    <Compile Include="Migrations\201912070430506_whatChanges13.Designer.cs">
+      <DependentUpon>201912070430506_whatChanges13.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaiViet.cs" />
@@ -1639,7 +1649,7 @@
     <Content Include="Areas\Admin\Views\QuanLyThongTinNV\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyThongTinNV\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyThongTinNV\NhanVienForm.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyPhanCongSales\PhanCongSales.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyPhanCongSales\PhanCongSalesForm.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhanCongSales\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyPhanCongSales\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyBaoCaoCongViec\BaoCaoCongViecForm.cshtml" />
@@ -1909,6 +1919,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911241621372_whatChanges11.resx">
       <DependentUpon>201911241621372_whatChanges11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912030308213_whatChanges12.resx">
+      <DependentUpon>201912030308213_whatChanges12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912070430506_whatChanges13.resx">
+      <DependentUpon>201912070430506_whatChanges13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
