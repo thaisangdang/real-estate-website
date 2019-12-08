@@ -119,8 +119,10 @@ namespace RealEstates.Helper
                 if (LoaiTinRaoBDS == null)
                 {
                     LoaiTinRaoBDS = new List<Option>();
-                    LoaiTinRaoBDS.Add(new Option() { Id = 1, Text = "BĐS cần bán/thuê" });
-                    LoaiTinRaoBDS.Add(new Option() { Id = 2, Text = "BĐS cần mua/cho thuê" });
+                    LoaiTinRaoBDS.Add(new Option() { Id = 1, Text = "Tin rao bán" });
+                    LoaiTinRaoBDS.Add(new Option() { Id = 2, Text = "Tin rao cho thuê" });
+                    LoaiTinRaoBDS.Add(new Option() { Id = 3, Text = "Tin rao cần mua" });
+                    LoaiTinRaoBDS.Add(new Option() { Id = 4, Text = "Tin rao cần thuê" });
                 }
                 return LoaiTinRaoBDS;
             }

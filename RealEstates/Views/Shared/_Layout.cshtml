@@ -36,7 +36,7 @@
                                 Dự án
                             </a>
                             <div class="dropdown-menu bg-dark">
-                                @foreach (var loaiDuAn in NavViewModel.getLoaiDuAns())
+                                @foreach (var loaiDuAn in NavViewModel.GetLoaiDuAns())
                                 {
                                     @Html.ActionLink(loaiDuAn.TenLoai, "List", "DuAn", new { id = loaiDuAn.Id }, new { @class = "nav-link text-light bg-dark" })
                                 }
@@ -45,14 +45,65 @@
                             </div>
                         </div>
                     </li>
-                    <li>@Html.ActionLink("Nhà đất bán", "Index", "TinRao", new { loaiTinRao = "ban" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Nhà đất cho thuê", "Index", "TinRao", new { loaiTinRao = "choThue" }, new { @class = "nav-link" })</li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#khongclickduoc2" title="dùng js để xử lý dropdown chổ này sẽ click được" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                BĐS bán
+                            </a>
+                            <div class="dropdown-menu bg-dark">
+                                @foreach (var loaiNhaDat in NavViewModel.GetLoaiNhaDats())
+                                {
+                                    if (!loaiNhaDat.IsRent)
+                                    {
+                                        @Html.ActionLink(loaiNhaDat.TenLoai, "NhaDatBan", "NhaDat", new { id = loaiNhaDat.Id }, new { @class = "nav-link text-light bg-dark" })
+                                    }
+                                }
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink("Tất cả >>", "NhaDatBan", "NhaDat", null, new { @class = "nav-link text-light bg-dark" })
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#khongclickduoc2" title="dùng js để xử lý dropdown chổ này sẽ click được" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                BĐS cho thuê
+                            </a>
+                            <div class="dropdown-menu bg-dark">
+                                @foreach (var loaiNhaDat in NavViewModel.GetLoaiNhaDats())
+                                {
+                                    if (loaiNhaDat.IsRent)
+                                    {
+                                        @Html.ActionLink(loaiNhaDat.TenLoai, "NhaDatChoThue", "NhaDat", new { id = loaiNhaDat.Id }, new { @class = "nav-link text-light bg-dark" })
+                                    }
+                                }
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink("Tất cả >>", "NhaDatChoThue", "NhaDat", null, new { @class = "nav-link text-light bg-dark" })
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#khongclickduoc3" title="dùng js để xử lý dropdown chổ này sẽ click được" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                Tin rao
+                            </a>
+                            <div class="dropdown-menu bg-dark">
+                                @foreach (var loaiTinRao in NavViewModel.GetLoaiTinRaoBDS())
+                                {
+                                    @Html.ActionLink(loaiTinRao.Text, "List", "TinRao", new { id = loaiTinRao.Id }, new { @class = "nav-link text-light bg-dark" })
+                                }
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink("Tất cả >>", "Index", "TinRao", null, new { @class = "nav-link text-light bg-dark" })
+                            </div>
+                        </div>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Đăng tin rao", "New", "TinRao", null, new { @class = "nav-link" })</li>
+                    }
+                    <li>@Html.ActionLink("Doanh nghiệp BĐS", "ListDoanhNghiep", "Home", null, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Giới thiệu", "About", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Liên hệ", "Contact", "Home", null, new { @class = "nav-link" })</li>
                 </ul>
-                @*@Html.Partial("_LoginPartial")*@
-                <!-- Navbar Search -->
-                <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                @*<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Tìm dự án..." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
@@ -61,7 +112,7 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form>*@
                 <ul class="nav navbar-nav">
                     @{
                         if (User.Identity.IsAuthenticated)
@@ -126,7 +177,6 @@
                                     <a href="#">Điều khoản và dịch vụ</a>
                                 </li>
                             </ul>
-
                         </div>
 
                         <div class="col-md-3 mx-auto">
@@ -136,7 +186,6 @@
                                 <button type="submit" class="btn btn-primary btn-raised">Xác nhận</button>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -161,6 +210,5 @@
 
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
-
 </body>
 </html>

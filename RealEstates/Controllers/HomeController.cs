@@ -1,11 +1,9 @@
-﻿using RealEstates.Models;
+﻿using RealEstates.Helper;
+using RealEstates.Models;
 using RealEstates.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace RealEstates.Controllers
 {
@@ -29,7 +27,9 @@ namespace RealEstates.Controllers
             var viewModel = new HomeViewModel
             {
                 DuAns = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho).ToList(),
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
+                LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
                 TinhThanhPhos = _context.TinhThanhPhos.ToList()
             };
 

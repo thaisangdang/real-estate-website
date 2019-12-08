@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using RealEstates.Areas.Admin.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace RealEstates.Models
 {
@@ -15,7 +11,6 @@ namespace RealEstates.Models
         public DbSet<LoaiNhaDat> LoaiNhaDats { get; set; }
         public DbSet<NhaDat> NhaDats { get; set; }
         public DbSet<TinRaoBDS> TinRaoBDSs { get; set; }
-        public DbSet<KhachHang> KhachHangs { get; set; }
         public DbSet<TinhThanhPho> TinhThanhPhos { get; set; }
         public DbSet<QuanHuyen> QuanHuyens { get; set; }
         public DbSet<PhongBan> PhongBans { get; set; }
@@ -25,6 +20,7 @@ namespace RealEstates.Models
         public DbSet<LoaiBaiViet> LoaiBaiViets { get; set; }
         public DbSet<BaiViet> BaiViets { get; set; }
         public DbSet<DoanhNghiepBDS> DoanhNghiepBDSs { get; set; }
+
         public ApplicationDbContext()
             : base("name=RealEstates", throwIfV1Schema: false)
         {

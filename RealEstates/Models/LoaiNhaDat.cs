@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace RealEstates.Models
 {
@@ -22,5 +19,7 @@ namespace RealEstates.Models
         public bool IsRent { get; set; }
 
         public ICollection<NhaDat> NhaDats { get; set; }
+
+        public ICollection<TinRaoBDS> TinRaoBDSs { get; set; }
     }
 }

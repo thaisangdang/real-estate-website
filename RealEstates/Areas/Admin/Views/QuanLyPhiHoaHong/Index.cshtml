@@ -47,6 +47,10 @@
             }
         </div>
 
+        @*<a href="@Url.Action("Export")" class="btn btn-primary" title="Xuất báo cáo">
+            <span class="text-white"><i class="fas fa-print fa-fw"></i> Xuất báo cáo</span>
+        </a>*@
+
         <div class="table-responsive">
             <table id="dataTable" class="table table-bordered" style="width:100%">
                 <thead>
@@ -64,27 +68,27 @@
                 <tbody>
                     @foreach (var item in Model.PhiHoaHongs)
                     {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhanVienSales.HoTen)</td>
-                        <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.DuAn.TenDuAn)</td>
-                        <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.Ten)</td>
-                        @if (item.PhanCongSales.NhaDat.LoaiNhaDat.IsRent)
-                        {
-                            <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.GiaThue)</td>
-                        }
-                        else
-                        {
-                            <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.GiaBan)</td>
-                        }
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.PhanCongSales.PhanTramHoaHong)</td>
-                        <td class="text-center">@Html.DisplayFor(modelItem => item.TongChi)</td>
-                        <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>
-                        <td>
-                            <a href="@Url.Action("Details", new { id = item.Id})" class="btn btn-info" title="Chi tiết">
-                                <span class="text-white"><i class="fas fa-eye fa-fw"></i></span>
-                            </a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhanVienSales.HoTen)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.DuAn.TenDuAn)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.Ten)</td>
+                            @if (item.PhanCongSales.NhaDat.LoaiNhaDat.IsRent)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.GiaThue)</td>
+                            }
+                            else
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.GiaBan)</td>
+                            }
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.PhanCongSales.PhanTramHoaHong)</td>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.TongChi)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>
+                            <td>
+                                <a href="@Url.Action("Details", new { id = item.Id})" class="btn btn-info" title="Chi tiết">
+                                    <span class="text-white"><i class="fas fa-eye fa-fw"></i></span>
+                                </a>
+                            </td>
+                        </tr>
 
                     }
                 </tbody>

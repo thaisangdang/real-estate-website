@@ -3,15 +3,15 @@ using RealEstates.Areas.Admin.Models;
 using RealEstates.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Administrator, SalesMan, Staff")]
-    public class QuanLyPhiHoaHongController : Controller 
+    public class QuanLyPhiHoaHongController : Controller
     {
         public ApplicationDbContext _context;
 
@@ -97,7 +97,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 GiaBan = phanCongSales.NhaDat.GiaBan,
                 PhanTramHoaHong = phanCongSales.PhanTramHoaHong
             };
-                        
+
             if (phanCongSales.NhaDat.LoaiNhaDat.IsRent)
                 viewModel.TongChi = phanCongSales.NhaDat.GiaThue * (decimal)(phanCongSales.PhanTramHoaHong / 100);
             else
@@ -183,6 +183,76 @@ namespace RealEstates.Areas.Admin.Controllers
                 TempData["success"] = "Cập nhật thành công";
             }
             return RedirectToAction("Index", "QuanLyPhiHoaHong");
+        }
+
+        public ActionResult Export(int id)
+        {
+            try
+            {
+                Excel.Application application = new Excel.Application();
+                Excel.Workbook workbook = application.Workbooks.Add(System.Reflection.Missing.Value);
+                Excel.Worksheet worksheet = workbook.ActiveSheet;
+
+                var phiHoaHong = _context.PhiHoaHongs.Include(x => x.PhanCongSales).Include(x => x.PhanCongSales.NhanVienSales)
+                    .Include(x => x.PhanCongSales.NhaDat).Include(x => x.PhanCongSales.NhanVienSales.PhongBan)
+                    .Include(X => X.PhanCongSales.NhaDat.DuAn).Include(x => x.PhanCongSales.NhaDat.LoaiNhaDat).SingleOrDefault(x => x.Id == id);
+
+                worksheet.get_Range("A1", "E1").Merge();
+                worksheet.Cells[1, 2] = "Thống kê phí hoa hồng đã xuất cho nhân viên";
+
+                worksheet.Cells[2, 2] = "Ngày xuất";
+                worksheet.Cells[3, 2] = DateTime.Now.ToString("dd/MM/yyyy");
+
+                worksheet.Cells[2, 3] = "Tổng phí hoa hồng";
+                worksheet.Cells[3, 3] = phiHoaHong.TongChi;
+
+                worksheet.Cells[4, 2] = "Nhân viên Sales";
+                worksheet.Cells[4, 3] = phiHoaHong.PhanCongSales.NhanVienSales.HoTen;
+
+                worksheet.Cells[5, 2] = "Phòng ban";
+                worksheet.Cells[5, 3] = phiHoaHong.PhanCongSales.NhanVienSales.PhongBan.Ten;
+
+                worksheet.Cells[6, 2] = "Số điện thoại";
+                worksheet.Cells[6, 3] = phiHoaHong.PhanCongSales.NhanVienSales.SoDienThoai;
+
+                worksheet.Cells[8, 2] = "Nhà đất";
+                worksheet.Cells[9, 2] = phiHoaHong.PhanCongSales.NhaDat.Ten;
+
+                worksheet.Cells[8, 3] = "Giá bán/Cho thuê";
+                if (phiHoaHong.PhanCongSales.NhaDat.IsRent)
+                {
+                    worksheet.Cells[9, 3] = phiHoaHong.PhanCongSales.NhaDat.GiaThue;
+                }
+                else
+                {
+                    worksheet.Cells[9, 3] = phiHoaHong.PhanCongSales.NhaDat.GiaBan;
+                }
+
+                worksheet.Cells[8, 4] = "Phần trăm hoa hồng";
+                worksheet.Cells[9, 4] = phiHoaHong.PhanCongSales.PhanTramHoaHong;
+
+                worksheet.Cells[8, 5] = "Phí hoa hồng";
+                worksheet.Cells[9, 5] = phiHoaHong.TongChi;
+
+                worksheet.Cells[11, 2] = "Tổng";
+
+                string tempPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + "_SalesCommission";
+                workbook.SaveAs(tempPath, workbook.FileFormat);
+                tempPath = workbook.FullName;
+                workbook.Close();
+                byte[] result = System.IO.File.ReadAllBytes(tempPath);
+                System.IO.File.Delete(tempPath);
+
+                this.Response.AddHeader("Content-Disposition", "SalesCommission.xlsx");
+                this.Response.ContentType = "application/vnd.ms-excel";
+
+                return File(result, "application/vnd.ms-excel");
+            }
+            catch (Exception ex)
+            {
+                return HttpNotFound();
+                throw ex;
+            }
         }
     }
 }

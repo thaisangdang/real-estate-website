@@ -58,6 +58,10 @@
       <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
@@ -302,10 +306,13 @@
     <Compile Include="Migrations\201912070809571_whatChanges15.Designer.cs">
       <DependentUpon>201912070809571_whatChanges15.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912082026433_whatChanges16.cs" />
+    <Compile Include="Migrations\201912082026433_whatChanges16.Designer.cs">
+      <DependentUpon>201912082026433_whatChanges16.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaiViet.cs" />
     <Compile Include="Models\DoanhNghiepBDS.cs" />
-    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\LoaiBaiViet.cs" />
     <Compile Include="Models\LoaiNhaDat.cs" />
     <Compile Include="Models\PhanCongSales.cs" />
@@ -1158,6 +1165,10 @@
     <Content Include="Content\Images\google-earth-view-1302.jpg" />
     <Content Include="Content\Images\google-earth-view-1371.jpg" />
     <Content Include="Content\Images\google-earth-view-5674.jpg" />
+    <Content Include="Content\Images\sidebar1.png" />
+    <Content Include="Content\Images\sidebar2.jpg" />
+    <Content Include="Content\Images\sidebar3.jpg" />
+    <Content Include="Content\Images\sidebar4.jpg" />
     <Content Include="Content\OwlCarousel\AjaxLoader.gif" />
     <Content Include="Content\OwlCarousel\grabbing.png" />
     <Content Include="Content\OwlCarousel\owl.carousel.css" />
@@ -1726,6 +1737,7 @@
     <Content Include="CKFinderScripts\lang\bs.json" />
     <Content Include="CKFinderScripts\lang\bg.json" />
     <Content Include="CKFinderScripts\lang\az.json" />
+    <Content Include="Report\SalesCommission.xlsx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1939,6 +1951,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912070809571_whatChanges15.resx">
       <DependentUpon>201912070809571_whatChanges15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912082026433_whatChanges16.resx">
+      <DependentUpon>201912082026433_whatChanges16.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

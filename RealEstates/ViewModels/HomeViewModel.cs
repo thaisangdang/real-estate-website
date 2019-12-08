@@ -12,7 +12,11 @@ namespace RealEstates.ViewModels
     {
         public IEnumerable<DuAn> DuAns { get; set; }
 
+        public IEnumerable<LoaiNhaDat> LoaiNhaDats { get; set; }
+
         public IEnumerable<LoaiDuAn> LoaiDuAns { get; set; }
+
+        public IEnumerable<Option> LoaiTinRaoBDS { get; set; }
 
         public IEnumerable<TinhThanhPho> TinhThanhPhos { get; set; }
 
@@ -22,6 +26,12 @@ namespace RealEstates.ViewModels
 
         [Display(Name = "Loại dự án")]
         public int LoaiDuAnId { get; set; }
+
+        [Display(Name = "Loại nhà đất")]
+        public int LoaiNhaDatId { get; set; }
+
+        [Display(Name = "Loại tin rao")]
+        public int LoaiTinRaoId { get; set; }
 
         [Display(Name = "Tỉnh thành phố")]
         public int TinhThanhPhoId { get; set; }

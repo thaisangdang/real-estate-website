@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using RealEstates.Areas.Admin.Models;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -32,16 +31,19 @@ namespace RealEstates.Models
         [Required]
         [Display(Name = "Loại nhà đất")]
         public int LoaiNhaDatId { get; set; }
+
         public LoaiNhaDat LoaiNhaDat { get; set; }
 
         [Required]
         [Display(Name = "Tỉnh thành phố")]
         public int TinhThanhPhoId { get; set; }
+
         public TinhThanhPho TinhThanhPho { get; set; }
 
         [Required]
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
+
         public QuanHuyen QuanHuyen { get; set; }
 
         [Display(Name = "Địa chỉ")]
@@ -77,6 +79,7 @@ namespace RealEstates.Models
 
         [Display(Name = "Ảnh đại diện")]
         public string AnhDaiDien { get; set; }
+
         [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
 
@@ -95,8 +98,19 @@ namespace RealEstates.Models
         public DateTime NgayKetThucDangTinRao { get; set; }
 
         [Display(Name = "Người gửi bài đăng")]
-        public int KhachHangId { get; set; }
-        public KhachHang KhachHang { get; set; }
+        public string AccountId { get; set; }
+
+        public ApplicationUser Account { get; set; }
+
+        [Display(Name = "Họ tên")]
+        public string HoTen { get; set; }
+
+        [Display(Name = "Số điện thoại")]
+        public string SoDienThoai { get; set; }
+
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Display(Name = "Trạng thái")]
         public int TrangThai { get; set; } // chờ duyệt, hiển thị trên web, dừng đăng tin
