@@ -1,4 +1,5 @@
-﻿using RealEstates.Models;
+﻿using RealEstates.Helper;
+using RealEstates.Models;
 using RealEstates.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,22 @@ namespace RealEstates.Controllers
         // GET: TinRao
         public ActionResult Index(string loaiTinRao)
         {
-
             return View();
+        }
+
+        [Authorize]
+        public ActionResult New()
+        {
+            var viewModel = new TinRaoViewModel
+            {
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                TrangThaiTinRao = SelectOptions.getTrangThaiTinRao,
+                LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS
+            };
+
+            return View("TinRaoForm", viewModel);
         }
     }
 }

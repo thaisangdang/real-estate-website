@@ -103,16 +103,6 @@
                     <li>@Html.ActionLink("Doanh nghiệp BĐS", "ListDoanhNghiep", "Home", null, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Giới thiệu", "About", "Home", null, new { @class = "nav-link" })</li>
                 </ul>
-                @*<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tìm dự án..." aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary" type="button">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>*@
                 <ul class="nav navbar-nav">
                     @{
                         if (User.Identity.IsAuthenticated)

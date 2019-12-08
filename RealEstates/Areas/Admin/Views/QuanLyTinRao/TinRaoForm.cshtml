@@ -1,0 +1,194 @@
+﻿@model RealEstates.ViewModels.TinRaoViewModel
+
+@{
+    ViewBag.Title = "DuAnForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">Gửi tin rao BĐS</h6>
+    </div>
+    <div class="card-body">
+        <br />
+        @using (Html.BeginForm("Save", "TinRao", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LoaiTinRao, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.LoaiTinRao, new SelectList(Model.LoaiTinRaoBDS, "Id", "Text", Model.LoaiTinRao), "", new { @class = "form-control col-md-12 select2" })
+                        @Html.ValidationMessageFor(m => m.LoaiTinRao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LoaiNhaDatId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.LoaiNhaDatId, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai", Model.LoaiNhaDatId), "", new { @class = "form-control col-md-12 select2" })
+                        @Html.ValidationMessageFor(m => m.LoaiNhaDatId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.TieuDe, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GiaTien, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.EditorFor(model => model.GiaTien, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.TinhThanhPhoId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "",
+                            new { @class = "form-control col-md-12 select2", @id = "TinhThanhPho" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.TinhThanhPhoId, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.QuanHuyenId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.QuanHuyenId, new SelectList(Model.QuanHuyens.Where(x => x.TinhThanhPhoId == Model.TinhThanhPhoId), "Id", "Ten", Model.QuanHuyenId), "",
+                            new { @class = "form-control col-md-12 select2", @id = "QuanHuyen" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.QuanHuyenId, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DienTich, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.DienTich, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.DienTich, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.HuongNha, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.HuongNha, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.HuongNha, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SoPhong, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.SoPhong, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.SoPhong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ThongTinMoTa, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.TextAreaFor(model => model.ThongTinMoTa, new { @class = "form-control col-md-12", @id = "ThongTinMoTa" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.ThongTinMoTa, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Media, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.TextAreaFor(model => model.Media, new { @class = "form-control col-md-12", @id = "Media" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Media, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TuKhoa, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.TuKhoa, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.TuKhoa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BanDo, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.BanDo, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.BanDo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiTinRao, "Id", "Text", Model.TrangThai), "", new { @class = "form-control col-md-12 select2" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.TrangThai, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        <input type="file" name="ImageFile" accept="image/*" />
+                    </div>
+                    @Html.ValidationMessageFor(m => m.AnhDaiDien, "", new { @class = "text-danger" })
+                </div>
+                @if (Model.Id != 0)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NgayTao, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.NgayTao, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-12">
+                        @Html.HiddenFor(m => m.Id)
+                        <input type="submit" class="btn btn-success" value="Lưu" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function () {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('ThongTinMoTa');
+            CKEDITOR.replace('Media');
+            CKEDITOR.editorConfig = function (config) {
+                config.language = 'vi';
+            };
+        });
+
+        $(document).ready(function () {
+            $(".select2").select2();
+            $("#TinhThanhPho").change(function () {
+                var selectedValue = $(this).children("option:selected").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/api/DuAnApi/GetQuanHuyens/?tinhThanhPhoId=" + selectedValue,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var selectElement = $("#QuanHuyen");
+                        selectElement.empty();
+                        data.forEach(function (quanHuyen) {
+                            var $option = $("<option />", {
+                                value: quanHuyen.id,
+                                text: quanHuyen.ten
+                            });
+                            selectElement.append($option);
+                        });
+                    },
+                    failure: function (data) {
+                    },
+                    error: function (data) {
+                    }
+                });
+            });
+        });
+    </script>
+}

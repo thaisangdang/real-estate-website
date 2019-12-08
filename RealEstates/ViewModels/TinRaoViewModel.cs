@@ -1,23 +1,17 @@
 ﻿using RealEstates.Areas.Admin.Models;
+using RealEstates.Helper;
+using RealEstates.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace RealEstates.Models
+namespace RealEstates.ViewModels
 {
-    // tin rao cho mục đích sàn giao dịch bất động sản
-    // khách hàng đăng ký tài khoản để tự đăng tin rao bán/cho thuê, tìm mua/tìm thuê
-    // công ty không can thiệp, cũng như không phân công cho sales bán/cho thuê dùm
-    // form tin rao không cần nhập lại thông tin khách hàng vì đã có thông tin
-    // khách hàng lúc đăng nhập
-
-    [Table("TinRaoBDS")]
-    public class TinRaoBDS
+    public class TinRaoViewModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -25,25 +19,21 @@ namespace RealEstates.Models
         public int LoaiTinRao { get; set; }
 
         [Display(Name = "Giá tiền (VNĐ)")]
-        [Column(TypeName = "money")]
         public decimal GiaTien { get; set; }
 
         [Required]
         [Display(Name = "Loại nhà đất")]
         public int LoaiNhaDatId { get; set; }
-
         public LoaiNhaDat LoaiNhaDat { get; set; }
 
         [Required]
         [Display(Name = "Tỉnh thành phố")]
         public int TinhThanhPhoId { get; set; }
-
         public TinhThanhPho TinhThanhPho { get; set; }
 
         [Required]
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
-
         public QuanHuyen QuanHuyen { get; set; }
 
         [Display(Name = "Địa chỉ")]
@@ -79,8 +69,6 @@ namespace RealEstates.Models
 
         [Display(Name = "Ảnh đại diện")]
         public string AnhDaiDien { get; set; }
-
-        [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
 
         [Required]
@@ -93,7 +81,6 @@ namespace RealEstates.Models
 
         [Display(Name = "Người gửi bài đăng")]
         public string AccountId { get; set; }
-
         public ApplicationUser Account { get; set; }
 
         [Display(Name = "Họ tên")]
@@ -108,5 +95,47 @@ namespace RealEstates.Models
 
         [Display(Name = "Trạng thái")]
         public int TrangThai { get; set; } // chờ duyệt, hiển thị trên web, dừng đăng tin
+
+        public IEnumerable<LoaiNhaDat> LoaiNhaDats { get; set; }
+        
+        public IEnumerable<TinhThanhPho> TinhThanhPhos { get; set; }
+
+        public IEnumerable<QuanHuyen> QuanHuyens { get; set; }
+
+        public IEnumerable<Option> LoaiTinRaoBDS { get; set; }
+
+        public IEnumerable<Option> TrangThaiTinRao { get; set; }
+
+        public TinRaoViewModel()
+        {
+            Id = 0;
+            TrangThai = 1;
+        }
+
+        public TinRaoViewModel(TinRaoBDS tinRaoBDS)
+        {
+            Id = tinRaoBDS.Id;
+            LoaiTinRao = tinRaoBDS.LoaiTinRao;
+            LoaiNhaDatId = tinRaoBDS.LoaiNhaDatId;
+            TieuDe = tinRaoBDS.TieuDe;
+            GiaTien = tinRaoBDS.GiaTien;
+            TinhThanhPhoId = tinRaoBDS.TinhThanhPhoId;
+            QuanHuyenId = tinRaoBDS.QuanHuyenId;
+            DiaChi = tinRaoBDS.DiaChi;
+            DienTich = tinRaoBDS.DienTich;
+            HuongNha = tinRaoBDS.HuongNha;
+            SoPhong = tinRaoBDS.SoPhong;
+            ThongTinMoTa = tinRaoBDS.ThongTinMoTa;
+            Media = tinRaoBDS.Media;
+            TuKhoa = tinRaoBDS.TuKhoa;
+            BanDo = tinRaoBDS.BanDo;
+            AnhDaiDien = tinRaoBDS.AnhDaiDien;
+            NgayTao = tinRaoBDS.NgayTao;
+            AccountId = tinRaoBDS.AccountId;
+            HoTen = tinRaoBDS.HoTen;
+            SoDienThoai = tinRaoBDS.SoDienThoai;
+            Email = tinRaoBDS.Email;
+            TrangThai = tinRaoBDS.TrangThai;
+        }
     }
 }

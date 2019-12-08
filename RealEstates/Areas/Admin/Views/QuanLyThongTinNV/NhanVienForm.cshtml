@@ -25,60 +25,60 @@
     </div>
     <div class="card-body">
         <br />
-        @using (Html.BeginForm("Save", "QuanLyThongTinNV", FormMethod.Post, new { @class = "form-horizontal", role = "form"}))
+        @using (Html.BeginForm("Save", "QuanLyThongTinNV", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-horizontal">
-        <div class="col-md-6">
-            <div class="form-group">
-                @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-12" })
-                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.SoDienThoai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhongBanId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.PhongBanId, new SelectList(Model.PhongBans, "Id", "Ten", Model.PhongBanId), "Chọn phòng ban", new { @class = "form-control col-md-12 select2" })
+                        @Html.ValidationMessageFor(m => m.PhongBanId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.AccountId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.AccountId, new SelectList(Model.Accounts, "Id", "Email", Model.AccountId), "Chọn tài khoản", new { @class = "form-control col-md-12 select2" })
+                        @Html.ValidationMessageFor(m => m.AccountId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiNhanVien, "Id", "Text", Model.TrangThai), "", new { @class = "form-control col-md-12 select2" })
+                        @Html.ValidationMessageFor(m => m.TrangThai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-12">
+                        @Html.HiddenFor(m => m.Id)
+                        <input type="submit" class="btn btn-success" value="Lưu" />
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-12" })
-                @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                @Html.ValidationMessageFor(m => m.SoDienThoai, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                @Html.LabelFor(m => m.PhongBanId, new { @class = "control-label col-md-12" })
-                @Html.DropDownListFor(m => m.PhongBanId, new SelectList(Model.PhongBans, "Id", "Ten", Model.PhongBanId), "Chọn phòng ban", new { @class = "form-control col-md-12 select2" })
-                @Html.ValidationMessageFor(m => m.PhongBanId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                @Html.LabelFor(m => m.AccountId, new { @class = "control-label col-md-12" })
-                @Html.DropDownListFor(m => m.AccountId, new SelectList(Model.Accounts, "Id", "Email", Model.AccountId), "Chọn tài khoản", new { @class = "form-control col-md-12 select2" })
-                @Html.ValidationMessageFor(m => m.AccountId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12" })
-                @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiNhanVien, "Id", "Text", Model.TrangThai), "", new { @class = "form-control col-md-12 select2" })
-                @Html.ValidationMessageFor(m => m.TrangThai, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-12">
-                @Html.HiddenFor(m => m.Id)
-                <input type="submit" class="btn btn-success" value="Lưu" />
-            </div>
-        </div>
-    </div>
         }
     </div>
 </div>
@@ -92,4 +92,3 @@
         });
     </script>
 }
-
