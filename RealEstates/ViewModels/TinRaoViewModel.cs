@@ -22,11 +22,6 @@ namespace RealEstates.ViewModels
         public decimal GiaTien { get; set; }
 
         [Required]
-        [Display(Name = "Loại nhà đất")]
-        public int LoaiNhaDatId { get; set; }
-        public LoaiNhaDat LoaiNhaDat { get; set; }
-
-        [Required]
         [Display(Name = "Tỉnh thành phố")]
         public int TinhThanhPhoId { get; set; }
         public TinhThanhPho TinhThanhPho { get; set; }
@@ -95,8 +90,6 @@ namespace RealEstates.ViewModels
 
         [Display(Name = "Trạng thái")]
         public int TrangThai { get; set; } // chờ duyệt, hiển thị trên web, dừng đăng tin
-
-        public IEnumerable<LoaiNhaDat> LoaiNhaDats { get; set; }
         
         public IEnumerable<TinhThanhPho> TinhThanhPhos { get; set; }
 
@@ -116,7 +109,6 @@ namespace RealEstates.ViewModels
         {
             Id = tinRaoBDS.Id;
             LoaiTinRao = tinRaoBDS.LoaiTinRao;
-            LoaiNhaDatId = tinRaoBDS.LoaiNhaDatId;
             TieuDe = tinRaoBDS.TieuDe;
             GiaTien = tinRaoBDS.GiaTien;
             TinhThanhPhoId = tinRaoBDS.TinhThanhPhoId;
@@ -130,11 +122,12 @@ namespace RealEstates.ViewModels
             TuKhoa = tinRaoBDS.TuKhoa;
             BanDo = tinRaoBDS.BanDo;
             AnhDaiDien = tinRaoBDS.AnhDaiDien;
-            NgayTao = tinRaoBDS.NgayTao;
-            AccountId = tinRaoBDS.AccountId;
             HoTen = tinRaoBDS.HoTen;
             SoDienThoai = tinRaoBDS.SoDienThoai;
             Email = tinRaoBDS.Email;
+
+            AccountId = tinRaoBDS.AccountId;
+            NgayTao = tinRaoBDS.NgayTao;
             TrangThai = tinRaoBDS.TrangThai;
         }
     }

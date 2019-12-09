@@ -314,6 +314,18 @@
     <Compile Include="Migrations\201912082202296_whatChanges17.Designer.cs">
       <DependentUpon>201912082202296_whatChanges17.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912090033256_whatChanges18.cs" />
+    <Compile Include="Migrations\201912090033256_whatChanges18.Designer.cs">
+      <DependentUpon>201912090033256_whatChanges18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912090034573_whatChanges19.cs" />
+    <Compile Include="Migrations\201912090034573_whatChanges19.Designer.cs">
+      <DependentUpon>201912090034573_whatChanges19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912090041314_whatChanges20.cs" />
+    <Compile Include="Migrations\201912090041314_whatChanges20.Designer.cs">
+      <DependentUpon>201912090041314_whatChanges20.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaiViet.cs" />
     <Compile Include="Models\DoanhNghiepBDS.cs" />
@@ -1170,6 +1182,7 @@
     <Content Include="Content\Images\google-earth-view-1302.jpg" />
     <Content Include="Content\Images\google-earth-view-1371.jpg" />
     <Content Include="Content\Images\google-earth-view-5674.jpg" />
+    <Content Include="Content\Images\no-photo-available-300x225.png" />
     <Content Include="Content\Images\sidebar1.png" />
     <Content Include="Content\Images\sidebar2.jpg" />
     <Content Include="Content\Images\sidebar3.jpg" />
@@ -1743,7 +1756,7 @@
     <Content Include="CKFinderScripts\lang\bg.json" />
     <Content Include="CKFinderScripts\lang\az.json" />
     <Content Include="Report\SalesCommission.xlsx" />
-    <Content Include="Areas\Admin\Views\QuanLyTinRao\TinRaoForm.cshtml" />
+    <Content Include="Views\TinRao\TinRaoForm.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1963,6 +1976,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912082202296_whatChanges17.resx">
       <DependentUpon>201912082202296_whatChanges17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912090033256_whatChanges18.resx">
+      <DependentUpon>201912090033256_whatChanges18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912090034573_whatChanges19.resx">
+      <DependentUpon>201912090034573_whatChanges19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912090041314_whatChanges20.resx">
+      <DependentUpon>201912090041314_whatChanges20.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

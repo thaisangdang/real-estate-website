@@ -2,8 +2,10 @@
 
 @{
     ViewBag.Title = "DuAnForm";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Area/Admin/Views/Shared/_Layout.cshtml";
 }
+
+@Html.Partial("~/Views/Shared/_Alert.cshtml")
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -21,13 +23,6 @@
                         @Html.LabelFor(m => m.LoaiTinRao, new { @class = "control-label col-md-12" })
                         @Html.DropDownListFor(m => m.LoaiTinRao, new SelectList(Model.LoaiTinRaoBDS, "Id", "Text", Model.LoaiTinRao), "", new { @class = "form-control col-md-12 select2" })
                         @Html.ValidationMessageFor(m => m.LoaiTinRao, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.LoaiNhaDatId, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.LoaiNhaDatId, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai", Model.LoaiNhaDatId), "", new { @class = "form-control col-md-12 select2" })
-                        @Html.ValidationMessageFor(m => m.LoaiNhaDatId, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -113,6 +108,27 @@
                         @Html.LabelFor(model => model.BanDo, htmlAttributes: new { @class = "control-label col-md-12" })
                         @Html.EditorFor(model => model.BanDo, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                         @Html.ValidationMessageFor(m => m.BanDo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        @Html.ValidationMessageFor(m => m.SoDienThoai, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-md-6">

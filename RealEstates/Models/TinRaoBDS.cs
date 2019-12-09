@@ -29,12 +29,6 @@ namespace RealEstates.Models
         public decimal GiaTien { get; set; }
 
         [Required]
-        [Display(Name = "Loại nhà đất")]
-        public int LoaiNhaDatId { get; set; }
-
-        public LoaiNhaDat LoaiNhaDat { get; set; }
-
-        [Required]
         [Display(Name = "Tỉnh thành phố")]
         public int TinhThanhPhoId { get; set; }
 

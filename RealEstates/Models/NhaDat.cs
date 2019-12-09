@@ -81,6 +81,5 @@ namespace RealEstates.Models
 
         public ICollection<PhanCongSales> PhanCongSales { get; set; }
 
-        public ICollection<TinRaoBDS> TinRaoBDSs { get; set; }
     }
 }

@@ -1,0 +1,24 @@
+-----------Exception Details on  12/9/2019 7:39:40 AM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 12/9/2019 7:39:40 AM
+
+Error Line No : ine 101
+
+Error Message: DirectoryNotFoundException
+
+Exception Type: System.IO.DirectoryNotFoundException
+
+Error Location : Could not find a part of the path 'D:\dotnet\real-estate-website\RealEstates\Content\Images\AnhDaiDienTinRao\09122019-no-photo-available-300x225.png'.
+
+ Error Page Url: https://localhost:44359/TinRao/Save
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
