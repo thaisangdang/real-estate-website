@@ -1,0 +1,24 @@
+-----------Exception Details on  12/12/2019 9:37:13 PM-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 12/12/2019 9:37:13 PM
+
+Error Line No : ine 120
+
+Error Message: DirectoryNotFoundException
+
+Exception Type: System.IO.DirectoryNotFoundException
+
+Error Location : Could not find a part of the path 'D:\dotnet\real-estate-website\RealEstates\Content\Images\AnhDaiDienTinRao\12122019-20191212185306-1f25_wm.jpg'.
+
+ Error Page Url: https://localhost:44359/TinRao/Save
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+

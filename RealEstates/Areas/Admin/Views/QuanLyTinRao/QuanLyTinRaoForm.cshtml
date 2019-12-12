@@ -93,12 +93,6 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.BanDo, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.Raw(Model.BanDo)
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
                         @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
                         @Html.DisplayFor(model => model.TieuDe)
                     </div>
@@ -166,7 +160,6 @@
                         @Html.HiddenFor(m => m.ThongTinMoTa)
                         @Html.HiddenFor(m => m.Media)
                         @Html.HiddenFor(m => m.TuKhoa)
-                        @Html.HiddenFor(m => m.BanDo)
                         @Html.HiddenFor(m => m.TieuDe)
                         @Html.HiddenFor(m => m.AnhDaiDien)
                         @Html.HiddenFor(m => m.NgayTao)

@@ -1,4 +1,5 @@
 ﻿@model RealEstates.ViewModels.TinRaoViewModel
+@using RealEstates.Helper
 
 @{
     ViewBag.Title = "DuAnForm";
@@ -27,9 +28,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.LoaiNhaDat, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.LoaiNhaDat, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai", Model.LoaiNhaDatId), "", new { @class = "form-control col-md-12 select2", @id = "loaiNhaDat" })
-                        @Html.ValidationMessageFor(m => m.LoaiNhaDat, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.LoaiNhaDatId, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.LoaiNhaDatId, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai", Model.LoaiNhaDatId), "", new { @class = "form-control col-md-12 select2", @id = "loaiNhaDat" })
+                        @Html.ValidationMessageFor(m => m.LoaiNhaDatId, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -98,13 +99,6 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.BanDo, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.BanDo, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                        @Html.ValidationMessageFor(m => m.BanDo, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
                         @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-12" })
                         @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                         @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
@@ -131,13 +125,16 @@
                         @Html.ValidationMessageFor(m => m.ThoiHanDangTin, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiTinRao, "Id", "Text", Model.TrangThai), "", new { @class = "form-control col-md-12 select2" })
+                @if (Model.Id > 0)
+                {
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.TrangThai, new { @class = "control-label col-md-12" })
+                            @SelectOptions.getTrangThaiTinRao.SingleOrDefault(x => x.Id == Model.TrangThai).Text
+                        </div>
+                        @Html.ValidationMessageFor(m => m.TrangThai, "", new { @class = "text-danger" })
                     </div>
-                    @Html.ValidationMessageFor(m => m.TrangThai, "", new { @class = "text-danger" })
-                </div>
+                }
                 <div class="form-group">
                     @Html.LabelFor(model => model.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-12" })
                     <div class="col-md-12">

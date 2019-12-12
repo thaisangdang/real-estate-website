@@ -55,9 +55,6 @@ namespace RealEstates.ViewModels
         [Display(Name = "Từ khóa tìm kiếm")]
         public string TuKhoa { get; set; } // từ khóa vô hạn, thêm càng nhiều càng dễ kiếm
 
-        [Display(Name = "Bản đồ")]
-        public string BanDo { get; set; }
-
         [Display(Name = "Ảnh đại diện")]
         public string AnhDaiDien { get; set; }
         public HttpPostedFileBase ImageFile { get; set; }
@@ -122,7 +119,6 @@ namespace RealEstates.ViewModels
             ThongTinMoTa = tinRaoBDS.ThongTinMoTa;
             Media = tinRaoBDS.Media;
             TuKhoa = tinRaoBDS.TuKhoa;
-            BanDo = tinRaoBDS.BanDo;
             AnhDaiDien = tinRaoBDS.AnhDaiDien;
             HoTen = tinRaoBDS.HoTen;
             SoDienThoai = tinRaoBDS.SoDienThoai;

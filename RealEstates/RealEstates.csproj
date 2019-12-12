@@ -335,6 +335,10 @@
     <Compile Include="Migrations\201912120500244_whatChanges22.Designer.cs">
       <DependentUpon>201912120500244_whatChanges22.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912121356004_whatChanges23.cs" />
+    <Compile Include="Migrations\201912121356004_whatChanges23.Designer.cs">
+      <DependentUpon>201912121356004_whatChanges23.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaiViet.cs" />
     <Compile Include="Models\DoanhNghiepBDS.cs" />
@@ -2002,6 +2006,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912120500244_whatChanges22.resx">
       <DependentUpon>201912120500244_whatChanges22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912121356004_whatChanges23.resx">
+      <DependentUpon>201912121356004_whatChanges23.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
