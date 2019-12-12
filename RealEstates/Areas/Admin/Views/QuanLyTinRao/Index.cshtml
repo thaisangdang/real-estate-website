@@ -57,6 +57,7 @@
                     <tr>
                         <th>Tiêu đề</th>
                         <th>Loại tin rao</th>
+                        <th>Loại nhà đất</th>
                         <th>Địa chỉ</th>
                         <th>Người đăng</th>
                         <th>SĐT</th>
@@ -72,12 +73,12 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.TieuDe)
                             </td>
-
                             <td>
                                 <div class="text-center">
                                     @Model.LoaiTinRaoBDS.Single(x => x.Id == item.LoaiTinRao).Text
                                 </div>
                             </td>
+                            <td>@Html.DisplayFor(modelItem => item.LoaiNhaDat.TenLoai)</td>
                             <td class="text-center">@Html.DisplayFor(modelItem => item.DiaChi)</td>
                             <td>@Html.DisplayFor(modelItem => item.HoTen)</td>
                             <td>@Html.DisplayFor(modelItem => item.SoDienThoai)</td>

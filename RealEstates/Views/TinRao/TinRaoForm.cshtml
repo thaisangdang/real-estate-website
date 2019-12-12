@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "DuAnForm";
-    Layout = "~/Area/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Html.Partial("~/Views/Shared/_Alert.cshtml")
@@ -21,8 +21,15 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(m => m.LoaiTinRao, new { @class = "control-label col-md-12" })
-                        @Html.DropDownListFor(m => m.LoaiTinRao, new SelectList(Model.LoaiTinRaoBDS, "Id", "Text", Model.LoaiTinRao), "", new { @class = "form-control col-md-12 select2" })
+                        @Html.DropDownListFor(m => m.LoaiTinRao, new SelectList(Model.LoaiTinRaoBDS, "Id", "Text", Model.LoaiTinRao), "Chọn loại tin rao", new { @class = "form-control col-md-12 select2", @id = "loaiTinRao" })
                         @Html.ValidationMessageFor(m => m.LoaiTinRao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LoaiNhaDat, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.LoaiNhaDat, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai", Model.LoaiNhaDatId), "", new { @class = "form-control col-md-12 select2", @id = "loaiNhaDat" })
+                        @Html.ValidationMessageFor(m => m.LoaiNhaDat, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -66,20 +73,6 @@
                         @Html.LabelFor(model => model.DienTich, htmlAttributes: new { @class = "control-label col-md-12" })
                         @Html.EditorFor(model => model.DienTich, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                         @Html.ValidationMessageFor(m => m.DienTich, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.HuongNha, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.HuongNha, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                        @Html.ValidationMessageFor(m => m.HuongNha, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.SoPhong, htmlAttributes: new { @class = "control-label col-md-12" })
-                        @Html.EditorFor(model => model.SoPhong, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                        @Html.ValidationMessageFor(m => m.SoPhong, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -129,6 +122,13 @@
                         @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-12" })
                         @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                         @Html.ValidationMessageFor(m => m.SoDienThoai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ThoiHanDangTin, new { @class = "control-label col-md-12" })
+                        @Html.DropDownListFor(m => m.ThoiHanDangTin, new SelectList(Model.ThoiHanDangTins, "Id", "Text", Model.ThoiHanDangTin), "", new { @class = "form-control col-md-12 select2" })
+                        @Html.ValidationMessageFor(m => m.ThoiHanDangTin, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -195,6 +195,31 @@
                             var $option = $("<option />", {
                                 value: quanHuyen.id,
                                 text: quanHuyen.ten
+                            });
+                            selectElement.append($option);
+                        });
+                    },
+                    failure: function (data) {
+                    },
+                    error: function (data) {
+                    }
+                });
+            });
+
+            $("#loaiTinRao").change(function () {
+                var selectedValue = $(this).children("option:selected").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/api/LoaiNhaDatApi/GetLoaiNhaDatTinRaos/?loaiTinRao=" + selectedValue,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var selectElement = $("#loaiNhaDat");
+                        selectElement.empty();
+                        data.forEach(function (loaiNhaDat) {
+                            var $option = $("<option />", {
+                                value: loaiNhaDat.id,
+                                text: loaiNhaDat.tenLoai
                             });
                             selectElement.append($option);
                         });

@@ -19,5 +19,8 @@ namespace RealEstates.Models
         public bool IsRent { get; set; }
 
         public ICollection<NhaDat> NhaDats { get; set; }
+
+        public ICollection<TinRaoBDS> TinRaoBDSs { get; set; }
+
     }
 }

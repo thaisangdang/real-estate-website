@@ -24,6 +24,10 @@ namespace RealEstates.Models
         [Display(Name = "Loại tin rao")]
         public int LoaiTinRao { get; set; }
 
+        [Display(Name = "Loại nhà đất")]
+        public int LoaiNhaDatId { get; set; }
+        public LoaiNhaDat LoaiNhaDat { get; set; }
+
         [Display(Name = "Giá tiền (VNĐ)")]
         [Column(TypeName = "money")]
         public decimal GiaTien { get; set; }
@@ -48,14 +52,6 @@ namespace RealEstates.Models
         [Range(0, int.MaxValue)]
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public int DienTich { get; set; }
-
-        [Display(Name = "Hướng nhà")]
-        public string HuongNha { get; set; }
-
-        [Display(Name = "Số phòng")]
-        [Range(0, int.MaxValue)]
-        [DisplayFormat(DataFormatString = "{0:N}")]
-        public int SoPhong { get; set; }
 
         [Display(Name = "Thông tin mô tả")]
         [AllowHtml]
@@ -99,6 +95,9 @@ namespace RealEstates.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "Thời hạn đăng tin")]
+        public int ThoiHanDangTin { get; set; }
 
         [Display(Name = "Trạng thái")]
         public int TrangThai { get; set; } // chờ duyệt, hiển thị trên web, dừng đăng tin

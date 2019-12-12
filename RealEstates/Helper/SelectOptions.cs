@@ -10,7 +10,7 @@ namespace RealEstates.Helper
     {
         public static List<Option> DienTich { get; set; }
         public static List<Option> KhoangGia { get; set; }
-        public static List<Option> ThoiGian { get; set; }
+        public static List<Option> ThoiHanDangTin { get; set; }
         public static List<Option> TrangThaiNhanVien { get; set; }
         public static List<Option> TrangThaiDuAn { get; set; }
         public static List<Option> TrangThaiPhanCongSales { get; set; }
@@ -97,18 +97,18 @@ namespace RealEstates.Helper
             }
         }
 
-        public static List<Option> getThoiGian
+        public static List<Option> getThoiHanDangTin
         {
             get
             {
-                if (ThoiGian == null)
+                if (ThoiHanDangTin == null)
                 {
-                    ThoiGian = new List<Option>();
-                    ThoiGian.Add(new Option() { Id = 1, Text = "Dưới 6 tháng" });
-                    ThoiGian.Add(new Option() { Id = 2, Text = "Từ 6 tháng đến dưới 1 năm" });
-                    ThoiGian.Add(new Option() { Id = 3, Text = "Trên 1 năm" });
+                    ThoiHanDangTin = new List<Option>();
+                    ThoiHanDangTin.Add(new Option() { Id = 1, Text = "Dưới 6 tháng" });
+                    ThoiHanDangTin.Add(new Option() { Id = 2, Text = "6 tháng đến 1 năm" });
+                    ThoiHanDangTin.Add(new Option() { Id = 3, Text = "Trên 1 năm" });
                 }
-                return ThoiGian;
+                return ThoiHanDangTin;
             }
         }
 
@@ -119,10 +119,10 @@ namespace RealEstates.Helper
                 if (LoaiTinRaoBDS == null)
                 {
                     LoaiTinRaoBDS = new List<Option>();
-                    LoaiTinRaoBDS.Add(new Option() { Id = 1, Text = "Tin rao bán" });
-                    LoaiTinRaoBDS.Add(new Option() { Id = 2, Text = "Tin rao cho thuê" });
-                    LoaiTinRaoBDS.Add(new Option() { Id = 3, Text = "Tin rao cần mua" });
-                    LoaiTinRaoBDS.Add(new Option() { Id = 4, Text = "Tin rao cần thuê" });
+                    LoaiTinRaoBDS.Add(new Option() { Id = 1, Text = "Rao bán" });
+                    LoaiTinRaoBDS.Add(new Option() { Id = 2, Text = "Cần mua" });
+                    LoaiTinRaoBDS.Add(new Option() { Id = 3, Text = "Rao cho thuê" });
+                    LoaiTinRaoBDS.Add(new Option() { Id = 4, Text = "Cần thuê" });
                 }
                 return LoaiTinRaoBDS;
             }

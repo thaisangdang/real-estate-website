@@ -1,4 +1,5 @@
-﻿@*@model RealEstates.ViewModels.TinRaoViewModel
+﻿@model RealEstates.ViewModels.TinRaoViewModel
+@using RealEstates.Helper
 
 @{
     ViewBag.Title = "Details";
@@ -23,166 +24,49 @@
     <h4>Chi tiết tin rao</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            Loại tin rao
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.LoaiTinRao);</dt>
+        <dd>@Model.LoaiTinRaoBDS.Single(x => x.Id == Model.LoaiTinRao).Text</dd>
 
-        <dd>
-            @Model.LoaiTinRaoBDS.Single(x => x.Id == Model.LoaiTinRao).Text
-        </dd>
+        <dt>@Html.DisplayNameFor(model => model.LoaiNhaDat)</dt>
+        <dd>@Html.DisplayFor(model => model.LoaiNhaDat.TenLoai)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.T)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.GiaTien)</dt>
+        <dd>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaTien)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NguoiDang.HoTen)
-        </dd>
+        <dt>@Html.DisplayNameFor(model => model.TinhThanhPho.Ten)</dt>
+        <dd>@Html.DisplayFor(model => model.TinhThanhPho.Ten)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.QuanHuyen.Ten)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.QuanHuyen.Ten)</dt>
+        <dd>@Html.DisplayFor(model => model.QuanHuyen.Ten)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.QuanHuyen.Ten)
-        </dd>
+        <dt>@Html.DisplayNameFor(model => model.DiaChi)</dt>
+        <dd>@Html.DisplayFor(model => model.DiaChi)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TinhThanhPho.Ten)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.DienTich)</dt>
+        <dd>@Html.DisplayFor(model => model.DienTich)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TinhThanhPho.Ten)
-        </dd>
+        <dt>@Html.DisplayNameFor(model => model.ThongTinMoTa)</dt>
+        <dd>@Html.Raw(Model.ThongTinMoTa)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenDuAn)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.Media)</dt>
+        <dd>@Html.Raw(Model.Media)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenDuAn)
-        </dd>
+        <dt>@Html.DisplayNameFor(model => model.TuKhoa)</dt>
+        <dd>@Html.DisplayFor(model => model.TuKhoa)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.BanDo)</dt>
+        <dd>@Html.DisplayFor(model => model.BanDo)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaTu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaTu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ChuDauTu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ChuDauTu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TongDienTich)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TongDienTich)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TienDoDuAn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TienDoDuAn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.QuyMoDuAn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QuyMoDuAn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GioiThieuDuAn)
-        </dt>
-
-        <dd>
-            @Html.Raw(Model.GioiThieuDuAn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ViTri)
-        </dt>
-
-        <dd>
-            @Html.Raw(Model.ViTri)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HaTang)
-        </dt>
-
-        <dd>
-            @Html.Raw(Model.HaTang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThietKe)
-        </dt>
-
-        <dd>
-            @Html.Raw(Model.ThietKe)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MatBang)
-        </dt>
-
-        <dd>
-            @Html.Raw(Model.MatBang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Media)
-        </dt>
-
-        <dd>
-            @Html.Raw(Model.Media)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HoTroTaiChinh)
-        </dt>
-
-        <dd>
-            @Html.Raw(Model.HoTroTaiChinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SoSanPham)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SoSanPham)
-        </dd>
+        <dt>@Html.DisplayNameFor(model => model.TieuDe)</dt>
+        <dd>@Html.DisplayFor(model => model.TieuDe)</dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.AnhDaiDien)
         </dt>
-
         <dd>
             @if (!string.IsNullOrEmpty(Model.AnhDaiDien))
             {
-                <img src="@Html.DisplayFor(model => model.AnhDaiDien)" alt="@Html.DisplayFor(model => model.TenDuAn)" class="img-thumbnail image-detail">
+                <img src="@Html.DisplayFor(model => model.AnhDaiDien)" alt="@Html.DisplayFor(model => model.AnhDaiDien)" class="img-thumbnail image-detail">
             }
             else
             {
@@ -190,17 +74,30 @@
             }
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayDang)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.NgayTao)</dt>
+        <dd>@Html.DisplayFor(model => model.NgayTao)</dd>
 
+        <dt>@Html.DisplayNameFor(model => model.HoTen)</dt>
+        <dd>@Html.DisplayFor(model => model.HoTen)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.SoDienThoai)</dt>
+        <dd>@Html.DisplayFor(model => model.SoDienThoai)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+        <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.ThoiHanDangTin)</dt>
         <dd>
-            @Html.DisplayFor(model => model.NgayDang)
+            @SelectOptions.getThoiHanDangTin.SingleOrDefault(x => x.Id == Model.ThoiHanDangTin).Text
         </dd>
 
+        <dt>@Html.DisplayNameFor(model => model.TrangThai)</dt>
+        <dd>
+            @SelectOptions.getTrangThaiTinRao.SingleOrDefault(x => x.Id == Model.TrangThai).Text
+        </dd>
     </dl>
 </div>
 <p>
     @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Trở về danh sách", "Index")
-</p>*@
+</p>

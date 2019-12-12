@@ -1,0 +1,193 @@
+﻿@model RealEstates.ViewModels.TinRaoViewModel
+@using RealEstates.Helper
+
+@{
+    ViewBag.Title = "TinRaoForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyTinRao {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary d-inline-block">Tin rao BĐS</h6>
+    </div>
+    <div class="card-body">
+        <br />
+        @using (Html.BeginForm("Save", "QuanLyTinRao", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LoaiTinRao, new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Model.LoaiTinRaoBDS.Single(x => x.Id == Model.LoaiTinRao).Text
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LoaiNhaDatId, new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.LoaiNhaDat.TenLoai)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.GiaTien, new { @class = "control-label col-md-12 font-weight-bold" })
+                        @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaTien)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TinhThanhPho, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.TinhThanhPho.Ten)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.QuanHuyen, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.QuanHuyen.Ten)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.DiaChi)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DienTich, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.DienTich)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ThongTinMoTa, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.Raw(Model.ThongTinMoTa)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Media, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.Raw(Model.Media)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TuKhoa, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.TuKhoa)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BanDo, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.Raw(Model.BanDo)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.TieuDe)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @if (!string.IsNullOrEmpty(Model.AnhDaiDien))
+                        {
+                            <img src="@Html.DisplayFor(model => model.AnhDaiDien)" alt="@Html.DisplayFor(model => model.AnhDaiDien)" class="img-thumbnail image-detail">
+                        }
+                        else
+                        {
+                            <img src="~/Content/Images/AnhDaiDienDuAn/notfound.jpg" alt="" class="img-thumbnail image-detail">
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NgayTao, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.NgayTao)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.HoTen)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.SoDienThoai)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DisplayFor(model => model.Email)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ThoiHanDangTin, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @SelectOptions.getThoiHanDangTin.SingleOrDefault(x => x.Id == Model.ThoiHanDangTin).Text
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TrangThai, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
+                        @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiTinRao, "Id", "Text", Model.TrangThai), "",
+                            new { @class = "form-control col-md-12 select2" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-12">
+                        @Html.HiddenFor(m => m.Id)
+                        @Html.HiddenFor(m => m.LoaiTinRao)
+                        @Html.HiddenFor(m => m.LoaiNhaDatId)
+                        @Html.HiddenFor(m => m.GiaTien)
+                        @Html.HiddenFor(m => m.TinhThanhPhoId)
+                        @Html.HiddenFor(m => m.QuanHuyenId)
+                        @Html.HiddenFor(m => m.DiaChi)
+                        @Html.HiddenFor(m => m.DienTich)
+                        @Html.HiddenFor(m => m.ThongTinMoTa)
+                        @Html.HiddenFor(m => m.Media)
+                        @Html.HiddenFor(m => m.TuKhoa)
+                        @Html.HiddenFor(m => m.BanDo)
+                        @Html.HiddenFor(m => m.TieuDe)
+                        @Html.HiddenFor(m => m.AnhDaiDien)
+                        @Html.HiddenFor(m => m.NgayTao)
+                        @Html.HiddenFor(m => m.HoTen)
+                        @Html.HiddenFor(m => m.SoDienThoai)
+                        @Html.HiddenFor(m => m.Email)
+                        @Html.HiddenFor(m => m.ThoiHanDangTin)
+                        <input type="submit" class="btn btn-success" value="Lưu" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $(".select2").select2();
+        });
+    </script>
+}

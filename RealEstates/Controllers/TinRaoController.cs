@@ -50,7 +50,9 @@ namespace RealEstates.Controllers
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.ToList(),
                 TrangThaiTinRao = SelectOptions.getTrangThaiTinRao,
-                LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS
+                LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                ThoiHanDangTins = SelectOptions.getThoiHanDangTin
             };
 
             return View("TinRaoForm", viewModel);
@@ -62,7 +64,7 @@ namespace RealEstates.Controllers
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
-                return RedirectToAction("New");
+                return RedirectToAction("Index");
             }
 
             tinRaoBDS.ThongTinMoTa = HttpUtility.HtmlDecode(tinRaoBDS.ThongTinMoTa);

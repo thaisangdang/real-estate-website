@@ -42,7 +42,7 @@ namespace RealEstates.Areas.Admin.Controllers
 
             var viewModel = new QuanLyTinRaoViewModel
             {
-                TinRaoBDSs = _context.TinRaoBDSs.ToList(),
+                TinRaoBDSs = _context.TinRaoBDSs.Include(x => x.LoaiNhaDat).ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.ToList(),
                 LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
@@ -55,7 +55,7 @@ namespace RealEstates.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var tinRao = _context.TinRaoBDSs.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen)
-                .SingleOrDefault(x => x.Id == id);
+                .Include(x => x.LoaiNhaDat).SingleOrDefault(x => x.Id == id);
 
             if (tinRao == null)
             {
@@ -64,7 +64,22 @@ namespace RealEstates.Areas.Admin.Controllers
 
             var viewModel = new TinRaoViewModel(tinRao);
 
-            return View("Details", viewModel);
+            return View("QuanLyTinRaoForm", viewModel);
+        }
+
+        public ActionResult Save(TinRaoBDS tinRaoBDS)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                return RedirectToAction("Index");
+            }
+
+            var tinRaoInDb = _context.TinRaoBDSs.Single(x => x.Id == tinRaoBDS.Id);
+            tinRaoBDS.TrangThai = tinRaoBDS.TrangThai;
+            TempData["success"] = "Cập nhật thành công";
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

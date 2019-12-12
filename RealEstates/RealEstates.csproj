@@ -327,6 +327,14 @@
     <Compile Include="Migrations\201912090041314_whatChanges20.Designer.cs">
       <DependentUpon>201912090041314_whatChanges20.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912120452576_whatChanges21.cs" />
+    <Compile Include="Migrations\201912120452576_whatChanges21.Designer.cs">
+      <DependentUpon>201912120452576_whatChanges21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912120500244_whatChanges22.cs" />
+    <Compile Include="Migrations\201912120500244_whatChanges22.Designer.cs">
+      <DependentUpon>201912120500244_whatChanges22.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaiViet.cs" />
     <Compile Include="Models\DoanhNghiepBDS.cs" />
@@ -1759,6 +1767,7 @@
     <Content Include="Report\SalesCommission.xlsx" />
     <Content Include="Views\TinRao\TinRaoForm.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTinRao\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinRao\QuanLyTinRaoForm.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1987,6 +1996,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912090041314_whatChanges20.resx">
       <DependentUpon>201912090041314_whatChanges20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912120452576_whatChanges21.resx">
+      <DependentUpon>201912120452576_whatChanges21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912120500244_whatChanges22.resx">
+      <DependentUpon>201912120500244_whatChanges22.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
