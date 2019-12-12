@@ -1,8 +1,166 @@
-﻿
+﻿@model  RealEstates.Areas.Admin.Models.QuanLyTinRaoViewModel
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<style>
+    #menuQuanLyTinRao {
+        color: white;
+        background-color: dodgerblue;
+    }
 
+    .outsite {
+        margin-right: 20px;
+    }
+</style>
+
+@Html.Partial("~/Views/Shared/_Alert.cshtml")
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <br />
+        <div class="form-horizontal" style="margin-left: 1rem;">
+            @using (Html.BeginForm("Search", "QuanLyTinRao", FormMethod.Get, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col d-inline">
+                            @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "Tỉnh thành phố",
+                                new { @class = "form-control select2", @id = "TinhThanhPho" })
+                        </div>
+                        <div class="col d-inline">
+                            @Html.DropDownListFor(m => m.QuanHuyenId, new SelectList(Model.QuanHuyens.Where(x => x.TinhThanhPhoId == Model.TinhThanhPhoId), "Id", "Ten", Model.QuanHuyenId), "Quận huyện",
+                                new { @class = "form-control select2", @id = "QuanHuyen" })
+                        </div>
+                        <div class="col d-inline pull-left">
+                            @Html.DropDownListFor(m => m.LoaiTinRaoId, new SelectList(Model.LoaiTinRaoBDS, "Id", "Text", Model.LoaiTinRaoId), "Loại tin rao", new { @class = "form-control select2" })
+                        </div>
+                        <div class="col d-inline">
+                            @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiTinRao, "Id", "Text", Model.TrangThai), "Trạng thái tin rao", new { @class = "form-control select2" })
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-secondary"><span class="text-black-50"><i class="fas fa-search fa-fw"></i></span> Tìm kiếm</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="table-responsive">
+            <br />
+            <table id="dataTable" class="table table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Tiêu đề</th>
+                        <th>Loại tin rao</th>
+                        <th>Địa chỉ</th>
+                        <th>Người đăng</th>
+                        <th>SĐT</th>
+                        <th>Ngày đăng</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.TinRaoBDSs)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TieuDe)
+                            </td>
+
+                            <td>
+                                <div class="text-center">
+                                    @Model.LoaiTinRaoBDS.Single(x => x.Id == item.LoaiTinRao).Text
+                                </div>
+                            </td>
+                            <td class="text-center">@Html.DisplayFor(modelItem => item.DiaChi)</td>
+                            <td>@Html.DisplayFor(modelItem => item.HoTen)</td>
+                            <td>@Html.DisplayFor(modelItem => item.SoDienThoai)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>
+                            <td>
+                                <div class="rounded-pill p-1 text-light @Model.GetLableColor(item.TrangThai) text-center">
+                                    @Model.TrangThaiTinRao.Single(x => x.Id == item.TrangThai).Text
+                                </div>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary" title="Sửa">
+                                    <span class="text-white"><i class="fas fa-edit fa-fw"></i></span>
+                                </a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "columns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    { "width": "5%" },
+                ],
+                "language": {
+                    "infoEmpty": "Không có dữ liệu",
+                    "search": "Tìm theo từ khóa",
+                    "emptyTable": "Không có dữ liệu",
+                    "lengthMenu": "Hiển thị _MENU_ mục",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Kế tiếp",
+                        "previous": "Trước"
+                    },
+                }
+            });
+
+            $(".select2").select2();
+
+            $("#TinhThanhPho").change(function () {
+                var selectedValue = $(this).children("option:selected").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/api/DuAnApi/GetQuanHuyens/?tinhThanhPhoId=" + selectedValue,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var selectElement = $("#QuanHuyen");
+                        selectElement.empty();
+                        data.forEach(function (quanHuyen) {
+                            var $option = $("<option />", {
+                                value: quanHuyen.id,
+                                text: quanHuyen.ten
+                            });
+                            selectElement.append($option);
+                        });
+                    },
+                    failure: function (data) {
+                    },
+                    error: function (data) {
+                    }
+                });
+            });
+
+            $(document).on("click", ".modalLink", function () {
+                var passedID = $(this).data('id');
+                $(".hiddenid").val(passedID);
+            });
+        });
+    </script>
+}

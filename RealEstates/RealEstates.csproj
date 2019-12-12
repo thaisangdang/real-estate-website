@@ -196,6 +196,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminDashboardController.cs" />
     <Compile Include="Areas\Admin\Models\QuanLyThongTinDNViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyTinRaoViewModel.cs" />
     <Compile Include="Controllers\Api\LoaiNhaDatApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyBaiVietController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiBaiVietController.cs" />
@@ -1757,6 +1758,7 @@
     <Content Include="CKFinderScripts\lang\az.json" />
     <Content Include="Report\SalesCommission.xlsx" />
     <Content Include="Views\TinRao\TinRaoForm.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinRao\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />

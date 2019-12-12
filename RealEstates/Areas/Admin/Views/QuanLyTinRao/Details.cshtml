@@ -1,0 +1,206 @@
+﻿@*@model RealEstates.ViewModels.TinRaoViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #menuQuanLyTinRao {
+        color: white;
+        background-color: dodgerblue;
+    }
+</style>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+        <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
+        Trở về danh sách
+    </a>
+</p>
+
+<div>
+    <h4>Chi tiết tin rao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Loại tin rao
+        </dt>
+
+        <dd>
+            @Model.LoaiTinRaoBDS.Single(x => x.Id == Model.LoaiTinRao).Text
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.T)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiDang.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuanHuyen.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuanHuyen.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhThanhPho.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhThanhPho.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaTu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaTu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChuDauTu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChuDauTu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongDienTich)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongDienTich)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TienDoDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TienDoDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuyMoDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuyMoDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiThieuDuAn)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.GioiThieuDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViTri)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.ViTri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HaTang)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.HaTang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThietKe)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.ThietKe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatBang)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.MatBang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Media)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Media)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTroTaiChinh)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.HoTroTaiChinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoSanPham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoSanPham)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhDaiDien)
+        </dt>
+
+        <dd>
+            @if (!string.IsNullOrEmpty(Model.AnhDaiDien))
+            {
+                <img src="@Html.DisplayFor(model => model.AnhDaiDien)" alt="@Html.DisplayFor(model => model.TenDuAn)" class="img-thumbnail image-detail">
+            }
+            else
+            {
+                <img src="~/Content/Images/AnhDaiDienDuAn/notfound.jpg" alt="" class="img-thumbnail image-detail">
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Trở về danh sách", "Index")
+</p>*@

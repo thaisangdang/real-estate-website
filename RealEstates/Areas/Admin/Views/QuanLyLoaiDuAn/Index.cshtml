@@ -10,6 +10,10 @@
         color: white;
         background-color: dodgerblue;
     }
+
+    .outsite {
+        margin-right: 20px;
+    }
 </style>
 
 @Html.Partial("~/Views/Shared/_Alert.cshtml")
@@ -20,12 +24,21 @@
         <a href="@Url.Action("New")" class="btn btn-success float-right" title="Tạo mới">
             <span class="text-white"><i class="fas fa-plus fa-fw"></i> Thêm loại dự án</span>
         </a>
+        <button type="button" class="outsite btn btn-success float-right" onclick="tableToExcel('dataTable', 'Export Name');">Xuất danh sách</button>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <br />
             <table id="dataTable" class="table table-bordered" style="width:100%">
                 <thead>
+                    @*<tr>
+                        <th>Nhân viên:</th>
+                        <th>Đặng Thái Sang</th>
+                    </tr>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>@DateTime.Now</th>
+                    </tr>*@
                     <tr>
                         <th>Loại dự án</th>
                         <th>Mô tả</th>
@@ -118,5 +131,23 @@
             var passedID = $(this).data('id');
             $(".hiddenid").val(passedID);
         });
+
+        var tableToExcel = (function () {
+            var uri = 'data:application/vnd.ms-excel;base64,',
+                template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines /></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+                , base64 = function (s) {
+                    return window.btoa(unescape(encodeURIComponent(s)))
+                }
+                , format = function (s, c) {
+                    return s.replace(/{(\w+)}/g, function (m, p) {
+                        return c[p];
+                    })
+                };
+            return function (table, name) {
+                if (!table.nodeType) table = document.getElementById(table);
+                var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML };
+                window.location.href = uri + base64(format(template, ctx));
+            }
+        })();
     </script>
 }

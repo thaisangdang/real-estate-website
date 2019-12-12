@@ -197,14 +197,21 @@ namespace RealEstates.Areas.Admin.Controllers
                     .Include(x => x.PhanCongSales.NhaDat).Include(x => x.PhanCongSales.NhanVienSales.PhongBan)
                     .Include(X => X.PhanCongSales.NhaDat.DuAn).Include(x => x.PhanCongSales.NhaDat.LoaiNhaDat).SingleOrDefault(x => x.Id == id);
 
-                worksheet.get_Range("A1", "E1").Merge();
-                worksheet.Cells[1, 2] = "Thống kê phí hoa hồng đã xuất cho nhân viên";
+                var header = worksheet.get_Range("A1", "E1");
+                header.Merge();
+                header.EntireColumn.AutoFit();
+                header.Font.Bold = true;
+                header.Font.Color = System.Drawing.Color.DarkBlue;
+
+                worksheet.Cells[1, 1] = "Thống kê phí hoa hồng đã xuất cho nhân viên";
 
                 worksheet.Cells[2, 2] = "Ngày xuất";
                 worksheet.Cells[3, 2] = DateTime.Now.ToString("dd/MM/yyyy");
 
+
                 worksheet.Cells[2, 3] = "Tổng phí hoa hồng";
                 worksheet.Cells[3, 3] = phiHoaHong.TongChi;
+                //worksheet.get_Range("C3", "C3").NumberFormat = "#,###,###.00 VND";
 
                 worksheet.Cells[4, 2] = "Nhân viên Sales";
                 worksheet.Cells[4, 3] = phiHoaHong.PhanCongSales.NhanVienSales.HoTen;
