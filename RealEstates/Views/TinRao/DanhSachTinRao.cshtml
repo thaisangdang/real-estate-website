@@ -1,0 +1,72 @@
+﻿@model RealEstates.ViewModels.DanhSachTinRaoViewModel
+@using RealEstates.Helper
+
+@{
+    ViewBag.Title = "DanhSachTinRao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách tin rao đã đăng</h2>
+
+<p>@Html.ActionLink("Đăng tin mới", "New", null, new { @class = "btn btn-primary btn-raised" })</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-body no-padding">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <tr>
+                            <th>Ảnh đại diện</th>
+
+                            <th>Tiêu đề</th>
+
+                            <th>Loại tin rao</th>
+
+                            <th>Loại nhà đất</th>
+
+                            <th>Ngày đăng</th>
+
+                            <th>Trạng thái</th>
+                        </tr>
+
+                        @foreach (var item in Model.TinRaoBDSs)
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.AnhDaiDien))
+                                    {
+                                        Html.RenderPartial("~/Views/Shared/_RowResultTinRao.cshtml", item);
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Content/Images/AnhDaiDienDuAn/notfound.jpg" alt="" class="img-thumbnail image-detail">
+                                    }
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details","TinRao", new { id = item.Id })" title="Chi tiết">
+                                        @Html.DisplayFor(modelItem => item.TieuDe)
+                                    </a>
+                                </td>
+                                <td>
+                                    @Model.LoaiTinRaoBDS.Single(x => x.Id == item.LoaiTinRao).Text
+                                </td>
+                                <td>
+                                    @item.LoaiNhaDat.TenLoai
+                                </td>
+                                <td>
+                                    @item.NgayTao
+                                </td>
+                                <td>
+                                    <div class="rounded-pill p-1 text-light @Model.GetLableColor(item.TrangThai) text-center">
+                                        @Model.TrangThaiTinRao.Single(x => x.Id == item.TrangThai).Text
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

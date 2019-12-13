@@ -349,6 +349,7 @@
     <Compile Include="Models\QuanHuyen.cs" />
     <Compile Include="Models\NhaDat.cs" />
     <Compile Include="Models\TinRaoBDS.cs" />
+    <Compile Include="ViewModels\DanhSachTinRaoViewModel.cs" />
     <Compile Include="ViewModels\DuAnViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
@@ -1921,6 +1922,9 @@
     <Content Include="Views\TinRao\Index.cshtml" />
     <Content Include="Views\DuAn\Details.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\TinRao\DanhSachTinRao.cshtml" />
+    <Content Include="Views\TinRao\Details.cshtml" />
+    <Content Include="Views\Shared\_RowResultTinRao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\LoaiNhaDatApi\" />

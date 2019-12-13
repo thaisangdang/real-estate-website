@@ -4,7 +4,6 @@ using RealEstates.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -20,6 +19,7 @@ namespace RealEstates.ViewModels
 
         [Display(Name = "Loại nhà đất")]
         public int LoaiNhaDatId { get; set; }
+
         public LoaiNhaDat LoaiNhaDat { get; set; }
 
         [Display(Name = "Giá tiền (VNĐ)")]
@@ -28,11 +28,13 @@ namespace RealEstates.ViewModels
         [Required]
         [Display(Name = "Tỉnh thành phố")]
         public int TinhThanhPhoId { get; set; }
+
         public TinhThanhPho TinhThanhPho { get; set; }
 
         [Required]
         [Display(Name = "Quận huyện")]
         public int QuanHuyenId { get; set; }
+
         public QuanHuyen QuanHuyen { get; set; }
 
         [Display(Name = "Địa chỉ")]
@@ -53,10 +55,11 @@ namespace RealEstates.ViewModels
         public string Media { get; set; }
 
         [Display(Name = "Từ khóa tìm kiếm")]
-        public string TuKhoa { get; set; } // từ khóa vô hạn, thêm càng nhiều càng dễ kiếm
+        public string TuKhoa { get; set; }
 
         [Display(Name = "Ảnh đại diện")]
         public string AnhDaiDien { get; set; }
+
         public HttpPostedFileBase ImageFile { get; set; }
 
         [Required]
@@ -69,6 +72,7 @@ namespace RealEstates.ViewModels
 
         [Display(Name = "Người gửi bài đăng")]
         public string AccountId { get; set; }
+
         public ApplicationUser Account { get; set; }
 
         [Display(Name = "Người đại diện liên hệ")]
@@ -85,19 +89,19 @@ namespace RealEstates.ViewModels
         public int ThoiHanDangTin { get; set; }
 
         [Display(Name = "Trạng thái")]
-        public int TrangThai { get; set; } // chờ duyệt, hiển thị trên web, dừng đăng tin
-        
+        public int TrangThai { get; set; }
+
         public IEnumerable<TinhThanhPho> TinhThanhPhos { get; set; }
 
         public IEnumerable<QuanHuyen> QuanHuyens { get; set; }
 
         public IEnumerable<Option> LoaiTinRaoBDS { get; set; }
 
+        public IEnumerable<LoaiNhaDat> LoaiNhaDats { get; set; }
+
         public IEnumerable<Option> TrangThaiTinRao { get; set; }
 
         public IEnumerable<Option> ThoiHanDangTins { get; set; }
-
-        public IEnumerable<LoaiNhaDat> LoaiNhaDats { get; set; }
 
         public TinRaoViewModel()
         {
@@ -124,7 +128,6 @@ namespace RealEstates.ViewModels
             SoDienThoai = tinRaoBDS.SoDienThoai;
             Email = tinRaoBDS.Email;
             ThoiHanDangTin = tinRaoBDS.ThoiHanDangTin;
-
             AccountId = tinRaoBDS.AccountId;
             NgayTao = tinRaoBDS.NgayTao;
             TrangThai = tinRaoBDS.TrangThai;

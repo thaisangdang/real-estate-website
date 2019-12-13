@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace RealEstates.Controllers
 {
@@ -28,7 +29,37 @@ namespace RealEstates.Controllers
         // GET: TinRao
         public ActionResult Index()
         {
+
             return View();
+        }
+
+        public ActionResult DanhSachTinRao()
+        {
+            if (TempData["success"] != null)
+            {
+                ViewBag.Success = TempData["success"].ToString();
+                TempData.Remove("success");
+            }
+            if (TempData["error"] != null)
+            {
+                ViewBag.Error = TempData["error"].ToString();
+                TempData.Remove("error");
+            }
+            var userId = User.Identity.GetUserId();
+
+            var viewModel = new DanhSachTinRaoViewModel
+            {
+                TinRaoBDSs = _context.TinRaoBDSs.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen)
+                                .Include(x => x.LoaiNhaDat).Where(x => x.Account.Id == userId).ToList(),
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                TrangThaiTinRao = SelectOptions.getTrangThaiTinRao,
+                ThoiHanDangTins = SelectOptions.getThoiHanDangTin
+            };
+
+            return View("DanhSachTinRao", viewModel);
         }
 
         [Authorize]
@@ -102,6 +133,29 @@ namespace RealEstates.Controllers
 
             return RedirectToAction("New");
 
+        }
+
+        public ActionResult Details(int id)
+        {
+            var tinRao = _context.TinRaoBDSs.Include(x => x.TinhThanhPho)
+                .Include(x => x.QuanHuyen).Include(x => x.LoaiNhaDat).SingleOrDefault(x => x.Id == id);
+
+            if (tinRao == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new TinRaoViewModel(tinRao)
+            {
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                TrangThaiTinRao = SelectOptions.getTrangThaiTinRao,
+                LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                ThoiHanDangTins = SelectOptions.getThoiHanDangTin
+            };
+
+            return View(viewModel);
         }
 
         #region Helper
