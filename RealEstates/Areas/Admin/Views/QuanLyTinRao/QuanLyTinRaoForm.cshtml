@@ -34,67 +34,67 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(m => m.LoaiTinRao, new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Model.LoaiTinRaoBDS.Single(x => x.Id == Model.LoaiTinRao).Text
+                        <p class="col-md-12">@Model.LoaiTinRaoBDS.SingleOrDefault(x => x.Id == Model.LoaiTinRao).Text</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(m => m.LoaiNhaDatId, new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.LoaiNhaDat.TenLoai)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.LoaiNhaDat.TenLoai)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(m => m.GiaTien, new { @class = "control-label col-md-12 font-weight-bold" })
-                        @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaTien)
+                        <p class="col-md-12">@string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaTien)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.TinhThanhPho, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.TinhThanhPho.Ten)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.TinhThanhPho.Ten)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.QuanHuyen, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.QuanHuyen.Ten)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.QuanHuyen.Ten)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.DiaChi)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.DiaChi)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.DienTich, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.DienTich)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.DienTich)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.ThongTinMoTa, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.Raw(Model.ThongTinMoTa)
+                        <p class="col-md-12">@Html.Raw(Model.ThongTinMoTa)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Media, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.Raw(Model.Media)
+                        <p class="col-md-12">@Html.Raw(Model.Media)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.TuKhoa, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.TuKhoa)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.TuKhoa)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.TieuDe)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.TieuDe)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -113,31 +113,31 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.NgayTao, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.NgayTao)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.NgayTao)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.HoTen)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.HoTen)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.SoDienThoai)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.SoDienThoai)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @Html.DisplayFor(model => model.Email)
+                        <p class="col-md-12">@Html.DisplayFor(model => model.Email)</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.LabelFor(model => model.ThoiHanDangTin, htmlAttributes: new { @class = "control-label col-md-12 font-weight-bold" })
-                        @SelectOptions.getThoiHanDangTin.SingleOrDefault(x => x.Id == Model.ThoiHanDangTin).Text
+                        <p class="col-md-12">@SelectOptions.getThoiHanDangTin.SingleOrDefault(x => x.Id == Model.ThoiHanDangTin).Text</p>
                     </div>
                 </div>
                 <div class="col-md-6">

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RealEstates.Models.DoanhNghiepBDS">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Property Name="DuAns" Hidden="true" />
+      <Property Name="ImageFile" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAACAAAAACAAgAAAAAABAAAEAAAAAABAAAAAAIAgAAA=</HashCode>
+      <FileName>Models\DoanhNghiepBDS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.DuAn">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>uTACAEAAggAEAAABQkABAAQEQAQAAQgEBAAAQIAAkIY=</HashCode>
+      <FileName>Models\DuAn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.LoaiBaiViet">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoaiBaiViet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.LoaiDuAn">
+    <Position X="8.25" Y="2.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAgAAAAAAAAAAAAAAIAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoaiDuAn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.LoaiNhaDat">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAAAAAABAAAAgAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoaiNhaDat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.NhaDat">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQACgAJAEAAAgAAQAAAABIIAAAAEAIAAgAAwAIAAIAQ=</HashCode>
+      <FileName>Models\NhaDat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.NhanVien">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Members>
+      <Property Name="AccountId" Hidden="true" />
+      <Property Name="DuAns" Hidden="true" />
+      <Property Name="PhanCongSales" Hidden="true" />
+      <Property Name="PhiHoaHongs" Hidden="true" />
+      <Property Name="PhongBanId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ARACAAAAACAAAAQQAgABAAAABAAAAQBAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\NhanVien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.PhanCongSales">
+    <Position X="2.5" Y="3.5" Width="1.5" />
+    <Members>
+      <Property Name="DaTinhHoaHong" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ABACAARAEICAAAAAAAAAgAIAAAAAAQAAAIgAAAAAIAA=</HashCode>
+      <FileName>Models\PhanCongSales.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.PhiHoaHong">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAAAAAAACAAAAAAAAgAAAAAIAAAAAAAQAAAAIAA=</HashCode>
+      <FileName>Models\PhiHoaHong.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.PhongBan">
+    <Position X="6.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAgAgAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PhongBan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.QuanHuyen">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAAAAEgAAAAAAAAAACAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\QuanHuyen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.TinhThanhPho">
+    <Position X="6.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAAAAAgAAAAAAAAAABAAgAAAAAAAAA=</HashCode>
+      <FileName>Models\TinhThanhPho.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.TinRaoBDS">
+    <Position X="8" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iBACAAAAACAEAAAQCgARAAAEAACEAIAAAAAwAIAAMkY=</HashCode>
+      <FileName>Models\TinRaoBDS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstates.Models.BaiViet">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Property Name="ImageFile" Hidden="true" />
+      <Property Name="LoaiBaiVietId" Hidden="true" />
+      <Property Name="NguoiTaoId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAACAQAAAABACIAAAQAQAgAAAAAMAAAAAAAAAIAAIAA=</HashCode>
+      <FileName>Models\BaiViet.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LoaiBaiViet" />
+      <Property Name="NguoiTao" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -40,7 +40,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 TempData.Remove("error");
             }
 
-            var viewModel = new QuanLyTinRaoViewModel
+            var viewModel = new DanhSachTinRaoViewModel
             {
                 TinRaoBDSs = _context.TinRaoBDSs.Include(x => x.LoaiNhaDat).ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
@@ -62,7 +62,14 @@ namespace RealEstates.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            var viewModel = new TinRaoViewModel(tinRao);
+            var viewModel = new TinRaoViewModel(tinRao) {
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                TrangThaiTinRao = SelectOptions.getTrangThaiTinRao,
+                LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                ThoiHanDangTins = SelectOptions.getThoiHanDangTin
+            };
 
             return View("QuanLyTinRaoForm", viewModel);
         }
@@ -76,7 +83,7 @@ namespace RealEstates.Areas.Admin.Controllers
             }
 
             var tinRaoInDb = _context.TinRaoBDSs.Single(x => x.Id == tinRaoBDS.Id);
-            tinRaoBDS.TrangThai = tinRaoBDS.TrangThai;
+            tinRaoInDb.TrangThai = tinRaoBDS.TrangThai;
             TempData["success"] = "Cập nhật thành công";
             _context.SaveChanges();
             return RedirectToAction("Index");

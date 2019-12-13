@@ -7,7 +7,7 @@
 }
 
 <p>
-    <a href="@Url.Action("Index")" class="btn btn-secondary" title="Trở về danh sách">
+    <a href="@Url.Action("DanhSachTinRao")" class="btn btn-secondary" title="Trở về danh sách">
         <span><i class="fas fa-arrow-circle-left fa-fw"></i></span>
         Trở về danh sách
     </a>
@@ -87,7 +87,3 @@
         </dd>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Trở về danh sách", "Index")
-</p>

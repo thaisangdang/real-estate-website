@@ -1,0 +1,12 @@
+
+--------------------------------------Cơ sở dữ liệu------------------------------------
+Microsoft SQL Server 2017 Express
+File script: RealEstates\App_Data\RealEstates.sql
+
+--------------------------------------Thông tin đăng nhập------------------------------
+Trang quản lý: https://localhost:44359/admin
++ Tài khoản admin: admin@gmail.com adminpassword
++ Tài khoản nhân viên sales: salesman@gmail.com adminpassword, thaisangdang@gmail.com thaisangdangpassword
+
+Trang client:
+- Tài khoản người dùng: guest@gmail.com guestpassword

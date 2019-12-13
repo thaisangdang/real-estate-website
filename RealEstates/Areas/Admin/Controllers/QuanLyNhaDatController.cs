@@ -162,6 +162,11 @@ namespace RealEstates.Areas.Admin.Controllers
                 string uploadPath = ConfigurationManager.AppSettings["AnhDaiDienNhaDat"].ToString();
                 nhaDat.AnhDaiDien = saveFile(nhaDat.ImageFile, uploadPath);
             }
+            else
+            {
+                string uploadPath = ConfigurationManager.AppSettings["NoPhoto"].ToString();
+                nhaDat.AnhDaiDien = uploadPath + "no-photo-available-300x225.png";
+            }
 
             nhaDat.ThongTinMoTa = HttpUtility.HtmlDecode(nhaDat.ThongTinMoTa);
             nhaDat.Media = HttpUtility.HtmlDecode(nhaDat.Media);

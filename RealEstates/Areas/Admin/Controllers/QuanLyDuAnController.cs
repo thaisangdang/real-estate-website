@@ -160,9 +160,13 @@ namespace RealEstates.Areas.Admin.Controllers
 
             if (duAn.ImageFile != null)
             {
-                //Get Upload path from Web.Config file AppSettings.  
                 string uploadPath = ConfigurationManager.AppSettings["AnhDaiDienDuAn"].ToString();
                 duAn.AnhDaiDien = saveFile(duAn.ImageFile, uploadPath);
+            }
+            else
+            {
+                string uploadPath = ConfigurationManager.AppSettings["NoPhoto"].ToString();
+                duAn.AnhDaiDien = uploadPath + "no-photo-available-300x225.png";
             }
 
             duAn.GioiThieuDuAn = HttpUtility.HtmlDecode(duAn.GioiThieuDuAn);

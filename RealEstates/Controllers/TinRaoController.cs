@@ -115,7 +115,7 @@ namespace RealEstates.Controllers
                 }
                 else
                 {
-                    string uploadPath = ConfigurationManager.AppSettings["AnhDaiDienNoPhoto"].ToString();
+                    string uploadPath = ConfigurationManager.AppSettings["NoPhoto"].ToString();
                     tinRaoBDS.AnhDaiDien = uploadPath + "no-photo-available-300x225.png";
                 }
 
