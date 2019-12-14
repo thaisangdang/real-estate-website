@@ -1,16 +1,17 @@
 ﻿using RealEstates.Helper;
 using RealEstates.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace RealEstates.ViewModels
 {
     public class HomeViewModel
     {
         public IEnumerable<DuAn> DuAns { get; set; }
+
+        public IEnumerable<NhaDat> NhaDats { get; set; }
+
+        public IEnumerable<TinRaoBDS> TinRaoBDSs { get; set; }
 
         public IEnumerable<LoaiNhaDat> LoaiNhaDats { get; set; }
 

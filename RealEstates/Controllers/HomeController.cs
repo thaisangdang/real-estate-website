@@ -26,7 +26,16 @@ namespace RealEstates.Controllers
         {
             var viewModel = new HomeViewModel
             {
-                DuAns = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho).ToList(),
+                // lấy dự án mới nhất
+                DuAns = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho)
+                    .OrderByDescending(x => x.NgayDang).ToList(),
+                // lấy nhà đất mới nhất
+                NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).ToList()
+                    .OrderByDescending(x => x.NgayTao).ToList(),
+                // lấy tin rao mới nhất
+                TinRaoBDSs = _context.TinRaoBDSs.Include(x => x.TinhThanhPho).Include(x => x.LoaiNhaDat).ToList()
+                    .OrderByDescending(x => x.NgayTao).ToList(),
+
                 LoaiNhaDats = _context.LoaiNhaDats.ToList(),
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
@@ -41,7 +50,6 @@ namespace RealEstates.Controllers
             var viewModel = new HomeViewModel
             {
             };
-
             return View(viewModel);
         }
 
@@ -50,7 +58,6 @@ namespace RealEstates.Controllers
             var viewModel = new HomeViewModel
             {
             };
-
             return View(viewModel);
         }
     }

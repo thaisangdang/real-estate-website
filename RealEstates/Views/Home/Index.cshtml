@@ -59,17 +59,17 @@
                             </div>
                         </div>
                         @*<div class="form-group">
-                            @Html.DropDownListFor(m => m.LoaiTinRaoId, new SelectList(Model.LoaiTinRaoBDS, "Id", "Text"), "Loại tin rao", new { @class = "form-control col-md-12 select2" })
-                        </div>
-                        <div class="form-group">
-                            @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten"), "Tỉnh thành phố", new { @class = "form-control col-md-12 select2" })
-                        </div>
-                        <div class="form-group">
-                            @Html.DropDownListFor(m => m.DienTichId, new SelectList(Model.DienTichs, "Id", "Text"), "Diện tích", new { @class = "form-control col-md-12 select2" })
-                        </div>
-                        <div class="form-group">
-                            @Html.DropDownListFor(m => m.KhoangGiaId, new SelectList(Model.KhoangGias, "Id", "Text"), "Khoảng giá", new { @class = "form-control col-md-12 select2" })
-                        </div>*@
+                                @Html.DropDownListFor(m => m.LoaiTinRaoId, new SelectList(Model.LoaiTinRaoBDS, "Id", "Text"), "Loại tin rao", new { @class = "form-control col-md-12 select2" })
+                            </div>
+                            <div class="form-group">
+                                @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten"), "Tỉnh thành phố", new { @class = "form-control col-md-12 select2" })
+                            </div>
+                            <div class="form-group">
+                                @Html.DropDownListFor(m => m.DienTichId, new SelectList(Model.DienTichs, "Id", "Text"), "Diện tích", new { @class = "form-control col-md-12 select2" })
+                            </div>
+                            <div class="form-group">
+                                @Html.DropDownListFor(m => m.KhoangGiaId, new SelectList(Model.KhoangGias, "Id", "Text"), "Khoảng giá", new { @class = "form-control col-md-12 select2" })
+                            </div>*@
                     </div>
                 </div>
             </div>
@@ -155,7 +155,61 @@
     <div class="row">
         <div class="col-md-12 text-right">
             <h5>
-                @Html.ActionLink("Xem thêm Dự án >>", "Index", "DuAn")
+                @Html.ActionLink("Xem thêm dự án >>", "Index", "DuAn")
+            </h5>
+        </div>
+    </div>
+}
+
+<hr>
+<br>
+
+@if (Model.NhaDats.Count() > 0)
+{
+    <div class="row ">
+        <div class="col-md-12">
+            <h3 class="box-title">Nhà đất mới</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="owl-carousel">
+            @foreach (var item in Model.NhaDats)
+            {
+                Html.RenderPartial("~/Views/Shared/_SingleNhaDatCarousel.cshtml", item);
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <h5>
+                @Html.ActionLink("Xem thêm nhà đất >>", "Index", "NhaDat")
+            </h5>
+        </div>
+    </div>
+}
+
+<hr>
+<br>
+
+@if (Model.TinRaoBDSs.Count() > 0)
+{
+    <div class="row ">
+        <div class="col-md-12">
+            <h3 class="box-title">Tin rao mới</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="owl-carousel">
+            @foreach (var item in Model.TinRaoBDSs)
+            {
+                Html.RenderPartial("~/Views/Shared/_SingleTinRaoCarousel.cshtml", item);
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <h5>
+                @Html.ActionLink("Xem thêm tin rao >>", "Index", "TinRao")
             </h5>
         </div>
     </div>
@@ -163,9 +217,9 @@
 
 @section scripts {
     <script>
-        $(document).ready(function () { $(".select2").select2(); });
-
         $(document).ready(function () {
+            $(".select2").select2();
+
             $(".owl-carousel").owlCarousel({
                 items: 4,
                 pagination: false,

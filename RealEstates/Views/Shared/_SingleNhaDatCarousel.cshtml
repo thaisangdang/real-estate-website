@@ -1,0 +1,24 @@
+﻿@model RealEstates.Models.NhaDat
+
+<div class="single-item">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            @if (!string.IsNullOrEmpty(Model.AnhDaiDien))
+            {
+                <img src="@Html.DisplayFor(model => model.AnhDaiDien)" alt="@Html.DisplayFor(model => model.Ten)" class="img-thumbnail image-detail">
+            }
+            else
+            {
+                <img src="~/Content/Images/no-photo-available-300x225.png" alt="" class="img-thumbnail image-detail">
+            }
+        </div>
+        <div class="col-sm-12">
+            <a href="@Url.Action("Details", "DuAn", new { id = Model.Id })">
+                <h3 class="text-center">
+                    @Html.DisplayFor(model => model.Ten)
+                </h3>
+            </a>
+            <p>@Html.DisplayFor(model => model.LoaiNhaDat.TenLoai)</p>
+        </div>
+    </div>
+</div>

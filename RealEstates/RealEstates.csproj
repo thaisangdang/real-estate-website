@@ -233,6 +233,7 @@
     <Compile Include="Areas\Admin\Models\SalesViewModel.cs" />
     <Compile Include="Controllers\Api\NhaDatApiController.cs" />
     <Compile Include="Controllers\DuAnController.cs" />
+    <Compile Include="Controllers\NhaDatController.cs" />
     <Compile Include="Controllers\TinRaoController.cs" />
     <Compile Include="Dtos\LoaiNhaDatDto.cs" />
     <Compile Include="Dtos\NhaDatDto.cs" />
@@ -1925,9 +1926,12 @@
     <Content Include="Views\TinRao\DanhSachTinRao.cshtml" />
     <Content Include="Views\TinRao\Details.cshtml" />
     <Content Include="Views\Shared\_RowResultTinRao.cshtml" />
+    <Content Include="Views\Shared\_SingleNhaDatCarousel.cshtml" />
+    <Content Include="Views\Shared\_SingleTinRaoCarousel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\LoaiNhaDatApi\" />
+    <Folder Include="Views\NhaDat\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
