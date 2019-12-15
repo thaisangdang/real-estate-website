@@ -2,7 +2,7 @@
 
 <div class="single-item">
     <div class="row">
-        <div class="col-sm-12 text-center">
+        <div class="text-center">
             @if (!string.IsNullOrEmpty(Model.AnhDaiDien))
             {
                 <img src="@Html.DisplayFor(model => model.AnhDaiDien)" alt="@Html.DisplayFor(model => model.Ten)" class="img-thumbnail image-detail">
@@ -12,13 +12,37 @@
                 <img src="~/Content/Images/no-photo-available-300x225.png" alt="" class="img-thumbnail image-detail">
             }
         </div>
-        <div class="col-sm-12">
-            <a href="@Url.Action("Details", "DuAn", new { id = Model.Id })">
-                <h3 class="text-center">
+        <div class="col-md-10">
+            <a href="@Url.Action("Details", new { id = Model.Id })">
+                <h5>
+                    @if (Model.LoaiNhaDat.IsRent)
+                    {
+                        <span class="badge bg-green">
+                            Cho thuê
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-red">
+                            Cần bán
+                        </span>
+                    }
                     @Html.DisplayFor(model => model.Ten)
-                </h3>
+                </h5>
             </a>
-            <p>@Html.DisplayFor(model => model.LoaiNhaDat.TenLoai)</p>
+            <div>@Html.DisplayFor(model => model.DuAn.DiaChi)</div>
+            <div class="item-detail">
+                <b><i class="fa fa-arrows" aria-hidden="true"></i></b> @Html.DisplayFor(modelItem => Model.DienTich)m2
+            </div>
+            <div class="item-detail">
+                <b><i class="fa fa-map-marker" aria-hidden="true"></i></b> @Model.DuAn.TinhThanhPho.Ten
+            </div>
+            <div class="item-detail">
+                <b><i class="fa fa-home" aria-hidden="true"></i></b> @Model.LoaiNhaDat.TenLoai
+            </div>
+            <div class="item-detail">
+                <b><i class="fa fa-money" aria-hidden="true"></i></b> @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaBan)
+            </div>
         </div>
     </div>
 </div>

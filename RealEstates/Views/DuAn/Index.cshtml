@@ -1,8 +1,100 @@
-﻿
+﻿@model RealEstates.ViewModels.DanhSachDuAnViewModel
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Tìm kiếm dự án (@Model.DuAns.Count() dự án)</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-horizontal" style="margin-left: 1rem;">
+                    @using (Html.BeginForm("Search", "QuanLyDuAn", FormMethod.Get, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col d-inline">
+                                    @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "Tỉnh thành phố",
+                                        new { @class = "form-control select2", @id = "TinhThanhPho" })
+                                </div>
+                                <div class="col d-inline">
+                                    @Html.DropDownListFor(m => m.QuanHuyenId, new SelectList(Model.QuanHuyens.Where(x => x.TinhThanhPhoId == Model.TinhThanhPhoId), "Id", "Ten", Model.QuanHuyenId), "Quận huyện",
+                                        new { @class = "form-control select2", @id = "QuanHuyen" })
+                                </div>
+                                <div class="col d-inline pull-left">
+                                    @Html.DropDownListFor(m => m.LoaiDuAnId, new SelectList(Model.LoaiDuAns, "Id", "TenLoai", Model.LoaiDuAnId), "Loại dự án", new { @class = "form-control select2" })
+                                </div>
+                                <div class="col d-inline">
+                                    @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiDuAn, "Id", "Text", Model.TrangThai), "Trạng thái dự án", new { @class = "form-control select2" })
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-secondary"><span class="text-black-50"><i class="fas fa-search fa-fw"></i></span> Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-body no-padding">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        @foreach (var item in Model.DuAns)
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.AnhDaiDien))
+                                    {
+                                        Html.RenderPartial("~/Views/Shared/_PictureAvatar.cshtml", item);
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Content/Images/AnhDaiDienDuAn/notfound.jpg" alt="" class="img-thumbnail image-detail"/>
+                                    }
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details","DuAn", new { id = item.Id })" title="Chi tiết">
+                                        Dự án @Html.DisplayFor(modelItem => item.TenDuAn)
+                                    </a>
+                                </td>
+                                <td>
+                                    Loại: @item.LoaiDuAn.TenLoai
+                                </td>
+                                <td>
+                                    Tỉnh/thành phố: @item.TinhThanhPho.Ten
+                                </td>
+                                <td>
+                                    Quận/huyện: @item.QuanHuyen.Ten
+                                </td>
+                                <td>
+                                    Ngày đăng: @item.NgayDang
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".select2").select2();
+        });
+    </script>
+}

@@ -1,9 +1,8 @@
-﻿using RealEstates.Models;
+﻿using RealEstates.Helper;
+using RealEstates.Models;
 using RealEstates.ViewModels;
-using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RealEstates.Controllers
@@ -26,12 +25,32 @@ namespace RealEstates.Controllers
         // GET: DuAn
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new DanhSachDuAnViewModel
+            {
+                LoaiDuAns = _context.LoaiDuAns.ToList(),
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).Include(y => y.LoaiDuAn).ToList(),
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
+            };
+            //var viewModel = _context.DuAns.Include(x => x.TinhThanhPho)
+            //    .Include(x => x.QuanHuyen).Include(x => x.LoaiDuAn).ToList();
+            return View(viewModel);
         }
 
         public ActionResult List(int id)
         {
-            return View();
+            var viewModel = new DanhSachDuAnViewModel
+            {
+                LoaiDuAns = _context.LoaiDuAns.ToList(),
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).Include(y => y.LoaiDuAn).ToList(),
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
+            };
+            //var viewModel = _context.DuAns.Include(x => x.TinhThanhPho)
+            //    .Include(x => x.QuanHuyen).Include(x => x.LoaiDuAn).ToList();
+            return View(viewModel);
         }
 
         public ActionResult Details(int? id)

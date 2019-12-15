@@ -9,14 +9,14 @@
             }
             else
             {
-                <img src="~/Content/Images/AnhDaiDienDuAn/notfound.jpg" alt="" class="img-thumbnail image-detail">
+                <img src="~/Content/Images/no-photo-available-300x225.png" alt="" class="img-thumbnail image-detail">
             }
         </div>
         <div class="col-sm-12">
             <a href="@Url.Action("Details", "DuAn", new { id = Model.Id })">
-                <h3 class="text-center">
+                <h4 class="text-center">
                     @Html.DisplayFor(model => model.TenDuAn)
-                </h3>
+                </h4>
             </a>
             <p>@Html.DisplayFor(model => model.ChuDauTu)</p>
         </div>

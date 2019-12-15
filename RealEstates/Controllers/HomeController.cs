@@ -30,8 +30,9 @@ namespace RealEstates.Controllers
                 DuAns = _context.DuAns.Include(x => x.LoaiDuAn).Include(y => y.TinhThanhPho)
                     .OrderByDescending(x => x.NgayDang).ToList(),
                 // lấy nhà đất mới nhất
-                NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).ToList()
-                    .OrderByDescending(x => x.NgayTao).ToList(),
+                NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Include(x => x.DuAn)
+                .Include(x => x.DuAn.TinhThanhPho)
+                .ToList().OrderByDescending(x => x.NgayTao).ToList(),
                 // lấy tin rao mới nhất
                 TinRaoBDSs = _context.TinRaoBDSs.Include(x => x.TinhThanhPho).Include(x => x.LoaiNhaDat).ToList()
                     .OrderByDescending(x => x.NgayTao).ToList(),

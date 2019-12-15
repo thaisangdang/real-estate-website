@@ -92,6 +92,12 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -339,6 +345,10 @@
     <Compile Include="Migrations\201912121356004_whatChanges23.Designer.cs">
       <DependentUpon>201912121356004_whatChanges23.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912151350389_whatChanges24.cs" />
+    <Compile Include="Migrations\201912151350389_whatChanges24.Designer.cs">
+      <DependentUpon>201912151350389_whatChanges24.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaiViet.cs" />
     <Compile Include="Models\DoanhNghiepBDS.cs" />
@@ -349,6 +359,7 @@
     <Compile Include="Models\QuanHuyen.cs" />
     <Compile Include="Models\NhaDat.cs" />
     <Compile Include="Models\TinRaoBDS.cs" />
+    <Compile Include="ViewModels\DanhSachDuAnViewModel.cs" />
     <Compile Include="ViewModels\DanhSachTinRaoViewModel.cs" />
     <Compile Include="ViewModels\DuAnViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1206,6 +1217,7 @@
     <Content Include="Content\OwlCarousel\owl.carousel.css" />
     <Content Include="Content\OwlCarousel\owl.theme.css" />
     <Content Include="Content\OwlCarousel\owl.transitions.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\sb-admin.css" />
     <Content Include="Content\sb-admin.min.css" />
     <Content Include="Content\tether\tether-theme-arrows-dark.css" />
@@ -1919,7 +1931,6 @@
     <Content Include="Areas\Admin\Views\Shared\_StaffMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_SalesManMenu.cshtml" />
     <Content Include="Views\DuAn\Index.cshtml" />
-    <Content Include="Views\DuAn\List.cshtml" />
     <Content Include="Views\TinRao\Index.cshtml" />
     <Content Include="Views\DuAn\Details.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -1928,6 +1939,7 @@
     <Content Include="Views\Shared\_RowResultTinRao.cshtml" />
     <Content Include="Views\Shared\_SingleNhaDatCarousel.cshtml" />
     <Content Include="Views\Shared\_SingleTinRaoCarousel.cshtml" />
+    <Content Include="Views\Shared\_PictureAvatar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\LoaiNhaDatApi\" />
@@ -2017,6 +2029,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912121356004_whatChanges23.resx">
       <DependentUpon>201912121356004_whatChanges23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912151350389_whatChanges24.resx">
+      <DependentUpon>201912151350389_whatChanges24.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
