@@ -17,6 +17,23 @@ namespace RealEstates.Helper
         public static List<Option> LoaiTinRaoBDS { get; set; }
         public static List<Option> TrangThaiTinRao { get; set; }
 
+        public static List<Option> LoaiTimKiem { get; set; }
+
+        public static List<Option> getLoaiTimKiem
+        {
+            get
+            {
+                if (LoaiTimKiem == null)
+                {
+                    LoaiTimKiem = new List<Option>();
+                    LoaiTimKiem.Add(new Option() { Id = 1, Text = "Dự án" });
+                    LoaiTimKiem.Add(new Option() { Id = 2, Text = "Nhà đất" });
+                    LoaiTimKiem.Add(new Option() { Id = 3, Text = "Tin rao" });
+                }
+                return LoaiTimKiem;
+            }
+        }
+
         public static List<Option> getTrangThaiDuAn
         {
             get

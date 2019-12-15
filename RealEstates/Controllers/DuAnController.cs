@@ -33,8 +33,6 @@ namespace RealEstates.Controllers
                 DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).Include(y => y.LoaiDuAn).ToList(),
                 TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
             };
-            //var viewModel = _context.DuAns.Include(x => x.TinhThanhPho)
-            //    .Include(x => x.QuanHuyen).Include(x => x.LoaiDuAn).ToList();
             return View(viewModel);
         }
 
@@ -45,12 +43,12 @@ namespace RealEstates.Controllers
                 LoaiDuAns = _context.LoaiDuAns.ToList(),
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
                 QuanHuyens = _context.QuanHuyens.ToList(),
-                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).Include(y => y.LoaiDuAn).ToList(),
-                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn
+                DuAns = _context.DuAns.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen).Include(y => y.LoaiDuAn)
+                .Where(x=> x.LoaiDuAn.Id == id).ToList(),
+                TrangThaiDuAn = SelectOptions.getTrangThaiDuAn,
+                LoaiDuAnId = id
             };
-            //var viewModel = _context.DuAns.Include(x => x.TinhThanhPho)
-            //    .Include(x => x.QuanHuyen).Include(x => x.LoaiDuAn).ToList();
-            return View(viewModel);
+            return View("Index", viewModel);
         }
 
         public ActionResult Details(int? id)
@@ -59,7 +57,8 @@ namespace RealEstates.Controllers
             {
                 return HttpNotFound();
             }
-            var duAn = _context.DuAns.SingleOrDefault(x => x.Id == id);
+            var duAn = _context.DuAns.Include(x => x.DoanhNghiepBDS).Include(x => x.LoaiDuAn)
+                .SingleOrDefault(x => x.Id == id);
             return View(duAn);
         }
     }

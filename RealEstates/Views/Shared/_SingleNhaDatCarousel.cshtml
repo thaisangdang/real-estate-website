@@ -13,7 +13,7 @@
             }
         </div>
         <div class="col-md-10">
-            <a href="@Url.Action("Details", new { id = Model.Id })">
+            <a href="@Url.Action("Details", "NhaDat", new { id = Model.Id })">
                 <h5>
                     @if (Model.LoaiNhaDat.IsRent)
                     {

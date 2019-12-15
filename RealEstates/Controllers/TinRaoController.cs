@@ -12,6 +12,7 @@ using System.Data.Entity;
 
 namespace RealEstates.Controllers
 {
+    [AllowAnonymous]
     public class TinRaoController : Controller
     {
         public ApplicationDbContext _context;
@@ -29,8 +30,17 @@ namespace RealEstates.Controllers
         // GET: TinRao
         public ActionResult Index()
         {
+            var viewModel = new DanhSachTinRaoViewModel
+            {
+                TinRaoBDSs = _context.TinRaoBDSs.Include(x => x.LoaiNhaDat).ToList(),
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                TrangThaiTinRao = SelectOptions.getTrangThaiTinRao
+            };
 
-            return View();
+            return View(viewModel);
         }
 
         public ActionResult DanhSachTinRao()
@@ -156,6 +166,19 @@ namespace RealEstates.Controllers
             };
 
             return View(viewModel);
+        }
+
+        public ActionResult Detail(int id)
+        {
+            var tinRao = _context.TinRaoBDSs.Include(x => x.TinhThanhPho)
+                .Include(x => x.QuanHuyen).Include(x => x.LoaiNhaDat).SingleOrDefault(x => x.Id == id);
+
+            if (tinRao == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(tinRao);
         }
 
         #region Helper

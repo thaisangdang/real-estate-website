@@ -8,35 +8,35 @@
 
     @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "form-horizontal col-sm-12 col-md-3", role = "form", @style = "padding: 0; margin: 0;" }))
     {
-        <div class="card">
+        <div class="card" style="height: 380px;">
             <div class="card-body">
                 <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" href="#duan">Dự án</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#tinrao">Tin rao</a>
+                        <a class="nav-link active" data-toggle="pill" href="#duan">Tìm BĐS</a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div id="duan" class="container tab-pane active">
                         <br />
-                        @*<h4>Tìm dự án</h4>*@
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Tìm dự án..." aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
+                                <input type="text" name="KeyWord" class="form-control" placeholder="Nhập từ khóa" aria-label="Search" aria-describedby="basic-addon2">
                             </div>
                         </div>
-                        <div class="form-group">
+                        @*<div class="form-group">
+                            @Html.DropDownListFor(m => m.LoaiTimKiemId, new SelectList(Model.LoaiTimKiems, "Id", "Text"), "", new { @class = "form-control col-md-12 select2" })
+                        </div>*@
+                        @*<div class="form-group">
                             @Html.DropDownListFor(m => m.LoaiDuAnId, new SelectList(Model.LoaiDuAns, "Id", "TenLoai"), "Loại dự án", new { @class = "form-control col-md-12 select2" })
+                        </div>*@
+                        <div class="form-group">
+                            @Html.DropDownListFor(m => m.LoaiNhaDatId, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai"), "Loại BĐS", new { @class = "form-control col-md-12 select2" })
                         </div>
                         <div class="form-group">
-                            @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten"), "Tỉnh thành phố", new { @class = "form-control col-md-12 select2" })
+                            @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten"), "Tỉnh thành phố", new { @class = "form-control col-md-12 select2", @id = "TinhThanhPho" })
+                        </div>
+                        <div class="form-group">
+                            @Html.DropDownListFor(m => m.QuanHuyenId, new SelectList(Model.QuanHuyens.Where(x => x.TinhThanhPho.Id == Model.TinhThanhPhoId), "Id", "Ten"), "Quận huyện", new { @class = "form-control col-md-12 select2", @id = "QuanHuyen" })
                         </div>
                         <div class="form-group">
                             @Html.DropDownListFor(m => m.DienTichId, new SelectList(Model.DienTichs, "Id", "Text"), "Diện tích", new { @class = "form-control col-md-12 select2" })
@@ -45,36 +45,10 @@
                             @Html.DropDownListFor(m => m.KhoangGiaId, new SelectList(Model.KhoangGias, "Id", "Text"), "Khoảng giá", new { @class = "form-control col-md-12 select2" })
                         </div>
                     </div>
-                    <div id="tinrao" class="container tab-pane fade">
-                        <br />
-                        @*<h4>Tìm tin rao</h4>*@
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Tìm tin rao..." aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        @*<div class="form-group">
-                                @Html.DropDownListFor(m => m.LoaiTinRaoId, new SelectList(Model.LoaiTinRaoBDS, "Id", "Text"), "Loại tin rao", new { @class = "form-control col-md-12 select2" })
-                            </div>
-                            <div class="form-group">
-                                @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten"), "Tỉnh thành phố", new { @class = "form-control col-md-12 select2" })
-                            </div>
-                            <div class="form-group">
-                                @Html.DropDownListFor(m => m.DienTichId, new SelectList(Model.DienTichs, "Id", "Text"), "Diện tích", new { @class = "form-control col-md-12 select2" })
-                            </div>
-                            <div class="form-group">
-                                @Html.DropDownListFor(m => m.KhoangGiaId, new SelectList(Model.KhoangGias, "Id", "Text"), "Khoảng giá", new { @class = "form-control col-md-12 select2" })
-                            </div>*@
-                    </div>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block text-white"><i class="fas fa-search fa-fw"></i>Tìm kiếm</button>
+        <button type="submit" class="btn btn-primary btn-block text-white"><i class="fas fa-search fa-fw"></i>Tìm</button>
     }
 
     <div class="col-sm-12 col-md-9">
@@ -85,7 +59,7 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item active p-4">
                     <img class="d-block w-100" src="~/Content/Images/sidebar1.png" alt="First slide">
                     @*<div class="carousel-caption d-none d-md-block">
                             <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
@@ -215,31 +189,6 @@
     </div>
 }
 
-<!-- Load Facebook SDK for JavaScript -->
-@*<div id="fb-root"></div>
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                xfbml: true,
-                version: 'v5.0'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>*@
-
-<!-- Your customer chat code -->
-@*<div class="fb-customerchat"
-         attribution=setup_tool
-         page_id="110986233731157"
-         theme_color="#7646ff">
-    </div>*@
-
 @section scripts {
     <script>
         $(document).ready(function () {
@@ -259,7 +208,32 @@
             });
         });
 
+        $(document).ready(function () {
+            $(".select2").select2();
+            $("#TinhThanhPho").change(function () {
+                var selectedValue = $(this).children("option:selected").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/api/DuAnApi/GetQuanHuyens/?tinhThanhPhoId=" + selectedValue,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var selectElement = $("#QuanHuyen");
+                        selectElement.empty();
+                        data.forEach(function (quanHuyen) {
+                            var $option = $("<option />", {
+                                value: quanHuyen.id,
+                                text: quanHuyen.ten
+                            });
+                            selectElement.append($option);
+                        });
+                    },
+                    failure: function (data) {
+                    },
+                    error: function (data) {
+                    }
+                });
+            });
+        });
     </script>
-
-    <script async src="https://dochat.vn/code.js?id=9191216005411002142"></script>
 }

@@ -360,6 +360,7 @@
     <Compile Include="Models\NhaDat.cs" />
     <Compile Include="Models\TinRaoBDS.cs" />
     <Compile Include="ViewModels\DanhSachDuAnViewModel.cs" />
+    <Compile Include="ViewModels\DanhSachNhaDatViewModel.cs" />
     <Compile Include="ViewModels\DanhSachTinRaoViewModel.cs" />
     <Compile Include="ViewModels\DuAnViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -386,6 +387,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\NhaDatViewModel.cs" />
+    <Compile Include="ViewModels\SearchResultAllType.cs" />
     <Compile Include="ViewModels\ThongTinDNViewModel.cs" />
     <Compile Include="ViewModels\TinRaoViewModel.cs" />
   </ItemGroup>
@@ -1935,16 +1937,18 @@
     <Content Include="Views\DuAn\Details.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\TinRao\DanhSachTinRao.cshtml" />
-    <Content Include="Views\TinRao\Details.cshtml" />
     <Content Include="Views\Shared\_RowResultTinRao.cshtml" />
     <Content Include="Views\Shared\_SingleNhaDatCarousel.cshtml" />
     <Content Include="Views\Shared\_SingleTinRaoCarousel.cshtml" />
-    <Content Include="Views\Shared\_PictureAvatar.cshtml" />
+    <Content Include="Views\Shared\_DuAnAvatar.cshtml" />
+    <Content Include="Views\NhaDat\Index.cshtml" />
+    <Content Include="Views\Shared\_NhaDatAvatar.cshtml" />
+    <Content Include="Views\Shared\_TinRaoAvatar.cshtml" />
+    <Content Include="Views\NhaDat\Details.cshtml" />
+    <Content Include="Views\TinRao\Detail.cshtml" />
+    <Content Include="Views\TinRao\Details.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\LoaiNhaDatApi\" />
-    <Folder Include="Views\NhaDat\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

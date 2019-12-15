@@ -6,6 +6,8 @@ namespace RealEstates.ViewModels
 {
     public class DanhSachTinRaoViewModel
     {
+        public string KeyWord { get; set; }
+
         public string Title { get; set; }
 
         public IEnumerable<TinRaoBDS> TinRaoBDSs { get; set; }

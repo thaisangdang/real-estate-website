@@ -27,137 +27,60 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 text-center">
-                        @if (!string.IsNullOrEmpty(Model.AnhDaiDien))
-                        {
-                            <img src="@Html.DisplayFor(model => model.AnhDaiDien)" alt="@Html.DisplayFor(model => model.TenDuAn)" class="img-thumbnail image-detail">
-                        }
-                        else
-                        {
-                            <img src="~/Content/Images/AnhDaiDienDuAn/notfound.jpg" alt="" class="img-thumbnail image-detail">
+                        @{
+                            Html.RenderPartial("~/Views/Shared/_DuAnAvatar.cshtml", Model);
                         }
                     </div>
                     <div class="col-md-8">
                         <dl class="dl-horizontal">
-                            <dt>
-                                @Html.DisplayNameFor(model => model.LoaiDuAn.TenLoai)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.LoaiDuAn.TenLoai)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.TinhThanhPho.Ten)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.TinhThanhPho.Ten)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.TenDuAn)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.TenDuAn)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.DiaChi)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.DiaChi)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ChuDauTu)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.ChuDauTu)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.TongDienTich)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.TongDienTich)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.TienDoDuAn)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.TienDoDuAn)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.QuyMoDuAn)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.QuyMoDuAn)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.SoSanPham)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.SoSanPham)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.NgayDang)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.NgayDang)
-                            </dd>
+                            <dt>Loại dự án: </dt>
+                            <dd>@Html.DisplayFor(a => a.LoaiDuAn)</dd>
+                            <dt>Chủ đầu tư: </dt>
+                            <dd>@Html.DisplayFor(a => a.ChuDauTu)</dd>
+                            <dt>Doanh nghiệp BĐS</dt>
+                            <dd>@Html.DisplayFor(a => a.DoanhNghiepBDS.Ten)</dd>
+                            <dt>Diện tích: </dt>
+                            <dd>@Html.DisplayFor(a => a.TongDienTich)</dd>
+                            <dt>Giá: </dt>
+                            <dd>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaTu)</dd>
+                            <dt>Quy mô dự án: </dt>
+                            <dd>@Html.DisplayFor(a => a.QuyMoDuAn)</dd>
+                            <dt>Hỗ trợ tài chính: </dt>
+                            <dd>@Html.DisplayFor(a => a.HoTroTaiChinh)</dd>
+                            <dt>Tiến độ dự án</dt>
+                            <dd>@Html.DisplayFor(a => a.TienDoDuAn)</dd>
                         </dl>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <ul class="nav nav-pills col-sm-12" role="tablist">
-                            <li class="active"><a href="#tab_1" data-toggle="tab">@Html.DisplayNameFor(a => a.GioiThieuDuAn)</a></li>
-                            <li><a href="#tab_2" data-toggle="tab">@Html.DisplayNameFor(a => a.Media)</a></li>
-                            <li><a href="#tab_3" data-toggle="tab">@Html.DisplayNameFor(a => a.ViTri)</a></li>
-                            <li><a href="#tab_4" data-toggle="tab">@Html.DisplayNameFor(a => a.HaTang)</a></li>
-                            <li><a href="#tab_5" data-toggle="tab">@Html.DisplayNameFor(a => a.ThietKe)</a></li>
-                            <li><a href="#tab_6" data-toggle="tab">@Html.DisplayNameFor(a => a.MatBang)</a></li>
-                            <li><a href="#tab_7" data-toggle="tab">@Html.DisplayNameFor(a => a.HoTroTaiChinh)</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="container tab-pane active" id="tab_1">
-                                @Html.Raw(Model.GioiThieuDuAn)
+                        <!-- Custom Tabs -->
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab">@Html.DisplayNameFor(a => a.GioiThieuDuAn)</a></li>
+                                <li><a href="#tab_2" data-toggle="tab">@Html.DisplayNameFor(a => a.Media)</a></li>
+                                <li><a href="#tab_3" data-toggle="tab">@Html.DisplayNameFor(a => a.ViTri)</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    @Html.Raw(Model.GioiThieuDuAn)
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_2">
+                                    @Html.Raw(Model.Media)
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_3">
+                                    @Html.Raw(Model.ViTri)
+                                </div>
+                                <!-- /.tab-pane -->
                             </div>
-                            <div class="container tab-pane" id="tab_2">
-                                @Html.Raw(Model.Media)
-                            </div>
-                            <div class="container tab-pane" id="tab_3">
-                                @Html.Raw(Model.ViTri)
-                            </div>
-                            <div class="container tab-pane" id="tab_4">
-                                @Html.Raw(Model.HaTang)
-                            </div>
-                            <div class="container tab-pane" id="tab_5">
-                                @Html.Raw(Model.ThietKe)
-                            </div>
-                            <div class="container tab-pane" id="tab_6">
-                                @Html.Raw(Model.MatBang)
-                            </div>
-                            <div class="container tab-pane" id="tab_7">
-                                @Html.Raw(Model.HoTroTaiChinh)
-                            </div>
+                            <!-- /.tab-content -->
                         </div>
+                        <!-- nav-tabs-custom -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

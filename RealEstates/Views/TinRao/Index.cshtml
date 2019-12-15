@@ -12,7 +12,7 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Tìm kiếm</h3>
+                <h3 class="box-title">Tìm kiếm (@Model.TinRaoBDSs.Count() dự án)</h3>
             </div>
             <div class="box-body">
                 @using (Html.BeginForm("Search", "TinRao", FormMethod.Get, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
@@ -21,6 +21,10 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         <div class="row">
+                            <div class="col d-inline">
+                                @*<input type="text" name="keyWord" class="form-control" placeholder="Nhập từ khóa" aria-label="Search" aria-describedby="basic-addon2">*@
+                                @Html.EditorFor(model => model.KeyWord, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                            </div>
                             <div class="col d-inline">
                                 @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "Tỉnh thành phố",
                                     new { @class = "form-control select2", @id = "TinhThanhPho" })
@@ -52,49 +56,30 @@
             <div class="box-body no-padding">
                 <div class="table-responsive">
                     <table class="table table-hover table-striped">
-                        <tr>
-                            <th>Ảnh đại diện</th>
-
-                            <th>Tiêu đề</th>
-
-                            <th>Loại tin rao</th>
-
-                            <th>Loại nhà đất</th>
-
-                            <th>Ngày đăng</th>
-
-                            <th>Trạng thái</th>
-                        </tr>
-
                         @foreach (var item in Model.TinRaoBDSs)
                         {
                             <tr>
                                 <td>
-                                    @if (!string.IsNullOrEmpty(item.AnhDaiDien))
-                                    {
-                                        <img src="@item.AnhDaiDien" alt="@item.AnhDaiDien" class="img-thumbnail image-detail">
-                                    }
-                                    else
-                                    {
-                                        <img src="~/Content/Images/AnhDaiDienDuAn/notfound.jpg" alt="" class="img-thumbnail image-detail">
+                                    @{
+                                        Html.RenderPartial("~/Views/Shared/_TinRaoAvatar.cshtml", item);
                                     }
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Details","TinRao", new { id = item.Id })" title="Chi tiết">
-                                        @Html.DisplayFor(modelItem => item.TieuDe)
+                                    <a href="@Url.Action("Details","NhaDat", new { id = item.Id })" title="Chi tiết">
+                                        Tin rao: @Html.DisplayFor(modelItem => item.TieuDe)
                                     </a>
                                 </td>
                                 <td>
-                                    @Model.LoaiTinRaoBDS.Single(x => x.Id == item.LoaiTinRao).Text
+                                    Loại nhà đất: @Model.LoaiNhaDats.SingleOrDefault(x => x.Id == item.LoaiNhaDatId).TenLoai
                                 </td>
                                 <td>
-                                    @item.LoaiNhaDat.TenLoai
+                                    Tỉnh/thành phố: @item.TinhThanhPho.Ten
                                 </td>
                                 <td>
-                                    @item.NgayTao
+                                    Quận/huyện: @item.QuanHuyen.Ten
                                 </td>
                                 <td>
-                                    @SelectOptions.getTrangThaiTinRao.SingleOrDefault(x => x.Id == Model.TrangThai).Text
+                                    Ngày đăng: @item.NgayTao
                                 </td>
                             </tr>
                         }
@@ -104,3 +89,11 @@
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".select2").select2();
+        });
+    </script>
+}

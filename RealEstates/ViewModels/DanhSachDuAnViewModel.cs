@@ -7,6 +7,8 @@ namespace RealEstates.ViewModels
 {
     public class DanhSachDuAnViewModel
     {
+        public string KeyWord { get; set; }
+
         [Display(Name = "Tỉnh thành phố")]
         public int TinhThanhPhoId { get; set; }
 

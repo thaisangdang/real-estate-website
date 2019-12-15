@@ -1,4 +1,4 @@
-﻿@model RealEstates.ViewModels.DanhSachDuAnViewModel
+﻿@model RealEstates.ViewModels.DanhSachNhaDatViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -9,11 +9,11 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Tìm kiếm dự án (@Model.DuAns.Count() dự án)</h3>
+                <h3 class="box-title">Tìm kiếm nhà đất (@Model.NhaDats.Count() nhà đất)</h3>
             </div>
             <div class="box-body">
                 <div class="form-horizontal" style="margin-left: 1rem;">
-                    @using (Html.BeginForm("Search", "DuAn", FormMethod.Get, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
+                    @using (Html.BeginForm("Search", "NhaDat", FormMethod.Get, new { @class = "form-horizontal", role = "form", @name = "searchForm" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
                                     @*<input type="text" name="keyWord" class="form-control" placeholder="Nhập từ khóa" aria-label="Search" aria-describedby="basic-addon2">*@
                                     @Html.EditorFor(model => model.KeyWord, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                                 </div>
-                                <div class="col d-inline">
+                                <div class="col d-inline">s
                                     @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "Tỉnh thành phố",
                                         new { @class = "form-control select2", @id = "TinhThanhPho" })
                                 </div>
@@ -32,10 +32,10 @@
                                         new { @class = "form-control select2", @id = "QuanHuyen" })
                                 </div>
                                 <div class="col d-inline pull-left">
-                                    @Html.DropDownListFor(m => m.LoaiDuAnId, new SelectList(Model.LoaiDuAns, "Id", "TenLoai", Model.LoaiDuAnId), "Loại dự án", new { @class = "form-control select2" })
+                                    @Html.DropDownListFor(m => m.DuAnId, new SelectList(Model.DuAns, "Id", "TenDuAn", Model.DuAnId), "Dự án", new { @class = "form-control select2" })
                                 </div>
                                 <div class="col d-inline">
-                                    @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiDuAn, "Id", "Text", Model.TrangThai), "Trạng thái dự án", new { @class = "form-control select2" })
+                                    @Html.DropDownListFor(m => m.LoaiNhaDatId, new SelectList(Model.LoaiNhaDats, "Id", "TenLoai", Model.LoaiNhaDatId), "Loại nhà đất", new { @class = "form-control select2" })
                                 </div>
                                 <div class="col">
                                     <button type="submit" class="btn btn-secondary"><span class="text-black-50"><i class="fas fa-search fa-fw"></i></span> Tìm kiếm</button>
@@ -55,30 +55,30 @@
             <div class="box-body no-padding">
                 <div class="table-responsive">
                     <table class="table table-hover table-striped">
-                        @foreach (var item in Model.DuAns)
+                        @foreach (var item in Model.NhaDats)
                         {
                             <tr>
                                 <td>
                                     @{
-                                        Html.RenderPartial("~/Views/Shared/_DuAnAvatar.cshtml", item);
+                                        Html.RenderPartial("~/Views/Shared/_NhaDatAvatar.cshtml", item);
                                     }
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Details","DuAn", new { id = item.Id })" title="Chi tiết">
-                                        Tên dự án: @Html.DisplayFor(modelItem => item.TenDuAn)
+                                    <a href="@Url.Action("Details","NhaDat", new { id = item.Id })" title="Chi tiết">
+                                        Tên BĐS: @Html.DisplayFor(modelItem => item.Ten)
                                     </a>
                                 </td>
                                 <td>
-                                    Loại dự án: @item.LoaiDuAn.TenLoai
+                                    Loại nhà đất: @Model.LoaiNhaDats.SingleOrDefault(x => x.Id == item.LoaiNhaDatId).TenLoai
                                 </td>
                                 <td>
-                                    Tỉnh/thành phố: @item.TinhThanhPho.Ten
+                                    Tỉnh/thành phố: @item.DuAn.TinhThanhPho.Ten
                                 </td>
                                 <td>
-                                    Quận/huyện: @item.QuanHuyen.Ten
+                                    Quận/huyện: @item.DuAn.QuanHuyen.Ten
                                 </td>
                                 <td>
-                                    Ngày đăng: @item.NgayDang
+                                    Ngày đăng: @item.NgayTao
                                 </td>
                             </tr>
                         }

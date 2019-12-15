@@ -53,13 +53,10 @@
                             <div class="dropdown-menu bg-dark">
                                 @foreach (var loaiNhaDat in NavViewModel.GetLoaiNhaDats())
                                 {
-                                    if (!loaiNhaDat.IsRent)
-                                    {
-                                        @Html.ActionLink(loaiNhaDat.TenLoai, "NhaDatBan", "NhaDat", new { id = loaiNhaDat.Id }, new { @class = "nav-link text-light bg-dark" })
-                                    }
+                                    @Html.ActionLink(loaiNhaDat.TenLoai, "List", "NhaDat", new { loai = loaiNhaDat.Id, isRent = loaiNhaDat.IsRent }, new { @class = "nav-link text-light bg-dark" })
                                 }
                                 <div class="dropdown-divider"></div>
-                                @Html.ActionLink("Tất cả >>", "NhaDatBan", "NhaDat", null, new { @class = "nav-link text-light bg-dark" })
+                                @Html.ActionLink("Tất cả >>", "Index", "NhaDat", null, new { @class = "nav-link text-light bg-dark" })
                             </div>
                         </div>
                     </li>
@@ -71,13 +68,10 @@
                             <div class="dropdown-menu bg-dark">
                                 @foreach (var loaiNhaDat in NavViewModel.GetLoaiNhaDats())
                                 {
-                                    if (loaiNhaDat.IsRent)
-                                    {
-                                        @Html.ActionLink(loaiNhaDat.TenLoai, "NhaDatChoThue", "NhaDat", new { id = loaiNhaDat.Id }, new { @class = "nav-link text-light bg-dark" })
-                                    }
+                                    @Html.ActionLink(loaiNhaDat.TenLoai, "List", "NhaDat", new { loai = loaiNhaDat.Id, isRent = loaiNhaDat.IsRent }, new { @class = "nav-link text-light bg-dark" })
                                 }
                                 <div class="dropdown-divider"></div>
-                                @Html.ActionLink("Tất cả >>", "NhaDatChoThue", "NhaDat", null, new { @class = "nav-link text-light bg-dark" })
+                                @Html.ActionLink("Tất cả >>", "Index", "NhaDat", null, new { @class = "nav-link text-light bg-dark" })
                             </div>
                         </div>
                     </li>
@@ -199,6 +193,7 @@
     </div>
 
     @Scripts.Render("~/bundles/lib")
+    <script async src="https://dochat.vn/code.js?id=9191216005411002142"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
