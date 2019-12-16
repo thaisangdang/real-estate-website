@@ -53,7 +53,10 @@
                             <div class="dropdown-menu bg-dark">
                                 @foreach (var loaiNhaDat in NavViewModel.GetLoaiNhaDats())
                                 {
-                                    @Html.ActionLink(loaiNhaDat.TenLoai, "List", "NhaDat", new { loai = loaiNhaDat.Id, isRent = loaiNhaDat.IsRent }, new { @class = "nav-link text-light bg-dark" })
+                                    if (!loaiNhaDat.IsRent)
+                                    {
+                                        @Html.ActionLink(loaiNhaDat.TenLoai, "List", "NhaDat", new { loaiNhaDat = loaiNhaDat.Id, isRent = loaiNhaDat.IsRent }, new { @class = "nav-link text-light bg-dark" });
+                                    }
                                 }
                                 <div class="dropdown-divider"></div>
                                 @Html.ActionLink("Tất cả >>", "Index", "NhaDat", null, new { @class = "nav-link text-light bg-dark" })
@@ -68,7 +71,7 @@
                             <div class="dropdown-menu bg-dark">
                                 @foreach (var loaiNhaDat in NavViewModel.GetLoaiNhaDats())
                                 {
-                                    @Html.ActionLink(loaiNhaDat.TenLoai, "List", "NhaDat", new { loai = loaiNhaDat.Id, isRent = loaiNhaDat.IsRent }, new { @class = "nav-link text-light bg-dark" })
+                                    @Html.ActionLink(loaiNhaDat.TenLoai, "List", "NhaDat", new { loaiNhaDat = loaiNhaDat.Id, isRent = loaiNhaDat.IsRent }, new { @class = "nav-link text-light bg-dark" })
                                 }
                                 <div class="dropdown-divider"></div>
                                 @Html.ActionLink("Tất cả >>", "Index", "NhaDat", null, new { @class = "nav-link text-light bg-dark" })
@@ -83,7 +86,7 @@
                             <div class="dropdown-menu bg-dark">
                                 @foreach (var loaiTinRao in NavViewModel.GetLoaiTinRaoBDS())
                                 {
-                                    @Html.ActionLink(loaiTinRao.Text, "List", "TinRao", new { id = loaiTinRao.Id }, new { @class = "nav-link text-light bg-dark" })
+                                    @Html.ActionLink(loaiTinRao.Text, "GetByLoaiTinRao", "TinRao", new { loaiTinRaoId = loaiTinRao.Id }, new { @class = "nav-link text-light bg-dark" })
                                 }
                                 <div class="dropdown-divider"></div>
                                 @Html.ActionLink("Tất cả >>", "Index", "TinRao", null, new { @class = "nav-link text-light bg-dark" })

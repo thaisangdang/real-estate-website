@@ -47,12 +47,8 @@ namespace RealEstates.Controllers
             return View(nhaDat);
         }
 
-        public ActionResult List(int? loai, bool? isRent)
+        public ActionResult List(int? loaiNhaDat, bool? isRent)
         {
-            if (!loai.HasValue)
-            {
-                return HttpNotFound();
-            }
             var viewModel = new DanhSachNhaDatViewModel
             {
                 TinhThanhPhos = _context.TinhThanhPhos.ToList(),
@@ -61,7 +57,7 @@ namespace RealEstates.Controllers
                 LoaiNhaDats = _context.LoaiNhaDats.ToList(),
                 NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Include(x => x.DuAn)
                     .Include(x => x.DuAn.TinhThanhPho).Include(x => x.DuAn.QuanHuyen)
-                    .Where(x => x.LoaiNhaDat.Id == loai && x.IsRent == isRent).ToList()
+                    .Where(x => x.LoaiNhaDat.Id == loaiNhaDat && x.IsRent == isRent).ToList()
             };
             return View("Index", viewModel);
         }

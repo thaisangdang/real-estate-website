@@ -1951,6 +1951,7 @@
     <Content Include="Views\Shared\_DoanhNghiepAvatar.cshtml" />
     <Content Include="Views\DoanhNghiep\Details.cshtml" />
     <Content Include="Views\NhaDat\Details.cshtml" />
+    <Content Include="Views\Shared\_TinRaoAvatar2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\AnhDaiDienNhaDat\" />

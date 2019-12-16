@@ -10,29 +10,14 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Chi tiết tin rao</h3>
-                @*<div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>*@
             </div>
             <div class="box-body">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h2>
-                            @Html.DisplayFor(model => model.TieuDe)
-                        </h2>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-md-4 text-center">
                         @{
                             Html.RenderPartial("~/Views/Shared/_TinRaoAvatar.cshtml", Model);
                         }
-                    </div>
-                    <div class="col-md-8">
-                        <dl class="dl-horizontal">
+                        <dl>
                             <dt>@Html.DisplayNameFor(model => model.LoaiNhaDat)</dt>
                             <dd>@Html.DisplayFor(model => model.LoaiNhaDat.TenLoai)</dd>
 
@@ -67,28 +52,15 @@
                             <dd>@Html.DisplayFor(model => model.Email)</dd>
                         </dl>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <!-- Custom Tabs -->
-                        <div class="nav-tabs-custom">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_1" data-toggle="tab">@Html.DisplayNameFor(a => a.ThongTinMoTa)</a></li>
-                                <li><a href="#tab_2" data-toggle="tab">@Html.DisplayNameFor(a => a.Media)</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab_1">
-                                    @Html.Raw(Model.ThongTinMoTa)
-                                </div>
-                                <!-- /.tab-pane -->
-                                <div class="tab-pane" id="tab_2">
-                                    @Html.Raw(Model.Media)
-                                </div>
-                                <!-- /.tab-pane -->
-                            </div>
-                            <!-- /.tab-content -->
-                        </div>
-                        <!-- nav-tabs-custom -->
+                    <div class="col-md-8">
+                        <h3>@Model.TieuDe</h3>
+                        <dl class="dl-horizontal">
+                            <dt>@Html.DisplayNameFor(model => model.ThongTinMoTa)</dt>
+                            <dd>@Html.Raw(Model.ThongTinMoTa)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.Media)</dt>
+                            <dd>@Html.Raw(Model.Media)</dd>
+                        </dl>
                     </div>
                 </div>
             </div>

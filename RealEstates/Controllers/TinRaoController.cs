@@ -43,6 +43,23 @@ namespace RealEstates.Controllers
             return View(viewModel);
         }
 
+        public ActionResult GetByLoaiTinRao(int? loaiTinRaoId)
+        {
+            var viewModel = new DanhSachTinRaoViewModel
+            {
+                TinRaoBDSs = _context.TinRaoBDSs.Include(x => x.TinhThanhPho).Include(x => x.QuanHuyen)
+                    .Include(x => x.LoaiNhaDat)
+                    .Where(x => x.LoaiTinRao == loaiTinRaoId).ToList(),
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.ToList(),
+                LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                TrangThaiTinRao = SelectOptions.getTrangThaiTinRao,
+                ThoiHanDangTins = SelectOptions.getThoiHanDangTin
+            };
+            return View("Index", viewModel);
+        }
+
         public ActionResult DanhSachTinRao()
         {
             if (TempData["success"] != null)
