@@ -30,6 +30,12 @@ namespace RealEstates.ViewModels
         public int ThoiHanDangTin { get; set; }
         public IEnumerable<Option> ThoiHanDangTins { get; set; }
 
+        public int DienTichId { get; set; }
+        public IEnumerable<Option> DienTichs { get; set; }
+
+        public int KhoangGiaId { get; set; }
+        public IEnumerable<Option> KhoangGias { get; set; }
+
         public string GetLableColor(int trangThai)
         {
             string color = "";

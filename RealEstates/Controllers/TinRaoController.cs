@@ -4,11 +4,11 @@ using RealEstates.Models;
 using RealEstates.ViewModels;
 using System;
 using System.Configuration;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity;
 
 namespace RealEstates.Controllers
 {
@@ -37,10 +37,111 @@ namespace RealEstates.Controllers
                 QuanHuyens = _context.QuanHuyens.ToList(),
                 LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
                 LoaiNhaDats = _context.LoaiNhaDats.ToList(),
-                TrangThaiTinRao = SelectOptions.getTrangThaiTinRao
+                TrangThaiTinRao = SelectOptions.getTrangThaiTinRao,
+                DienTichs = SelectOptions.getDienTich,
+                KhoangGias = SelectOptions.getKhoangGia
             };
 
             return View(viewModel);
+        }
+
+        public ActionResult Search(string keyWord, int? loaiNhaDatId, int? tinhThanhPhoId, int? quanHuyenId, int? dienTichId, int? khoangGiaId)
+        {
+            var viewModel = new DanhSachTinRaoViewModel
+            {
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.Include(x => x.TinhThanhPho).ToList(),
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                DienTichs = SelectOptions.getDienTich,
+                KhoangGias = SelectOptions.getKhoangGia
+            };
+
+            //if (keyWord != null)
+            //{
+            //    viewModel.KeyWord = keyWord;
+            //    viewModel.NhaDats = viewModel.NhaDats.Where(x => x.Ten.Contains(keyWord) || x.ThongTinMoTa.Contains(keyWord)
+            //    || x.TuKhoa.Contains(keyWord) || x.DuAn.TenDuAn.Contains(keyWord) || x.LoaiNhaDat.TenLoai.Contains(keyWord));
+            //}
+
+            if (!string.IsNullOrWhiteSpace(keyWord))
+            {
+                viewModel.KeyWord = keyWord;
+                viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.ThongTinMoTa.Contains(keyWord));
+            }
+
+            if (loaiNhaDatId.HasValue)
+            {
+                viewModel.LoaiNhaDatId = loaiNhaDatId.Value;
+                viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.LoaiNhaDat.Id == loaiNhaDatId);
+            }
+
+            if (tinhThanhPhoId.HasValue)
+            {
+                viewModel.TinhThanhPhoId = tinhThanhPhoId.Value;
+                viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.TinhThanhPho.Id == tinhThanhPhoId);
+            }
+
+            if (quanHuyenId.HasValue)
+            {
+                viewModel.QuanHuyenId = quanHuyenId.Value;
+                viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.QuanHuyen.Id == quanHuyenId);
+            }
+
+            if (dienTichId.HasValue)
+            {
+                viewModel.DienTichId = dienTichId.Value;
+                switch (dienTichId)
+                {
+                    case 1:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.DienTich < 20);
+                        break;
+
+                    case 2:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.DienTich >= 20 && x.DienTich <= 50);
+                        break;
+
+                    case 3:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.DienTich >= 50 && x.DienTich <= 100);
+                        break;
+
+                    case 4:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.DienTich > 100);
+                        break;
+                }
+            }
+
+            if (khoangGiaId.HasValue)
+            {
+                viewModel.KhoangGiaId = khoangGiaId.Value;
+                switch (khoangGiaId)
+                {
+                    case 1:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.GiaTien < 2000000);
+                        break;
+
+                    case 2:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.GiaTien >= 2000000 || x.GiaTien <= 5000000);
+                        break;
+
+                    case 3:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.GiaTien > 5000000 && x.GiaTien < 500000000);
+                        break;
+
+                    case 4:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.GiaTien < 500000000 || x.GiaTien < 500000000);
+                        break;
+
+                    case 5:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => (x.GiaTien >= 500000000 && x.GiaTien < 2000000000) || (x.GiaTien >= 500000000 && x.GiaTien < 2000000000));
+                        break;
+
+                    case 6:
+                        viewModel.TinRaoBDSs = viewModel.TinRaoBDSs.Where(x => x.GiaTien > 2000000000);
+                        break;
+                }
+            }
+
+            return View("Index", viewModel);
         }
 
         public ActionResult GetByLoaiTinRao(int? loaiTinRaoId)
@@ -55,7 +156,9 @@ namespace RealEstates.Controllers
                 LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
                 LoaiNhaDats = _context.LoaiNhaDats.ToList(),
                 TrangThaiTinRao = SelectOptions.getTrangThaiTinRao,
-                ThoiHanDangTins = SelectOptions.getThoiHanDangTin
+                ThoiHanDangTins = SelectOptions.getThoiHanDangTin,
+                DienTichs = SelectOptions.getDienTich,
+                KhoangGias = SelectOptions.getKhoangGia
             };
             return View("Index", viewModel);
         }
@@ -83,7 +186,9 @@ namespace RealEstates.Controllers
                 LoaiTinRaoBDS = SelectOptions.getLoaiTinRaoBDS,
                 LoaiNhaDats = _context.LoaiNhaDats.ToList(),
                 TrangThaiTinRao = SelectOptions.getTrangThaiTinRao,
-                ThoiHanDangTins = SelectOptions.getThoiHanDangTin
+                ThoiHanDangTins = SelectOptions.getThoiHanDangTin,
+                DienTichs = SelectOptions.getDienTich,
+                KhoangGias = SelectOptions.getKhoangGia
             };
 
             return View("DanhSachTinRao", viewModel);
@@ -154,12 +259,10 @@ namespace RealEstates.Controllers
                 var tinRaoInDB = _context.TinRaoBDSs.Single(x => x.Id == tinRaoBDS.Id);
                 tinRaoInDB.TrangThai = tinRaoBDS.TrangThai;
                 TempData["success"] = "Cập nhật thành công";
-
             }
             _context.SaveChanges();
 
             return RedirectToAction("New");
-
         }
 
         public ActionResult Details(int id)
