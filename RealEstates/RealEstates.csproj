@@ -1945,12 +1945,12 @@
     <Content Include="Views\NhaDat\Index.cshtml" />
     <Content Include="Views\Shared\_NhaDatAvatar.cshtml" />
     <Content Include="Views\Shared\_TinRaoAvatar.cshtml" />
-    <Content Include="Views\NhaDat\Details.cshtml" />
     <Content Include="Views\TinRao\Detail.cshtml" />
     <Content Include="Views\TinRao\Details.cshtml" />
     <Content Include="Views\DoanhNghiep\Index.cshtml" />
     <Content Include="Views\Shared\_DoanhNghiepAvatar.cshtml" />
     <Content Include="Views\DoanhNghiep\Details.cshtml" />
+    <Content Include="Views\NhaDat\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\AnhDaiDienNhaDat\" />

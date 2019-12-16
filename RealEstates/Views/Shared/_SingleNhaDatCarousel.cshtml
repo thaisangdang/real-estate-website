@@ -41,7 +41,14 @@
                 <b><i class="fa fa-home" aria-hidden="true"></i></b> @Model.LoaiNhaDat.TenLoai
             </div>
             <div class="item-detail">
-                <b><i class="fa fa-money" aria-hidden="true"></i></b> @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaBan)
+                @if (Model.IsRent)
+                {
+                    <b><i class="fa fa-money" aria-hidden="true"></i></b> string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaThue);
+                }
+                else
+                {
+                    <b><i class="fa fa-money" aria-hidden="true"></i></b> string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaBan);
+                }
             </div>
         </div>
     </div>
