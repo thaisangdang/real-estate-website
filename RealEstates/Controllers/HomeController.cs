@@ -148,6 +148,7 @@ namespace RealEstates.Controllers
             var viewModel = new HomeViewModel
             {
             };
+            ViewBag.Title = "Giới thiệu website";
             return View(viewModel);
         }
 

@@ -21,7 +21,7 @@
                             <div class="row">
                                 <div class="col d-inline">
                                     @*<input type="text" name="keyWord" class="form-control" placeholder="Nhập từ khóa" aria-label="Search" aria-describedby="basic-addon2">*@
-                                    @Html.EditorFor(model => model.KeyWord, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                                    @Html.EditorFor(model => model.KeyWord, new { htmlAttributes = new { @class = "form-control col-md-12", @placeholder = "Từ khóa" } })
                                 </div>
                                 <div class="col d-inline">
                                     @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "Tỉnh thành phố",
@@ -33,9 +33,6 @@
                                 </div>
                                 <div class="col d-inline pull-left">
                                     @Html.DropDownListFor(m => m.LoaiDuAnId, new SelectList(Model.LoaiDuAns, "Id", "TenLoai", Model.LoaiDuAnId), "Loại dự án", new { @class = "form-control select2" })
-                                </div>
-                                <div class="col d-inline">
-                                    @Html.DropDownListFor(m => m.TrangThai, new SelectList(Model.TrangThaiDuAn, "Id", "Text", Model.TrangThai), "Trạng thái dự án", new { @class = "form-control select2" })
                                 </div>
                                 <div class="col">
                                     <button type="submit" class="btn btn-secondary"><span class="text-black-50"><i class="fas fa-search fa-fw"></i></span> Tìm kiếm</button>

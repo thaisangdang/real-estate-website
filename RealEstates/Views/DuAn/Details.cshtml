@@ -10,51 +10,119 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Thông tin Dự án</h3>
-                @*<div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>*@
             </div>
             <div class="box-body">
-                <div class="row">
+                @*<div class="row">
                     <div class="col-xs-12">
                         <h2>
                             @Html.DisplayFor(model => model.TenDuAn)
                         </h2>
                     </div>
-                </div>
+                </div>*@
                 <div class="row">
                     <div class="col-md-4 text-center">
                         @{
                             Html.RenderPartial("~/Views/Shared/_DuAnAvatar.cshtml", Model);
                         }
+                        <dl>
+                            <dt>@Html.DisplayNameFor(model => model.LoaiDuAn.TenLoai)</dt>
+                            <dd>@Html.DisplayFor(model => model.LoaiDuAn.TenLoai)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.TenDuAn)</dt>
+                            <dd>@Html.DisplayFor(model => model.TenDuAn)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.DiaChi)</dt>
+                            <dd>@Html.DisplayFor(model => model.DiaChi)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.GiaTu)</dt>
+                            <dd>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaTu)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.ChuDauTu)</dt>
+                            <dd>@Html.DisplayFor(model => model.ChuDauTu)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.TongDienTich)</dt>
+                            <dd>@Html.DisplayFor(model => model.TongDienTich)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.TienDoDuAn)</dt>
+                            <dd>@Html.DisplayFor(model => model.TienDoDuAn)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.QuyMoDuAn)</dt>
+                            <dd>@Html.DisplayFor(model => model.QuyMoDuAn)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.SoSanPham)</dt>
+                            <dd>@Html.DisplayFor(model => model.SoSanPham)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.NgayDang)</dt>
+                            <dd>@Html.DisplayFor(model => model.NgayDang)</dd>
+                        </dl>
+
+                        @Html.ActionLink("Xem nhà đất thuộc dự án >>", "GetNhaDatByDuAn", "NhaDat", new { duAnId = Model.Id }, new { @class = "nav-link" })
+
                     </div>
                     <div class="col-md-8">
                         <dl class="dl-horizontal">
-                            <dt>Loại dự án: </dt>
-                            <dd>@Html.DisplayFor(a => a.LoaiDuAn)</dd>
-                            <dt>Chủ đầu tư: </dt>
-                            <dd>@Html.DisplayFor(a => a.ChuDauTu)</dd>
-                            <dt>Doanh nghiệp BĐS</dt>
-                            <dd>@Html.DisplayFor(a => a.DoanhNghiepBDS.Ten)</dd>
-                            <dt>Diện tích: </dt>
-                            <dd>@Html.DisplayFor(a => a.TongDienTich)</dd>
-                            <dt>Giá: </dt>
-                            <dd>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaTu)</dd>
-                            <dt>Quy mô dự án: </dt>
-                            <dd>@Html.DisplayFor(a => a.QuyMoDuAn)</dd>
-                            <dt>Hỗ trợ tài chính: </dt>
-                            <dd>@Html.DisplayFor(a => a.HoTroTaiChinh)</dd>
-                            <dt>Tiến độ dự án</dt>
-                            <dd>@Html.DisplayFor(a => a.TienDoDuAn)</dd>
+
+                            @*<dt>
+                                @Html.DisplayNameFor(model => model.GioiThieuDuAn)
+                            </dt>*@
+
+                            <dd>
+                                @Html.Raw(Model.GioiThieuDuAn)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ViTri)
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(Model.ViTri)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.HaTang)
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(Model.HaTang)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ThietKe)
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(Model.ThietKe)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.MatBang)
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(Model.MatBang)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Media)
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(Model.Media)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.HoTroTaiChinh)
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(Model.HoTroTaiChinh)
+                            </dd>
+
                         </dl>
                     </div>
                 </div>
-                <div class="row">
+                @*<div class="row">
                     <div class="col-sm-12">
-                        <!-- Custom Tabs -->
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#tab_1" data-toggle="tab">@Html.DisplayNameFor(a => a.GioiThieuDuAn)</a></li>
@@ -65,21 +133,16 @@
                                 <div class="tab-pane active" id="tab_1">
                                     @Html.Raw(Model.GioiThieuDuAn)
                                 </div>
-                                <!-- /.tab-pane -->
                                 <div class="tab-pane" id="tab_2">
                                     @Html.Raw(Model.Media)
                                 </div>
-                                <!-- /.tab-pane -->
                                 <div class="tab-pane" id="tab_3">
                                     @Html.Raw(Model.ViTri)
                                 </div>
-                                <!-- /.tab-pane -->
                             </div>
-                            <!-- /.tab-content -->
                         </div>
-                        <!-- nav-tabs-custom -->
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>

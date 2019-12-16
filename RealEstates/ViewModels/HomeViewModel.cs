@@ -7,6 +7,8 @@ namespace RealEstates.ViewModels
 {
     public class HomeViewModel
     {
+        public string KeyWord { get; set; }
+
         public IEnumerable<DuAn> DuAns { get; set; }
         public IEnumerable<NhaDat> NhaDats { get; set; }
         public IEnumerable<TinRaoBDS> TinRaoBDSs { get; set; }

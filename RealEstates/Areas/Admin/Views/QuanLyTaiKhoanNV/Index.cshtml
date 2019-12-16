@@ -86,7 +86,7 @@
                 Bạn có thực sự muốn xóa?
             </div>
             <div class="modal-footer">
-                @using (Html.BeginForm("Delete", "QuanLyTaiKhoan"))
+                @using (Html.BeginForm("Delete", "QuanLyTaiKhoanNV"))
                 {
                     @Html.AntiForgeryToken()
                     @Html.Hidden("id", "", new { @class = "hiddenid" })

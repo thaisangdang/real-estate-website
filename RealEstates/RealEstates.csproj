@@ -238,6 +238,7 @@
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanNVController.cs" />
     <Compile Include="Areas\Admin\Models\SalesViewModel.cs" />
     <Compile Include="Controllers\Api\NhaDatApiController.cs" />
+    <Compile Include="Controllers\DoanhNghiepController.cs" />
     <Compile Include="Controllers\DuAnController.cs" />
     <Compile Include="Controllers\NhaDatController.cs" />
     <Compile Include="Controllers\TinRaoController.cs" />
@@ -359,6 +360,7 @@
     <Compile Include="Models\QuanHuyen.cs" />
     <Compile Include="Models\NhaDat.cs" />
     <Compile Include="Models\TinRaoBDS.cs" />
+    <Compile Include="ViewModels\DanhSachDoanhNghiepViewModel.cs" />
     <Compile Include="ViewModels\DanhSachDuAnViewModel.cs" />
     <Compile Include="ViewModels\DanhSachNhaDatViewModel.cs" />
     <Compile Include="ViewModels\DanhSachTinRaoViewModel.cs" />
@@ -1787,7 +1789,6 @@
     <Content Include="Views\TinRao\TinRaoForm.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTinRao\Details.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTinRao\QuanLyTinRaoForm.cshtml" />
-    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -1947,8 +1948,14 @@
     <Content Include="Views\NhaDat\Details.cshtml" />
     <Content Include="Views\TinRao\Detail.cshtml" />
     <Content Include="Views\TinRao\Details.cshtml" />
+    <Content Include="Views\DoanhNghiep\Index.cshtml" />
+    <Content Include="Views\Shared\_DoanhNghiepAvatar.cshtml" />
+    <Content Include="Views\DoanhNghiep\Details.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\Images\AnhDaiDienNhaDat\" />
+    <Folder Include="Content\Images\AnhDaiDienTinRao\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

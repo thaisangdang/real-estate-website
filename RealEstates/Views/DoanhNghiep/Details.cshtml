@@ -1,0 +1,49 @@
+﻿@model RealEstates.Models.DoanhNghiepBDS
+
+@{
+    ViewBag.Title = "Thông tin doanh nghiệp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin Doanh nghiệp</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        @{
+                            Html.RenderPartial("~/Views/Shared/_DoanhNghiepAvatar.cshtml", Model);
+                        }
+                        <dl>
+                            <dt>@Html.DisplayNameFor(model => model.DiaChi)</dt>
+                            <dd>@Html.DisplayFor(model => model.DiaChi)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.SoDienThoai)</dt>
+                            <dd>@Html.DisplayFor(model => model.SoDienThoai)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+                            <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+                            <dt>@Html.DisplayNameFor(model => model.Website)</dt>
+                            <dd>@Html.DisplayFor(model => model.Website)</dd>
+                        </dl>
+
+                        @Html.ActionLink("Xem dự án thuộc doanh nghiệp >>", "GetDuAnByDoanhNghiep", "DuAn", new { doanhNghiepId = Model.Id }, new { @class = "nav-link" })
+
+                    </div>
+                    <div class="col-md-8">
+                        <h4>@Model.Ten</h4>
+                        <dl class="dl-horizontal">
+                            <dd>
+                                @Html.Raw(Model.GioiThieu)
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

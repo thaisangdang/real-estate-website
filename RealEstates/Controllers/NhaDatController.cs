@@ -65,5 +65,24 @@ namespace RealEstates.Controllers
             };
             return View("Index", viewModel);
         }
+
+        public ActionResult GetNhaDatByDuAn(int? duAnId)
+        {
+            if (!duAnId.HasValue)
+            {
+                return HttpNotFound();
+            }
+            var viewModel = new DanhSachNhaDatViewModel
+            {
+                TinhThanhPhos = _context.TinhThanhPhos.ToList(),
+                QuanHuyens = _context.QuanHuyens.Include(x => x.TinhThanhPho).ToList(),
+                DuAns = _context.DuAns.ToList(),
+                LoaiNhaDats = _context.LoaiNhaDats.ToList(),
+                NhaDats = _context.NhaDats.Include(x => x.LoaiNhaDat).Include(x => x.DuAn)
+                    .Include(x => x.DuAn.TinhThanhPho).Include(x => x.DuAn.QuanHuyen)
+                    .Where(x => x.DuAn.Id == duAnId).ToList()
+            };
+            return View("Index", viewModel);
+        }
     }
 }

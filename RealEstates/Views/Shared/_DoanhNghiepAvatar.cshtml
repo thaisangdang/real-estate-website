@@ -1,0 +1,10 @@
+﻿@model RealEstates.Models.DoanhNghiepBDS
+
+@if (!string.IsNullOrEmpty(Model.AnhDaiDien))
+{
+    <img src="@Html.DisplayFor(model => model.AnhDaiDien)" alt="@Html.DisplayFor(model => model.Ten)" class="img-thumbnail image-detail"/>
+}
+else
+{
+    <img src="~/Content/Images/no-photo-available-300x225.png" alt="" class="img-thumbnail image-detail"/>
+}

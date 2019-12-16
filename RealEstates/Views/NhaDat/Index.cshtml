@@ -23,7 +23,7 @@
                                     @*<input type="text" name="keyWord" class="form-control" placeholder="Nhập từ khóa" aria-label="Search" aria-describedby="basic-addon2">*@
                                     @Html.EditorFor(model => model.KeyWord, new { htmlAttributes = new { @class = "form-control col-md-12" } })
                                 </div>
-                                <div class="col d-inline">s
+                                <div class="col d-inline">
                                     @Html.DropDownListFor(m => m.TinhThanhPhoId, new SelectList(Model.TinhThanhPhos, "Id", "Ten", Model.TinhThanhPhoId), "Tỉnh thành phố",
                                         new { @class = "form-control select2", @id = "TinhThanhPho" })
                                 </div>

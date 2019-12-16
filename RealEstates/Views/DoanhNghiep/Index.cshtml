@@ -1,0 +1,51 @@
+﻿@model RealEstates.ViewModels.DanhSachDoanhNghiepViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Tìm kiếm Doanh nghiệp BĐS (@Model.DoanhNghiepBDSs.Count() doanh nghiệp)</h3>
+            </div>
+            <div class="box-body no-padding">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        @foreach (var item in Model.DoanhNghiepBDSs)
+                        {
+                            <tr>
+                                <td>
+                                    @{
+                                        Html.RenderPartial("~/Views/Shared/_DoanhNghiepAvatar.cshtml", item);
+                                    }
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details","DoanhNghiep", new { id = item.Id })" title="Chi tiết">
+                                        Tên doanh nghiệp: @Html.DisplayFor(modelItem => item.Ten)
+                                    </a>
+                                </td>
+                                <td>
+                                    Địa chỉ: @item.DiaChi
+                                </td>
+                                <td>
+                                    Website: @item.Website
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".select2").select2();
+        });
+    </script>
+}

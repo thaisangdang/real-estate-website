@@ -123,7 +123,7 @@ namespace RealEstates.Areas.Admin.Controllers
                 ExceptionLogger.SendErrorToText(ex);
             }
 
-            return RedirectToAction("Index", "QuanLyTaiKhoan");
+            return RedirectToAction("Index", "QuanLyTaiKhoanNV");
         }
 
         [HttpPost]
@@ -152,7 +152,7 @@ namespace RealEstates.Areas.Admin.Controllers
 
                     TempData["success"] = "Thêm mới thành công";
 
-                    return RedirectToAction("Index", "QuanLyTaiKhoan");
+                    return RedirectToAction("Index", "QuanLyTaiKhoanNV");
                 }
             }
             //else
@@ -163,7 +163,7 @@ namespace RealEstates.Areas.Admin.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "QuanLyTaiKhoan");
+            return RedirectToAction("Index", "QuanLyTaiKhoanNV");
         }
 
     }
