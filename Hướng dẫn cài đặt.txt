@@ -1,12 +1,22 @@
+--------------------------------------Phần mềm-----------------------------------------
+Visual Studio 2019 Community: https://visualstudio.microsoft.com/vs/community/
+Microsoft SQL Server 2017 Express: https://www.microsoft.com/en-us/sql-server/sql-server-editions-express
+.NET Framework 4.6.1: https://dotnet.microsoft.com/download/dotnet-framework/net461
 
---------------------------------------Cơ sở dữ liệu------------------------------------
-Microsoft SQL Server 2017 Express
+--------------------------------------CSDL---------------------------------------------
 File script: RealEstates\App_Data\RealEstates.sql
+
+--------------------------------------Lưu ý với Visual Studio 2015---------------------
+Khi build project sẽ bị lỗi file tsc.exe, là file biên dịch mã nguồn TypeScript
+=> Cách khắc phục: đóng Visual Studio 2015, tải và cài đặt phần mở rộng "TypeScript 2.2 for visual Studio 2015" từ menu Tools -> Extensions and Updates
+Hoặc tải từ link https://typescriptteam.gallerycdn.vsassets.io/extensions/typescriptteam/typescript22forvisualstudio2015/2.2/1487789113613/249189/1/TypeScript_Dev14Full.exe
+
+Sau khi cài xong Extension thì mở lại project bằng visual studio 2015 sẽ biên dịch và chạy project bình thường.
 
 --------------------------------------Thông tin đăng nhập------------------------------
 Trang quản lý: https://localhost:44359/admin
 + Tài khoản admin: admin@gmail.com adminpassword
-+ Tài khoản nhân viên sales: salesman@gmail.com adminpassword, thaisangdang@gmail.com thaisangdangpassword
++ Tài khoản nhân viên sales: salesman@gmail.com adminpassword, thaisangdang@gmail.com adminpassword
 
 Trang client:
 - Tài khoản người dùng: guest@gmail.com guestpassword
