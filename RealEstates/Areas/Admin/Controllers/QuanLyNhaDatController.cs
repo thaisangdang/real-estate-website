@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Administrator, Staff")]
+    [Authorize(Roles = "Administrator, Staff, SalesMan")]
     public class QuanLyNhaDatController : Controller
     {
         public ApplicationDbContext _context;

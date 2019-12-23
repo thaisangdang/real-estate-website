@@ -63,7 +63,7 @@
                     {
                     <tr>
                         <td>
-                            <a href="@Url.Action("Details", new { id = item.Id})" title="Chi tiết">
+                            <a href="@Url.Action("Details", "QuanLyNhaDat", new { id = item.NhaDat.Id})" title="Chi tiết">
                                 @Html.DisplayFor(modelItem => item.NhaDat.Ten)
                             </a>
                         </td>
