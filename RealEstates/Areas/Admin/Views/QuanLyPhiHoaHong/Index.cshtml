@@ -93,7 +93,9 @@
                                 </td>
                             }
                             <td class="text-center">@Html.DisplayFor(modelItem => item.PhanCongSales.PhanTramHoaHong)</td>
-                            <td class="text-center">@Html.DisplayFor(modelItem => item.TongChi)</td>
+                            <td class="text-center">
+                                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.TongChi)
+                            </td>
                             <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>
                             <td>
                                 <a href="@Url.Action("Details", new { id = item.Id})" class="btn btn-info" title="Chi tiết">
