@@ -67,14 +67,22 @@
                                 @Html.DisplayFor(modelItem => item.NhaDat.Ten)
                             </a>
                         </td>
-                        <td>@Html.DisplayFor(modelItem => item.DuAn.TenDuAn)</td>
+                        <td>
+                            <a href="@Url.Action("Details", "QuanLyDuAn", new { id = item.NhaDat.DuAn.Id})" title="Chi tiết">
+                                @Html.DisplayFor(modelItem => item.NhaDat.DuAn.TenDuAn)
+                            </a>
+                        </td>
                         @if (item.NhaDat.IsRent)
                         {
-                            <td class="text-center">@Html.DisplayFor(modelItem => item.NhaDat.GiaThue)</td>
+                            <td class="text-center">
+                                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.NhaDat.GiaThue)
+                            </td>
                         }
                         else
                         {
-                            <td class="text-center">@Html.DisplayFor(modelItem => item.NhaDat.GiaBan)</td>
+                            <td class="text-center">
+                                @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.NhaDat.GiaBan)
+                            </td>
                         }
                         <td class="text-center">@Html.DisplayFor(modelItem => item.PhanTramHoaHong)</td>
                         <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>

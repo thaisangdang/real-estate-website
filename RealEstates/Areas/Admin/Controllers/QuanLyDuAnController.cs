@@ -14,7 +14,7 @@ using RealEstates.Areas.Admin.Models;
 
 namespace RealEstates.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Administrator, Staff")]
+    [Authorize(Roles = "Administrator, Staff, SalesMan")]
     public class QuanLyDuAnController : Controller
     {
         public ApplicationDbContext _context;

@@ -70,15 +70,27 @@
                     {
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhanVienSales.HoTen)</td>
-                            <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.DuAn.TenDuAn)</td>
-                            <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.Ten)</td>
+                            <td>
+                                <a href="@Url.Action("Details", "QuanLyDuAn", new { id = item.PhanCongSales.NhaDat.DuAn.Id})" title="Chi tiết">
+                                    @Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.DuAn.TenDuAn)
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "QuanLyNhaDat", new { id = item.PhanCongSales.NhaDat.Id})" title="Chi tiết">
+                                    @Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.Ten)
+                                </a>
+                            </td>
                             @if (item.PhanCongSales.NhaDat.LoaiNhaDat.IsRent)
                             {
-                                <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.GiaThue)</td>
+                                <td>
+                                    @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.PhanCongSales.NhaDat.GiaThue)
+                                </td>
                             }
                             else
                             {
-                                <td>@Html.DisplayFor(modelItem => item.PhanCongSales.NhaDat.GiaBan)</td>
+                                <td>
+                                    @string.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.PhanCongSales.NhaDat.GiaBan)
+                                </td>
                             }
                             <td class="text-center">@Html.DisplayFor(modelItem => item.PhanCongSales.PhanTramHoaHong)</td>
                             <td class="text-center">@Html.DisplayFor(modelItem => item.TongChi)</td>
